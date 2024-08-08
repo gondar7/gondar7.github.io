@@ -176,6 +176,16 @@
       }
     }
     @media (max-width: 767px) {
+      .header-cta-button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+      
+      header .logo {
+        font-size: 1.4rem;
+      }
+    }
+    @media (max-width: 767px) {
       html {
         scroll-snap-type: none;
       }
@@ -382,7 +392,11 @@
       padding: 0.5rem 1rem;
       border-radius: 0.3rem;
     }
-
+.header-cta-button {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+}
     /* Remove conflicting styles */
     .glow-effect {
       animation: none !important;
@@ -399,14 +413,15 @@
 </head>
 <body class="text-responsive">
   <div id="particles-js"></div>
- <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md flex items-center">
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md flex items-center">
     <div class="container mx-auto px-6">
       <div class="flex justify-between items-center">
         <a href="#" class="logo text-white">
-          <i class="fas fa-coins"></i> <!-- Add Font Awesome coin icon -->
+          <i class="fas fa-coins"></i>
           i<span class="logo-highlight">Can</span>Invest.ca
         </a>
-        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out cta-button">
+        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 ease-in-out cta-button header-cta-button">
           <span>Start Investing</span>
         </a>
       </div>
