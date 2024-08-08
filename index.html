@@ -568,64 +568,121 @@
     <div class="quote-author text-white mt-2"></div>
   </div>
 </div>
-    <section id="all-in-one-etfs" class="section" data-bg="cave-tunnel.png">
-      <div class="bg-image"></div>
-      <div class="content-box">
-<h2 class="font-bold text-white mb-4 text-center">
-  <i class="fas fa-bullseye mr-2"></i>All-in-One ETFs: The Ultimate Solution
-</h2>
-        <p class="text-white mb-6">All-in-one ETFs provide a complete, globally diversified portfolio in a single fund, combining multiple index ETFs into one package.</p>
-        <div class="two-col">
+<section id="all-in-one-etfs" class="section" data-bg="cave-tunnel.png">
+  <div class="bg-image"></div>
+  <div class="content-box overflow-auto">
+    <h2 class="font-bold text-white mb-4 text-center">
+      <i class="fas fa-bullseye mr-2"></i>All-in-One ETFs: The Ultimate Solution
+    </h2>
+    <p class="text-white mb-4">All-in-one ETFs provide a complete, globally diversified portfolio in a single fund, combining multiple index ETFs into one package.</p>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div>
+        <h3 class="font-bold text-white mb-2">Key Features:</h3>
+        <ul class="list-disc pl-6 text-white mb-4">
+          <li>Invest in total market, all-cap funds for various regions</li>
+          <li>Available in different risk levels to suit various investor profiles</li>
+          <li>Popular providers: <a href="https://www.vanguard.ca/en/investor/Asset-Allocation-ETFs" target="_blank" class="text-blue-300 hover:text-blue-100">Vanguard</a>, <a href="https://www.blackrock.com/ca/investors/en/learning-centre/etf-education/asset-allocation-etfs" target="_blank" class="text-blue-300 hover:text-blue-100">iShares</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-funds/asset-allocation-etfs/" target="_blank" class="text-blue-300 hover:text-blue-100">BMO</a></li>
+          <li>Automatically rebalanced to maintain target allocations</li>
+          <li>Include thousands of individual stocks and bonds</li>
+        </ul>
+        
+        <h3 class="font-bold text-white mb-2">Understanding Risk Levels:</h3>
+        <ul class="list-none pl-6 text-white mb-4">
+          <li class="mb-2">
+            <i class="fas fa-arrow-up text-blue-400 mr-1"></i> stocks: 
+            <i class="fas fa-arrow-up text-green-400 mx-1"></i> potential returns, 
+            <i class="fas fa-arrow-up text-red-400 mx-1"></i> volatility
+          </li>
+          <li>
+            <i class="fas fa-arrow-up text-blue-400 mr-1"></i> bonds: 
+            <i class="fas fa-arrow-down text-red-400 mx-1"></i> potential returns, 
+            <i class="fas fa-arrow-down text-green-400 mx-1"></i> volatility
+          </li>
+        </ul>
+        
+        <p class="text-white mb-4">
+          Not sure which risk level is right for you? Take the 
+          <a href="https://investor.vanguard.com/tools-calculators/investor-questionnaire" target="_blank" class="text-blue-300 hover:text-blue-100">Vanguard Investor Questionnaire</a> 
+          to help determine your investment mix.
+        </p>
+      </div>
+      
+      <div>
+        <h3 class="font-bold text-white mb-2">Example Risk Levels (Vanguard):</h3>
+        <ul class="list-disc pl-6 text-white mb-4">
+          <li>VCIP (20% stocks / 80% bonds): Most conservative</li>
+          <li>VBAL (60% stocks / 40% bonds): Balanced</li>
+          <li>VGRO (80% stocks / 20% bonds): Growth-oriented</li>
+          <li>VEQT (100% stocks): Most aggressive</li>
+        </ul>
+
+        <h3 class="font-bold text-white mb-2">Example: VGRO (Vanguard Growth ETF Portfolio)</h3>
+        <div class="grid grid-cols-2 gap-4">
           <div>
-            <h3 class="font-bold text-white mb-2">Key Features:</h3>
-            <ul class="list-disc pl-6 text-white mb-4">
-              <li>Invest in total market, all-cap funds for various regions</li>
-              <li>Available in different risk levels to suit various investor profiles</li>
-              <li>Popular providers include Vanguard, iShares (BlackRock), and BMO</li>
+            <h4 class="font-bold text-white mb-1">Asset Allocation:</h4>
+            <ul class="list-disc pl-6 text-white mb-2">
+              <li>80% Stocks</li>
+              <li>20% Bonds</li>
             </ul>
-            <h3 class="font-bold text-white mb-2">Example: VGRO (Vanguard Growth ETF Portfolio)</h3>
-            <ul class="list-disc pl-6 text-white mb-4">
-              <li>Asset Allocation: 
-                <ul class="list-decimal pl-6">
-                  <li>80% Stocks</li>
-                  <li>20% Bonds</li>
-                </ul>
-              </li>
-              <li>Geographic Allocation:
-                <ul class="list-decimal pl-6">
-                  <li>Canada: ~30%</li>
-                  <li>United States: ~45%</li>
-                  <li>International Developed Markets: ~18%</li>
-                  <li>Emerging Markets: ~7%</li>
-                </ul>
-              </li>
-              <li>Includes thousands of individual stocks and bonds</li>
-              <li>Automatically rebalanced to maintain target allocations</li>
-            </ul>
+            <div class="relative mt-4">
+              <div class="absolute bottom-full mb-2 bg-gray-800 p-2 rounded-lg shadow-lg hidden z-10" id="holdings-popup">
+                <ol class="list-decimal pl-6 text-white text-sm columns-2">
+                  <li>Microsoft Corp</li>
+                  <li>Apple Inc</li>
+                  <li>NVIDIA Corp</li>
+                  <li>Royal Bank of Canada</li>
+                  <li>Amazon.com Inc</li>
+                  <li>Toronto-Dominion Bank</li>
+                  <li>Shopify Inc</li>
+                  <li>Enbridge Inc</li>
+                  <li>Canadian Natural Resources Ltd</li>
+                  <li>Canadian Pacific Kansas City Ltd</li>
+                  <li>Meta Platforms Inc</li>
+                  <li>Alphabet Inc</li>
+                  <li>Canadian National Railway Co</li>
+                  <li>Brookfield Corp</li>
+                  <li>Bank of Montreal</li>
+                  <li>Constellation Software Inc</li>
+                </ol>
+              </div>
+              <p class="text-white cursor-pointer hover:text-blue-300" id="holdings-hover">Click to view top 16 holdings</p>
+            </div>
           </div>
           <div>
-            <h3 class="font-bold text-white mb-2">Top 15 Holdings (as of August 7, 2024):</h3>
-            <ol class="list-decimal pl-6 text-white mb-4">
-              <li>Microsoft Corp</li>
-              <li>Apple Inc</li>
-              <li>NVIDIA Corp</li>
-              <li>Royal Bank of Canada</li>
-              <li>Amazon.com Inc</li>
-              <li>Toronto-Dominion Bank</li>
-              <li>Shopify Inc</li>
-              <li>Enbridge Inc</li>
-              <li>Canadian Natural Resources Ltd</li>
-              <li>Canadian Pacific Kansas City Ltd</li>
-              <li>Meta Platforms Inc (Facebook)</li>
-              <li>Alphabet Inc (Google)</li>
-              <li>Canadian National Railway Co</li>
-              <li>Brookfield Corp</li>
-              <li>Bank of Montreal</li>
-            </ol>
+            <h4 class="font-bold text-white mb-1">Geographic Allocation:</h4>
+            <ul class="list-disc pl-6 text-white mb-2">
+              <li>Canada: ~30%</li>
+              <li>United States: ~45%</li>
+              <li>International Developed: ~18%</li>
+              <li>Emerging Markets: ~7%</li>
+            </ul>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<script>
+  const holdingsHover = document.getElementById('holdings-hover');
+  const holdingsPopup = document.getElementById('holdings-popup');
+
+  if (holdingsHover && holdingsPopup) {
+    holdingsHover.addEventListener('click', (e) => {
+      e.preventDefault();
+      holdingsPopup.style.display = holdingsPopup.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!holdingsHover.contains(e.target) && !holdingsPopup.contains(e.target)) {
+        holdingsPopup.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+
 <div class="quote-carousel-container">
   <div class="quote-carousel">
     <div class="quote-text text-white italic"></div>
