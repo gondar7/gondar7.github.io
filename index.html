@@ -758,6 +758,9 @@
       });
     } else {
       // Mobile-specific animations
+      document.body.style.backgroundImage = "url('images/mobilebackground.png')";
+      document.body.style.backgroundAttachment = "fixed";
+      document.body.style.backgroundSize = "cover";
       sections.forEach((section) => {
         const content = section.querySelector('.content-box');
         ScrollTrigger.create({
