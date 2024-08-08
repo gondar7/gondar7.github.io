@@ -495,7 +495,7 @@
         <i class="fas fa-coins"></i>
         i<span class="logo-highlight">Can</span>Invest.ca
       </a>
-     <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 ease-in-out cta-button header-cta-button">
+     <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 ease-in-out cta-button header-cta-button">
   <i class="fas fa-rocket mr-2"></i><span>Start Investing</span>
 </a>
     </div>
@@ -512,7 +512,7 @@
         <p class="text-white mb-8 text-lg md:text-xl max-w-2xl mx-auto">
           Welcome to i<span class="highlight">Can</span>Invest.ca, your guide to simple, low-cost investing for Canadians. Discover how all-in-one ETFs and Wealthsimple have revolutionized the investing landscape, making it easier than ever to grow your wealth.
         </p>
-        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button">
+        <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button">
           <span>Take the first step towards financial freedom</span>
         </a>
       </div>
@@ -781,7 +781,7 @@
         <h3 class="font-bold text-white mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
         <ol class="list-decimal pl-6 text-white mb-4">
           <li>
-            <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Sign Up for Wealthsimple Trade</a>
+            <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Sign Up for Wealthsimple Trade</a>
           </li>
           <li>
             <a href="https://help.wealthsimple.com/hc/en-ca/articles/13619118312987-Different-ways-to-fund-your-Wealthsimple-account" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Fund Your Account</a>
@@ -886,7 +886,7 @@
       <div class="content-box text-center">
         <h2 class="font-bold text-white mb-4">Your Journey to Smart Investing Starts Here 🚀</h2>
         <p class="text-white mb-6">Investing doesn't have to be complicated or expensive. With all-in-one ETFs and Wealthsimple Trade, you can start building your wealth today. Your future self will thank you!</p>
-        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button">
+        <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button">
           <span>Start your investing journey with Wealthsimple</span>
         </a>
         <div class="text-sm text-gray-400 mt-4">
@@ -1130,5 +1130,22 @@ if (window.innerWidth <= 767) {
       &copy; 2024 iCanInvest.ca. All rights reserved.
     </div>
   </footer>
+  <script>
+function trackButtonClick(buttonName) {
+  gtag('event', 'click', {
+    'event_category': 'Button',
+    'event_label': buttonName
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var wealthsimpleButtons = document.querySelectorAll('a[href="https://icaninvest.ca/wealthsimple"]');
+  wealthsimpleButtons.forEach(function(button, index) {
+    button.addEventListener('click', function() {
+      trackButtonClick('Wealthsimple Button ' + (index + 1));
+    });
+  });
+});
+</script>
 </body>
 </html>
