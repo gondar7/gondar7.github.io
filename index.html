@@ -223,29 +223,45 @@
     }
 
     .fees-table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 1rem;
-      background-color: rgba(255, 255, 255, 0.6);
-      color: #000;
-    }
-    
-    .fees-table th,
-    .fees-table td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    }
-    
-    .fees-table th {
-      font-weight: bold;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: #fff;
-    }
-    
-    .fees-table tr:nth-child(even) {
-      background-color: rgba(240, 240, 240, 0.6);
-    }
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .fees-table th,
+  .fees-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .fees-table th {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .fees-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .fees-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .fees-table .fee-high {
+    font-weight: bold;
+    color: #ff6b6b;
+  }
+
+  .fees-table .fee-low {
+    font-weight: bold;
+    color: #4ecdc4;
+  }
 
     #social-share {
       display: flex;
