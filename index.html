@@ -361,6 +361,20 @@
       font-weight: bold;
       color: #00aa00;
     }
+    @media (max-width: 767px) {
+  body {
+    background-image: url('images/mobilebackground.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+  .section {
+    background-image: none !important;
+  }
+  .bg-image {
+    display: none;
+  }
+}
   </style>
 </head>
 <body class="text-responsive">
@@ -741,21 +755,18 @@
 
       // Fade in content boxes
       sections.forEach((section) => {
-        const content = section.querySelector('.content-box');
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top center",
-          onEnter: () => {
-            gsap.fromTo(content, 
-              { opacity: 0, y: 50 },
-              { opacity: 1, y: 0, duration: 0.5 }
-            );
-          },
-          onLeaveBack: () => {
-            gsap.to(content, { opacity: 0, y: 50, duration: 0.5 });
-          }
-        });
-      });
+  const content = section.querySelector('.content-box');
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top 80%",
+    onEnter: () => {
+      gsap.to(content, { opacity: 1, duration: 0.5 });
+    },
+    onLeaveBack: () => {
+      gsap.to(content, { opacity: 0, duration: 0.5 });
+    }
+  });
+});
     } else {
       // Mobile-specific animations
       document.body.style.backgroundImage = "url('images/mobilebackground.png')";
