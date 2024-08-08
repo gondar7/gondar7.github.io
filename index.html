@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,8 @@
 
   gtag('config', 'G-D87ZB6P22T');
 </script>
+ <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iCanInvest.ca - The Simple Path to Investing for Canadians | ETFs, Index Funds, and Low-Cost Investing</title>
@@ -299,10 +302,18 @@
     }
 
     .logo {
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Merriweather', serif;
       font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 0.5rem;
+      color: #ffd700; /* Brighter gold color */
+      text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700; /* Gold glow effect */
     }
 
     .logo-highlight {
@@ -341,6 +352,7 @@
       display: inline-block;
       text-align: center;
       white-space: normal;
+      border-radius: 0.5rem;
     }
 
     .cta-button::before {
@@ -365,6 +377,11 @@
       position: relative;
       z-index: 2;
     }
+    .cta-button-small {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.3rem;
+    }
 
     /* Remove conflicting styles */
     .glow-effect {
@@ -382,11 +399,14 @@
 </head>
 <body class="text-responsive">
   <div id="particles-js"></div>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md flex items-center">
+ <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md flex items-center">
     <div class="container mx-auto px-6">
       <div class="flex justify-between items-center">
-        <a href="#" class="logo text-white">i<span class="logo-highlight">Can</span>Invest.ca</a>
-        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out cta-button">
+        <a href="#" class="logo text-white">
+          <i class="fas fa-coins"></i> <!-- Add Font Awesome coin icon -->
+          i<span class="logo-highlight">Can</span>Invest.ca
+        </a>
+        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out cta-button">
           <span>Start Investing</span>
         </a>
       </div>
@@ -403,7 +423,7 @@
         <p class="text-white mb-8 text-lg md:text-xl max-w-2xl mx-auto">
           Welcome to i<span class="highlight">Can</span>Invest.ca, your guide to simple, low-cost investing for Canadians. Discover how all-in-one ETFs and Wealthsimple have revolutionized the investing landscape, making it easier than ever to grow your wealth.
         </p>
-        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out cta-button">
+        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button">
           <span>Take the first step towards financial freedom</span>
         </a>
       </div>
@@ -589,7 +609,7 @@
             <h3 class="font-bold text-white mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
             <ol class="list-decimal pl-6 text-white mb-4">
               <li>
-                <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out cta-button">
+                <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 ease-in-out cta-button cta-button-small inline-block">
                   <span>Sign Up for Wealthsimple Trade</span>
                 </a>
               </li>
@@ -673,7 +693,7 @@
       <div class="content-box text-center">
         <h2 class="font-bold text-white mb-4">Your Journey to Smart Investing Starts Here 🚀</h2>
         <p class="text-white mb-6">Investing doesn't have to be complicated or expensive. With all-in-one ETFs and Wealthsimple Trade, you can start building your wealth today. Your future self will thank you!</p>
-        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out cta-button">
+        <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button">
           <span>Start your investing journey with Wealthsimple</span>
         </a>
         <div class="text-sm text-gray-400 mt-4">
