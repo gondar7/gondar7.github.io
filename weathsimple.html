@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D87ZB6P22T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D87ZB6P22T');
+    
+    // Track the redirect event
+    gtag('event', 'Wealthsimple Redirect', {
+      'event_category': 'Outbound Link',
+      'event_label': 'Wealthsimple Referral',
+      'transport_type': 'beacon'
+    });
+  </script>
+  <script type="text/javascript">
+    setTimeout(function() {
+      window.location.href = "https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA";
+    }, 300);  // Delay redirect by 300ms to ensure the event is tracked
+  </script>
+  <title>Redirecting to Wealthsimple</title>
+</head>
+<body>
+  If you are not redirected automatically, follow this <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA">link to Wealthsimple</a>.
+</body>
+</html>
