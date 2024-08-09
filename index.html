@@ -514,6 +514,25 @@
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
+#share-site-tip {
+    cursor: pointer;
+  }
+  
+  .highlight-social {
+    animation: pulse 0.5s ease-in-out 2;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 </style>
 
 </head>
@@ -1002,7 +1021,8 @@
             <li class="mb-3"><i class="fas fa-hourglass-half text-green-400 mr-2"></i>Investing is a long-term game</li>
             <li class="mb-3"><i class="fas fa-calendar-check text-green-400 mr-2"></i>Stay consistent with regular contributions</li>
             <li class="mb-3"><i class="fas fa-chart-line text-green-400 mr-2"></i>Don't panic during market downturns</li>
-            <li class="mb-3"><i class="fas fa-users text-green-400 mr-2"></i>Share this site with friends and family</li>
+            <li class="mb-3"><i class="fas fa-user-tie text-green-400 mr-2"></i>Consider fee-only financial advice from a fiduciary</li>
+            <li class="mb-3" id="share-site-tip"><i class="fas fa-share-alt text-green-400 mr-2"></i>Share this site with friends and family</li>
           </ul>
         </div>
         <div class="bg-gray-800 p-4 rounded-lg mt-auto">
@@ -1213,7 +1233,7 @@
   <p class="quote-text italic"></p>
   <p class="quote-author text-sm mt-1"></p>
 </div>
- <div id="social-share" class="fixed bottom-4 left-4 z-50">
+<div id="social-share" class="fixed bottom-4 left-4 z-50">
   <a href="#" class="share-btn mr-2" data-platform="twitter" aria-label="Share on Twitter">
     <i class="fab fa-twitter text-[#1DA1F2] text-2xl"></i>
   </a>
@@ -1321,6 +1341,22 @@ if (window.innerWidth <= 767) {
           window.open(shareUrl, '_blank');
         }
       });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const shareSiteTip = document.getElementById('share-site-tip');
+      const socialShareButtons = document.getElementById('social-share');
+  
+      function highlightSocialButtons() {
+        socialShareButtons.classList.add('highlight-social');
+        setTimeout(() => {
+          socialShareButtons.classList.remove('highlight-social');
+        }, 2000);
+      }
+  
+      shareSiteTip.addEventListener('mouseover', highlightSocialButtons);
+      shareSiteTip.addEventListener('click', highlightSocialButtons);
     });
   </script>
 
