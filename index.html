@@ -440,7 +440,7 @@
   #social-share {
     bottom: 16px;
   }
-}
+
 
 .quote-carousel {
   background-color: rgba(0, 0, 0, 0.7);
@@ -481,7 +481,28 @@
     display: none;
   }
 }
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
 
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWRZSR2QGC">
@@ -521,9 +542,10 @@
         <p class="text-white mb-8 text-lg md:text-xl max-w-2xl mx-auto">
           Welcome to i<span class="highlight">Can</span>Invest.ca, your guide to simple, low-cost investing for Canadians. Discover how all-in-one ETFs and Wealthsimple have revolutionized the investing landscape, making it easier than ever to grow your wealth.
         </p>
-        <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button">
-          <span>Take the first step towards financial freedom</span>
-        </a>
+        <div class="scroll-indicator">
+          <p class="text-white mb-2">Scroll to learn more</p>
+          <i class="fas fa-chevron-down text-white animate-bounce"></i>
+        </div>
       </div>
     </section>
 <div class="quote-carousel-container">
