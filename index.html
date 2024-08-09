@@ -542,6 +542,7 @@
         <p class="text-white mb-8 text-lg md:text-xl max-w-2xl mx-auto">
           Welcome to i<span class="highlight">Can</span>Invest.ca, your guide to simple, low-cost investing for Canadians. Discover how all-in-one ETFs and Wealthsimple have revolutionized the investing landscape, making it easier than ever to grow your wealth.
         </p>
+        <div class="mb-16"><!-- Added margin to create more space --></div>
         <div class="scroll-indicator">
           <p class="text-white mb-2">Scroll to learn more</p>
           <i class="fas fa-chevron-down text-white animate-bounce"></i>
@@ -577,7 +578,7 @@
           <li class="mb-2"><i class="fas fa-trophy text-green-400 mr-2"></i>Consistent performance: Often outperforms active management over long periods</li>
         </ul>
         <div class="bg-gray-800 p-3 rounded text-sm">
-          <h4 class="font-bold text-white mb-2">Warren Buffett on Index Investing:</h4>
+          <h4 class="font-bold text-white mb-2"><i class="fas fa-quote-left text-green-400 mr-2"></i>Warren Buffett on Index Investing:</h4>
           <blockquote class="text-white italic mb-2">
             "By periodically investing in an index fund, the know-nothing investor can actually out-perform most investment professionals."
           </blockquote>
@@ -621,7 +622,7 @@
   <div class="bg-image"></div>
   <div class="content-box overflow-auto">
     <h2 class="font-bold text-white mb-4 text-center">
-      <i class="fas fa-bullseye mr-2"></i>All-in-One ETFs: The Ultimate Solution
+      <i class="fas fa-puzzle-piece mr-2"></i>All-in-One ETFs: The Ultimate Solution
     </h2>
     <p class="text-white mb-4">All-in-one ETFs provide a complete, globally diversified portfolio in a single fund, combining multiple index ETFs into one package.</p>
     
@@ -695,7 +696,10 @@
                   <li>Constellation Software Inc</li>
                 </ol>
               </div>
-              <p class="text-white cursor-pointer hover:text-blue-300" id="holdings-hover">Click to view top 16 holdings</p>
+              <p class="text-white cursor-pointer hover:text-blue-300 underline" id="holdings-hover">
+                <i class="fas fa-bullseye mr-1"></i> Click here to view top 16 holdings
+              </p>
+              <p class="text-sm text-gray-400 mt-1">Holdings as of August 8, 2024</p>
             </div>
           </div>
           <div>
@@ -738,66 +742,81 @@
     <div class="quote-author text-white mt-2"></div>
   </div>
 </div>
-    <section id="fees-impact" class="section" data-bg="deeper-cave.png">
-      <div class="bg-image"></div>
-      <div class="content-box">
-<h2 class="font-bold text-white mb-4 text-center">
-  <i class="fas fa-coins mr-2"></i>Understanding Fees & Their Impact
-</h2>
-        <div class="two-col">
-          <div>
-            <h3 class="font-bold text-white mb-2">Management Expense Ratio (MER)</h3>
-            <ul class="list-disc pl-6 text-white mb-4">
-              <li>Annual fee taken directly from the investment itself</li>
-              <li>Expressed as a percentage of the fund's assets</li>
-              <li>Example: An MER of 0.25% means you'll pay $25 annually for every $10,000 invested</li>
-            </ul>
-            <h3 class="font-bold text-white mb-2">Commissions</h3>
-            <ul class="list-disc pl-6 text-white mb-4">
-              <li>Fees paid to the brokerage every time you buy or sell an ETF</li>
-              <li>Wealthsimple Trade offers commission-free trading</li>
-              <li>Traditional banks or brokerages may charge $5 to $10 per transaction</li>
-            </ul>
-            <h3 class="font-bold text-white mb-2">How Fees Impact Your Investments</h3>
-            <p class="text-white mb-4">Consider this investment scenario:</p>
-            <ul class="list-disc pl-6 text-white mb-4">
-              <li>Annual investment: $12,000 ($1,000 monthly)</li>
-              <li>Investment period: 10 years</li>
-              <li>Traditional brokerage commission: $10 per trade (assuming bimonthly purchases, 24 trades per year)</li>
-            </ul>
-          </div>
-          <div>
-            <table class="fees-table mb-4">
-              <thead>
-                <tr>
-                  <th>Investment Type</th>
-                  <th>Annual Fee</th>
-                  <th>10-Year Total Fees*</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Big Bank Mutual Funds</td>
-                  <td>2% MER ($240)</td>
-                  <td class="fee-high">$2,400+</td>
-                </tr>
-                <tr>
-                  <td>ETFs with Traditional Brokerage</td>
-                  <td>0.20% MER ($24) + $240 commissions</td>
-                  <td class="fee-high">$2,640+</td>
-                </tr>
-                <tr>
-                  <td>ETFs with Wealthsimple Trade</td>
-                  <td>0.20% MER ($24)</td>
-                  <td class="fee-low">$240+</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="text-sm text-gray-400">*10-year total fees are simplified calculations assuming no growth. Actual fees would likely be higher due to compound growth of investments. Remember, with traditional brokerages, you'll also pay commissions when selling your investments.</p>
-          </div>
+<section id="fees-impact" class="section" data-bg="deeper-cave.png">
+  <div class="bg-image"></div>
+  <div class="content-box">
+    <h2 class="font-bold text-white mb-4 text-center">
+      <i class="fas fa-coins mr-2"></i>Understanding Fees & Their Impact
+    </h2>
+    <div class="two-col">
+      <div>
+        <h3 class="font-bold text-white mb-2">
+          <i class="fas fa-percentage text-green-400 mr-2"></i>Management Expense Ratio (MER)
+        </h3>
+        <ul class="list-disc pl-6 text-white mb-4">
+          <li>Annual fee taken directly from the investment itself</li>
+          <li>Expressed as a percentage of the fund's assets</li>
+          <li>Example: An MER of 0.25% means you'll pay $25 annually for every $10,000 invested</li>
+        </ul>
+        <h3 class="font-bold text-white mb-2">
+          <i class="fas fa-hand-holding-usd text-green-400 mr-2"></i>Commissions
+        </h3>
+        <ul class="list-disc pl-6 text-white mb-4">
+          <li>Fees paid to the brokerage every time you buy or sell an ETF</li>
+          <li>Wealthsimple Trade offers commission-free trading</li>
+          <li>Traditional banks or brokerages may charge $5 to $10 per transaction</li>
+        </ul>
+        <h3 class="font-bold text-white mb-2">
+          <i class="fas fa-chart-line text-green-400 mr-2"></i>How Fees Impact Your Investments
+        </h3>
+        <p class="text-white mb-4">Consider this investment scenario:</p>
+        <ul class="list-disc pl-6 text-white mb-4">
+          <li>Annual investment: $12,000 ($1,000 monthly)</li>
+          <li>Investment period: 10 years</li>
+          <li>Traditional brokerage commission: $10 per trade (assuming bimonthly purchases, 24 trades per year)</li>
+        </ul>
+      </div>
+      <div>
+        <table class="fees-table mb-4">
+          <thead>
+            <tr>
+              <th>Investment Type</th>
+              <th>Annual Fee</th>
+              <th>10-Year Total Fees*</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fas fa-university text-blue-400 mr-2"></i>Big Bank Mutual Funds</td>
+              <td>2% MER ($240)</td>
+              <td class="fee-high">$2,400+</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-exchange-alt text-blue-400 mr-2"></i>ETFs with Traditional Brokerage</td>
+              <td>0.20% MER ($24) + $240 commissions</td>
+              <td class="fee-high">$2,640+</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-mobile-alt text-blue-400 mr-2"></i>ETFs with Wealthsimple Trade</td>
+              <td>0.20% MER ($24)</td>
+              <td class="fee-low">$240+</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-sm text-gray-400 mb-4">*10-year total fees are simplified calculations assuming no growth. Actual fees would likely be higher due to compound growth of investments. Remember, with traditional brokerages, you'll also pay commissions when selling your investments.</p>
+        <div class="bg-gray-800 p-4 rounded-lg">
+          <h4 class="font-bold text-white mb-2">
+            <i class="fas fa-quote-left text-green-400 mr-2"></i>Wisdom on Fees
+          </h4>
+          <blockquote class="text-white italic mb-2">
+            "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs."
+          </blockquote>
+          <p class="text-right text-green-400">- John C. Bogle, Founder of Vanguard</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 <div class="quote-carousel-container">
   <div class="quote-carousel">
     <div class="quote-text text-white italic"></div>
@@ -929,37 +948,73 @@
     <div class="quote-author text-white mt-2"></div>
   </div>
 </div>
-    <section id="success-learning" class="section" data-bg="ascending-path.png">
-      <div class="bg-image"></div>
-      <div class="content-box">
-<h2 class="font-bold text-white mb-4 text-center">
-  <i class="fas fa-graduation-cap mr-2"></i>Keys to Success & Further Learning
-</h2>
-        <div class="two-col">
-          <div>
-            <h3 class="font-bold text-white mb-2">The Power of Patience and Consistency 🌱</h3>
-            <p class="text-white mb-4">Remember:</p>
-            <ul class="list-disc pl-6 text-white mb-4">
-              <li>Investing is a long-term game</li>
-              <li>Stay consistent with regular contributions</li>
-              <li>Don't panic during market downturns</li>
-              <li>Share this site with your friends and family!</li>
-            </ul>
-          </div>
-          <div>
-<h3 class="font-bold text-white mb-2">Further Learning 📚</h3>
-            <p class="text-white mb-4">Want to dive deeper? Check out these resources:</p>
-            <ul class="list-disc pl-6 text-white">
-              <li><a href="https://canadiancouchpotato.com/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Canadian Couch Potato</a></li>
-              <li><a href="https://www.canadianportfoliomanagerblog.com/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Canadian Portfolio Manager Blog</a></li>
-              <li><a href="https://www.reddit.com/r/PersonalFinanceCanada/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">r/PersonalFinanceCanada on Reddit</a></li>
-              <li><a href="https://www.reddit.com/r/CanadianInvestor/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">r/CanadianInvestor on Reddit</a></li>
-              <li><a href="https://www.youtube.com/channel/UCDXTQ8nWmx_EhZ2v-kp7QxA" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Ben Felix's YouTube Channel</a></li>
-            </ul>
-          </div>
+<section id="success-learning" class="section" data-bg="ascending-path.png">
+  <div class="bg-image"></div>
+  <div class="content-box">
+    <h2 class="font-bold text-white mb-6 text-center">
+      <i class="fas fa-graduation-cap mr-2"></i>Keys to Success & Further Learning
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-white mb-4">The Power of Patience and Consistency 🌱</h3>
+          <ul class="list-none pl-0 text-white mb-6">
+            <li class="mb-3"><i class="fas fa-hourglass-half text-green-400 mr-2"></i>Investing is a long-term game</li>
+            <li class="mb-3"><i class="fas fa-calendar-check text-green-400 mr-2"></i>Stay consistent with regular contributions</li>
+            <li class="mb-3"><i class="fas fa-chart-line text-green-400 mr-2"></i>Don't panic during market downturns</li>
+            <li class="mb-3"><i class="fas fa-users text-green-400 mr-2"></i>Share this site with friends and family</li>
+          </ul>
+        </div>
+        <div class="bg-gray-800 p-4 rounded mt-auto">
+          <h4 class="font-bold text-white mb-2"><i class="fas fa-quote-left text-green-400 mr-2"></i>Investment Wisdom:</h4>
+          <blockquote class="text-white italic">
+            "The stock market is a device for transferring money from the impatient to the patient."
+          </blockquote>
+          <p class="text-right text-green-400 mt-2">- Warren Buffett</p>
         </div>
       </div>
-    </section>
+      <div class="flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-white mb-4">Further Learning 📚</h3>
+          <p class="text-white mb-4">Expand your knowledge with these valuable resources:</p>
+          <ul class="list-none pl-0 text-white">
+            <li class="mb-3">
+              <a href="https://canadiancouchpotato.com/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">
+                <i class="fas fa-laptop-house text-green-400 mr-2"></i>Canadian Couch Potato
+              </a>
+            </li>
+            <li class="mb-3">
+              <a href="https://www.canadianportfoliomanagerblog.com/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">
+                <i class="fas fa-briefcase text-green-400 mr-2"></i>Canadian Portfolio Manager Blog
+              </a>
+            </li>
+            <li class="mb-3">
+              <a href="https://www.reddit.com/r/PersonalFinanceCanada/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">
+                <i class="fab fa-reddit text-green-400 mr-2"></i>r/PersonalFinanceCanada
+              </a>
+            </li>
+            <li class="mb-3">
+              <a href="https://www.reddit.com/r/CanadianInvestor/" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">
+                <i class="fab fa-reddit text-green-400 mr-2"></i>r/CanadianInvestor
+              </a>
+            </li>
+            <li class="mb-3">
+              <a href="https://www.youtube.com/channel/UCDXTQ8nWmx_EhZ2v-kp7QxA" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">
+                <i class="fab fa-youtube text-green-400 mr-2"></i>Ben Felix's YouTube Channel
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-gray-800 p-4 rounded mt-auto">
+          <h4 class="font-bold text-white mb-2">Pro Tip:</h4>
+          <p class="text-white">
+            <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>Set up automatic contributions to your investment account. This habit helps you consistently invest and benefit from dollar-cost averaging.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="quote-carousel-container">
   <div class="quote-carousel">
     <div class="quote-text text-white italic"></div>
