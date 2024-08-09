@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +78,9 @@
       overflow-x: hidden;
       background-color: #000;
     }
+    .bg-gray-800, .rounded-lg {
+    border-radius: 0.5rem;
+  }
     .section {
       min-height: 100vh;
       width: 100vw;
@@ -236,14 +240,19 @@
       gap: 2rem;
       align-items: flex-start;
     }
-    .two-col > div {
-      flex: 1 1 100%;
-    }
     @media (min-width: 1024px) {
-      .two-col > div {
-        flex: 1 1 calc(50% - 1rem);
-      }
+    .two-col {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 2rem;
+      align-items: stretch;
     }
+    .two-col > div {
+      flex: 1 1 calc(50% - 1rem);
+      display: flex;
+      flex-direction: column;
+    }
+  }
 
 .fees-table {
   border-collapse: separate;
@@ -569,12 +578,12 @@
           <li class="mb-2"><i class="fas fa-chart-pie text-green-400 mr-2"></i>Diversification: Don't put all your eggs in one basket</li>
           <li class="mb-2"><i class="fas fa-trophy text-green-400 mr-2"></i>Consistent performance: Often outperforms active management over long periods</li>
         </ul>
-        <div class="bg-gray-800 p-3 rounded text-sm">
-          <h4 class="font-bold text-white mb-2"><i class="fas fa-quote-left text-green-400 mr-2"></i>Warren Buffett on Index Investing:</h4>
-          <blockquote class="text-white italic mb-2">
+        <div class="bg-gray-800 p-4 rounded-lg text-sm">
+          <h4 class="font-bold text-white mb-2 text-base">Warren Buffett on Index Investing:</h4>
+          <blockquote class="text-white italic mb-2 text-base">
             "By periodically investing in an index fund, the know-nothing investor can actually out-perform most investment professionals."
           </blockquote>
-          <blockquote class="text-white italic">
+          <blockquote class="text-white italic text-base">
             "The people who buy those index funds, on average, will get better results than the people that buy funds that have higher costs attached to them, because it is just a matter of math."
           </blockquote>
         </div>
@@ -590,26 +599,26 @@
           <li>More transparency</li>
         </ul>
         <h3 class="font-bold text-white mb-4">The Evidence: SPIVA Canada Year-End 2023 😱</h3>
-<p class="text-white mb-4">Over a 10-year period, the percentage of actively managed funds that <span class="text-red-500 font-bold">failed to outperform</span> their benchmarks:</p>
-<ul class="list-none pl-0 text-white mb-6">
-  <li class="mb-3">
-    <span class="text-yellow-300 font-bold text-xl">🤯 97%</span> of Canadian Equity funds
-  </li>
-  <li class="mb-3">
-    <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of Canadian Focused Equity funds
-  </li>
-  <li class="mb-3">
-    <span class="text-yellow-300 font-bold text-xl">😮 88%</span> of Canadian Dividend & Income Equity funds
-  </li>
-  <li class="mb-3">
-    <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of U.S. Equity funds
-  </li>
-</ul>
-<p class="text-sm text-white">
-  <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank" class="text-blue-300 hover:text-blue-100 underline">
-    <i class="fas fa-external-link-alt mr-2"></i>Read the full SPIVA Canada Year-End 2023 Report
-  </a>
-</p>
+        <p class="text-white mb-4">Over a 10-year period, the percentage of actively managed funds that <span class="text-red-500 font-bold">failed to outperform</span> their benchmarks:</p>
+        <ul class="list-none pl-0 text-white mb-6">
+          <li class="mb-3">
+            <span class="text-yellow-300 font-bold text-xl">🤯 97%</span> of Canadian Equity funds
+          </li>
+          <li class="mb-3">
+            <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of Canadian Focused Equity funds
+          </li>
+          <li class="mb-3">
+            <span class="text-yellow-300 font-bold text-xl">😮 88%</span> of Canadian Dividend & Income Equity funds
+          </li>
+          <li class="mb-3">
+            <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of U.S. Equity funds
+          </li>
+        </ul>
+        <p class="text-sm text-white">
+          <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank" class="text-blue-300 hover:text-blue-100 underline">
+            <i class="fas fa-external-link-alt mr-2"></i>Read the full SPIVA Canada Year-End 2023 Report
+          </a>
+        </p>
       </div>
     </div>
   </div>
@@ -750,63 +759,67 @@
     <h2 class="font-bold text-white mb-4 text-center">
       <i class="fas fa-coins mr-2"></i>Understanding Fees & Their Impact
     </h2>
-    <div class="two-col">
-      <div>
-        <h3 class="font-bold text-white mb-2">
-          <i class="fas fa-percentage text-green-400 mr-2"></i>Management Expense Ratio (MER)
-        </h3>
-        <ul class="list-disc pl-6 text-white mb-4">
-          <li>Annual fee taken directly from the investment itself</li>
-          <li>Expressed as a percentage of the fund's assets</li>
-          <li>Example: An MER of 0.25% means you'll pay $25 annually for every $10,000 invested</li>
-        </ul>
-        <h3 class="font-bold text-white mb-2">
-          <i class="fas fa-hand-holding-usd text-green-400 mr-2"></i>Commissions
-        </h3>
-        <ul class="list-disc pl-6 text-white mb-4">
-          <li>Fees paid to the brokerage every time you buy or sell an ETF</li>
-          <li>Wealthsimple Trade offers commission-free trading</li>
-          <li>Traditional banks or brokerages may charge $5 to $10 per transaction</li>
-        </ul>
-        <h3 class="font-bold text-white mb-2">
-          <i class="fas fa-chart-line text-green-400 mr-2"></i>How Fees Impact Your Investments
-        </h3>
-        <p class="text-white mb-4">Consider this investment scenario:</p>
-        <ul class="list-disc pl-6 text-white mb-4">
-          <li>Annual investment: $12,000 ($1,000 monthly)</li>
-          <li>Investment period: 10 years</li>
-          <li>Traditional brokerage commission: $10 per trade (assuming bimonthly purchases, 24 trades per year)</li>
-        </ul>
+    <div class="two-col flex flex-col lg:flex-row">
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-white mb-2">
+            <i class="fas fa-percentage text-green-400 mr-2"></i>Management Expense Ratio (MER)
+          </h3>
+          <ul class="list-disc pl-6 text-white mb-4">
+            <li>Annual fee taken directly from the investment itself</li>
+            <li>Expressed as a percentage of the fund's assets</li>
+            <li>Example: An MER of 0.25% means you'll pay $25 annually for every $10,000 invested</li>
+          </ul>
+          <h3 class="font-bold text-white mb-2">
+            <i class="fas fa-hand-holding-usd text-green-400 mr-2"></i>Commissions
+          </h3>
+          <ul class="list-disc pl-6 text-white mb-4">
+            <li>Fees paid to the brokerage every time you buy or sell an ETF or</li>
+            <li>Wealthsimple Trade offers commission-free trading</li>
+            <li>Traditional banks or brokerages may charge $5 to $10 per transaction</li>
+          </ul>
+          <h3 class="font-bold text-white mb-2">
+            <i class="fas fa-chart-line text-green-400 mr-2"></i>How Fees Impact Your Investments
+          </h3>
+          <p class="text-white mb-4">Consider this investment scenario:</p>
+          <ul class="list-disc pl-6 text-white mb-4">
+            <li>Annual investment: $12,000 ($1,000 monthly)</li>
+            <li>Investment period: 10 years</li>
+            <li>Traditional brokerage commission: $10 per trade (assuming bimonthly purchases, 24 trades per year)</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <table class="fees-table mb-4">
-          <thead>
-            <tr>
-              <th>Investment Type</th>
-              <th>Annual Fee</th>
-              <th>10-Year Total Fees*</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><i class="fas fa-university text-blue-400 mr-2"></i>Big Bank Mutual Funds</td>
-              <td>2% MER ($240)</td>
-              <td class="fee-high">$2,400+</td>
-            </tr>
-            <tr>
-              <td><i class="fas fa-exchange-alt text-blue-400 mr-2"></i>ETFs with Traditional Brokerage</td>
-              <td>0.20% MER ($24) + $240 commissions</td>
-              <td class="fee-high">$2,640+</td>
-            </tr>
-            <tr>
-              <td><i class="fas fa-mobile-alt text-blue-400 mr-2"></i>ETFs with Wealthsimple Trade</td>
-              <td>0.20% MER ($24)</td>
-              <td class="fee-low">$240+</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="text-sm text-gray-400 mb-4">*10-year total fees are simplified calculations assuming no growth. Actual fees would likely be higher due to compound growth of investments. Remember, with traditional brokerages, you'll also pay commissions when selling your investments.</p>
-        <div class="bg-gray-800 p-4 rounded-lg">
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <table class="fees-table mb-4">
+            <thead>
+              <tr>
+                <th>Investment Type</th>
+                <th>Annual Fee</th>
+                <th>10-Year Total Fees*</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-university text-blue-400 mr-2"></i>Big Bank Mutual Funds</td>
+                <td>2% MER ($240)</td>
+                <td class="fee-high">$2,400+</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-exchange-alt text-blue-400 mr-2"></i>ETFs with Traditional Brokerage</td>
+                <td>0.20% MER ($24) + $240 commissions</td>
+                <td class="fee-high">$2,640+</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-mobile-alt text-blue-400 mr-2"></i>ETFs with Wealthsimple Trade</td>
+                <td>0.20% MER ($24)</td>
+                <td class="fee-low">$240+</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-gray-400 mb-4">*10-year total fees are simplified calculations assuming no growth. Actual fees would likely be higher due to compound growth of investments. Remember, with traditional brokerages, you'll also pay commissions when selling your investments.</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg mt-auto">
           <h4 class="font-bold text-white mb-2">
             <i class="fas fa-quote-left text-green-400 mr-2"></i>Wisdom on Fees
           </h4>
@@ -819,6 +832,10 @@
     </div>
   </div>
 </section>
+
+
+
+
 <div class="quote-carousel-container">
   <div class="quote-carousel">
     <div class="quote-text text-white italic"></div>
@@ -832,15 +849,17 @@
       <i class="fas fa-piggy-bank mr-2"></i>Investment Accounts & Buying ETFs
     </h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <div>
-        <h3 class="font-bold text-white mb-2">Understanding Investment Accounts 📊</h3>
-        <ul class="list-disc pl-6 text-white mb-4">
-          <li><i class="fas fa-leaf text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">TFSA (Tax-Free Savings Account)</a>: Most popular choice for many Canadians. Contributions are after-tax, growth and withdrawals are tax-free.</li>
-          <li><i class="fas fa-umbrella text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">RRSP (Registered Retirement Savings Plan)</a>: Ideal for higher-income earners. Tax-deductible contributions, tax-deferred growth, withdrawals taxed as income.</li>
-          <li><i class="fas fa-home text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/fhsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">FHSA (First Home Savings Account)</a>: Best for first-time home buyers. Combines TFSA and RRSP benefits specifically for saving towards a first home.</li>
-          <li><i class="fas fa-university text-green-400 mr-2"></i>Non-Registered Account: No contribution limits, capital gains and dividends are taxable.</li>
-        </ul>
-        <div class="bg-gray-800 p-3 rounded-lg">
+      <div class="flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-white mb-2">Understanding Investment Accounts 📊</h3>
+          <ul class="list-none pl-0 text-white mb-4">
+            <li class="mb-2"><i class="fas fa-leaf text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">TFSA (Tax-Free Savings Account)</a>: Most popular choice for many Canadians. Contributions are after-tax, growth and withdrawals are tax-free.</li>
+            <li class="mb-2"><i class="fas fa-umbrella text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">RRSP (Registered Retirement Savings Plan)</a>: Ideal for higher-income earners. Tax-deductible contributions, tax-deferred growth, withdrawals taxed as income.</li>
+            <li class="mb-2"><i class="fas fa-home text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/fhsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">FHSA (First Home Savings Account)</a>: Best for first-time home buyers. Combines TFSA and RRSP benefits specifically for saving towards a first home.</li>
+            <li class="mb-2"><i class="fas fa-university text-green-400 mr-2"></i>Non-Registered Account: No contribution limits, capital gains and dividends are taxable.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-800 p-3 rounded-lg mt-auto">
           <p class="text-white mb-2">
             <i class="fas fa-question-circle text-green-400 mr-2"></i><strong>Not sure which account to choose?</strong>
           </p>
@@ -849,35 +868,37 @@
           </a>
         </div>
       </div>
-      <div>
-        <h3 class="font-bold text-white mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
-        <ol class="list-decimal pl-6 text-white mb-4">
-          <li>
-            <i class="fas fa-user-plus text-green-400 mr-2"></i><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Sign Up for Wealthsimple Trade</a>
-          </li>
-          <li>
-            <i class="fas fa-wallet text-green-400 mr-2"></i><a href="https://help.wealthsimple.com/hc/en-ca/articles/13619118312987-Different-ways-to-fund-your-Wealthsimple-account" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Fund Your Account</a>
-          </li>
-          <li><i class="fas fa-search text-green-400 mr-2"></i>Search for Your Chosen ETF (e.g., VGRO)
-            <p class="text-sm italic mt-1">
-              <em>Note: Ensure the ETF is listed on the TSX and in Canadian dollars.</em>
-            </p>
-          </li>
-          <li>
-            <i class="fas fa-shopping-cart text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/learn/market-vs-limit-order" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Place a Market or Limit Order</a>
-            <p class="text-xs italic mt-1">
-              <em>Note: Use a limit order to invest your full balance; market orders require a 5% cash buffer.</em>
-            </p>
-          </li>
-          <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Review and Confirm Your Trade</li>
-        </ol>
-        <h3 class="font-bold text-white mb-2">Additional Features:</h3>
-        <ul class="list-disc pl-6 text-white">
-          <li><i class="fas fa-sync-alt text-green-400 mr-2"></i>Dividend Reinvestment (DRIP): Automatically reinvest dividends</li>
-          <li><i class="fas fa-calendar-alt text-green-400 mr-2"></i>Auto-Invest: Automate regular contributions and investments</li>
-        </ul>
-        <div class="bg-gray-800 p-3 rounded-lg mt-4">
-          <p class="text-white italic text-sm">
+      <div class="flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-white mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
+          <ol class="list-none pl-0 text-white mb-4">
+            <li class="mb-2">
+              <i class="fas fa-user-plus text-green-400 mr-2"></i><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Sign Up for Wealthsimple Trade</a>
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-wallet text-green-400 mr-2"></i><a href="https://help.wealthsimple.com/hc/en-ca/articles/13619118312987-Different-ways-to-fund-your-Wealthsimple-account" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Fund Your Account</a>
+            </li>
+            <li class="mb-2"><i class="fas fa-search text-green-400 mr-2"></i>Search for Your Chosen ETF (e.g., VGRO)
+              <p class="text-sm italic mt-1">
+                <em>Note: Ensure the ETF is listed on the TSX and in Canadian dollars.</em>
+              </p>
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-shopping-cart text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/learn/market-vs-limit-order" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Place a Market or Limit Order</a>
+              <p class="text-xs italic mt-1">
+                <em>Note: Use a limit order to invest your full balance; market orders require a 5% cash buffer.</em>
+              </p>
+            </li>
+            <li class="mb-2"><i class="fas fa-check-circle text-green-400 mr-2"></i>Review and Confirm Your Trade</li>
+          </ol>
+          <h3 class="font-bold text-white mb-2">Additional Features:</h3>
+          <ul class="list-none pl-0 text-white">
+            <li class="mb-2"><i class="fas fa-sync-alt text-green-400 mr-2"></i>Dividend Reinvestment (DRIP): Automatically reinvest dividends</li>
+            <li class="mb-2"><i class="fas fa-calendar-alt text-green-400 mr-2"></i>Auto-Invest: Automate regular contributions and investments</li>
+          </ul>
+        </div>
+        <div class="bg-gray-800 p-3 rounded-lg mt-auto">
+          <p class="text-white italic text-base">
             "The best investment you can make is in yourself. The more you learn, the more you'll earn."
           </p>
           <p class="text-right text-green-400 text-xs mt-1">- Warren Buffett</p>
@@ -975,7 +996,7 @@
             <li class="mb-3"><i class="fas fa-users text-green-400 mr-2"></i>Share this site with friends and family</li>
           </ul>
         </div>
-        <div class="bg-gray-800 p-4 rounded mt-auto">
+        <div class="bg-gray-800 p-4 rounded-lg mt-auto">
           <h4 class="font-bold text-white mb-2"><i class="fas fa-quote-left text-green-400 mr-2"></i>Investment Wisdom:</h4>
           <blockquote class="text-white italic">
             "The stock market is a device for transferring money from the impatient to the patient."
@@ -1015,7 +1036,7 @@
             </li>
           </ul>
         </div>
-        <div class="bg-gray-800 p-4 rounded mt-auto">
+        <div class="bg-gray-800 p-4 rounded-lg mt-auto">
           <h4 class="font-bold text-white mb-2">Pro Tip:</h4>
           <p class="text-white">
             <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>Set up automatic contributions to your investment account. This habit helps you consistently invest and benefit from dollar-cost averaging.
@@ -1025,6 +1046,8 @@
     </div>
   </div>
 </section>
+
+
 <div class="quote-carousel-container">
   <div class="quote-carousel">
     <div class="quote-text text-white italic"></div>
