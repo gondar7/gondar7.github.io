@@ -760,46 +760,46 @@
 
   <!-- Modal Overlay -->
   <div id="holdings-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="glassmorphism shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
+    <div class="glassmorphism shadow-2xl w-full max-w-md mx-4 overflow-hidden">
       <!-- Modal Header -->
-      <div class="px-5 py-4 border-b border-gray-600 flex justify-between items-center">
-        <h3 class="text-xl font-bold text-white w-full text-center">Top 16 Holdings Comparison</h3>
-        <button id="close-holdings" class="text-gray-300 hover:text-white transition duration-150 ease-in-out absolute right-4">
-          <i class="fas fa-times-circle text-xl"></i>
+      <div class="px-4 py-3 border-b border-gray-600 text-center relative">
+        <h3 class="text-lg font-bold text-white">Top 16 Holdings Comparison</h3>
+        <button id="close-holdings" class="absolute right-3 top-3 text-gray-300 hover:text-white transition duration-150 ease-in-out">
+          <i class="fas fa-times-circle"></i>
         </button>
       </div>
       
       <!-- Modal Content -->
-      <div class="p-5 max-h-[65vh] overflow-y-auto">
+      <div class="p-4 max-h-[60vh] overflow-y-auto">
         <div class="overflow-x-auto bg-black bg-opacity-30 rounded">
-          <table class="w-full text-sm text-left text-gray-200">
+          <table class="w-full text-xs text-left text-gray-200">
             <thead class="text-xs uppercase">
               <tr>
-                <th class="px-3 py-2 font-bold neon-green">VGRO</th>
-                <th class="px-3 py-2 font-bold neon-blue">Big Bank Fund</th>
+                <th class="px-2 py-2 font-bold neon-green">VGRO</th>
+                <th class="px-2 py-2 font-bold neon-blue">Big Bank Fund</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Microsoft</td><td class="px-3 py-1.5 border-b border-gray-700">Microsoft</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">NVIDIA</td><td class="px-3 py-1.5 border-b border-gray-700">NVIDIA</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Apple</td><td class="px-3 py-1.5 border-b border-gray-700">Apple</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Royal Bank</td><td class="px-3 py-1.5 border-b border-gray-700">Royal Bank</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Amazon</td><td class="px-3 py-1.5 border-b border-gray-700">Amazon</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">TD Bank</td><td class="px-3 py-1.5 border-b border-gray-700">TD Bank</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Enbridge</td><td class="px-3 py-1.5 border-b border-gray-700">Enbridge</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Canadian Natural Resources</td><td class="px-3 py-1.5 border-b border-gray-700">Canadian Natural Resources</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Alphabet</td><td class="px-3 py-1.5 border-b border-gray-700">Alphabet</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Meta Platforms</td><td class="px-3 py-1.5 border-b border-gray-700">Meta Platforms</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">CP Railway</td><td class="px-3 py-1.5 border-b border-gray-700">CP Railway</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Shopify</td><td class="px-3 py-1.5 border-b border-gray-700">Taiwan Semiconductor</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">CN Railway</td><td class="px-3 py-1.5 border-b border-gray-700">Visa</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Brookfield</td><td class="px-3 py-1.5 border-b border-gray-700">Novo Nordisk</td></tr>
-              <tr><td class="px-3 py-1.5 border-b border-gray-700">Bank of Montreal</td><td class="px-3 py-1.5 border-b border-gray-700">UnitedHealth Group</td></tr>
-              <tr><td class="px-3 py-1.5">Constellation Software</td><td class="px-3 py-1.5">JPMorgan Chase</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Microsoft</td><td class="px-2 py-1 border-b border-gray-700">Microsoft</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">NVIDIA</td><td class="px-2 py-1 border-b border-gray-700">NVIDIA</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Apple</td><td class="px-2 py-1 border-b border-gray-700">Apple</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Royal Bank</td><td class="px-2 py-1 border-b border-gray-700">Royal Bank</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Amazon</td><td class="px-2 py-1 border-b border-gray-700">Amazon</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">TD Bank</td><td class="px-2 py-1 border-b border-gray-700">TD Bank</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Enbridge</td><td class="px-2 py-1 border-b border-gray-700">Enbridge</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Canadian Natural Resources</td><td class="px-2 py-1 border-b border-gray-700">Canadian Natural Resources</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Alphabet</td><td class="px-2 py-1 border-b border-gray-700">Alphabet</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Meta Platforms</td><td class="px-2 py-1 border-b border-gray-700">Meta Platforms</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">CP Railway</td><td class="px-2 py-1 border-b border-gray-700">CP Railway</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Shopify</td><td class="px-2 py-1 border-b border-gray-700">Taiwan Semiconductor</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">CN Railway</td><td class="px-2 py-1 border-b border-gray-700">Visa</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Brookfield</td><td class="px-2 py-1 border-b border-gray-700">Novo Nordisk</td></tr>
+              <tr><td class="px-2 py-1 border-b border-gray-700">Bank of Montreal</td><td class="px-2 py-1 border-b border-gray-700">UnitedHealth Group</td></tr>
+              <tr><td class="px-2 py-1">Constellation Software</td><td class="px-2 py-1">JPMorgan Chase</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="text-xs text-gray-400 mt-4">
+        <p class="text-xs text-gray-400 mt-3">
           Note: This table shows the top 16 holdings for each fund, aligned to highlight similarities. The "Big Bank Fund" represents a popular mutual fund offered by one of Canada's major banks.
         </p>
       </div>
