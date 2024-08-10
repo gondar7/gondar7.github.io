@@ -518,8 +518,12 @@
     cursor: pointer;
   }
   
+  #share-site-tip:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="7" x2="7" y2="17"></line><polyline points="17 17 7 17 7 7"></polyline></svg>'), auto;
+  }
+
   .highlight-social {
-    animation: pulse 0.5s ease-in-out 2;
+    animation: pulse 0.5s ease-in-out infinite;
   }
 
   @keyframes pulse {
@@ -805,7 +809,7 @@
             <i class="fas fa-hand-holding-usd text-green-400 mr-2"></i>Commissions
           </h3>
           <ul class="list-disc pl-6 text-white mb-4">
-            <li>Fees paid to the brokerage every time you buy or sell an ETF or stock</li>
+            <li>Fees paid to the brokerage every time you buy or sell an ETF or</li>
             <li>Wealthsimple Trade offers commission-free trading</li>
             <li>Traditional banks or brokerages may charge $5 to $10 per transaction</li>
           </ul>
@@ -1022,6 +1026,7 @@
             <li class="mb-3"><i class="fas fa-calendar-check text-green-400 mr-2"></i>Stay consistent with regular contributions</li>
             <li class="mb-3"><i class="fas fa-chart-line text-green-400 mr-2"></i>Don't panic during market downturns</li>
             <li class="mb-3"><i class="fas fa-user-tie text-green-400 mr-2"></i>Consider fee-only financial advice from a fiduciary</li>
+            <li class="mb-3"><i class="fas fa-university text-green-400 mr-2"></i>Complement Wealthsimple Cash with <a href="https://blue.mbsy.co/3vqSCL" target="_blank" class="text-blue-300 hover:text-blue-100">Simplii</a> or <a href="https://www.tangerine.ca/en/personal" target="_blank" class="text-blue-300 hover:text-blue-100">Tangerine</a> for additional no-fee banking services (e.g., bank drafts, money orders)</li>
             <li class="mb-3" id="share-site-tip"><i class="fas fa-share-alt text-green-400 mr-2"></i>Share this site with friends and family</li>
           </ul>
         </div>
@@ -1343,22 +1348,28 @@ if (window.innerWidth <= 767) {
       });
     });
   </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const shareSiteTip = document.getElementById('share-site-tip');
-      const socialShareButtons = document.getElementById('social-share');
-  
-      function highlightSocialButtons() {
-        socialShareButtons.classList.add('highlight-social');
-        setTimeout(() => {
-          socialShareButtons.classList.remove('highlight-social');
-        }, 2000);
-      }
-  
-      shareSiteTip.addEventListener('mouseover', highlightSocialButtons);
-      shareSiteTip.addEventListener('click', highlightSocialButtons);
-    });
-  </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const shareSiteTip = document.getElementById('share-site-tip');
+    const socialShareButtons = document.getElementById('social-share');
+    let pulseTimeout;
+
+    function startPulsing() {
+      socialShareButtons.classList.add('highlight-social');
+    }
+
+    function stopPulsing() {
+      clearTimeout(pulseTimeout);
+      pulseTimeout = setTimeout(() => {
+        socialShareButtons.classList.remove('highlight-social');
+      }, 500);
+    }
+
+    shareSiteTip.addEventListener('mouseover', startPulsing);
+    shareSiteTip.addEventListener('mouseout', stopPulsing);
+    shareSiteTip.addEventListener('click', startPulsing);
+  });
+</script>
 
 
   <footer class="bg-black py-4">
