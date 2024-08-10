@@ -1,4 +1,80 @@
-<meta http-equiv="refresh" content="0; url=https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA">
-<script type="text/javascript">
-    window.location.href = "https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA";
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Wealthsimple</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Merriweather', serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('images/dragons-lair.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .content {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 80%;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWRZSR2QGC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CWRZSR2QGC');
+
+        gtag('event', 'Wealthsimple_Redirect', {
+            'event_category': 'Outbound Link',
+            'event_label': 'Wealthsimple Referral',
+            'transport_type': 'beacon',
+            'event_callback': function() {
+                setTimeout(function() {
+                    window.location.href = "https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA";
+                }, 3000); // Redirect after 3 seconds
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="content">
+        <h1>Preparing Your Wealth-Building Journey</h1>
+        <p>You're about to be redirected to Wealthsimple. Get ready to start your investment adventure!</p>
+        <div class="loader"></div>
+        <p>If you're not redirected in a few seconds, <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" style="color: #3498db;">click here</a>.</p>
+    </div>
+</body>
+</html>
