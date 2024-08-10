@@ -16,7 +16,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('images/dragons-lair.png');
+            background-image: url('images/futuristic-canadian-cityscape.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -57,16 +57,24 @@
         gtag('js', new Date());
         gtag('config', 'G-CWRZSR2QGC');
 
+        // Function to handle redirect
+        function redirectToWealthsimple() {
+            window.location.href = "https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA";
+        }
+
+        // Send event and set up redirect
         gtag('event', 'Wealthsimple_Redirect', {
             'event_category': 'Outbound Link',
             'event_label': 'Wealthsimple Referral',
             'transport_type': 'beacon',
             'event_callback': function() {
-                setTimeout(function() {
-                    window.location.href = "https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA";
-                }, 3000); // Redirect after 3 seconds
+                // Set timeout for redirect
+                setTimeout(redirectToWealthsimple, 3000); // 3 seconds delay
             }
         });
+
+        // Fallback in case gtag fails
+        setTimeout(redirectToWealthsimple, 4000); // 4 seconds delay as fallback
     </script>
 </head>
 <body>
