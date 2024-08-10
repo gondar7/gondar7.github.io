@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1388,8 +1389,16 @@ function trackButtonClick(buttonName) {
 document.addEventListener('DOMContentLoaded', function() {
   var wealthsimpleButtons = document.querySelectorAll('a[href="https://icaninvest.ca/wealthsimple"]');
   wealthsimpleButtons.forEach(function(button, index) {
-    button.addEventListener('click', function() {
-      trackButtonClick('Wealthsimple Button ' + (index + 1));
+    button.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent immediate redirect
+      gtag('event', 'Wealthsimple_Click', {
+        'event_category': 'Outbound Link',
+        'event_label': 'Wealthsimple Button ' + (index + 1),
+        'transport_type': 'beacon',
+        'event_callback': function() {
+          window.location.href = 'https://icaninvest.ca/wealthsimple';
+        }
+      });
     });
   });
 });
