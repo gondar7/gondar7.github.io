@@ -321,6 +321,8 @@
 
     header {
       height: 60px;
+      display: flex;
+      align-items: center;
     }
 
     .logo {
@@ -576,41 +578,128 @@
       opacity: 0;
       animation: neonGlow 1.5s ease-in-out infinite alternate;
     }
-   
+    @keyframes neonGlow {
+      from {
+        opacity: 0.5;
+        text-shadow: 0 0 5px #ff3333, 0 0 10px #ff3333, 0 0 15px #ff3333, 0 0 20px #ff3333;
+      }
+      to {
+        opacity: 1;
+        text-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333, 0 0 30px #ff3333, 0 0 40px #ff3333;
+      }
+    }
+
+
+
+#hero .content-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  #hero .feature-item {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  #hero .feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+}
+    .glow-text {
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.5), 0 0 20px rgba(74, 222, 128, 0.3);
+    }
+
+    .scroll-indicator {
+      bottom: 10px;
+    }
+@media (max-width: 767px) {
+  .feature-item {
+    margin-bottom: 2rem;
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
 </style>
 
 </head>
 <body class="text-responsive">
   <div id="particles-js"></div>
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md flex items-center">
-  <div class="container mx-auto px-6">
-    <div class="flex justify-between items-center">
-      <a href="#" class="logo text-white">
-        <i class="fas fa-coins"></i>
-        i<span class="logo-highlight">Can</span>Invest.ca
-      </a>
-     <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 ease-in-out cta-button header-cta-button">
-  <i class="fas fa-rocket mr-2"></i><span>Start Investing</span>
-</a>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center h-full">
+        <a href="#" class="logo text-white">
+          <i class="fas fa-coins"></i>
+          i<span class="logo-highlight">Can</span>Invest.ca
+        </a>
+        <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 ease-in-out cta-button header-cta-button">
+          <i class="fas fa-rocket mr-2"></i><span>Start Investing</span>
+        </a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
   <main>
-    <section id="hero" class="section" data-bg="mountains.webp">
-      <div class="bg-image"></div>
-      <div class="content-box text-center">
-        <h1 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight">
-          The Simple Path to <br class="hidden md:inline">
-          <span class="text-green-400">Investing for Canadians</span>🍁
+    <section id="hero" class="section min-h-screen flex items-center justify-center relative overflow-hidden" data-bg="mountains.webp">
+      <div class="bg-image absolute inset-0 bg-cover bg-center"></div>
+      
+      <div class="content-box text-center relative z-10 max-w-4xl mx-auto px-4">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <span class="text-white">Unlock the Secret to</span><br>
+          <span class="text-green-400 glow-text">Effortless Wealth Building</span><br>
+          <span class="text-white">for Canadians 🍁</span>
         </h1>
-        <p class="text-white mb-8 text-lg md:text-xl max-w-2xl mx-auto">
-          Welcome to <span class="hero-logo">i<span class="hero-logo-highlight">Can</span>Invest.ca</span>, your guide to simple, low-cost investing for Canadians. Discover how all-in-one ETFs and Wealthsimple have revolutionized the investing landscape, making it easier than ever to grow your wealth.
+        <p class="text-xl md:text-2xl text-white mb-12">
+          Discover how all-in-one ETFs and Wealthsimple are revolutionizing investing
         </p>
-        <div class="mb-16"><!-- Added margin to create more space --></div>
-        <div class="scroll-indicator">
-          <p class="text-white mb-2">Scroll to learn more</p>
-          <i class="fas fa-chevron-down text-white animate-bounce"></i>
+        <div class="flex flex-col md:flex-row justify-center items-start space-y-8 md:space-y-0 md:space-x-8 mb-24">
+          <div class="text-center feature-item flex flex-col items-center w-64 mx-auto">
+            <div class="h-16 flex items-center justify-center">
+              <i class="fas fa-globe text-blue-400 text-4xl"></i>
+            </div>
+            <p class="text-white text-lg mt-3">Invest globally with one click</p>
+          </div> 
+          <div class="text-center feature-item flex flex-col items-center w-64 mx-auto">
+            <div class="h-16 flex items-center justify-center">
+              <i class="fas fa-coins text-yellow-400 text-4xl"></i>
+            </div>
+            <p class="text-white text-lg mt-3">Cut fees by up to 90%</p>
+          </div>
+          <div class="text-center feature-item flex flex-col items-center w-64 mx-auto">
+            <div class="h-16 flex items-center justify-center">
+              <i class="fas fa-robot text-green-400 text-4xl"></i>
+            </div>
+            <p class="text-white text-lg mt-3">Automate your wealth-building</p>
+          </div>
+        </div>
+        <div class="animate-bounce cursor-pointer scroll-indicator absolute bottom-8 left-0 right-0 text-center">
+          <p class="text-white mb-2">Scroll to unlock the secrets of smart investing</p>
+          <i class="fas fa-chevron-down text-white text-2xl"></i>
         </div>
       </div>
     </section>
@@ -1474,6 +1563,27 @@ if (window.innerWidth <= 767) {
       &copy; 2024 iCanInvest.ca. All rights reserved.
     </div>
   </footer>
+  <script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+  const hero = document.getElementById('hero');
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+
+  // Fade out scroll indicator as user scrolls
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.pageYOffset;
+    const opacity = 1 - (scrollPosition / 500); // Adjust 500 to control fade speed
+    scrollIndicator.style.opacity = opacity > 0 ? opacity : 0;
+  });
+
+  // Smooth scroll on click
+  scrollIndicator.addEventListener('click', () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
   <script>
 function trackButtonClick(buttonName) {
   gtag('event', 'click', {
