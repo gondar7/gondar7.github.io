@@ -555,6 +555,28 @@
     color: #60a5fa;
     font-weight: bold;
   }
+.hero-logo {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+    }
+    
+    .hero-logo-highlight {
+      color: #ff3333;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero-logo-highlight::after {
+      content: 'Can';
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #ff3333;
+      filter: blur(4px);
+      opacity: 0;
+      animation: neonGlow 1.5s ease-in-out infinite alternate;
+    }
+   
 </style>
 
 </head>
@@ -583,7 +605,7 @@
           <span class="text-green-400">Investing for Canadians</span>🍁
         </h1>
         <p class="text-white mb-8 text-lg md:text-xl max-w-2xl mx-auto">
-          Welcome to i<span class="highlight">Can</span>Invest.ca, your guide to simple, low-cost investing for Canadians. Discover how all-in-one ETFs and Wealthsimple have revolutionized the investing landscape, making it easier than ever to grow your wealth.
+          Welcome to <span class="hero-logo">i<span class="hero-logo-highlight">Can</span>Invest.ca</span>, your guide to simple, low-cost investing for Canadians. Discover how all-in-one ETFs and Wealthsimple have revolutionized the investing landscape, making it easier than ever to grow your wealth.
         </p>
         <div class="mb-16"><!-- Added margin to create more space --></div>
         <div class="scroll-indicator">
