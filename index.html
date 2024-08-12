@@ -1310,87 +1310,119 @@
 
     // Set up background images
     if (!isMobile) {
-      sections.forEach(section => {
-        const bgImage = section.querySelector('.bg-image');
-        bgImage.style.backgroundImage = `url('images/${section.dataset.bg}')`;
-      });
+  sections.forEach(section => {
+    const bgImage = section.querySelector('.bg-image');
+    bgImage.style.backgroundImage = `url('images/${section.dataset.bg}')`;
+  });
 
-      // Particle.js configuration
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
-          size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
-          line_linked: { enable: false },
-          move: { enable: true, speed: 2, direction: "bottom", random: false, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
-        },
-        interactivity: {
-          detect_on: "canvas",
-          events: { onhover: { enable: false }, onclick: { enable: false }, resize: true },
-        },
-        retina_detect: true
-      });
+  // Particle.js configuration
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#ffffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+      size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+      line_linked: { enable: false },
+      move: { enable: true, speed: 2, direction: "bottom", random: false, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: { onhover: { enable: false }, onclick: { enable: false }, resize: true },
+    },
+    retina_detect: true
+  });
 
-      // Shake effect
-      function shakeBackground() {
-        sections.forEach(section => {
-          const bgImage = section.querySelector('.bg-image');
-          gsap.to(bgImage, {
-            x: "random(-5, 5)",
-            y: "random(-5, 5)",
-            duration: 0.1,
-            repeat: 5,
-            yoyo: true
-          });
-        });
+  // Shake effect
+  function shakeBackground() {
+    sections.forEach(section => {
+      const bgImage = section.querySelector('.bg-image');
+      gsap.to(bgImage, {
+        x: "random(-5, 5)",
+        y: "random(-5, 5)",
+        duration: 0.1,
+        repeat: 5,
+        yoyo: true
+      });
+    });
+  }
+
+  // Dust cloud effect
+  function updateParticles(speed) {
+    const particlesJS = window.pJSDom[0].pJS;
+    particlesJS.particles.move.speed = 2 + speed * 0.1;
+    particlesJS.particles.number.value = 80 + speed * 2;
+    particlesJS.fn.particlesRefresh();
+  }
+
+  // Scroll handling
+  let lastScrollTop = 0;
+  let scrollTimeout;
+  let isScrollbarDragging = false;
+
+  window.addEventListener('mousedown', (e) => {
+    // Check if the user is clicking on the scrollbar
+    if (e.clientX > window.innerWidth - 20) { // Assuming scrollbar width is 20px
+      isScrollbarDragging = true;
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    isScrollbarDragging = false;
+  });
+
+  window.addEventListener('scroll', () => {
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollSpeed = Math.abs(st - lastScrollTop);
+    
+    // Only apply effects if not dragging scrollbar and scroll speed is above a threshold
+    if (!isScrollbarDragging && scrollSpeed > 30) {
+      shakeBackground();
+      updateParticles(scrollSpeed);
+    }
+    
+    lastScrollTop = st <= 0 ? 0 : st;
+    
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      updateParticles(0);
+    }, 200);
+  });
+
+  // Wheel event for mouse scrolling
+  window.addEventListener('wheel', (e) => {
+    const scrollSpeed = Math.abs(e.deltaY);
+    shakeBackground();
+    updateParticles(scrollSpeed);
+  });
+
+  // Keydown event for keyboard scrolling
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'PageDown' || e.key === 'PageUp' || e.key === 'Space') {
+      shakeBackground();
+      updateParticles(50); // Use a fixed value for keyboard scrolling
+    }
+  });
+
+  // Fade in content boxes
+  sections.forEach((section) => {
+    const content = section.querySelector('.content-box');
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top center",
+      onEnter: () => {
+        gsap.fromTo(content, 
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 0.5 }
+        );
+      },
+      onLeaveBack: () => {
+        gsap.to(content, { opacity: 0, y: 50, duration: 0.5 });
       }
-
-      // Dust cloud effect
-      function updateParticles(speed) {
-        const particlesJS = window.pJSDom[0].pJS;
-        particlesJS.particles.move.speed = 2 + speed * 0.1;
-        particlesJS.particles.number.value = 80 + speed * 2;
-        particlesJS.fn.particlesRefresh();
-      }
-
-      // Scroll handling
-      let lastScrollTop = 0;
-      let scrollTimeout;
-      window.addEventListener('scroll', () => {
-        const st = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollSpeed = Math.abs(st - lastScrollTop);
-        
-        shakeBackground();
-        updateParticles(scrollSpeed);
-        
-        lastScrollTop = st <= 0 ? 0 : st;
-        
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          updateParticles(0);
-        }, 200);
-      });
-
-      // Fade in content boxes
-      sections.forEach((section) => {
-        const content = section.querySelector('.content-box');
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top center",
-          onEnter: () => {
-            gsap.fromTo(content, 
-              { opacity: 0, y: 50 },
-              { opacity: 1, y: 0, duration: 0.5 }
-            );
-          },
-          onLeaveBack: () => {
-            gsap.to(content, { opacity: 0, y: 50, duration: 0.5 });
-          }
-        });
-      });
-    } else {
+    });
+  });
+}
+else {
       // Mobile-specific animations
       sections.forEach((section) => {
         const content = section.querySelector('.content-box');
