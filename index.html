@@ -1566,39 +1566,39 @@ if (shareUrl) {
         ease: 'power2.out',
       }, '-=0.6');
   
-    // Passive floating animation for icons
-    gsap.to(featureIcons, {
-      y: '-=10',
-      duration: 2,
-      ease: 'sine.inOut',
-      yoyo: true,
-      repeat: -1,
-      delay: 2
+   // Inside the DOMContentLoaded event listener
+
+// Passive floating animation for icons
+gsap.to(featureIcons, {
+  y: '-=10',
+  duration: 2,
+  ease: 'sine.inOut',
+  yoyo: true,
+  repeat: -1,
+  delay: 2
+});
+
+// Add hover animation and glow effect for feature icons
+featureIcons.forEach(icon => {
+  icon.addEventListener('mouseenter', () => {
+    gsap.to(icon, {
+      scale: 1.1,
+      duration: 0.3,
+      ease: 'power2.out',
+      overwrite: 'auto'
     });
-  
-    // Add hover animation and glow effect for feature icons
-    featureIcons.forEach(icon => {
-      icon.addEventListener('mouseenter', () => {
-        gsap.to(icon, {
-          y: '-=10',
-          scale: 1.1,
-          duration: 0.3,
-          ease: 'power2.out',
-          overwrite: 'auto'
-        });
-        icon.classList.add('icon-glow');
-      });
-      icon.addEventListener('mouseleave', () => {
-        gsap.to(icon, {
-          y: '+=10',
-          scale: 1,
-          duration: 0.3,
-          ease: 'power2.out',
-          overwrite: 'auto'
-        });
-        icon.classList.remove('icon-glow');
-      });
+    icon.classList.add('icon-glow');
+  });
+  icon.addEventListener('mouseleave', () => {
+    gsap.to(icon, {
+      scale: 1,
+      duration: 0.3,
+      ease: 'power2.out',
+      overwrite: 'auto'
     });
+    icon.classList.remove('icon-glow');
+  });
+});
   
     // Scroll arrow functionality
     const scrollArrow = document.getElementById('scroll-arrow');
