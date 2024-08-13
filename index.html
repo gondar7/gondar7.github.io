@@ -67,6 +67,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
   background-image: url('images/background.webp');
@@ -1088,85 +1089,69 @@ if (openHoldings && holdingsModal && closeHoldings) {
 </div>
 </div>
 <section id="fees-impact" class="section">
-<div class="content-box">
-  <h2 class="font-bold text-white mb-4 text-center">
-    <i class="fas fa-coins mr-2"></i>Understanding Fees & Their Impact
-  </h2>
-  <div class="two-col flex flex-col lg:flex-row">
-    <div class="flex-1 flex flex-col justify-between">
-      <div>
-        <h3 class="font-bold text-white mb-2">
-          <i class="fas fa-percentage text-green-400 mr-2"></i>Management Expense Ratio (MER)
-        </h3>
-        <ul class="list-disc pl-6 text-white mb-4">
-          <li>Annual fee taken directly from the investment itself</li>
-          <li>Expressed as a percentage of the fund's assets</li>
-          <li>Example: A MER of 0.20% means you'll pay $20 annually for every $10,000 invested</li>
-        </ul>
-        <h3 class="font-bold text-white mb-2">
-          <i class="fas fa-hand-holding-usd text-green-400 mr-2"></i>Commissions
-        </h3>
-        <ul class="list-disc pl-6 text-white mb-4">
-          <li>Fees paid to the <span class="tooltip">brokerage
-            <span class="tooltiptext">A firm that acts as an intermediary between buyers and sellers of financial instruments such as stocks, bonds, and ETFs. Brokerages execute trades on behalf of their clients and may provide additional financial services.</span>
-          </span> every time you buy or sell an <span class="tooltip">ETF
-            <span class="tooltiptext">Exchange-Traded Fund: A type of investment fund traded on stock exchanges, much like stocks.</span>
-          </span> or <span class="tooltip">stock
-            <span class="tooltiptext">Shares of ownership in a company, also known as equities.</span>
-          </span></li>
-          <li>Wealthsimple Trade offers commission-free trading</li>
-          <li>Traditional banks or brokerages may charge $5 to $10 per transaction</li>
-        </ul>
-        <h3 class="font-bold text-white mb-2">
-          <i class="fas fa-chart-line text-green-400 mr-2"></i>How Fees Impact Your Investments
-        </h3>
-        <p class="text-white mb-4">Consider this investment scenario:</p>
-        <ul class="list-disc pl-6 text-white mb-4">
-          <li>Annual investment: $12,000 ($1,000 monthly)</li>
-          <li>Investment period: 10 years</li>
-          <li>Traditional brokerage commission: $10 per trade (assuming bimonthly purchases, 24 trades per year)</li>
-        </ul>
+    <div class="content-box">
+      <h2 class="font-bold text-white mb-4 text-center">
+        <i class="fas fa-coins mr-2"></i>Understanding Fees & Their Impact
+      </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-1">
+          <h3 class="font-bold text-white mb-2">Management Expense Ratio (MER)</h3>
+          <p class="text-white mb-1"><i class="fas fa-percentage text-green-400 mr-2"></i>Annual fee taken directly from the investment itself</p>
+          <p class="text-white text-sm mb-4 ml-6">
+            <i class="fas fa-info-circle text-blue-400 mr-2"></i>Example: A MER of 0.20% means you'll pay $20 annually for every $10,000 invested
+          </p>
+          
+          <h3 class="font-bold text-white mb-2">Commissions</h3>
+          <p class="text-white mb-1"><i class="fas fa-dollar-sign text-green-400 mr-2"></i>Fees paid to the brokerage every time you buy or sell an ETF or stock</p>
+          <p class="text-white mb-1"><i class="fas fa-check-circle text-green-400 mr-2"></i>Wealthsimple Trade offers commission-free trading</p>
+          <p class="text-white mb-4"><i class="fas fa-university text-green-400 mr-2"></i>Traditional banks or brokerages may charge $5 to $10 per transaction</p>
+  
+          <div id="fee-impact-calculator" class="bg-gray-800 p-4 rounded-lg mt-4">
+            <div class="mb-4">
+              <label for="initial-investment" class="block text-sm font-medium text-gray-300">Initial Investment: $<span id="initial-value">0</span></label>
+              <input type="range" id="initial-investment" min="0" max="500000" step="1000" value="0" class="w-full">
+            </div>
+            <div class="mb-4">
+              <label for="monthly-contribution" class="block text-sm font-medium text-gray-300">Monthly Contribution: $<span id="monthly-value">1000</span></label>
+              <input type="range" id="monthly-contribution" min="0" max="5000" step="50" value="1000" class="w-full">
+            </div>
+            <div class="mb-4">
+              <label for="investment-period" class="block text-sm font-medium text-gray-300">Investment Period: <span id="period-value">25</span> years</label>
+              <input type="range" id="investment-period" min="1" max="40" step="1" value="25" class="w-full">
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <h3 class="font-bold text-white mb-2">Impact of Fees on Your Investments</h3>
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <div class="mb-4 flex justify-center space-x-4">
+              <button class="px-2 py-1 bg-green-500 text-white rounded" onclick="toggleDataset(0)">Low-fee ETF (0.2% fee)</button>
+              <button class="px-2 py-1 bg-yellow-500 text-white rounded" onclick="toggleDataset(1)">Bank/Brokerage ETF (0.2% fee + $20/month)</button>
+              <button class="px-2 py-1 bg-red-500 text-white rounded" onclick="toggleDataset(2)">Mutual Fund (2% fee)</button>
+            </div>
+            <div style="height: 300px; position: relative;">
+              <canvas id="fee-impact-chart"></canvas>
+            </div>
+            <div id="fee-impact-summary" class="text-white text-sm mt-6 p-4 bg-gray-700 rounded-lg">
+              <h4 class="font-bold mb-2">After <span id="summary-years">25</span> years:</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <p>Low-fee ETF: <span class="text-green-400 font-bold">$<span id="low-fee-result">0</span></span></p>
+                  <p>Bank/Brokerage ETF: <span class="text-yellow-400 font-bold">$<span id="bank-brokerage-result">0</span></span></p>
+                  <p>Mutual Fund: <span class="text-red-400 font-bold">$<span id="mutual-fund-result">0</span></span></p>
+                </div>
+                <div>
+                  <p class="font-bold">Difference (Low-fee vs Mutual Fund):</p>
+                  <p class="text-green-400 font-bold">$<span id="difference-result">0</span></p>
+                  <p class="text-green-400 font-bold">(<span id="difference-percentage">0</span>% more with Low-fee ETF)</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">* Assumes 7% annual return before fees and twice-monthly purchases/commissions</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="flex-1 flex flex-col justify-between">
-      <div>
-        <table class="fees-table mb-4">
-          <thead>
-            <tr>
-              <th>Investment Type</th>
-              <th>Annual Fee</th>
-              <th>10-Year Total Fees*</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><i class="fas fa-university text-blue-400 mr-2"></i>Big Bank Mutual Funds</td>
-              <td>2% MER ($240)</td>
-              <td class="fee-high">$2,400+</td>
-            </tr>
-            <tr>
-              <td><i class="fas fa-exchange-alt text-blue-400 mr-2"></i>ETFs with Traditional Brokerage</td>
-              <td>0.20% MER ($24) + $240 commissions</td>
-              <td class="fee-high">$2,640+</td>
-            </tr>
-            <tr>
-              <td><i class="fas fa-mobile-alt text-blue-400 mr-2"></i>ETFs with Wealthsimple Trade</td>
-              <td>0.20% MER ($24)</td>
-              <td class="fee-low">$240+</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="text-sm text-gray-400 mb-4">*10-year total fees are simplified calculations assuming no growth. Actual fees would likely be higher due to compound growth of investments. Remember, with traditional brokerages, you'll also pay commissions when selling your investments.</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg mt-auto">
-        <blockquote class="text-white italic mb-2 text-base">
-          "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs."
-        </blockquote>
-        <p class="text-right text-green-400 text-xs mt-1">- John C. Bogle, Founder of Vanguard</p>
-    </div>
-</div>
-</div>
-</div>
 </section>
 
 <div class="quote-carousel-container">
@@ -1489,7 +1474,7 @@ if (openHoldings && holdingsModal && closeHoldings) {
   const quotes = [
   { text: "The best way to own common stocks is through an index fund.", author: "Warren Buffett" },
   { text: "Owning the market over the long term is a winner's game, but attempting to beat the market is a loser's game.", author: "John C. Bogle" },
-  { text: "The stock market is a device for transferring money from the impatient to the patient.", author: "Warren Buffett" },
+  { text: "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs.", author: "John C. Bogle" },
   { text: "The simplest and most efficient investment strategy is to buy and hold all of the nation's publicly held businesses at very low cost.", author: "John C. Bogle" },
   { text: "In investing, you get what you don't pay for.", author: "John C. Bogle" },
   { text: "The less you pay for an investment, the more of the investment return you keep for yourself.", author: "Ben Felix" },
@@ -1925,5 +1910,151 @@ gtag('event', 'Wealthsimple_Click', {
     });
   });
   </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const initialInvestment = document.getElementById('initial-investment');
+          const monthlyContribution = document.getElementById('monthly-contribution');
+          const investmentPeriod = document.getElementById('investment-period');
+          const summaryElement = document.getElementById('fee-impact-summary');
+          const initialValue = document.getElementById('initial-value');
+          const monthlyValue = document.getElementById('monthly-value');
+          const periodValue = document.getElementById('period-value');
+        
+          let chart;
+        
+          function calculateInvestmentGrowth(initial, monthly, years, annualRate, fee, monthlyCommission = 0) {
+            let balance = initial;
+            const monthlyRate = (annualRate - fee) / 12 / 100;
+            const totalMonths = years * 12;
+            const balanceData = [];
+        
+            for (let i = 0; i < totalMonths; i++) {
+              if (monthly > 0 || i === 0) {
+                balance = (balance - monthlyCommission * 2) * (1 + monthlyRate) + monthly;
+              } else {
+                balance = balance * (1 + monthlyRate);
+              }
+              if (i % 12 === 0) {
+                balanceData.push(Math.round(balance));
+              }
+            }
+        
+            return balanceData;
+          }
+        
+          function updateChart() {
+            const initial = parseFloat(initialInvestment.value);
+            const monthly = parseFloat(monthlyContribution.value);
+            const years = parseFloat(investmentPeriod.value);
+            const rate = 7; // Fixed 7% annual return
+            const lowFeeRate = 0.2; // Fixed 0.2% low fee
+            const highFeeRate = 2; // Fixed 2% high fee
+            const monthlyCommission = monthly > 0 ? 10 : 0; // $10 per transaction, twice monthly
+        
+            const lowFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate);
+            const bankBrokerageGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, monthlyCommission);
+            const highFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, highFeeRate);
+        
+            const labels = Array.from({length: years}, (_, i) => i + 1);
+        
+            if (chart) {
+              chart.data.labels = labels;
+              chart.data.datasets[0].data = lowFeeGrowth;
+              chart.data.datasets[1].data = bankBrokerageGrowth;
+              chart.data.datasets[2].data = highFeeGrowth;
+              chart.update();
+            } else {
+              const ctx = document.getElementById('fee-impact-chart').getContext('2d');
+              chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: labels,
+                  datasets: [{
+                    label: 'Low-fee ETF (0.2% fee)',
+                    data: lowFeeGrowth,
+                    borderColor: 'rgb(34, 197, 94)',
+                    tension: 0.1
+                  },
+                  {
+                    label: 'Bank/Brokerage ETF (0.2% fee + $20/month)',
+                    data: bankBrokerageGrowth,
+                    borderColor: 'rgb(234, 179, 8)',
+                    tension: 0.1
+                  },
+                  {
+                    label: 'Mutual Fund (2% fee)',
+                    data: highFeeGrowth,
+                    borderColor: 'rgb(239, 68, 68)',
+                    tension: 0.1
+                  }]
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                      ticks: {
+                        callback: function(value) {
+                          return '$' + value.toLocaleString();
+                        },
+                        color: 'white'
+                      },
+                      grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                      }
+                    },
+                    x: {
+                      ticks: {
+                        color: 'white'
+                      },
+                      grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                      }
+                    }
+                  },
+                  plugins: {
+                    legend: {
+                      display: false
+                    }
+                  }
+                }
+              });
+            }
+        
+            const lowFeeFinal = lowFeeGrowth[lowFeeGrowth.length - 1];
+            const bankBrokerageFinal = bankBrokerageGrowth[bankBrokerageGrowth.length - 1];
+            const highFeeFinal = highFeeGrowth[highFeeGrowth.length - 1];
+        
+            document.getElementById('summary-years').textContent = years;
+            document.getElementById('low-fee-result').textContent = lowFeeFinal.toLocaleString();
+            document.getElementById('bank-brokerage-result').textContent = bankBrokerageFinal.toLocaleString();
+            document.getElementById('mutual-fund-result').textContent = highFeeFinal.toLocaleString();
+            document.getElementById('difference-result').textContent = (lowFeeFinal - highFeeFinal).toLocaleString();
+            document.getElementById('difference-percentage').textContent = ((lowFeeFinal / highFeeFinal - 1) * 100).toFixed(2);
+          }
+        
+          [initialInvestment, monthlyContribution, investmentPeriod].forEach(input => {
+            input.addEventListener('input', function() {
+              initialValue.textContent = initialInvestment.value;
+              monthlyValue.textContent = monthlyContribution.value;
+              periodValue.textContent = investmentPeriod.value;
+              updateChart();
+            });
+          });
+        
+          // Initial chart update with default values
+          updateChart();
+        });
+        
+        function toggleDataset(index) {
+          if (chart) {
+            const meta = chart.getDatasetMeta(index);
+            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
+            chart.update();
+          }
+        }
+        </script>
 </body>
 </html>
