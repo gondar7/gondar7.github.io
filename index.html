@@ -68,7 +68,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <style>
+body {
+  background-image: url('images/background.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
 
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
     
     
     .bg-gray-800, .rounded-lg {
@@ -669,30 +682,98 @@
 .icon-glow {
   filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor);
 }
-#background-container {
-  background-image: url('images/background.webp');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.tooltip {
+  position: relative;
+  display: inline;
+  border-bottom: 1px dotted #fff;
+  cursor: help;
 }
 
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  font-size: 0.9em;
+  line-height: 1.4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-  #background-container {
-    background-attachment: scroll;
-  }
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.tooltip .tooltiptext.top {
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip .tooltiptext.bottom {
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip .tooltiptext.left {
+  right: 125%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip .tooltiptext.right {
+  left: 125%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip .tooltiptext.top::after {
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+.tooltip .tooltiptext.bottom::after {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+}
+
+.tooltip .tooltiptext.left::after {
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+}
+
+.tooltip .tooltiptext.right::after {
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
 }
 </style>
 
 </head>
 <body class="text-responsive">
-  <div id="background-container" class="fixed inset-0 z-[-1]"></div>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md">
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md">
     <div class="container mx-auto px-6">
       <div class="flex justify-between items-center h-full">
         <a href="#" class="logo text-white">
@@ -715,7 +796,9 @@ body {
           <span class="text-white block">for Canadians 🍁</span>
         </h1>
         <p class="text-xl md:text-2xl text-white mb-12" id="hero-subtitle">
-          Discover how all-in-one ETFs and Wealthsimple are revolutionizing investing
+          Discover how all-in-one <span class="tooltip">ETF
+            <span class="tooltiptext">Exchange-Traded Fund: A type of investment fund traded on stock exchanges, much like stocks.</span>
+          </span> and Wealthsimple are revolutionizing investing
         </p>
         <div id="features-container" class="mb-12">
           <div class="feature-item left">
@@ -749,18 +832,24 @@ body {
     </h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div>
-        <h3 class="font-bold text-white mb-4">The Problem with Active Investing 😓</h3>
+        <h3 class="font-bold text-white mb-4">The Problem with <span class="tooltip">Active Investing
+          <span class="tooltiptext">An investment strategy where the investor or fund manager makes specific investments with the goal of outperforming an investment benchmark index or the overall market.</span>
+        </span> 😓</h3>
         <ul class="list-disc pl-6 text-white mb-6">
           <li>High fees eating into your returns</li>
           <li>Complex decisions about which stocks to buy</li>
           <li>Time-consuming research and management</li>
           <li>Stress about making the right choices</li>
         </ul>
-        <h3 class="font-bold text-white mb-4">The Power of Index Investing 💪</h3>
+        <h3 class="font-bold text-white mb-4">The Power of <span class="tooltip">Index Investing
+          <span class="tooltiptext">An investment strategy that aims to replicate the performance of a specific collection of stocks or bonds, known as a market index, like the S&P 500 or the Toronto Stock Exchange.</span>
+        </span> 💪</h3>
         <ul class="list-none pl-0 text-white mb-6">
           <li class="mb-2"><i class="fas fa-chart-line text-green-400 mr-2"></i>Simplicity: No need to be a financial expert</li>
           <li class="mb-2"><i class="fas fa-piggy-bank text-green-400 mr-2"></i>Lower costs: Typically lower fees than active management</li>
-          <li class="mb-2"><i class="fas fa-chart-pie text-green-400 mr-2"></i>Diversification: Don't put all your eggs in one basket</li>
+          <li class="mb-2"><i class="fas fa-chart-pie text-green-400 mr-2"></i><span class="tooltip">Diversification
+            <span class="tooltiptext">The practice of spreading investments across various financial instruments to reduce risk.</span>
+          </span>: Don't put all your eggs in one basket</li>
           <li class="mb-2"><i class="fas fa-trophy text-green-400 mr-2"></i>Consistent performance: Often outperforms active management over long periods</li>
         </ul>
         <div class="bg-gray-800 p-4 rounded-lg text-sm">
@@ -771,8 +860,12 @@ body {
         </div>
       </div>
       <div>
-        <h3 class="font-bold text-white mb-4">ETFs: The Vehicle for Index Investing 🚀</h3>
-        <p class="text-white mb-4">Exchange-Traded Funds (ETFs) have become increasingly popular, replacing mutual funds for many investors.</p>
+        <h3 class="font-bold text-white mb-4"><span class="tooltip">ETFs
+          <span class="tooltiptext">Exchange-Traded Fund: A type of investment fund traded on stock exchanges, much like stocks.</span>
+        </span>: The Vehicle for Index Investing 🚀</h3>
+        <p class="text-white mb-4">Exchange-Traded Funds (ETFs) have become increasingly popular, replacing <span class="tooltip">mutual funds
+          <span class="tooltiptext">An investment vehicle that pools money from many investors to purchase a diversified portfolio of stocks, bonds, or other securities.</span>
+        </span> for many investors.</p>
         <h4 class="font-bold text-white mb-2">Why the shift to ETFs?</h4>
         <ul class="list-disc pl-6 text-white mb-6">
           <li>Lower fees</li>
@@ -780,27 +873,22 @@ body {
           <li>Better tax efficiency</li>
           <li>More transparency</li>
         </ul>
-        <h3 class="font-bold text-white mb-4">The Evidence: SPIVA Canada Year-End 2023 😱</h3>
-        <p class="text-white mb-4">Over a 10-year period, the percentage of actively managed funds that <span class="text-red-500 font-bold">failed to outperform</span> their benchmarks:</p>
-        <ul class="list-none pl-0 text-white mb-6">
-          <li class="mb-3">
-            <span class="text-yellow-300 font-bold text-xl">🤯 97%</span> of Canadian Equity funds
-          </li>
-          <li class="mb-3">
-            <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of Canadian Focused Equity funds
-          </li>
-          <li class="mb-3">
-            <span class="text-yellow-300 font-bold text-xl">😮 88%</span> of Canadian Dividend & Income Equity funds
-          </li>
-          <li class="mb-3">
-            <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of U.S. Equity funds
-          </li>
-        </ul>
-        <p class="text-sm text-white">
-          <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank" class="text-blue-300 hover:text-blue-100 underline">
-            <i class="fas fa-external-link-alt mr-2"></i>Read the full SPIVA Canada Year-End 2023 Report
-          </a>
-        </p>
+        <h3 class="font-bold text-white mb-4">The Evidence: <span class="tooltip">SPIVA<span class="tooltiptext">Stands for S&P Indices Versus Active, a scorecard that measures the performance of actively managed funds against their relevant S&P index benchmarks, providing insight into the active vs. passive investing debate.</span></span> Canada Year-End 2023 😱</h3>
+        <p class="text-white mb-4">The <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank" class="text-blue-300 hover:text-blue-100 underline">SPIVA report</a> shows that over a 10-year period, the percentage of actively managed funds that <span class="text-red-500 font-bold">failed to outperform</span> their <span class="tooltip">benchmarks<span class="tooltiptext">A standard against which the performance of a security, mutual fund, or investment manager can be measured.</span></span>:</p>
+<ul class="list-none pl-0 text-white mb-6">
+  <li class="mb-3">
+    <span class="text-yellow-300 font-bold text-xl">🤯 97%</span> of <span class="tooltip">Canadian Equity funds<span class="tooltiptext">Mutual funds that primarily invest in stocks of Canadian companies, aiming to achieve long-term capital growth by focusing on the Canadian stock market.</span></span>
+  </li>
+  <li class="mb-3">
+    <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of <span class="tooltip">Canadian Focused Equity funds<span class="tooltiptext">Mutual funds that invest primarily in Canadian stocks but may also include a significant portion (usually up to 49%) of foreign equities, offering a mix of domestic and international exposure.</span></span>
+  </li>
+  <li class="mb-3">
+    <span class="text-yellow-300 font-bold text-xl">😮 88%</span> of <span class="tooltip">Canadian Dividend & Income Equity funds<span class="tooltiptext">Mutual funds that invest in Canadian stocks with a focus on companies that pay regular dividends, aiming to provide both income and capital appreciation to investors.</span></span>
+  </li>
+  <li class="mb-3">
+    <span class="text-yellow-300 font-bold text-xl">🤯 98%</span> of <span class="tooltip">U.S. Equity funds<span class="tooltiptext">Mutual funds that primarily invest in stocks of U.S. companies, providing Canadian investors with exposure to the U.S. stock market for potential long-term growth.</span></span>
+  </li>
+</ul>
       </div>
     </div>
   </div>
@@ -812,20 +900,35 @@ body {
   </div>
 </div>
 <section id="all-in-one-etfs" class="section">
-  <div class="content-box overflow-auto">
+  <div class="content-box">
     <h2 class="font-bold text-white mb-4 text-center">
       <i class="fas fa-puzzle-piece mr-2"></i>All-in-One ETFs: Your One-Stop Investment Solution
     </h2>
-    <p class="text-white mb-4">Imagine owning the world's markets with a single purchase. All-in-one ETFs offer a complete, globally diversified portfolio in one simple package, combining the best of index investing with the flexibility of stocks. These powerhouse funds trade throughout the day on stock exchanges, allowing you to build wealth with the click of a button.</p>
+    <p class="text-white mb-4">Imagine owning the world's markets with a single purchase. All-in-one ETFs offer a complete, globally <span class="tooltip">diversified
+      <span class="tooltiptext">The practice of spreading investments across various financial instruments to reduce risk.</span>
+    </span> <span class="tooltip">portfolio
+      <span class="tooltiptext">A collection of financial investments such as stocks, bonds, and cash.</span>
+    </span> in one simple package, combining the best of <span class="tooltip">index investing
+      <span class="tooltiptext">An investment strategy that aims to replicate the performance of a specific collection of stocks or bonds, known as a market index, like the S&P 500 or the Toronto Stock Exchange.</span>
+    </span> with the flexibility of <span class="tooltip">stocks
+      <span class="tooltiptext">Shares of ownership in a company, also known as equities.</span>
+    </span>. These powerhouse funds trade throughout the day on stock exchanges, allowing you to build wealth with the click of a button.</p>
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <div>
         <h3 class="font-bold text-white mb-2">Key Features:</h3>
         <ul class="list-none pl-0 text-white mb-4">
           <li class="mb-2"><i class="fas fa-globe text-green-400 mr-2"></i>Instant global diversification</li>
-          <li class="mb-2"><i class="fas fa-exchange-alt text-green-400 mr-2"></i>Trade like stocks during market hours</li>
-          <li class="mb-2"><i class="fas fa-balance-scale text-green-400 mr-2"></i>Automatic rebalancing</li>
-          <li class="mb-2"><i class="fas fa-piggy-bank text-green-400 mr-2"></i>Low fees compared to mutual funds</li>
+          <li class="mb-2"><i class="fas fa-exchange-alt text-green-400 mr-2"></i>Trade like stocks during <span class="tooltip">market hours
+            <span class="tooltiptext">The specific times during which a stock exchange is open for trading, such as 9:30 AM to 4:00 PM Eastern Time for the New York Stock Exchange (NYSE) and the Toronto Stock Exchange (TSX).</span>
+          </span>
+          </li>
+          <li class="mb-2"><i class="fas fa-balance-scale text-green-400 mr-2"></i>Automatic <span class="tooltip">rebalancing
+            <span class="tooltiptext">The process of realigning the weightings of a portfolio of assets to maintain the desired level of asset/geograpic allocation.</span>
+          </span></li>
+          <li class="mb-2"><i class="fas fa-piggy-bank text-green-400 mr-2"></i>Low fees compared to <span class="tooltip">mutual funds
+            <span class="tooltiptext">An investment vehicle that pools money from many investors to purchase a diversified portfolio of stocks, bonds, or other securities.</span>
+          </span></li>
           <li class="mb-2"><i class="fas fa-mouse-pointer text-green-400 mr-2"></i>One-click investing simplicity</li>
         </ul>
         
@@ -847,10 +950,14 @@ body {
         <li class="mb-2">
           <i class="fas fa-chart-line text-blue-400 mr-2"></i>Higher stocks:
           <i class="fas fa-arrow-up text-green-400 mx-1"></i>potential returns,
-          <i class="fas fa-arrow-up text-red-400 mx-1"></i>volatility
+          <i class="fas fa-arrow-up text-red-400 mx-1"></i><span class="tooltip">volatility
+            <span class="tooltiptext">A measure of the frequency and severity of price movements of a security or market index.</span>
+          </span>
         </li>
         <li>
-          <i class="fas fa-shield-alt text-blue-400 mr-2"></i>Higher bonds:
+          <i class="fas fa-shield-alt text-blue-400 mr-2"></i>Higher <span class="tooltip">bonds
+            <span class="tooltiptext">Fixed-income investments where investors lend money to an entity in exchange for interest payments and the return of principal at maturity.</span>
+          </span>:
           <i class="fas fa-arrow-down text-red-400 mx-1"></i>potential returns,
           <i class="fas fa-arrow-down text-green-400 mx-1"></i>volatility
         </li>
@@ -1002,7 +1109,13 @@ if (openHoldings && holdingsModal && closeHoldings) {
           <i class="fas fa-hand-holding-usd text-green-400 mr-2"></i>Commissions
         </h3>
         <ul class="list-disc pl-6 text-white mb-4">
-          <li>Fees paid to the brokerage every time you buy or sell an ETF or stock</li>
+          <li>Fees paid to the <span class="tooltip">brokerage
+            <span class="tooltiptext">A firm that acts as an intermediary between buyers and sellers of financial instruments such as stocks, bonds, and ETFs. Brokerages execute trades on behalf of their clients and may provide additional financial services.</span>
+          </span> every time you buy or sell an <span class="tooltip">ETF
+            <span class="tooltiptext">Exchange-Traded Fund: A type of investment fund traded on stock exchanges, much like stocks.</span>
+          </span> or <span class="tooltip">stock
+            <span class="tooltiptext">Shares of ownership in a company, also known as equities.</span>
+          </span></li>
           <li>Wealthsimple Trade offers commission-free trading</li>
           <li>Traditional banks or brokerages may charge $5 to $10 per transaction</li>
         </ul>
@@ -1074,10 +1187,23 @@ if (openHoldings && holdingsModal && closeHoldings) {
   <div>
     <h3 class="font-bold text-white mb-2">Understanding Investment Accounts 📊</h3>
     <ul class="list-none pl-0 text-white mb-4">
-      <li class="mb-2"><i class="fas fa-leaf text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">TFSA (Tax-Free Savings Account)</a>: Most popular choice for many Canadians. Contributions are after-tax, growth and withdrawals are tax-free.</li>
-      <li class="mb-2"><i class="fas fa-umbrella text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">RRSP (Registered Retirement Savings Plan)</a>: Ideal for higher-income earners. Tax-deductible contributions, tax-deferred growth, withdrawals taxed as income.</li>
+      <li class="mb-2"><i class="fas fa-leaf text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">TFSA (Tax-Free Savings Account)</a>: Most popular choice for many Canadians. Contributions are <span class="tooltip">after-tax dollars
+        <span class="tooltiptext">Money that has already been taxed.</span>
+      </span>
+      , growth and withdrawals are tax-free.</li>
+      <li class="mb-2"><i class="fas fa-umbrella text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">RRSP (Registered Retirement Savings Plan)</a>: Ideal for higher-income earners. <span class="tooltip">Tax-deductible
+        <span class="tooltiptext">Money that you can subtract from your income before calculating taxes owed.</span>
+      </span>
+       contributions, tax-deferred growth, withdrawals taxed as income.</li>
       <li class="mb-2"><i class="fas fa-home text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/fhsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">FHSA (First Home Savings Account)</a>: Best for first-time home buyers. Combines TFSA and RRSP benefits specifically for saving towards a first home.</li>
-      <li class="mb-2"><i class="fas fa-university text-green-400 mr-2"></i>Non-Registered Account: No contribution limits, capital gains and dividends are taxable.</li>
+      <li class="mb-2"><i class="fas fa-university text-green-400 mr-2"></i>Non-Registered Account: <span class="tooltip">No contribution limits
+        <span class="tooltiptext">TFSA and RRSP have a maximum amount you are allowed to contribute. Check CRA Online.</span>
+      </span>
+      , <span class="tooltip">capital gains
+        <span class="tooltiptext">The profit earned from the sale of an investment that has increased in value.</span>
+      </span> and <span class="tooltip">dividends
+        <span class="tooltiptext">A distribution of a portion of a company's earnings to shareholders. Made as a cash payment to your account</span>
+      </span> are taxable.</li>
     </ul>
   </div>
   <div class="bg-gray-800 p-3 rounded-lg mt-auto">
@@ -1105,7 +1231,11 @@ if (openHoldings && holdingsModal && closeHoldings) {
         </p>
       </li>
       <li class="mb-2">
-        <i class="fas fa-shopping-cart text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/learn/market-vs-limit-order" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Place a Market or Limit Order</a>
+        <i class="fas fa-shopping-cart text-green-400 mr-2"></i>Place a <span class="tooltip">Market
+          <span class="tooltiptext">An order to buy or sell a stock immediately at the best available current price.</span>
+        </span> or <span class="tooltip">Limit
+          <span class="tooltiptext">An order to buy or sell a stock at a specific price or better.</span>
+        </span> Order
         <p class="text-xs italic mt-1">
           <em>Note: Use a limit order to invest your full balance; market orders require a 5% cash buffer.</em>
         </p>
@@ -1114,7 +1244,9 @@ if (openHoldings && holdingsModal && closeHoldings) {
     </ol>
     <h3 class="font-bold text-white mb-2">Additional Features:</h3>
     <ul class="list-none pl-0 text-white">
-      <li class="mb-2"><i class="fas fa-sync-alt text-green-400 mr-2"></i>Dividend Reinvestment (DRIP): Automatically reinvest dividends</li>
+      <li class="mb-2"><i class="fas fa-sync-alt text-green-400 mr-2"></i><span class="tooltip">Dividend Reinvestment
+        <span class="tooltiptext">A program that automatically reinvests cash dividends into additional shares of the underlying stock.</span>
+      </span> (DRIP): Automatically reinvest dividends</li>
       <li class="mb-2"><i class="fas fa-calendar-alt text-green-400 mr-2"></i>Auto-Invest: Automate regular contributions and investments</li>
     </ul>
   </div>
@@ -1180,7 +1312,9 @@ if (openHoldings && holdingsModal && closeHoldings) {
   <li><i class="fas fa-calendar-check text-green-400 mr-2"></i>Pre-authorized debits (PAD)</li>
   <li><i class="fas fa-exchange-alt text-green-400 mr-2"></i>Interac e-transfers</li>
   <li><i class="fas fa-piggy-bank text-green-400 mr-2"></i>Auto-deposits</li>
-  <li><i class="fas fa-credit-card text-green-400 mr-2"></i>Physical & virtual prepaid Mastercard</li>
+  <li><i class="fas fa-credit-card text-green-400 mr-2"></i><span class="tooltip">Physical & virtual
+    <span class="tooltiptext">Wealthsimple provides one physical card for in-person transactions and a separate virtual card for online or mobile payments. The virtual card has a different number, enhancing security. Both cards can be locked instantly via the app if lost or stolen, providing an extra layer of protection for your finances.</span>
+  </span> prepaid Mastercard</li>
   <li><i class="fas fa-money-check text-green-400 mr-2"></i>Paper cheques</li>
   <li><i class="fas fa-chart-line text-green-400 mr-2"></i>Seamless investment integration</li>
 </ul>
@@ -1212,8 +1346,13 @@ if (openHoldings && holdingsModal && closeHoldings) {
       <li class="mb-3"><i class="fas fa-hourglass-half text-green-400 mr-2"></i>Investing is a long-term game</li>
       <li class="mb-3"><i class="fas fa-calendar-check text-green-400 mr-2"></i>Stay consistent with regular contributions</li>
       <li class="mb-3"><i class="fas fa-chart-line text-green-400 mr-2"></i>Don't panic during market downturns</li>
-      <li class="mb-3"><i class="fas fa-user-tie text-green-400 mr-2"></i>Consider fee-only financial advice from a fiduciary</li>
-      <li class="mb-3"><i class="fas fa-university text-green-400 mr-2"></i>Complement Wealthsimple Cash with <a href="https://blue.mbsy.co/3vqSCL" target="_blank" class="text-blue-300 hover:text-blue-100">Simplii</a> or <a href="https://www.tangerine.ca/en/personal" target="_blank" class="text-blue-300 hover:text-blue-100">Tangerine</a> for additional no-fee banking services (e.g., bank drafts, money orders)</li>
+      <li class="mb-3"><i class="fas fa-user-tie text-green-400 mr-2"></i>Consider <span class="tooltip">fee-only financial advice
+        <span class="tooltiptext">You pay a fixed fee or agree on fees in advance, rather than having the advisor take a percentage of your money each year. This avoids potential conflicts of interest that can come with ongoing percentage-based costs.</span>
+      </span>
+       from a <span class="tooltip">fiduciary
+        <span class="tooltiptext">A person or entity entrusted with managing someone else's affairs, required to act with complete trust, good faith, and honesty. Fiduciaries are legally and ethically obligated to act in the best interests of those they represent.</span>
+      </span></li>
+      <li class="mb-3"><i class="fas fa-university text-green-400 mr-2"></i>Compliment Wealthsimple Cash with <a href="https://blue.mbsy.co/3vqSCL" target="_blank" class="text-blue-300 hover:text-blue-100">Simplii</a> or <a href="https://www.tangerine.ca/en/personal" target="_blank" class="text-blue-300 hover:text-blue-100">Tangerine</a> for additional no-fee banking services (e.g., bank drafts, money orders)</li>
       <li class="mb-3" id="share-site-tip"><i class="fas fa-share-alt text-green-400 mr-2"></i>Share this site with friends and family</li>
     </ul>
   </div>
@@ -1269,7 +1408,10 @@ if (openHoldings && holdingsModal && closeHoldings) {
     <div class="bg-gray-800 p-4 rounded-lg mt-auto">
       <h4 class="font-bold text-white mb-2">Pro Tip:</h4>
       <p class="text-white">
-        <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>Set up automatic contributions to your investment account. This habit helps you consistently invest and benefit from dollar-cost averaging.
+        <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>Set up automatic contributions to your investment account. This habit helps you consistently invest and benefit from <span class="tooltip">dollar-cost averaging
+          <span class="tooltiptext">A strategy where you invest a fixed amount of money at regular intervals, like every month, regardless of market conditions. This helps spread out your investment over time and reduces the impact of market ups and downs.</span>
+        </span>
+        .
       </p>
     </div>
   </div>
@@ -1740,6 +1882,50 @@ gtag('event', 'Wealthsimple_Click', {
     }
     
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+  </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tooltips = document.querySelectorAll('.tooltip');
+    const header = document.getElementById('main-header');
+    
+    tooltips.forEach(tooltip => {
+      const tooltiptext = tooltip.querySelector('.tooltiptext');
+      
+      tooltip.addEventListener('mouseenter', () => {
+        const rect = tooltip.getBoundingClientRect();
+        const tooltipRect = tooltiptext.getBoundingClientRect();
+        const headerHeight = header.offsetHeight;
+        
+        // Reset classes
+        tooltiptext.classList.remove('top', 'bottom', 'left', 'right');
+        
+        // Check vertical position
+        if (rect.top - headerHeight < tooltipRect.height + 10) {
+          tooltiptext.classList.add('bottom');
+        } else {
+          tooltiptext.classList.add('top');
+        }
+        
+        // After setting vertical position, check horizontal position
+        const updatedTooltipRect = tooltiptext.getBoundingClientRect();
+        
+        if (updatedTooltipRect.left < 0) {
+          tooltiptext.classList.remove('top', 'bottom');
+          tooltiptext.classList.add('right');
+        } else if (updatedTooltipRect.right > window.innerWidth) {
+          tooltiptext.classList.remove('top', 'bottom');
+          tooltiptext.classList.add('left');
+        }
+        
+        // Adjust top position if tooltip is below the header
+        if (tooltiptext.classList.contains('top') && updatedTooltipRect.top < headerHeight) {
+          tooltiptext.style.top = `${headerHeight - rect.top + 10}px`;
+        } else {
+          tooltiptext.style.top = '';
+        }
+      });
+    });
   });
   </script>
 </body>
