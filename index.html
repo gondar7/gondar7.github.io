@@ -769,6 +769,41 @@
   margin-top: -5px;
   border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
 }
+.quote-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .quote-content {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .quote-nav {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .quote-nav:hover {
+    opacity: 1;
+  }
+
+  .prev-quote {
+    left: 10px;
+  }
+
+  .next-quote {
+    right: 10px;
+  }
 </style>
 
 </head>
@@ -818,12 +853,18 @@
         <i class="fas fa-chevron-down text-white text-3xl animate-bounce"></i>
       </div>
     </section>
-<div class="quote-carousel-container">
-  <div class="quote-carousel">
-    <div class="quote-text text-white italic"></div>
-    <div class="quote-author text-white mt-2"></div>
-  </div>
-</div>
+    <div class="quote-carousel-container">
+        <div class="quote-carousel">
+          <button class="quote-nav prev-quote">&lt;</button>
+          <div class="quote-content">
+            <div class="quote-text text-white italic"></div>
+            <div class="quote-author text-white mt-2"></div>
+          </div>
+          <button class="quote-nav next-quote">&gt;</button>
+        </div>
+      </div>
+      
+      
 <section id="problem-solution" class="section">
   <div class="content-box">
     <h2 class="font-bold text-white mb-4 text-center">
@@ -893,11 +934,16 @@
   </div>
 </section>
 <div class="quote-carousel-container">
-  <div class="quote-carousel">
-    <div class="quote-text text-white italic"></div>
-    <div class="quote-author text-white mt-2"></div>
+    <div class="quote-carousel">
+      <button class="quote-nav prev-quote">&lt;</button>
+      <div class="quote-content">
+        <div class="quote-text text-white italic"></div>
+        <div class="quote-author text-white mt-2"></div>
+      </div>
+      <button class="quote-nav next-quote">&gt;</button>
+    </div>
   </div>
-</div>
+  
 <section id="all-in-one-etfs" class="section">
   <div class="content-box">
     <h2 class="font-bold text-white mb-4 text-center">
@@ -1080,14 +1126,17 @@ if (openHoldings && holdingsModal && closeHoldings) {
   });
 }
 </script>
-
-
 <div class="quote-carousel-container">
-<div class="quote-carousel">
-  <div class="quote-text text-white italic"></div>
-  <div class="quote-author text-white mt-2"></div>
-</div>
-</div>
+    <div class="quote-carousel">
+      <button class="quote-nav prev-quote">&lt;</button>
+      <div class="quote-content">
+        <div class="quote-text text-white italic"></div>
+        <div class="quote-author text-white mt-2"></div>
+      </div>
+      <button class="quote-nav next-quote">&gt;</button>
+    </div>
+  </div>
+  
 <section id="fees-impact" class="section">
     <div class="content-box">
       <h2 class="font-bold text-white mb-4 text-center">
@@ -1155,11 +1204,16 @@ if (openHoldings && holdingsModal && closeHoldings) {
 </section>
 
 <div class="quote-carousel-container">
-<div class="quote-carousel">
-<div class="quote-text text-white italic"></div>
-<div class="quote-author text-white mt-2"></div>
-</div>
-</div>
+    <div class="quote-carousel">
+      <button class="quote-nav prev-quote">&lt;</button>
+      <div class="quote-content">
+        <div class="quote-text text-white italic"></div>
+        <div class="quote-author text-white mt-2"></div>
+      </div>
+      <button class="quote-nav next-quote">&gt;</button>
+    </div>
+  </div>
+  
 <section id="accounts-buying" class="section">
 <div class="content-box">
 <h2 class="font-bold text-white mb-4 text-center">
@@ -1243,11 +1297,17 @@ if (openHoldings && holdingsModal && closeHoldings) {
 </div>
 </section>
 <div class="quote-carousel-container">
-<div class="quote-carousel">
-<div class="quote-text text-white italic"></div>
-<div class="quote-author text-white mt-2"></div>
-</div>
-</div>
+    <div class="quote-carousel">
+      <button class="quote-nav prev-quote">&lt;</button>
+      <div class="quote-content">
+        <div class="quote-text text-white italic"></div>
+        <div class="quote-author text-white mt-2"></div>
+      </div>
+      <button class="quote-nav next-quote">&gt;</button>
+    </div>
+  </div>
+  
+  
 <section id="wealthsimple-cash" class="section">
 <div class="content-box">
 <h2 class="font-bold text-white mb-4 text-center">Wealthsimple Cash: Smart Banking Solution 💳</h2>
@@ -1310,11 +1370,16 @@ if (openHoldings && holdingsModal && closeHoldings) {
 </div>
 </section>
 <div class="quote-carousel-container">
-<div class="quote-carousel">
-<div class="quote-text text-white italic"></div>
-<div class="quote-author text-white mt-2"></div>
-</div>
-</div>
+    <div class="quote-carousel">
+      <button class="quote-nav prev-quote">&lt;</button>
+      <div class="quote-content">
+        <div class="quote-text text-white italic"></div>
+        <div class="quote-author text-white mt-2"></div>
+      </div>
+      <button class="quote-nav next-quote">&gt;</button>
+    </div>
+  </div>
+  
 <section id="success-learning" class="section">
     <div class="content-box">
     <h2 class="font-bold text-white mb-6 text-center">
@@ -1409,13 +1474,18 @@ if (openHoldings && holdingsModal && closeHoldings) {
   </div>
   </div>
   </section>
-  
   <div class="quote-carousel-container">
-  <div class="quote-carousel">
-  <div class="quote-text text-white italic"></div>
-  <div class="quote-author text-white mt-2"></div>
+    <div class="quote-carousel">
+      <button class="quote-nav prev-quote">&lt;</button>
+      <div class="quote-content">
+        <div class="quote-text text-white italic"></div>
+        <div class="quote-author text-white mt-2"></div>
+      </div>
+      <button class="quote-nav next-quote">&gt;</button>
+    </div>
   </div>
-  </div>
+  
+  
   <section id="conclusion" class="section">
   <div class="content-box text-center">
   <h2 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight">
@@ -1502,19 +1572,32 @@ if (openHoldings && holdingsModal && closeHoldings) {
   ];
   
   const carousels = document.querySelectorAll('.quote-carousel');
-  let currentQuoteIndex = 0;
-  
-  function updateCarousels() {
-  carousels.forEach((carousel, index) => {
-  const quote = quotes[(currentQuoteIndex + index) % quotes.length];
-  carousel.querySelector('.quote-text').textContent = `"${quote.text}"`;
-  carousel.querySelector('.quote-author').textContent = `- ${quote.author}`;
-  });
-  currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+  let currentQuoteIndices = new Array(carousels.length).fill(0);
+
+  function updateCarousel(carouselIndex, direction = 1) {
+    const carousel = carousels[carouselIndex];
+    currentQuoteIndices[carouselIndex] = (currentQuoteIndices[carouselIndex] + direction + quotes.length) % quotes.length;
+    const quote = quotes[currentQuoteIndices[carouselIndex]];
+    carousel.querySelector('.quote-text').textContent = `"${quote.text}"`;
+    carousel.querySelector('.quote-author').textContent = `- ${quote.author}`;
   }
-  
-  updateCarousels();
-  setInterval(updateCarousels, 15000);
+
+  function setupCarousel(carousel, index) {
+    updateCarousel(index);
+
+    const prevButton = carousel.querySelector('.prev-quote');
+    const nextButton = carousel.querySelector('.next-quote');
+
+    prevButton.addEventListener('click', () => updateCarousel(index, -1));
+    nextButton.addEventListener('click', () => updateCarousel(index, 1));
+  }
+
+  carousels.forEach(setupCarousel);
+
+  // Auto-rotate quotes every 15 seconds
+  setInterval(() => {
+    carousels.forEach((carousel, index) => updateCarousel(index));
+  }, 15000);
   </script>
   <script>
   gsap.registerPlugin(ScrollTrigger);
