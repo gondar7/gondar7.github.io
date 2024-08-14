@@ -546,32 +546,7 @@
 }
 
 
-@media (min-width: 769px) {
-  html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-  }
-}
 
-.section, .quote-carousel-container {
-  scroll-snap-align: start;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quote-carousel-container {
-  padding-top: 60px; /* Adjust based on your header height */
-  padding-bottom: 60px;
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .quote-carousel-container {
-    padding-top: 80px; /* Adjust for mobile */
-  }
-}
 .footer {
   position: fixed;
   bottom: 0;
@@ -600,6 +575,26 @@
     padding-top: 100px; /* Adjust this value based on your header height */
   }
 }
+@media (min-width: 769px) {
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
+  .section, .quote-carousel-container {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quote-carousel-container {
+    height: 100vh; /* Force full height */
+    box-sizing: border-box;
+  }
+}
+
 @media (max-width: 768px) {
   html {
     scroll-behavior: auto;
@@ -1740,23 +1735,107 @@ featureIcons.forEach(icon => {
   });
 });
   
-    // Scroll arrow functionality
-    const scrollArrow = document.getElementById('scroll-arrow');
-    
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        scrollArrow.style.opacity = '0';
-      } else {
-        scrollArrow.style.opacity = '1';
-      }
+function scrollToNextSnapPoint() {
+  const snapPoints = Array.from(document.querySelectorAll('.section, .quote-carousel-container'));
+  const viewportHeight = window.innerHeight;
+  const currentScrollPosition = window.scrollY;
+
+  // Find the next snap point
+  const nextSnapPoint = snapPoints.find(element => {
+    const rect = element.getBoundingClientRect();
+    return rect.top > 10; // Small offset to account for rounding errors
+  });
+
+  if (nextSnapPoint) {
+    nextSnapPoint.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function scrollToNextSnapPoint() {
+  const snapPoints = Array.from(document.querySelectorAll('.section, .quote-carousel-container'));
+  const viewportHeight = window.innerHeight;
+  const currentScrollPosition = window.scrollY;
+
+  // Find the next snap point
+  const nextSnapPoint = snapPoints.find(element => {
+    const rect = element.getBoundingClientRect();
+    return rect.top > 10; // Small offset to account for rounding errors
+  });
+
+  if (nextSnapPoint) {
+    nextSnapPoint.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function scrollToSnapPoint(direction) {
+  const snapPoints = Array.from(document.querySelectorAll('.section, .quote-carousel-container'));
+  const viewportHeight = window.innerHeight;
+  const currentScrollPosition = window.scrollY;
+
+  let targetSnapPoint;
+  if (direction === 'down') {
+    targetSnapPoint = snapPoints.find(element => {
+      const rect = element.getBoundingClientRect();
+      return rect.top > 10; // Small offset to account for rounding errors
     });
-    
-    scrollArrow.addEventListener('click', () => {
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth'
-      });
+  } else {
+    targetSnapPoint = snapPoints.reverse().find(element => {
+      const rect = element.getBoundingClientRect();
+      return rect.bottom < viewportHeight - 10; // Small offset from bottom
     });
+  }
+
+  if (targetSnapPoint) {
+    targetSnapPoint.scrollIntoView({ behavior: 'smooth' });
+  } else if (direction === 'up' && currentScrollPosition > 0) {
+    // If no snap point found when scrolling up, go to the top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+const scrollArrow = document.getElementById('scroll-arrow');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    scrollArrow.style.opacity = '0';
+  } else {
+    scrollArrow.style.opacity = '1';
+  }
+});
+
+scrollArrow.addEventListener('click', () => scrollToSnapPoint('down'));
+
+// Handle keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    scrollToSnapPoint('down');
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    scrollToSnapPoint('up');
+  }
+});
+
+// Handle mouse wheel
+let wheelTimeout;
+document.addEventListener('wheel', (e) => {
+  clearTimeout(wheelTimeout);
+  wheelTimeout = setTimeout(() => {
+    if (e.deltaY > 0) { // Scrolling down
+      scrollToSnapPoint('down');
+    } else if (e.deltaY < 0) { // Scrolling up
+      scrollToSnapPoint('up');
+    }
+  }, 50); // Small delay to prevent rapid firing
+}, { passive: false });
+
+// Handle mouse wheel
+document.addEventListener('wheel', (e) => {
+  if (e.deltaY > 0) { // Scrolling down
+    e.preventDefault(); // Prevent default scroll
+    scrollToNextSnapPoint();
+  }
+}, { passive: false });
   });
   </script>
 <script>
