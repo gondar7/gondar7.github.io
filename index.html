@@ -2056,5 +2056,47 @@ gtag('event', 'Wealthsimple_Click', {
           }
         }
         </script>
+        <div id="donation-button" class="fixed bottom-4 right-4 z-50">
+          <button id="donate-toggle" class="bg-yellow-500 hover:bg-yellow-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition duration-300 ease-in-out">
+            <i class="fas fa-mug-hot text-xl"></i>
+          </button>
+          <div id="donate-options" class="absolute right-0 bottom-full mb-2 bg-white rounded-lg shadow-lg p-2 hidden">
+            <a href="https://paypal.me/iCanInvest?country.x=CA&locale.x=en_US" target="_blank" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">
+              <i class="fab fa-paypal mr-2"></i>PayPal
+            </a>
+            <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800" onclick="copyToClipboard('$haneleedham')">
+              <i class="fas fa-dollar-sign mr-2"></i>Wealthsimple Cash: $haneleedham
+            </button>
+            <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800" onclick="copyToClipboard('shane.connex@gmail.com')">
+              <i class="fas fa-envelope mr-2"></i>Interac e-transfer: shane.connex@gmail.com
+            </button>
+          </div>
+        </div>
+        
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const donateToggle = document.getElementById('donate-toggle');
+          const donateOptions = document.getElementById('donate-options');
+        
+          donateToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            donateOptions.classList.toggle('hidden');
+          });
+        
+          document.addEventListener('click', function(e) {
+            if (!donateOptions.contains(e.target) && e.target !== donateToggle) {
+              donateOptions.classList.add('hidden');
+            }
+          });
+        });
+        
+        function copyToClipboard(text) {
+          navigator.clipboard.writeText(text).then(function() {
+            alert('Copied to clipboard: ' + text);
+          }, function(err) {
+            console.error('Could not copy text: ', err);
+          });
+        }
+        </script>
 </body>
 </html>
