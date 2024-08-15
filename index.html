@@ -546,32 +546,7 @@
 }
 
 
-@media (min-width: 769px) {
-  html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-  }
-}
 
-.section, .quote-carousel-container {
-  scroll-snap-align: start;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quote-carousel-container {
-  padding-top: 60px; /* Adjust based on your header height */
-  padding-bottom: 60px;
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .quote-carousel-container {
-    padding-top: 80px; /* Adjust for mobile */
-  }
-}
 .footer {
   position: fixed;
   bottom: 0;
@@ -600,6 +575,26 @@
     padding-top: 100px; /* Adjust this value based on your header height */
   }
 }
+@media (min-width: 769px) {
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
+  .section, .quote-carousel-container {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quote-carousel-container {
+    height: 100vh; /* Force full height */
+    box-sizing: border-box;
+  }
+}
+
 @media (max-width: 768px) {
   html {
     scroll-behavior: auto;
@@ -769,41 +764,6 @@
   margin-top: -5px;
   border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
 }
-.quote-carousel {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .quote-content {
-    flex-grow: 1;
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  .quote-nav {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-  }
-
-  .quote-nav:hover {
-    opacity: 1;
-  }
-
-  .prev-quote {
-    left: 10px;
-  }
-
-  .next-quote {
-    right: 10px;
-  }
 </style>
 
 </head>
@@ -853,18 +813,12 @@
         <i class="fas fa-chevron-down text-white text-3xl animate-bounce"></i>
       </div>
     </section>
-    <div class="quote-carousel-container">
-        <div class="quote-carousel">
-          <button class="quote-nav prev-quote">&lt;</button>
-          <div class="quote-content">
-            <div class="quote-text text-white italic"></div>
-            <div class="quote-author text-white mt-2"></div>
-          </div>
-          <button class="quote-nav next-quote">&gt;</button>
-        </div>
-      </div>
-      
-      
+<div class="quote-carousel-container">
+  <div class="quote-carousel">
+    <div class="quote-text text-white italic"></div>
+    <div class="quote-author text-white mt-2"></div>
+  </div>
+</div>
 <section id="problem-solution" class="section">
   <div class="content-box">
     <h2 class="font-bold text-white mb-4 text-center">
@@ -934,16 +888,11 @@
   </div>
 </section>
 <div class="quote-carousel-container">
-    <div class="quote-carousel">
-      <button class="quote-nav prev-quote">&lt;</button>
-      <div class="quote-content">
-        <div class="quote-text text-white italic"></div>
-        <div class="quote-author text-white mt-2"></div>
-      </div>
-      <button class="quote-nav next-quote">&gt;</button>
-    </div>
+  <div class="quote-carousel">
+    <div class="quote-text text-white italic"></div>
+    <div class="quote-author text-white mt-2"></div>
   </div>
-  
+</div>
 <section id="all-in-one-etfs" class="section">
   <div class="content-box">
     <h2 class="font-bold text-white mb-4 text-center">
@@ -1126,17 +1075,14 @@ if (openHoldings && holdingsModal && closeHoldings) {
   });
 }
 </script>
+
+
 <div class="quote-carousel-container">
-    <div class="quote-carousel">
-      <button class="quote-nav prev-quote">&lt;</button>
-      <div class="quote-content">
-        <div class="quote-text text-white italic"></div>
-        <div class="quote-author text-white mt-2"></div>
-      </div>
-      <button class="quote-nav next-quote">&gt;</button>
-    </div>
-  </div>
-  
+<div class="quote-carousel">
+  <div class="quote-text text-white italic"></div>
+  <div class="quote-author text-white mt-2"></div>
+</div>
+</div>
 <section id="fees-impact" class="section">
     <div class="content-box">
       <h2 class="font-bold text-white mb-4 text-center">
@@ -1204,16 +1150,11 @@ if (openHoldings && holdingsModal && closeHoldings) {
 </section>
 
 <div class="quote-carousel-container">
-    <div class="quote-carousel">
-      <button class="quote-nav prev-quote">&lt;</button>
-      <div class="quote-content">
-        <div class="quote-text text-white italic"></div>
-        <div class="quote-author text-white mt-2"></div>
-      </div>
-      <button class="quote-nav next-quote">&gt;</button>
-    </div>
-  </div>
-  
+<div class="quote-carousel">
+<div class="quote-text text-white italic"></div>
+<div class="quote-author text-white mt-2"></div>
+</div>
+</div>
 <section id="accounts-buying" class="section">
 <div class="content-box">
 <h2 class="font-bold text-white mb-4 text-center">
@@ -1297,17 +1238,11 @@ if (openHoldings && holdingsModal && closeHoldings) {
 </div>
 </section>
 <div class="quote-carousel-container">
-    <div class="quote-carousel">
-      <button class="quote-nav prev-quote">&lt;</button>
-      <div class="quote-content">
-        <div class="quote-text text-white italic"></div>
-        <div class="quote-author text-white mt-2"></div>
-      </div>
-      <button class="quote-nav next-quote">&gt;</button>
-    </div>
-  </div>
-  
-  
+<div class="quote-carousel">
+<div class="quote-text text-white italic"></div>
+<div class="quote-author text-white mt-2"></div>
+</div>
+</div>
 <section id="wealthsimple-cash" class="section">
 <div class="content-box">
 <h2 class="font-bold text-white mb-4 text-center">Wealthsimple Cash: Smart Banking Solution 💳</h2>
@@ -1370,16 +1305,11 @@ if (openHoldings && holdingsModal && closeHoldings) {
 </div>
 </section>
 <div class="quote-carousel-container">
-    <div class="quote-carousel">
-      <button class="quote-nav prev-quote">&lt;</button>
-      <div class="quote-content">
-        <div class="quote-text text-white italic"></div>
-        <div class="quote-author text-white mt-2"></div>
-      </div>
-      <button class="quote-nav next-quote">&gt;</button>
-    </div>
-  </div>
-  
+<div class="quote-carousel">
+<div class="quote-text text-white italic"></div>
+<div class="quote-author text-white mt-2"></div>
+</div>
+</div>
 <section id="success-learning" class="section">
     <div class="content-box">
     <h2 class="font-bold text-white mb-6 text-center">
@@ -1474,18 +1404,13 @@ if (openHoldings && holdingsModal && closeHoldings) {
   </div>
   </div>
   </section>
+  
   <div class="quote-carousel-container">
-    <div class="quote-carousel">
-      <button class="quote-nav prev-quote">&lt;</button>
-      <div class="quote-content">
-        <div class="quote-text text-white italic"></div>
-        <div class="quote-author text-white mt-2"></div>
-      </div>
-      <button class="quote-nav next-quote">&gt;</button>
-    </div>
+  <div class="quote-carousel">
+  <div class="quote-text text-white italic"></div>
+  <div class="quote-author text-white mt-2"></div>
   </div>
-  
-  
+  </div>
   <section id="conclusion" class="section">
   <div class="content-box text-center">
   <h2 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight">
@@ -1552,76 +1477,39 @@ if (openHoldings && holdingsModal && closeHoldings) {
   <script>
   const quotes = [
   { text: "The best way to own common stocks is through an index fund.", author: "Warren Buffett" },
+  { text: "Owning the market over the long term is a winner's game, but attempting to beat the market is a loser's game.", author: "John C. Bogle" },
+  { text: "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs.", author: "John C. Bogle" },
   { text: "The simplest and most efficient investment strategy is to buy and hold all of the nation's publicly held businesses at very low cost.", author: "John C. Bogle" },
-  { text: "The less you pay for an investment, the more of the investment return you keep for yourself.", author: "Ben Felix" },
-  { text: "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs.", author: "John C. Bogle" }, 
-  { text: "Diversification is the only free lunch in investing.", author: "Ben Felix" },
   { text: "In investing, you get what you don't pay for.", author: "John C. Bogle" },
+  { text: "The less you pay for an investment, the more of the investment return you keep for yourself.", author: "Ben Felix" },
+  { text: "Diversification is the only free lunch in investing.", author: "Ben Felix" },
   { text: "The greatest way to optimize your investing is through proper asset allocation. Second is keeping fees low. These two things are the most important part of investing.", author: "Dan Bortolotti" },
   { text: "In my view, owning the market and holding it forever is the ultimate strategy for winners.", author: "Jack Bogle" },
   { text: "The growth of ETFs has been one of the best things to happen to DIY investors in the last decade. ETFs offer instant diversification, rock-bottom costs and transparency that mutual funds simply can't match.", author: "Dan Bortolotti" },
-  { text: "Owning the market over the long term is a winner's game, but attempting to beat the market is a loser's game.", author: "John C. Bogle" },
   { text: "If you believe in the power of passive investing and want to implement that belief in your portfolio, then ETFs are the way to go. They provide broad-market exposure at a low cost, they're highly tax-efficient, and they're transparent.", author: "Justin Bender" },
   { text: "ETFs have democratized investing by giving every investor access to global markets, in a low-cost, transparent and liquid structure.", author: "Ben Felix" },
-  { text: "Over the past decade, we've seen a significant shift away from traditional mutual funds and towards ETFs. Canadian investors are increasingly recognizing the benefits of low costs, transparency, and flexibility that ETFs provide.", author: "Pat Chiefalo" },
   { text: "One of the beautiful things about ETFs is that they provide access to strategies that were previously unavailable to most investors, and they do so at a very low cost.", author: "Ben Felix" },
   { text: "Canadians pay some of the highest mutual fund fees in the world. A 2018 study by Morningstar found that the median asset-weighted expense ratio for Canadian equity funds was 2.23%, compared with 0.59% in the U.S.", author: "Rob Carrick" },
   { text: "The investment industry has been able to convince people that they are better off paying 2% or 3% to an actively managed mutual fund than 0.2% or 0.3% for an index ETF. But the math just doesn't add up.", author: "John De Goey" },
+  { text: "Over the past decade, we've seen a significant shift away from traditional mutual funds and towards ETFs. Canadian investors are increasingly recognizing the benefits of low costs, transparency, and flexibility that ETFs provide.", author: "Pat Chiefalo" },
   { text: "In 2020, Canadian ETFs saw record inflows of over $40 billion, while mutual funds experienced net outflows of nearly $15 billion. This accelerating trend demonstrates that Canadian investors are voting with their dollars and embracing the advantages of ETFs.", author: "Daniel Straus" },
   { text: "The high fees charged by most Canadian mutual funds are a huge drag on investor returns over the long term. By contrast, low-cost index ETFs allow investors to keep more of their hard-earned money working for them.", author: "Justin Bender" }
   ];
   
   const carousels = document.querySelectorAll('.quote-carousel');
-let currentQuoteIndices = new Array(carousels.length).fill(0);
-
-// Function to update the current quote
-function updateCarousel(carouselIndex) {
-  const carousel = carousels[carouselIndex];
-  const quote = quotes[currentQuoteIndices[carouselIndex]];
+  let currentQuoteIndex = 0;
+  
+  function updateCarousels() {
+  carousels.forEach((carousel, index) => {
+  const quote = quotes[(currentQuoteIndex + index) % quotes.length];
   carousel.querySelector('.quote-text').textContent = `"${quote.text}"`;
   carousel.querySelector('.quote-author').textContent = `- ${quote.author}`;
-}
-
-// Function to handle manual navigation
-function setupCarousel(carousel, index) {
-  updateCarousel(index);
-
-  const prevButton = carousel.querySelector('.prev-quote');
-  const nextButton = carousel.querySelector('.next-quote');
-
-  prevButton.addEventListener('click', () => {
-    currentQuoteIndices[index] = (currentQuoteIndices[index] - 1 + quotes.length) % quotes.length;
-    updateCarousel(index);
   });
-
-  nextButton.addEventListener('click', () => {
-    currentQuoteIndices[index] = (currentQuoteIndices[index] + 1) % quotes.length;
-    updateCarousel(index);
-  });
-}
-
-// Function to handle scrolling
-function handleScroll() {
-  carousels.forEach((carousel, index) => {
-    const rect = carousel.getBoundingClientRect();
-    // Check if the carousel is at least partially visible
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      // Carousel is in view, do nothing
-      return;
-    } else {
-      // Carousel is out of view, update to the next quote
-      currentQuoteIndices[index] = (currentQuoteIndices[index] + 1) % quotes.length;
-      updateCarousel(index);
-    }
-  });
-}
-
-// Set up each carousel
-carousels.forEach(setupCarousel);
-
-// Add scroll event listener
-window.addEventListener('scroll', handleScroll);
-
+  currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+  }
+  
+  updateCarousels();
+  setInterval(updateCarousels, 15000);
   </script>
   <script>
   gsap.registerPlugin(ScrollTrigger);
@@ -1847,23 +1735,107 @@ featureIcons.forEach(icon => {
   });
 });
   
-    // Scroll arrow functionality
-    const scrollArrow = document.getElementById('scroll-arrow');
-    
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        scrollArrow.style.opacity = '0';
-      } else {
-        scrollArrow.style.opacity = '1';
-      }
+function scrollToNextSnapPoint() {
+  const snapPoints = Array.from(document.querySelectorAll('.section, .quote-carousel-container'));
+  const viewportHeight = window.innerHeight;
+  const currentScrollPosition = window.scrollY;
+
+  // Find the next snap point
+  const nextSnapPoint = snapPoints.find(element => {
+    const rect = element.getBoundingClientRect();
+    return rect.top > 10; // Small offset to account for rounding errors
+  });
+
+  if (nextSnapPoint) {
+    nextSnapPoint.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function scrollToNextSnapPoint() {
+  const snapPoints = Array.from(document.querySelectorAll('.section, .quote-carousel-container'));
+  const viewportHeight = window.innerHeight;
+  const currentScrollPosition = window.scrollY;
+
+  // Find the next snap point
+  const nextSnapPoint = snapPoints.find(element => {
+    const rect = element.getBoundingClientRect();
+    return rect.top > 10; // Small offset to account for rounding errors
+  });
+
+  if (nextSnapPoint) {
+    nextSnapPoint.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function scrollToSnapPoint(direction) {
+  const snapPoints = Array.from(document.querySelectorAll('.section, .quote-carousel-container'));
+  const viewportHeight = window.innerHeight;
+  const currentScrollPosition = window.scrollY;
+
+  let targetSnapPoint;
+  if (direction === 'down') {
+    targetSnapPoint = snapPoints.find(element => {
+      const rect = element.getBoundingClientRect();
+      return rect.top > 10; // Small offset to account for rounding errors
     });
-    
-    scrollArrow.addEventListener('click', () => {
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth'
-      });
+  } else {
+    targetSnapPoint = snapPoints.reverse().find(element => {
+      const rect = element.getBoundingClientRect();
+      return rect.bottom < viewportHeight - 10; // Small offset from bottom
     });
+  }
+
+  if (targetSnapPoint) {
+    targetSnapPoint.scrollIntoView({ behavior: 'smooth' });
+  } else if (direction === 'up' && currentScrollPosition > 0) {
+    // If no snap point found when scrolling up, go to the top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+const scrollArrow = document.getElementById('scroll-arrow');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    scrollArrow.style.opacity = '0';
+  } else {
+    scrollArrow.style.opacity = '1';
+  }
+});
+
+scrollArrow.addEventListener('click', () => scrollToSnapPoint('down'));
+
+// Handle keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    scrollToSnapPoint('down');
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    scrollToSnapPoint('up');
+  }
+});
+
+// Handle mouse wheel
+let wheelTimeout;
+document.addEventListener('wheel', (e) => {
+  clearTimeout(wheelTimeout);
+  wheelTimeout = setTimeout(() => {
+    if (e.deltaY > 0) { // Scrolling down
+      scrollToSnapPoint('down');
+    } else if (e.deltaY < 0) { // Scrolling up
+      scrollToSnapPoint('up');
+    }
+  }, 50); // Small delay to prevent rapid firing
+}, { passive: false });
+
+// Handle mouse wheel
+document.addEventListener('wheel', (e) => {
+  if (e.deltaY > 0) { // Scrolling down
+    e.preventDefault(); // Prevent default scroll
+    scrollToNextSnapPoint();
+  }
+}, { passive: false });
   });
   </script>
 <script>
