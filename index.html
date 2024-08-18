@@ -69,16 +69,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #000; /* Fallback color */
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.1);
   background-image: url('images/background.webp');
   background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position: center center;
 }
 
 @media (max-width: 768px) {
-  body {
+  .background-image {
     background-position: center center;
   }
 }
@@ -808,6 +831,9 @@
 
 </head>
 <body class="text-responsive">
+    <div class="background-container">
+        <div class="background-image"></div>
+      </div>
   <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 shadow-md">
     <div class="container mx-auto px-6">
       <div class="flex justify-between items-center h-full">
@@ -2349,5 +2375,37 @@ gtag('event', 'Wealthsimple_Click', {
             });
           }
           </script>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const backgroundContainer = document.querySelector('.background-container');
+              const backgroundImage = document.querySelector('.background-image');
+            
+              function adjustBackground() {
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+                const containerAspectRatio = windowWidth / windowHeight;
+                const imageAspectRatio = backgroundImage.naturalWidth / backgroundImage.naturalHeight;
+            
+                if (containerAspectRatio > imageAspectRatio) {
+                  backgroundImage.style.width = '100%';
+                  backgroundImage.style.height = 'auto';
+                } else {
+                  backgroundImage.style.width = 'auto';
+                  backgroundImage.style.height = '100%';
+                }
+            
+                backgroundContainer.style.height = `${window.innerHeight}px`;
+              }
+            
+              // Run on load
+              adjustBackground();
+            
+              // Run on resize
+              window.addEventListener('resize', adjustBackground);
+            
+              // Run on orientation change
+              window.addEventListener('orientationchange', adjustBackground);
+            });
+            </script>
 </body>
 </html>
