@@ -2423,5 +2423,74 @@ gtag('event', 'Wealthsimple_Click', {
               window.addEventListener('orientationchange', adjustBackground);
             });
             </script>
+            <script>// Add this script to your existing JavaScript or in a new <script> tag
+
+              document.addEventListener('DOMContentLoaded', function() {
+                const sections = document.querySelectorAll('.section');
+                const navDots = document.createElement('div');
+                navDots.classList.add('nav-dots');
+                
+                // Styles for nav dots container
+                Object.assign(navDots.style, {
+                  position: 'fixed',
+                  right: '20px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  zIndex: '1000'
+                });
+              
+                sections.forEach((section, index) => {
+                  const dot = document.createElement('div');
+                  dot.classList.add('nav-dot');
+                  
+                  // Styles for individual dots
+                  Object.assign(dot.style, {
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    margin: '10px 0',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s, transform 0.3s'
+                  });
+              
+                  dot.addEventListener('click', () => {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                  });
+              
+                  navDots.appendChild(dot);
+              
+                  // Create ScrollTrigger for each section
+                  ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top center',
+                    end: 'bottom center',
+                    onEnter: () => activateDot(index),
+                    onEnterBack: () => activateDot(index),
+                    onLeave: () => deactivateDot(index),
+                    onLeaveBack: () => deactivateDot(index)
+                  });
+                });
+              
+                document.body.appendChild(navDots);
+              
+                function activateDot(index) {
+                  const dot = navDots.children[index];
+                  gsap.to(dot, {
+                    backgroundColor: 'rgba(255, 255, 255, 1)',
+                    scale: 1.5,
+                    duration: 0.3
+                  });
+                }
+              
+                function deactivateDot(index) {
+                  const dot = navDots.children[index];
+                  gsap.to(dot, {
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    scale: 1,
+                    duration: 0.3
+                  });
+                }
+              });</script>
 </body>
 </html>
