@@ -1642,6 +1642,11 @@ document.addEventListener('DOMContentLoaded', function() {
   let isScrolling = false;
   let scrollTimeout;
 
+  // Function to check if the device is mobile
+  function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  }
+
   function findNearestElement(direction) {
     const currentPosition = window.scrollY;
     const windowHeight = window.innerHeight;
@@ -1668,17 +1673,18 @@ document.addEventListener('DOMContentLoaded', function() {
       isScrolling = true;
       element.scrollIntoView({ behavior: 'smooth' });
       
-      // Reset the isScrolling flag after the scroll animation is likely to have finished
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isScrolling = false;
-      }, 1000); // Adjust this value based on your scroll animation duration
+      }, 1000);
     }
   }
 
   function handleScroll(direction) {
-    const nextElement = findNearestElement(direction);
-    scrollToElement(nextElement);
+    if (!isMobile()) {
+      const nextElement = findNearestElement(direction);
+      scrollToElement(nextElement);
+    }
   }
 
   // Keyboard event handler
@@ -1691,10 +1697,16 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Mouse wheel event handler
+  let wheelTimeout;
   document.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    const direction = e.deltaY > 0 ? 'down' : 'up';
-    handleScroll(direction);
+    if (!isMobile()) {
+      e.preventDefault();
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        const direction = e.deltaY > 0 ? 'down' : 'up';
+        handleScroll(direction);
+      }, 50);
+    }
   }, { passive: false });
 
   // Optional: Handle touch events for mobile devices
@@ -1704,12 +1716,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { passive: true });
 
   document.addEventListener('touchend', function(e) {
+    if (isMobile()) {
+      return; // Do nothing on mobile devices
+    }
     const touchEndY = e.changedTouches[0].clientY;
     const direction = touchStartY > touchEndY ? 'down' : 'up';
-    if (Math.abs(touchStartY - touchEndY) > 50) { // Adjust this threshold as needed
+    if (Math.abs(touchStartY - touchEndY) > 50) {
       handleScroll(direction);
     }
   }, { passive: false });
+
+  // Disable snap scrolling on mobile devices
+  if (isMobile()) {
+    document.documentElement.style.scrollSnapType = 'none';
+    snappableElements.forEach(element => {
+      element.style.scrollSnapAlign = 'none';
+    });
+  }
 });
 // Function to handle scrolling
 function handleScroll() {
