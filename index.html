@@ -827,6 +827,44 @@ body {
   .next-quote {
     right: 10px;
   }
+  .rocket {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+  transition: all 0.5s ease-out;
+}
+
+.left-rocket {
+  left: -3rem;
+}
+
+.right-rocket {
+  right: -3rem;
+}
+
+@keyframes shake {
+  0% { transform: translateY(-50%) rotate(-45deg); }
+  25% { transform: translateY(-60%) rotate(-40deg); }
+  50% { transform: translateY(-50%) rotate(-50deg); }
+  75% { transform: translateY(-40%) rotate(-40deg); }
+  100% { transform: translateY(-50%) rotate(-45deg); }
+}
+
+@keyframes takeOff {
+  0% { transform: translateY(-50%) rotate(-45deg); }
+  100% { transform: translateY(-2000px) rotate(-45deg); }
+}
+
+.smoke {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 </style>
 
 </head>
@@ -1544,9 +1582,9 @@ if (openHoldings && holdingsModal && closeHoldings) {
 <section id="conclusion" class="section">
   <div class="content-box text-center">
     <h2 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight">
-      Start Your <span class="text-green-400">Investing Journey</span> Today! 🚀
+      Invest in Your Future, <span class="text-green-400"><p></p>Get Rewarded Now!</span>
     </h2>
-    <p class="text-white mb-6 text-lg">Join millions of Canadians who are taking control of their financial future with Wealthsimple.</p>
+    <p class="text-white mb-6 text-lg">Join 3 Million+ Canadians Growing Wealth with Wealthsimple</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <div class="bg-gray-800 p-4 rounded">
         <i class="fas fa-gift text-green-400 text-4xl mb-4"></i>
@@ -1564,9 +1602,13 @@ if (openHoldings && holdingsModal && closeHoldings) {
         <p class="text-white">Enjoy an intuitive app with auto-invest and dividend reinvestment features</p>
       </div>
     </div>
-    <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button text-xl">
-      <span>Claim Your $25 Bonus & Start Investing</span>
-    </a>
+    <div class="relative inline-block">
+      <span class="rocket left-rocket">🚀</span>
+      <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button text-xl">
+        <span>Claim Your $25 Bonus & Start Investing</span>
+      </a>
+      <span class="rocket right-rocket">🚀</span>
+    </div>
     <div class="text-sm text-gray-400 mt-4">
       <p class="mb-2"><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial or investment advice. Always conduct your own research and consult with a qualified financial advisor before making any investment decisions.</p>
       <p class="mb-2">Past performance is not indicative of future results. Investing involves risk, including the possible loss of principal.</p>
@@ -2492,5 +2534,114 @@ gtag('event', 'Wealthsimple_Click', {
                   });
                 }
               });</script>
+
+    
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  let animationTriggered = false;
+
+  function initRocketAnimation() {
+    const conclusionSection = document.getElementById('conclusion');
+    const leftRocket = document.querySelector('.left-rocket');
+    const rightRocket = document.querySelector('.right-rocket');
+
+    if (!conclusionSection || !leftRocket || !rightRocket) {
+      console.error('Required elements for rocket animation not found');
+      return;
+    }
+
+    function createSmoke(rocket) {
+      const smokeContainer = document.createElement('div');
+      smokeContainer.style.position = 'absolute';
+      smokeContainer.style.left = '0';
+      smokeContainer.style.right = '0';
+      smokeContainer.style.bottom = '0';
+      smokeContainer.style.height = '0';
+      rocket.appendChild(smokeContainer);
+
+      let smokeInterval = setInterval(() => {
+        const smoke = document.createElement('div');
+        smoke.classList.add('smoke');
+        smokeContainer.appendChild(smoke);
+
+        const startX = Math.random() * 6 - 3;
+        const startY = 0;
+
+        smoke.style.left = `${startX}px`;
+        smoke.style.bottom = `${startY}px`;
+
+        requestAnimationFrame(() => {
+          smoke.style.transition = 'all 0.5s ease-out';
+          smoke.style.transform = `translate(${startX - 50}px, ${startY + 70}px) scale(2)`;
+          smoke.style.opacity = '0';
+        });
+
+        setTimeout(() => smoke.remove(), 500);
+      }, 20);
+
+      setTimeout(() => {
+        clearInterval(smokeInterval);
+        setTimeout(() => smokeContainer.remove(), 500);
+      }, 3000);
+    }
+
+    function startRocketAnimation() {
+      if (animationTriggered) return;
+      animationTriggered = true;
+
+      console.log('Starting rocket animation');
+
+      // Start shaking animation
+      leftRocket.style.animation = 'shake 0.5s ease-in-out infinite';
+      rightRocket.style.animation = 'shake 0.5s ease-in-out infinite';
+
+      // After 2 seconds, start takeoff
+      setTimeout(() => {
+        leftRocket.style.animation = 'takeOff 3s ease-in forwards';
+        rightRocket.style.animation = 'takeOff 3s ease-in forwards';
+        
+        // Create smoke effect
+        createSmoke(leftRocket);
+        createSmoke(rightRocket);
+      }, 2000);
+    }
+
+    function checkScroll() {
+      const rect = conclusionSection.getBoundingClientRect();
+      const triggerPoint = window.innerHeight * 0.5;
+
+      if (rect.top <= triggerPoint && rect.bottom >= triggerPoint) {
+        startRocketAnimation();
+        window.removeEventListener('scroll', checkScroll);
+      }
+    }
+
+    // Use both scroll event and Intersection Observer
+    window.addEventListener('scroll', checkScroll);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startRocketAnimation();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(conclusionSection);
+
+    // Fallback: trigger animation after a set timeout
+    setTimeout(startRocketAnimation, 5000);
+
+    // Initial check in case the section is already in view
+    checkScroll();
+  }
+
+  // Initialize immediately and again after a delay
+  initRocketAnimation();
+  setTimeout(initRocketAnimation, 1000);
+});
+  </script>
 </body>
 </html>
