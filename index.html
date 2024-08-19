@@ -2538,7 +2538,7 @@ gtag('event', 'Wealthsimple_Click', {
     
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   let animationTriggered = false;
 
   function initRocketAnimation() {
@@ -2609,7 +2609,7 @@ gtag('event', 'Wealthsimple_Click', {
 
     function checkScroll() {
       const rect = conclusionSection.getBoundingClientRect();
-      const triggerPoint = window.innerHeight * 0.5;
+      const triggerPoint = window.innerHeight * 0.6; // Trigger when 60% of the viewport height is reached
 
       if (rect.top <= triggerPoint && rect.bottom >= triggerPoint) {
         startRocketAnimation();
@@ -2622,25 +2622,21 @@ gtag('event', 'Wealthsimple_Click', {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
           startRocketAnimation();
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: [0.6] }); // Trigger when 60% of the element is visible
 
     observer.observe(conclusionSection);
-
-    // Fallback: trigger animation after a set timeout
-    setTimeout(startRocketAnimation, 5000);
 
     // Initial check in case the section is already in view
     checkScroll();
   }
 
-  // Initialize immediately and again after a delay
+  // Initialize only once
   initRocketAnimation();
-  setTimeout(initRocketAnimation, 1000);
 });
   </script>
 </body>
