@@ -881,6 +881,33 @@ body {
     .icon-yellow { color: #fbbf24; }
     .icon-pink { color: #f854f0; }
     .icon-purple { color: #753dfa; }
+
+    @keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.feature-box {
+  transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box i {
+  transition: all 0.3s ease;
+}
+
+.feature-box:hover i {
+  transform: scale(1.2);
+}
+
+
+
+
 </style>
 
 </head>
@@ -1807,32 +1834,33 @@ body {
 <section id="conclusion" class="section">
   <div class="content-box text-center">
     <h2 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight">
-      Invest in Your Future, <span class="text-green-400"><p></p>Get Rewarded Now!</span>
+      <i class="fas fa-chart-line text-green-400 mr-3"></i>
+      Invest in Your Future, 
+      <br class="hidden md:block">
+      <span class="text-green-400 glow-text">Get Rewarded Now!</span>
     </h2>
     <p class="text-white mb-6 text-lg">Join 3 Million+ Canadians Growing Wealth with Wealthsimple. After extensive research and personal experience with various low-cost brokerages, we confidently recommend Wealthsimple. While we use referral links, our endorsement stems from a genuine belief in their superior platform and services.</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      <div class="bg-gray-800 p-4 rounded">
+      <div class="bg-gray-800 p-4 rounded feature-box">
         <i class="fas fa-gift text-green-400 text-4xl mb-4"></i>
         <h3 class="font-bold text-white mb-2">$25 Welcome Bonus</h3>
         <p class="text-white">Get a $25 bonus when you sign up and fund your account using our link</p>
       </div>
-      <div class="bg-gray-800 p-4 rounded">
-        <i class="fas fa-coins text-green-400 text-4xl mb-4"></i>
+      <div class="bg-gray-800 p-4 rounded feature-box">
+        <i class="fas fa-coins text-yellow-400 text-4xl mb-4"></i>
         <h3 class="font-bold text-white mb-2">Commission-Free Trading</h3>
         <p class="text-white">Trade ETFs with zero commissions, pay only the low ETF MER</p>
       </div>
-      <div class="bg-gray-800 p-4 rounded">
-        <i class="fas fa-mobile-alt text-green-400 text-4xl mb-4"></i>
+      <div class="bg-gray-800 p-4 rounded feature-box">
+        <i class="fas fa-mobile-alt text-blue-400 text-4xl mb-4"></i>
         <h3 class="font-bold text-white mb-2">Best-in-Class Experience</h3>
         <p class="text-white">Enjoy an intuitive app with auto-invest and dividend reinvestment features</p>
       </div>
     </div>
     <div class="relative inline-block">
-      <span class="rocket left-rocket">🚀</span>
       <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded transition duration-300 ease-in-out cta-button text-xl">
         <span>Claim Your $25 Bonus & Start Investing</span>
       </a>
-      <span class="rocket right-rocket">🚀</span>
     </div>
     <div class="text-sm text-gray-400 mt-4">
       <p class="mb-2"><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial or investment advice. Always conduct your own research and consult with a qualified financial advisor before making any investment decisions.</p>
@@ -2763,6 +2791,23 @@ gtag('event', 'Wealthsimple_Click', {
     
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const conclusionSection = document.getElementById('conclusion');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(conclusionSection);
+
+  conclusionSection.style.opacity = 0;
+  conclusionSection.style.transform = 'translateY(50px)';
+  conclusionSection.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+});
 document.addEventListener('DOMContentLoaded', function() {
   let animationTriggered = false;
 
