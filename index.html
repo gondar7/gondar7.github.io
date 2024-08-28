@@ -866,7 +866,21 @@ body {
   border-radius: 50%;
   pointer-events: none;
 }
+.text-green-400 { color: #4ade80; }
+    .text-blue-400 { color: #60a5fa; }
 
+    /* Glowing text effect */
+    .glow-text {
+      text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    }
+
+    /* Icon colors */
+    .icon-green { color: #4ade80; }
+    .icon-blue { color: #60a5fa; }
+    .icon-red { color: #f87171; }
+    .icon-yellow { color: #fbbf24; }
+    .icon-pink { color: #f854f0; }
+    .icon-purple { color: #753dfa; }
 </style>
 
 </head>
@@ -896,9 +910,9 @@ body {
           <span class="text-green-400 glow-text block">DIY Investor Guide</span>
           <span class="text-white block mt-4">🍁</span>
         </h1>
-        <p class="text-xl md:text-2xl text-white mb-12" id="hero-subtitle">
+        <p class="text-xl md:text-2xl text-blue-400 mb-12" id="hero-subtitle">
           Learn how to grow your wealth without the high fees.
-        </p>
+      </p>
         <div id="features-container" class="mb-12">
           <div class="feature-item left">
             <i class="fas fa-globe text-blue-400 feature-icon"></i>
@@ -933,36 +947,36 @@ body {
     
       
       
-      <section id="problem-solution" class="section">
-        <div class="content-box">
-          <h2 class="font-bold text-white mb-4 text-center">
-            <i class="fas fa-chart-line mr-2"></i>The Problem & The Solution
-          </h2>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div>
-              <h3 class="font-bold text-white mb-4">The Problem with <span class="tooltip">Active Mutual Funds
-                <span class="tooltiptext">Investment funds managed by professionals who try to outperform the market by picking stocks they believe will perform well.</span>
+<section id="problem-solution" class="section">
+  <div class="content-box">
+      <h2 class="font-bold text-green-400 mb-4 text-center">
+          <i class="fas fa-chart-line mr-2 icon-red"></i>The Problem & The Solution
+      </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div>
+              <h3 class="font-bold text-blue-400 mb-4">The Problem with <span class="tooltip">Active Mutual Funds
+                  <span class="tooltiptext">Investment funds managed by professionals who try to outperform the market by picking stocks they believe will perform well.</span>
               </span> 😓</h3>
               <ul class="list-none pl-0 text-white mb-6">
-                <li class="mb-2"><i class="fas fa-dollar-sign text-red-400 mr-2"></i>High fees eating into your returns</li>
-                <li class="mb-2"><i class="fas fa-chart-bar text-red-400 mr-2"></i>Frequently <span class="tooltip">underperform
-                  <span class="tooltiptext">Fail to match or exceed the returns of a benchmark index, like the S&P 500, or Toronto Stock Exchange.</span>
-                </span> market averages</li>
-                <li class="mb-2"><i class="fas fa-random text-red-400 mr-2"></i>Inconsistent performance year to year</li>
-                <li class="mb-2"><i class="fas fa-search-dollar text-red-400 mr-2"></i>Hidden costs and <span class="tooltip">trading expenses
-                  <span class="tooltiptext">Costs incurred when buying or selling securities within the fund, which can reduce overall returns.</span>
-                </span></li>
+                  <li class="mb-2"><i class="fas fa-dollar-sign text-red-400 mr-2"></i>High fees eating into your returns</li>
+                  <li class="mb-2"><i class="fas fa-chart-bar text-red-400 mr-2"></i>Frequently <span class="tooltip">underperform
+                      <span class="tooltiptext">Fail to match or exceed the returns of a benchmark index, like the S&P 500, or Toronto Stock Exchange.</span>
+                  </span> market averages</li>
+                  <li class="mb-2"><i class="fas fa-random text-red-400 mr-2"></i>Inconsistent performance year to year</li>
+                  <li class="mb-2"><i class="fas fa-search-dollar text-red-400 mr-2"></i>Hidden costs and <span class="tooltip">trading expenses
+                      <span class="tooltiptext">Costs incurred when buying or selling securities within the fund, which can reduce overall returns.</span>
+                  </span></li>
               </ul>
-              <h3 class="font-bold text-white mb-4">The Power of <span class="tooltip">Index Investing
-                <span class="tooltiptext">An investment strategy that aims to replicate the performance of a specific collection of stocks or bonds, known as a market index, like the S&P 500 or the Toronto Stock Exchange.</span>
+              <h3 class="font-bold text-blue-400 mb-4">The Power of <span class="tooltip">Index Investing
+                  <span class="tooltiptext">An investment strategy that aims to replicate the performance of a specific collection of stocks or bonds, known as a market index, like the S&P 500 or the Toronto Stock Exchange.</span>
               </span> 💪</h3>
               <ul class="list-none pl-0 text-white mb-6">
-                <li class="mb-2"><i class="fas fa-piggy-bank text-green-400 mr-2"></i>Lower costs: Typically lower fees than active management</li>
-                <li class="mb-2"><i class="fas fa-chart-pie text-green-400 mr-2"></i><span class="tooltip">Diversification
-                  <span class="tooltiptext">The practice of spreading investments across various financial instruments to reduce risk.</span>
-                </span>: Don't put all your eggs in one basket</li>
-                <li class="mb-2"><i class="fas fa-trophy text-green-400 mr-2"></i>Consistent performance: Often outperforms active management over long periods</li>
-                <li class="mb-2"><i class="fas fa-robot text-green-400 mr-2"></i>Simplicity: No need to be a financial expert</li>
+                  <li class="mb-2"><i class="fas fa-piggy-bank text-green-400 mr-2"></i>Lower costs: Typically lower fees than active management</li>
+                  <li class="mb-2"><i class="fas fa-chart-pie text-green-400 mr-2"></i><span class="tooltip">Diversification
+                      <span class="tooltiptext">The practice of spreading investments across various financial instruments to reduce risk.</span>
+                  </span>: Don't put all your eggs in one basket</li>
+                  <li class="mb-2"><i class="fas fa-trophy text-green-400 mr-2"></i>Consistent performance: Often outperforms active management over long periods</li>
+                  <li class="mb-2"><i class="fas fa-robot text-green-400 mr-2"></i>Simplicity: No need to be a financial expert</li>
               </ul>
               <div class="bg-gray-800 p-4 rounded-lg text-sm">
                 <blockquote class="text-white italic mb-2 text-base">
@@ -972,45 +986,45 @@ body {
               </div>
             </div>
             <div>
-              <h3 class="font-bold text-white mb-4"><span class="tooltip">ETFs
+              <h3 class="font-bold text-blue-400 mb-4"><span class="tooltip">ETFs
                 <span class="tooltiptext">Exchange-Traded Fund: A type of investment fund traded on stock exchanges, much like stocks.</span>
-              </span>: The Vehicle for Index Investing 🚀</h3>
-              <p class="text-white mb-4">Exchange-Traded Funds (ETFs) have become increasingly popular, replacing <span class="tooltip">mutual funds
+            </span>: The Vehicle for Index Investing 🚀</h3>
+            <p class="text-white mb-4">Exchange-Traded Funds (ETFs) have become increasingly popular, replacing <span class="tooltip">mutual funds
                 <span class="tooltiptext">An investment vehicle that pools money from many investors to purchase a diversified portfolio of stocks, bonds, or other securities.</span>
-              </span> for many investors.</p>
-              <h4 class="font-bold text-white mb-2">Why the shift to ETFs?</h4>
-              <ul class="list-none pl-0 text-white mb-6">
+            </span> for many investors.</p>
+            <h4 class="font-bold text-blue-400 mb-2">Why the shift to ETFs?</h4>
+            <ul class="list-none pl-0 text-white mb-6">
                 <li class="mb-2"><i class="fas fa-hand-holding-usd text-green-400 mr-2"></i>Significantly lower fees</li>
                 <li class="mb-2"><i class="fas fa-exchange-alt text-green-400 mr-2"></i>Greater flexibility in trading</li>
                 <li class="mb-2"><i class="fas fa-calculator text-green-400 mr-2"></i>Better <span class="tooltip">tax efficiency
-                  <span class="tooltiptext">The ability of an investment to minimize tax liabilities, often through strategies like lower turnover and capital gains distribution.</span>
+                    <span class="tooltiptext">The ability of an investment to minimize tax liabilities, often through strategies like lower turnover and capital gains distribution.</span>
                 </span></li>
                 <li class="mb-2"><i class="fas fa-eye text-green-400 mr-2"></i>More transparency in holdings and costs</li>
-              </ul>
-              <h3 class="font-bold text-white mb-4">The Evidence: <span class="tooltip">SPIVA<span class="tooltiptext">Stands for S&P Indices Versus Active, a scorecard that measures the performance of actively managed funds against their relevant S&P index benchmarks, providing insight into the active vs. passive investing debate.</span></span> Canada Year-End 2023 😱</h3>
-              <p class="text-white mb-4">The <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank" class="text-blue-300 hover:text-blue-100 underline">SPIVA report</a> shows that over a 10-year period, the percentage of actively managed funds that <span class="text-red-500 font-bold">failed to outperform</span> their <span class="tooltip">benchmarks<span class="tooltiptext">A standard against which the performance of a security, mutual fund, or investment manager can be measured.</span></span>:</p>
-              <ul class="list-none pl-0 text-white mb-6">
+            </ul>
+            <h3 class="font-bold text-blue-400 mb-4">The Evidence: <span class="tooltip">SPIVA<span class="tooltiptext">Stands for S&P Indices Versus Active, a scorecard that measures the performance of actively managed funds against their relevant S&P index benchmarks, providing insight into the active vs. passive investing debate.</span></span> Canada Year-End 2023 😱</h3>
+            <p class="text-white mb-4">The <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank" class="text-blue-300 hover:text-blue-100">SPIVA report</a> shows that over a 10-year period, the percentage of actively managed funds that <span class="text-red-500 font-bold">failed to outperform</span> their <span class="tooltip">benchmarks<span class="tooltiptext">A standard against which the performance of a security, mutual fund, or investment manager can be measured.</span></span>:</p>
+            <ul class="list-none pl-0 text-white mb-6">
                 <li class="mb-2">
-                  <i class="fas fa-exclamation-triangle text-yellow-300 mr-2"></i>
-                  <span class="text-yellow-300 font-bold text-xl">97%</span> of <span class="tooltip">Canadian Equity funds<span class="tooltiptext">Mutual funds that primarily invest in stocks of Canadian companies, aiming to achieve long-term capital growth by focusing on the Canadian stock market.</span></span>
+                    <i class="fas fa-exclamation-triangle text-yellow-300 mr-2"></i>
+                    <span class="text-yellow-300 font-bold text-xl">97%</span> of <span class="tooltip">Canadian Equity funds<span class="tooltiptext">Mutual funds that primarily invest in stocks of Canadian companies, aiming to achieve long-term capital growth by focusing on the Canadian stock market.</span></span>
                 </li>
                 <li class="mb-2">
-                  <i class="fas fa-exclamation-triangle text-yellow-300 mr-2"></i>
-                  <span class="text-yellow-300 font-bold text-xl">98%</span> of <span class="tooltip">Canadian Focused Equity funds<span class="tooltiptext">Mutual funds that invest primarily in Canadian stocks but may also include a significant portion (usually up to 49%) of foreign equities, offering a mix of domestic and international exposure.</span></span>
+                    <i class="fas fa-exclamation-triangle text-yellow-300 mr-2"></i>
+                    <span class="text-yellow-300 font-bold text-xl">98%</span> of <span class="tooltip">Canadian Focused Equity funds<span class="tooltiptext">Mutual funds that invest primarily in Canadian stocks but may also include a significant portion (usually up to 49%) of foreign equities, offering a mix of domestic and international exposure.</span></span>
                 </li>
                 <li class="mb-2">
-                  <i class="fas fa-exclamation-circle text-yellow-300 mr-2"></i>
-                  <span class="text-yellow-300 font-bold text-xl">88%</span> of <span class="tooltip">Canadian Dividend & Income Equity funds<span class="tooltiptext">Mutual funds that invest in Canadian stocks with a focus on companies that pay regular dividends, aiming to provide both income and capital appreciation to investors.</span></span>
+                    <i class="fas fa-exclamation-circle text-yellow-300 mr-2"></i>
+                    <span class="text-yellow-300 font-bold text-xl">88%</span> of <span class="tooltip">Canadian Dividend & Income Equity funds<span class="tooltiptext">Mutual funds that invest in Canadian stocks with a focus on companies that pay regular dividends, aiming to provide both income and capital appreciation to investors.</span></span>
                 </li>
                 <li class="mb-2">
-                  <i class="fas fa-exclamation-triangle text-yellow-300 mr-2"></i>
-                  <span class="text-yellow-300 font-bold text-xl">98%</span> of <span class="tooltip">U.S. Equity funds<span class="tooltiptext">Mutual funds that primarily invest in stocks of U.S. companies, providing Canadian investors with exposure to the U.S. stock market for potential long-term growth.</span></span>
+                    <i class="fas fa-exclamation-triangle text-yellow-300 mr-2"></i>
+                    <span class="text-yellow-300 font-bold text-xl">98%</span> of <span class="tooltip">U.S. Equity funds<span class="tooltiptext">Mutual funds that primarily invest in stocks of U.S. companies, providing Canadian investors with exposure to the U.S. stock market for potential long-term growth.</span></span>
                 </li>
-              </ul>
-            </div>
-          </div>
+            </ul>
         </div>
-      </section>
+    </div>
+</div>
+</section>
       <div class="quote-carousel-container">
         <div class="quote-carousel">
           <button class="quote-nav prev-quote">&lt;</button>
@@ -1026,8 +1040,8 @@ body {
   
     <section id="all-in-one-etfs" class="section">
       <div class="content-box">
-        <h2 class="font-bold text-white mb-4 text-center">
-          <i class="fas fa-puzzle-piece mr-2"></i>All-in-One ETFs: Your One-Stop Investment Solution
+        <h2 class="font-bold text-green-400 mb-4 text-center">
+          <i class="fas fa-puzzle-piece mr-2 icon-blue"></i>All-in-One ETFs: Your One-Stop Investment Solution
         </h2>
         <p class="text-white mb-4">Imagine owning the world's markets with a single purchase. All-in-one ETFs offer a complete, globally <span class="tooltip">diversified
           <span class="tooltiptext">The practice of spreading investments across various financial instruments to reduce risk.</span>
@@ -1041,7 +1055,7 @@ body {
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
-            <h3 class="font-bold text-white mb-2">Key Features:</h3>
+            <h3 class="font-bold text-blue-400 mb-2">Key Features:</h3>
             <ul class="list-none pl-0 text-white mb-4">
               <li class="mb-2"><i class="fas fa-globe text-green-400 mr-2"></i>Instant global diversification</li>
               <li class="mb-2"><i class="fas fa-exchange-alt text-green-400 mr-2"></i>Trade like stocks during <span class="tooltip">market hours
@@ -1058,7 +1072,7 @@ body {
             </ul>
             
           
-          <h3 class="font-bold text-white mb-2">Understanding Risk Levels:</h3>
+          <h3 class="font-bold text-blue-400 mb-2">Understanding Risk Levels:</h3>
           <ul class="list-none pl-0 text-white mb-4">
             <li class="mb-2">
               <i class="fas fa-chart-line text-blue-400 mr-2"></i>Higher stocks:
@@ -1086,7 +1100,7 @@ body {
         </div>
         
         <div>
-          <h3 class="font-bold text-white mb-2">Popular Providers:</h3>
+          <h3 class="font-bold text-blue-400 mb-2">Popular Providers:</h3>
           <p class="text-white mb-4">
             <a href="https://www.vanguard.ca/en/investor/Asset-Allocation-ETFs" target="_blank" class="text-blue-300 hover:text-blue-100 mr-3">
               <i class="fas fa-external-link-alt mr-1"></i>Vanguard
@@ -1098,7 +1112,7 @@ body {
               <i class="fas fa-external-link-alt mr-1"></i>BMO
           </a>
         </p>
-          <h3 class="font-bold text-white mb-2">Popular All-in-One ETFs:</h3>
+          <h3 class="font-bold text-blue-400 mb-2">Popular All-in-One ETFs:</h3>
           <ul class="list-none pl-0 text-white mb-4">
             <li class="mb-2"><i class="fas fa-fire text-red-400 mr-2"></i>100% stocks / 0% bonds: <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VEQT" target="_blank" class="text-blue-300 hover:text-blue-100">VEQT</a>, <a href="https://www.blackrock.com/ca/investors/en/products/309480/ishares-core-equity-etf-portfolio" target="_blank" class="text-blue-300 hover:text-blue-100">XEQT</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-all-equity-etf-zeqt/" target="_blank" class="text-blue-300 hover:text-blue-100">ZEQT</a></li>
             <li class="mb-2"><i class="fas fa-rocket text-orange-400 mr-2"></i>80% stocks / 20% bonds: <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VGRO" target="_blank" class="text-blue-300 hover:text-blue-100">VGRO</a>, <a href="https://www.blackrock.com/ca/investors/en/products/239447/ishares-balanced-growth-coreportfoliotm-fund" target="_blank" class="text-blue-300 hover:text-blue-100">XGRO</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-growth-etf-zgro/" target="_blank" class="text-blue-300 hover:text-blue-100">ZGRO</a></li>
@@ -1386,12 +1400,12 @@ body {
   
   <section id="fees-impact" class="section">
     <div class="content-box">
-      <h2 class="font-bold text-white mb-4 text-center">
-        <i class="fas fa-coins mr-2"></i>Understanding Fees & Their Impact
+      <h2 class="font-bold text-green-400 mb-4 text-center">
+        <i class="fas fa-coins mr-2 icon-yellow"></i>Understanding Fees & Their Impact
       </h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div class="lg:col-span-1">
-          <h3 class="font-bold text-white mb-2">Management Expense Ratio (MER)</h3>
+          <h3 class="font-bold text-blue-400 mb-2">Management Expense Ratio (MER)</h3>
           <p class="text-white mb-4">
             <i class="fas fa-percentage text-green-400 mr-2"></i>Annual fee taken directly from the investment itself. Paid to the ETF provider.
             <span class="tooltip">
@@ -1402,7 +1416,7 @@ body {
             </span>
           </p>
           
-          <h3 class="font-bold text-white mb-2">Commissions</h3>
+          <h3 class="font-bold text-blue-400 mb-2">Commissions</h3>
           <p class="text-white mb-1"><i class="fas fa-dollar-sign text-green-400 mr-2"></i>Fees paid to the brokerage every time you buy or sell an ETF or stock</p>
           <p class="text-white mb-1"><i class="fas fa-check-circle text-green-400 mr-2"></i>Wealthsimple Trade offers commission-free trading <span class="tooltip">
             <i class="fas fa-info-circle ml-1 text-blue-300"></i>
@@ -1428,7 +1442,7 @@ body {
           </div>
         </div>
         <div class="lg:col-span-2">
-          <h3 class="font-bold text-white mb-2">Impact of Fees on Your Investments</h3>
+          <h3 class="font-bold text-blue-400 mb-2">Impact of Fees on Your Investments</h3>
           <div class="bg-gray-800 p-4 rounded-lg">
             <div class="mb-4 flex justify-center space-x-4">
               <button class="px-2 py-1 bg-green-500 text-white rounded" onclick="toggleDataset(0)">Low-fee ETF (0.2% fee)</button>
@@ -1475,13 +1489,13 @@ body {
   
 <section id="accounts-buying" class="section">
   <div class="content-box">
-  <h2 class="font-bold text-white mb-4 text-center">
-  <i class="fas fa-piggy-bank mr-2"></i>Investment Accounts & Buying ETFs
+  <h2 class="font-bold text-green-400 mb-4 text-center">
+  <i class="fas fa-piggy-bank mr-2 icon-pink"></i>Investment Accounts & Buying ETFs
   </h2>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
   <div class="flex flex-col justify-between">
     <div>
-      <h3 class="font-bold text-white mb-2">Understanding Investment Accounts 📊</h3>
+      <h3 class="font-bold text-blue-400 mb-2">Understanding Investment Accounts 📊</h3>
       <ul class="list-none pl-0 text-white mb-4">
         <li class="mb-2"><i class="fas fa-leaf text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">TFSA (Tax-Free Savings Account)</a>: Most popular choice for many Canadians. Contributions are <span class="tooltip">after-tax dollars
           <span class="tooltiptext">Money that has already been taxed.</span>
@@ -1522,7 +1536,7 @@ body {
   </div>
   <div class="flex flex-col justify-between">
     <div>
-      <h3 class="font-bold text-white mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
+      <h3 class="font-bold text-blue-400 mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
       <ol class="list-none pl-0 text-white mb-4">
         <li class="mb-2">
           <i class="fas fa-user-plus text-green-400 mr-2"></i><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Sign Up for Wealthsimple Trade</a>
@@ -1547,7 +1561,7 @@ body {
         </li>
         <li class="mb-2"><i class="fas fa-check-circle text-green-400 mr-2"></i>Review and Confirm Your Trade</li>
       </ol>
-      <h3 class="font-bold text-white mb-2">Why Choose Wealthsimple Trade?</h3>
+      <h3 class="font-bold text-blue-400 mb-2">Why Choose Wealthsimple Trade?</h3>
       <ul class="list-none pl-0 text-white">
         <li class="mb-2"><i class="fas fa-dollar-sign text-green-400 mr-2"></i>Commission-free trading <span class="tooltip">
           <i class="fas fa-info-circle ml-1 text-blue-300"></i>
@@ -1591,8 +1605,8 @@ body {
   
 <section id="wealthsimple-cash" class="section">
   <div class="content-box">
-    <h2 class="font-bold text-white mb-4 text-center">
-      <i class="fas fa-credit-card mr-2"></i>Wealthsimple Cash: Smart Banking Solution
+    <h2 class="font-bold text-green-400 mb-4 text-center">
+      <i class="fas fa-credit-card mr-2 icon-blue"></i>Wealthsimple Cash: Smart Banking Solution
     </h2>
     <p class="text-white mb-4">Your modern chequing and savings solution, featuring a prepaid Mastercard that functions like a debit card. This versatile account integrates seamlessly with your Wealthsimple investments while offering exceptional banking benefits:</p>
     
@@ -1632,7 +1646,7 @@ body {
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
       <div>
-        <h3 class="font-bold text-white mb-2">Key Features:</h3>
+        <h3 class="font-bold text-blue-400 mb-2">Key Features:</h3>
         <ul class="text-white space-y-1">
           <li><i class="fas fa-money-bill-wave text-green-400 mr-2"></i>Bill payments</li>
           <li><i class="fas fa-calendar-check text-green-400 mr-2"></i><span class="tooltip">Pre-authorized debits
@@ -1654,7 +1668,7 @@ body {
       </div>
     
       <div>
-        <h3 class="font-bold text-white mb-2">Complimentary Banking:</h3>
+        <h3 class="font-bold text-blue-400 mb-2">Complimentary Banking:</h3>
         <p class="text-white mb-2">For additional no-fee services, consider pairing with <a href="https://blue.mbsy.co/3vqSCL" target="_blank" class="text-blue-300 hover:text-blue-100">Simplii</a> or <a href="https://www.tangerine.ca/en/personal" target="_blank" class="text-blue-300 hover:text-blue-100">Tangerine</a>:</p>
         <ul class="text-white space-y-1">
           <li><i class="fas fa-file-invoice-dollar text-yellow-400 mr-2"></i>Bank drafts and money orders</li>
@@ -1685,13 +1699,13 @@ body {
   
 <section id="success-learning" class="section">
     <div class="content-box">
-    <h2 class="font-bold text-white mb-6 text-center">
-    <i class="fas fa-graduation-cap mr-2"></i>Keys to Success & Further Learning
+    <h2 class="font-bold text-green-400 mb-6 text-center">
+    <i class="fas fa-graduation-cap mr-2 icon-purple"></i>Keys to Success & Further Learning
     </h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
     <div class="flex flex-col justify-between">
       <div>
-        <h3 class="font-bold text-white mb-4">The Power of Patience and Consistency 🌱</h3>
+        <h3 class="font-bold text-blue-400 mb-4">The Power of Patience and Consistency 🌱</h3>
         <ul class="list-none pl-0 text-white mb-6">
           <li class="mb-3"><i class="fas fa-hourglass-half text-green-400 mr-2"></i>Investing is a long-term game</li>
           <li class="mb-3"><i class="fas fa-calendar-check text-green-400 mr-2"></i>Stay consistent with regular contributions</li>
@@ -1723,7 +1737,7 @@ body {
     </div>
 <div class="flex flex-col justify-between">
   <div>
-    <h3 class="font-bold text-white mb-4">Further Learning 📚</h3>
+    <h3 class="font-bold text-blue-400 mb-4">Further Learning 📚</h3>
     <p class="text-white mb-4">Expand your knowledge with these valuable resources:</p>
     <ul class="list-none pl-0 text-white">
       <li class="mb-3">
