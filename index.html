@@ -1404,7 +1404,12 @@ body {
           
           <h3 class="font-bold text-white mb-2">Commissions</h3>
           <p class="text-white mb-1"><i class="fas fa-dollar-sign text-green-400 mr-2"></i>Fees paid to the brokerage every time you buy or sell an ETF or stock</p>
-          <p class="text-white mb-1"><i class="fas fa-check-circle text-green-400 mr-2"></i>Wealthsimple Trade offers commission-free trading</p>
+          <p class="text-white mb-1"><i class="fas fa-check-circle text-green-400 mr-2"></i>Wealthsimple Trade offers commission-free trading <span class="tooltip">
+            <i class="fas fa-info-circle ml-1 text-blue-300"></i>
+            <span class="tooltiptext">
+              With Wealthsimple Trade, you pay $0 when buying or selling your all-in-one ETF. This means no fees eating into your investments or discouraging frequent contributions.
+            </span>
+          </span></p>
           <p class="text-white mb-4"><i class="fas fa-university text-green-400 mr-2"></i>Traditional banks or brokerages may charge $5 to $10 per transaction</p>
   
           <div id="fee-impact-calculator" class="bg-gray-800 p-4 rounded-lg mt-4">
@@ -1469,87 +1474,109 @@ body {
   
   
 <section id="accounts-buying" class="section">
-<div class="content-box">
-<h2 class="font-bold text-white mb-4 text-center">
-<i class="fas fa-piggy-bank mr-2"></i>Investment Accounts & Buying ETFs
-</h2>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-<div class="flex flex-col justify-between">
-  <div>
-    <h3 class="font-bold text-white mb-2">Understanding Investment Accounts 📊</h3>
-    <ul class="list-none pl-0 text-white mb-4">
-      <li class="mb-2"><i class="fas fa-leaf text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">TFSA (Tax-Free Savings Account)</a>: Most popular choice for many Canadians. Contributions are <span class="tooltip">after-tax dollars
-        <span class="tooltiptext">Money that has already been taxed.</span>
-      </span>
-      , growth and withdrawals are tax-free.</li>
-      <li class="mb-2"><i class="fas fa-umbrella text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">RRSP (Registered Retirement Savings Plan)</a>: Ideal for higher-income earners. <span class="tooltip">Tax-deductible
-        <span class="tooltiptext">Money that you can subtract from your income before calculating taxes owed.</span>
-      </span>
-       contributions, tax-deferred growth, withdrawals taxed as income.</li>
-      <li class="mb-2"><i class="fas fa-home text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/fhsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">FHSA (First Home Savings Account)</a>: Best for first-time home buyers. Combines TFSA and RRSP benefits specifically for saving towards a first home.</li>
-      <li class="mb-2"><i class="fas fa-university text-green-400 mr-2"></i>Non-Registered Account: <span class="tooltip">No contribution limits
-        <span class="tooltiptext">TFSA and RRSP have a maximum amount you are allowed to contribute. Check CRA Online.</span>
-      </span>
-      , <span class="tooltip">capital gains
-        <span class="tooltiptext">The profit earned from the sale of an investment that has increased in value.</span>
-      </span> and <span class="tooltip">dividends
-        <span class="tooltiptext">A distribution of a portion of a company's earnings to shareholders. Made as a cash payment to your account</span>
-      </span> are taxable.</li>
-    </ul>
+  <div class="content-box">
+  <h2 class="font-bold text-white mb-4 text-center">
+  <i class="fas fa-piggy-bank mr-2"></i>Investment Accounts & Buying ETFs
+  </h2>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+  <div class="flex flex-col justify-between">
+    <div>
+      <h3 class="font-bold text-white mb-2">Understanding Investment Accounts 📊</h3>
+      <ul class="list-none pl-0 text-white mb-4">
+        <li class="mb-2"><i class="fas fa-leaf text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">TFSA (Tax-Free Savings Account)</a>: Most popular choice for many Canadians. Contributions are <span class="tooltip">after-tax dollars
+          <span class="tooltiptext">Money that has already been taxed.</span>
+        </span>, growth and withdrawals are tax-free. <span class="tooltip">Contribution room
+          <span class="tooltiptext">
+            TFSA contribution room starts accumulating at age 18. The annual limit varies (e.g., $6,500 for 2023). Unused room carries forward, and withdrawals are added back as new room the following year. Check the CRA website for your personal limit.
+          </span>
+        </span> is flexible and cumulative.</li>
+        <li class="mb-2"><i class="fas fa-umbrella text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">RRSP (Registered Retirement Savings Plan)</a>: Ideal for higher-income earners. <span class="tooltip">Tax-deductible
+          <span class="tooltiptext">Money that you can subtract from your income before calculating taxes owed.</span>
+        </span> contributions, tax-deferred growth, withdrawals taxed as income. <span class="tooltip">Contribution room
+          <span class="tooltiptext">
+            RRSP contribution room is 18% of your previous year's earned income, up to an annual maximum (e.g., $30,780 for 2023), plus any carried forward room. Your Notice of Assessment from the CRA shows your personal limit.
+          </span>
+        </span> is based on income.</li>
+        <li class="mb-2"><i class="fas fa-home text-green-400 mr-2"></i><a href="https://www.wealthsimple.com/en-ca/accounts/fhsa" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">FHSA (First Home Savings Account)</a>: Best for first-time home buyers. Combines TFSA and RRSP benefits specifically for saving towards a first home. <span class="tooltip">Contribution room
+          <span class="tooltiptext">
+            FHSA has an annual contribution limit of $8,000, up to a lifetime maximum of $40,000. Unused room can be carried forward to the next year, but the account can only be open for a maximum of 15 years.
+          </span>
+        </span> is limited but tax-efficient.</li>
+        <li class="mb-2"><i class="fas fa-university text-green-400 mr-2"></i>Non-Registered Account: <span class="tooltip">No contribution limits
+          <span class="tooltiptext">You can invest any amount in a non-registered account, but be aware of tax implications on gains and income.</span>
+        </span>, <span class="tooltip">capital gains
+          <span class="tooltiptext">The profit earned from the sale of an investment that has increased in value.</span>
+        </span> and <span class="tooltip">dividends
+          <span class="tooltiptext">A distribution of a portion of a company's earnings to shareholders. Made as a cash payment to your account.</span>
+        </span> are taxable.</li>
+      </ul>
+    </div>
+    <div class="bg-gray-800 p-3 rounded-lg mt-auto">
+      <p class="text-white mb-2">
+        <i class="fas fa-question-circle text-green-400 mr-2"></i><strong>Not sure which account to choose?</strong>
+      </p>
+      <a href="https://images.ctfassets.net/v44fuld738we/uAklwMKFDLMlO0lkc2hKg/8b276a9f263ffb60f7a78e16fe380b13/TFSA_RRSP_FHSA_Flowchart_wLogo.png" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">
+        <i class="fas fa-external-link-alt mr-2"></i>Check out this handy flowchart for picking between TFSA, RRSP, and FHSA →
+      </a>
+    </div>
   </div>
-  <div class="bg-gray-800 p-3 rounded-lg mt-auto">
-    <p class="text-white mb-2">
-      <i class="fas fa-question-circle text-green-400 mr-2"></i><strong>Not sure which account to choose?</strong>
-    </p>
-    <a href="https://images.ctfassets.net/v44fuld738we/uAklwMKFDLMlO0lkc2hKg/8b276a9f263ffb60f7a78e16fe380b13/TFSA_RRSP_FHSA_Flowchart_wLogo.png" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">
-      <i class="fas fa-external-link-alt mr-2"></i>Check out this handy flowchart for picking between TFSA, RRSP, and FHSA →
-    </a>
+  <div class="flex flex-col justify-between">
+    <div>
+      <h3 class="font-bold text-white mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
+      <ol class="list-none pl-0 text-white mb-4">
+        <li class="mb-2">
+          <i class="fas fa-user-plus text-green-400 mr-2"></i><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Sign Up for Wealthsimple Trade</a>
+        </li>
+        <li class="mb-2">
+          <i class="fas fa-wallet text-green-400 mr-2"></i><a href="https://help.wealthsimple.com/hc/en-ca/articles/13619118312987-Different-ways-to-fund-your-Wealthsimple-account" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Fund Your Account</a>
+        </li>
+        <li class="mb-2"><i class="fas fa-search text-green-400 mr-2"></i>Search for Your Chosen ETF (e.g., XGRO)
+          <p class="text-xs italic mt-1">
+            <em>Note: Ensure the ETF is listed on the TSX and in Canadian dollars.</em>
+          </p>
+        </li>
+        <li class="mb-2">
+          <i class="fas fa-shopping-cart text-green-400 mr-2"></i>Place a <span class="tooltip">Market
+            <span class="tooltiptext">An order to buy or sell a stock immediately at the best available current price.</span>
+          </span> or <span class="tooltip">Limit
+            <span class="tooltiptext">An order to buy or sell a stock at a specific price or better.</span>
+          </span> Order
+          <p class="text-xs italic mt-1">
+            <em>Note: Use a limit order to invest your full balance; market orders require a 5% cash buffer.</em>
+          </p>
+        </li>
+        <li class="mb-2"><i class="fas fa-check-circle text-green-400 mr-2"></i>Review and Confirm Your Trade</li>
+      </ol>
+      <h3 class="font-bold text-white mb-2">Why Choose Wealthsimple Trade?</h3>
+      <ul class="list-none pl-0 text-white">
+        <li class="mb-2"><i class="fas fa-dollar-sign text-green-400 mr-2"></i>Commission-free trading <span class="tooltip">
+          <i class="fas fa-info-circle ml-1 text-blue-300"></i>
+          <span class="tooltiptext">
+            No fees for buying or selling ETFs, allowing you to invest more frequently without worrying about transaction costs.
+          </span>
+        </span></li>
+        <li class="mb-2"><i class="fas fa-mobile-alt text-green-400 mr-2"></i>User-friendly app and desktop interface</li>
+        <li class="mb-2"><i class="fas fa-rocket text-green-400 mr-2"></i>Quick and easy signup process</li>
+        <li class="mb-2"><i class="fas fa-credit-card text-green-400 mr-2"></i>Integrated Cash card for <span class="tooltip">banking features
+          <span class="tooltiptext">
+            Wealthsimple Cash offers high-interest savings, free ATM withdrawals, and cash back on purchases, seamlessly integrated with your investment accounts.
+          </span>
+        </span></li>
+        <li class="mb-2"><i class="fas fa-sync-alt text-green-400 mr-2"></i>Dividend Reinvestment Plan (DRIP) <span class="tooltip">
+          <i class="fas fa-info-circle ml-1 text-blue-300"></i>
+          <span class="tooltiptext">
+            Automatically reinvests your dividends, allowing for compound growth without manual intervention.
+          </span>
+        </span></li>
+        <li class="mb-2"><i class="fas fa-calendar-alt text-green-400 mr-2"></i>Auto-Invest feature for regular contributions</li>
+        <li class="mb-2"><i class="fas fa-shield-alt text-green-400 mr-2"></i>Member of the Canadian Investor Protection Fund (CIPF)</li>
+      </ul>
+    </div>
+    
   </div>
-</div>
-<div class="flex flex-col justify-between">
-  <div>
-    <h3 class="font-bold text-white mb-2">How to Buy All-in-One ETFs with Wealthsimple Trade 🛒</h3>
-    <ol class="list-none pl-0 text-white mb-4">
-      <li class="mb-2">
-        <i class="fas fa-user-plus text-green-400 mr-2"></i><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Sign Up for Wealthsimple Trade</a>
-      </li>
-      <li class="mb-2">
-        <i class="fas fa-wallet text-green-400 mr-2"></i><a href="https://help.wealthsimple.com/hc/en-ca/articles/13619118312987-Different-ways-to-fund-your-Wealthsimple-account" target="_blank" class="text-blue-300 hover:text-blue-100 transition duration-300">Fund Your Account</a>
-      </li>
-      <li class="mb-2"><i class="fas fa-search text-green-400 mr-2"></i>Search for Your Chosen ETF (e.g., XGRO)
-        <p class="text-xs italic mt-1">
-          <em>Note: Ensure the ETF is listed on the TSX and in Canadian dollars.</em>
-        </p>
-      </li>
-      <li class="mb-2">
-        <i class="fas fa-shopping-cart text-green-400 mr-2"></i>Place a <span class="tooltip">Market
-          <span class="tooltiptext">An order to buy or sell a stock immediately at the best available current price.</span>
-        </span> or <span class="tooltip">Limit
-          <span class="tooltiptext">An order to buy or sell a stock at a specific price or better.</span>
-        </span> Order
-        <p class="text-xs italic mt-1">
-          <em>Note: Use a limit order to invest your full balance; market orders require a 5% cash buffer.</em>
-        </p>
-      </li>
-      <li class="mb-2"><i class="fas fa-check-circle text-green-400 mr-2"></i>Review and Confirm Your Trade</li>
-    </ol>
-    <h3 class="font-bold text-white mb-2">Additional Features:</h3>
-    <ul class="list-none pl-0 text-white">
-      <li class="mb-2"><i class="fas fa-sync-alt text-green-400 mr-2"></i>Dividend Reinvestment
-         (DRIP): Automatically reinvest dividends</li>
-      <li class="mb-2"><i class="fas fa-calendar-alt text-green-400 mr-2"></i>Auto-Invest: Automate regular contributions and investments</li>
-    </ul>
   </div>
-  <div class="bg-gray-800 p-3 rounded-lg mt-auto">
-    <p class="text-white italic text-base">
-      "The best investment you can make is in yourself. The more you learn, the more you'll earn."
-    </p>
-    <p class="text-right text-green-400 text-xs mt-1">- Warren Buffett</p>
   </div>
-</div>
-</div>
-</div>
-</section>
+  </section>
 <div class="quote-carousel-container">
   <div class="quote-carousel">
     <button class="quote-nav prev-quote">&lt;</button>
@@ -1567,7 +1594,7 @@ body {
     <h2 class="font-bold text-white mb-4 text-center">
       <i class="fas fa-credit-card mr-2"></i>Wealthsimple Cash: Smart Banking Solution
     </h2>
-    <p class="text-white mb-4">Wealthsimple Cash offers essential banking features with unmatched benefits:</p>
+    <p class="text-white mb-4">Your modern chequing and savings solution, featuring a prepaid Mastercard that functions like a debit card. This versatile account integrates seamlessly with your Wealthsimple investments while offering exceptional banking benefits:</p>
     
     <div class="overflow-x-auto mb-6">
       <table class="w-full text-white">
@@ -1768,7 +1795,7 @@ body {
     <h2 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight">
       Invest in Your Future, <span class="text-green-400"><p></p>Get Rewarded Now!</span>
     </h2>
-    <p class="text-white mb-6 text-lg">Join 3 Million+ Canadians Growing Wealth with Wealthsimple</p>
+    <p class="text-white mb-6 text-lg">Join 3 Million+ Canadians Growing Wealth with Wealthsimple. After extensive research and personal experience with various low-cost brokerages, we confidently recommend Wealthsimple. While we use referral links, our endorsement stems from a genuine belief in their superior platform and services.</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <div class="bg-gray-800 p-4 rounded">
         <i class="fas fa-gift text-green-400 text-4xl mb-4"></i>
