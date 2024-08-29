@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en-CA">
 <head>
@@ -906,6 +907,16 @@ body {
   transform: scale(1.2);
 }
 
+  #animated-chart {
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  #conclusion h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
 
 
@@ -1842,9 +1853,12 @@ body {
   
   
 <section id="conclusion" class="section">
-  <div class="content-box text-center">
-    <h2 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight">
-      <i class="fas fa-chart-line text-green-400 mr-3"></i>
+  <div class="content-box text-center py-8"> <!-- Reduced padding -->
+    <h2 class="font-bold text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight flex items-center justify-center">
+      <svg id="animated-chart" width="100" height="50" viewBox="0 0 100 50" class="inline-block mr-3">
+        <path id="chart-line" d="M0,40 L20,30 L40,35 L60,15 L80,25 L100,10" stroke="#4ade80" stroke-width="3" fill="none" />
+        <circle id="chart-pointer" cx="0" cy="40" r="3" fill="#4ade80" />
+      </svg>
       Invest in Your Future, 
       <br class="hidden md:block">
       <span class="text-green-400 glow-text">Get Rewarded Now!</span>
@@ -2797,9 +2811,74 @@ window.addEventListener('scroll', () => {
                     duration: 0.3
                   });
                 }
-              });</script>
+              });
+              
 
+              </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const chartLine = document.getElementById('chart-line');
+    const chartPointer = document.getElementById('chart-pointer');
+    const svg = document.getElementById('animated-chart');
     
+    // Set up the initial animation
+    gsap.set(chartLine, { strokeDasharray: chartLine.getTotalLength(), strokeDashoffset: chartLine.getTotalLength() });
+    
+    // Create the draw animation
+    gsap.to(chartLine, {
+      strokeDashoffset: 0,
+      duration: 2,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#conclusion",
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  
+    // Function to get point on path
+    function getPointOnPath(progress) {
+      const length = chartLine.getTotalLength();
+      const point = chartLine.getPointAtLength(length * progress);
+      return { x: point.x, y: point.y };
+    }
+  
+    // Mouse move interaction
+    svg.addEventListener('mousemove', (e) => {
+      const rect = svg.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const progress = Math.max(0, Math.min(1, x / rect.width));
+      const point = getPointOnPath(progress);
+      
+      gsap.to(chartPointer, {
+        cx: point.x,
+        cy: point.y,
+        duration: 0.2,
+        ease: "power2.out"
+      });
+    });
+  
+    // Mouse enter/leave effects
+    svg.addEventListener('mouseenter', () => {
+      gsap.to(chartPointer, { r: 5, duration: 0.3 });
+      gsap.to(chartLine, { stroke: "#22c55e", duration: 0.3 });
+    });
+  
+    svg.addEventListener('mouseleave', () => {
+      gsap.to(chartPointer, { r: 3, duration: 0.3 });
+      gsap.to(chartLine, { stroke: "#4ade80", duration: 0.3 });
+      const endPoint = getPointOnPath(1);
+      gsap.to(chartPointer, {
+        cx: endPoint.x,
+        cy: endPoint.y,
+        duration: 0.5,
+        ease: "power2.inOut"
+      });
+    });
+  });
+  </script>
   <script>
 
     // Lazy loading for images
