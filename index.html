@@ -2375,6 +2375,7 @@ shareSiteTip.addEventListener('click', startPulsing);
 &copy; 2024 iCanInvest.ca. All rights reserved.
 </div>
 </footer>
+
 <script>
 function trackButtonClick(buttonName) {
 gtag('event', 'click', {
@@ -2447,21 +2448,21 @@ gtag('event', 'Wealthsimple_Click', {
 </script>
 <script>
   let lastScrollTop = 0;
-  const footer = document.querySelector('.footer');
+const footer = document.querySelector('.footer');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop) {
-      // Scrolling down
-      footer.classList.remove('visible');
-    } else {
-      // Scrolling up
-      footer.classList.add('visible');
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
+  if (scrollTop > lastScrollTop) {
+    // Scrolling down
+    footer.classList.remove('visible');
+  } else {
+    // Scrolling up
+    footer.classList.add('visible');
+  }
+  
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
   </script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -2799,126 +2800,6 @@ gtag('event', 'Wealthsimple_Click', {
               });</script>
 
     
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-  const conclusionSection = document.getElementById('conclusion');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  observer.observe(conclusionSection);
-
-  conclusionSection.style.opacity = 0;
-  conclusionSection.style.transform = 'translateY(50px)';
-  conclusionSection.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-});
-document.addEventListener('DOMContentLoaded', function() {
-  let animationTriggered = false;
-
-  function initRocketAnimation() {
-    const conclusionSection = document.getElementById('conclusion');
-    const leftRocket = document.querySelector('.left-rocket');
-    const rightRocket = document.querySelector('.right-rocket');
-
-    if (!conclusionSection || !leftRocket || !rightRocket) {
-      console.error('Required elements for rocket animation not found');
-      return;
-    }
-
-    function createSmoke(rocket) {
-      const smokeContainer = document.createElement('div');
-      smokeContainer.style.position = 'absolute';
-      smokeContainer.style.left = '0';
-      smokeContainer.style.right = '0';
-      smokeContainer.style.bottom = '0';
-      smokeContainer.style.height = '0';
-      rocket.appendChild(smokeContainer);
-
-      let smokeInterval = setInterval(() => {
-        const smoke = document.createElement('div');
-        smoke.classList.add('smoke');
-        smokeContainer.appendChild(smoke);
-
-        const startX = Math.random() * 6 - 3;
-        const startY = 0;
-
-        smoke.style.left = `${startX}px`;
-        smoke.style.bottom = `${startY}px`;
-
-        requestAnimationFrame(() => {
-          smoke.style.transition = 'all 0.5s ease-out';
-          smoke.style.transform = `translate(${startX - 50}px, ${startY + 70}px) scale(2)`;
-          smoke.style.opacity = '0';
-        });
-
-        setTimeout(() => smoke.remove(), 500);
-      }, 20);
-
-      setTimeout(() => {
-        clearInterval(smokeInterval);
-        setTimeout(() => smokeContainer.remove(), 500);
-      }, 3000);
-    }
-
-    function startRocketAnimation() {
-      if (animationTriggered) return;
-      animationTriggered = true;
-
-      console.log('Starting rocket animation');
-
-      // Start shaking animation
-      leftRocket.style.animation = 'shake 0.5s ease-in-out infinite';
-      rightRocket.style.animation = 'shake 0.5s ease-in-out infinite';
-
-      // After 2 seconds, start takeoff
-      setTimeout(() => {
-        leftRocket.style.animation = 'takeOff 3s ease-in forwards';
-        rightRocket.style.animation = 'takeOff 3s ease-in forwards';
-        
-        // Create smoke effect
-        createSmoke(leftRocket);
-        createSmoke(rightRocket);
-      }, 2000);
-    }
-
-    function checkScroll() {
-      const rect = conclusionSection.getBoundingClientRect();
-      const triggerPoint = window.innerHeight * 0.6; // Trigger when 60% of the viewport height is reached
-
-      if (rect.top <= triggerPoint && rect.bottom >= triggerPoint) {
-        startRocketAnimation();
-        window.removeEventListener('scroll', checkScroll);
-      }
-    }
-
-    // Use both scroll event and Intersection Observer
-    window.addEventListener('scroll', checkScroll);
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-          startRocketAnimation();
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: [0.6] }); // Trigger when 60% of the element is visible
-
-    observer.observe(conclusionSection);
-
-    // Initial check in case the section is already in view
-    checkScroll();
-  }
-
-  // Initialize only once
-  initRocketAnimation();
-});
-  </script>
   <script>
 
     // Lazy loading for images
