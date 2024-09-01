@@ -2928,6 +2928,33 @@ window.addEventListener('scroll', () => {
         }
       }
     });
+    document.addEventListener('DOMContentLoaded', function() {
+  // Existing Wealthsimple tracking code...
+
+  // Simplii link tracking
+  var simpliiLink = document.querySelector('a[href="https://blue.mbsy.co/3vqSCL"]');
+  if (simpliiLink) {
+    simpliiLink.addEventListener('click', function(e) {
+      gtag('event', 'Simplii_Click', {
+        'event_category': 'Outbound Link',
+        'event_label': 'Simplii Link',
+        'transport_type': 'beacon'
+      });
+    });
+  }
+
+  // Tangerine link tracking
+  var tangerineLink = document.querySelector('a[href="https://www.tangerine.ca/en/personal"]');
+  if (tangerineLink) {
+    tangerineLink.addEventListener('click', function(e) {
+      gtag('event', 'Tangerine_Click', {
+        'event_category': 'Outbound Link',
+        'event_label': 'Tangerine Link',
+        'transport_type': 'beacon'
+      });
+    });
+  }
+});
   </script>
 </body>
 </html>
