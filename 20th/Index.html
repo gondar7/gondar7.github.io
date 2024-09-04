@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Decades of Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Lora', serif;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-family: 'Lora', serif;
+            font-size: 1.5em;
+            text-align: center;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5em;
+    margin: 0;
+    white-space: nowrap;
+    position: relative;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.gradient-text {
+    background-image: linear-gradient(45deg, 
+        rgba(255,100,100,0.8) 0%, 
+        rgba(255,255,255,1) 25%, 
+        rgba(100,150,255,0.8) 50%, 
+        rgba(255,255,255,1) 75%,
+        rgba(255,100,100,0.8) 100%
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+        .ring {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            right: 20px;
+            top: 40%;
+            z-index: 100;
+        }
+
+        .pet {
+            position: absolute;
+            width: 100px;
+            opacity: 0;
+        }
+
+        #isla {
+            position: absolute;
+            bottom: 0px;
+            left: -200px;
+            width: 200px;
+        }
+
+        .final-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5em;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            position: absolute;
+            top: 20px;
+            width: 100%;
+        }
+
+        .couple-image {
+            width: 300px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+
+        .final-heart {
+            font-size: 3em;
+            position: absolute;
+            bottom: 50px;
+            right: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .heart-icon {
+            color: red;
+            margin-right: 10px;
+            animation: pulse 1s infinite;
+        }
+
+        .final-signature {
+            font-family: 'Lora', serif;
+            font-size: 1.5em;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: brightness(100%); }
+            50% { transform: scale(1.1); filter: brightness(150%); }
+            100% { transform: scale(1); filter: brightness(100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide" style="background-image: url('images/HC27378.webp');">
+        <div class="content">
+            <h1 class="title">
+                <span class="gradient-text">Two Decades of Us</span>
+            </h1>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/HC27230.webp');">
+        <div class="content">
+            <p>Twenty years, my love, how swift they've flown,<br>
+            From Guelph's green fields where our love has grown.<br>
+            Campus adventures, hearts wild and free,<br>
+            Sparked a love lasting eternally.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/HC27502.webp');">
+        <div class="content">
+            <p>Melly, my Heff, my anchor and my guide,<br>
+            Through every storm, you've stood firm by my side.<br>
+            From Hamilton's streets to Welland's quiet lanes,<br>
+            Our love has flourished through joys and pains.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/HC27543.webp');">
+        <div class="content">
+            <p>In your eyes, I've watched the seasons turn,<br>
+            Seen passion and compassion equally burn.<br>
+            Your heart, so giving, to all creatures kind,<br>
+            A gentleness in you I'll always find.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/bridge.webp');">
+        <div class="content">
+            <p>Remember Yoshi, our gentle, gassy friend?<br>
+            His love, like ours, seemed without end.<br>
+            Now Peaches, Boo, and Koopa carry on,<br>
+            The legacy of care that you've begun.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/HC27572.webp');">
+        <div class="content">
+            <p>Our Isla came, a gift beyond compare,<br>
+            Her smile a blend of your love and care.<br>
+            And now, my dear, our joy grows even more,<br>
+            A second miracle we're waiting for.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/HC27580.webp');">
+        <div class="content">
+            <p>Through morning sickness (more like all-day, right?),<br>
+            You soldier on, my queasy, queenly knight.<br>
+            I'll fetch your crackers, hold your hair with care,<br>
+            In sickness and in health, I'll always be there.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/HC27752.webp');">
+        <div class="content">
+            <p>Two decades on, my love grows ever stronger,<br>
+            Each day with you, I wish was somehow longer.<br>
+            Your hard work, your laughter, your tender touch,<br>
+            Remind me why I love you, oh so much.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('images/_HC27073.webp');">
+        <div class="content">
+            <p>My Melly, my Bob, my partner, my friend,<br>
+            Our love's a loop, a circle without end.<br>
+            For all our years, both lived and yet to be,<br>
+            I'm grateful, love, it's you walking with me.</p>
+        </div>
+    </div>
+
+
+
+    <div class="slide" style="background-image: url('images/nightchurch2.webp');">
+        <h1 class="final-title">Happy 20th Anniversary</h1>
+        <img src="images/mellyshane.webp" alt="Melly and Shane" class="couple-image" id="coupleImage">
+        <div class="final-heart">
+            <span class="final-signature">Love, Shane</span>
+            <span class="heart-icon">❤️</span>
+            
+        </div>
+    </div>
+
+    <img src="images/ring.webp" alt="Ring" class="ring">
+    <img src="images/boo.webp" alt="Boo" class="pet" id="boo" style="right: -100px; top: 50%;">
+    <img src="images/peaches.webp" alt="Peaches" class="pet" id="peaches" style="left: -100px; top: 60%;">
+    <img src="images/yoshi.webp" alt="Yoshi" class="pet" id="yoshi" style="right: -100px; top: 70%;">
+    <img src="images/koopa.webp" alt="Koopa" class="pet" id="koopa" style="left: -100px; top: 80%;">
+    <img src="images/isla.webp" alt="Isla" id="isla">
+
+    <audio id="backgroundMusic">
+        <source src="images/zmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        
+        gsap.registerPlugin(ScrollTrigger);
+    
+        const audio = document.getElementById('backgroundMusic');
+        const slides = document.querySelectorAll('.slide');
+        const contents = document.querySelectorAll('.content');
+        const pets = document.querySelectorAll('.pet');
+        const isla = document.getElementById('isla');
+        const ring = document.querySelector('.ring');
+        const title = document.querySelector('.title');
+    
+
+// Function to play audio if not already playing
+function playAudio() {
+    if (audio.paused) {
+        audio.play().catch(error => {
+            console.log("Autoplay was prevented. User interaction needed to play the audio.");
+        });
+    }
+}
+ // Play audio on user interaction
+ function playAudio() {
+            audio.play();
+            document.removeEventListener('click', playAudio);
+        }
+
+        document.addEventListener('click', playAudio);
+    
+// Play music when the user starts scrolling
+let musicStarted = false;
+window.addEventListener('scroll', () => {
+    if (!musicStarted) {
+        playAudio();
+        musicStarted = true;
+    }
+});
+
+ScrollTrigger.config({
+            ignoreMobileResize: true,
+            autoRefreshEvents: "DOMContentLoaded,load,resize,visibilitychange",
+        });
+
+        // Function to update ScrollTrigger
+        function updateScrollTrigger() {
+            ScrollTrigger.update();
+            requestAnimationFrame(updateScrollTrigger);
+        }
+
+        // Start the update loop
+        updateScrollTrigger();
+
+        // Add various event listeners
+        ["scroll", "touchmove", "wheel"].forEach(eventType => {
+            window.addEventListener(eventType, () => {
+                ScrollTrigger.update();
+            }, {passive: true});
+        });
+
+        // Refresh on orientation change
+        window.addEventListener("orientationchange", () => {
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 100);
+        });
+        // Animate title text
+        gsap.from(title, {
+            opacity: 0,
+            y: 50,
+            duration: 2,
+            ease: "power2.out"
+        });
+
+// Animate the initial bounce of the ring
+gsap.fromTo(ring, 
+    { y: -600, opacity: 0 }, 
+    { y: 0, opacity: 1, duration: 1, ease: "bounce.out", delay: 2 }
+);
+
+// Animate the ring spinning on scroll
+slides.forEach((slide, index) => {
+    gsap.to(ring, {
+        rotation: 360,
+        ease: "none",
+        scrollTrigger: {
+            trigger: slide,
+            start: "top center",
+            end: "bottom center",
+            scrub: 0.5,
+        }
+    });
+});
+
+
+        // Background music
+        ScrollTrigger.create({
+            trigger: slides[0],
+            start: "bottom top",
+            onLeave: () => audio.play(),
+        });
+    
+        // Animate content
+        contents.forEach((content, index) => {
+            gsap.from(content, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: slides[index],
+                    start: "top center",
+                    end: "bottom center",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+    
+        // Animate pets
+        const petSlide = slides[4];
+        pets.forEach((pet, index) => {
+            const direction = index % 2 === 0 ? 1 : -1;
+            gsap.fromTo(pet,
+                { x: direction * 100, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: petSlide,
+                        start: "top center",
+                        end: "bottom center",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    
+        // Animate Isla
+        gsap.to(isla, {
+            x: window.innerWidth + 200,
+            duration: 10,
+            ease: "none",
+            scrollTrigger: {
+                trigger: slides[5],
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+  // Refined couple image animation
+gsap.fromTo("#coupleImage",
+    { 
+        y: '-100vh', 
+        opacity: 0, 
+        rotation: 0,
+        scale: 0.1
+    },
+    {
+        y: 100,  // Adjusted end position
+        opacity: 1,
+        rotation: 720,
+        scale: 1,
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+            trigger: slides[slides.length - 1],
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: 1,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                
+                // Keep the couple at the top for longer
+                const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
+                
+                // Slow growth and opacity increase
+                const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
+                
+                // Continuous rotation
+                const rotation = progress * 720; // Two full rotations
+
+                gsap.set("#coupleImage", {
+                    y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
+                    scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
+                    opacity: gsap.utils.interpolate(0, 1, scaleProgress),
+                    rotation: rotation
+                });
+            }
+        }
+    }
+);
+
+        // Fade in the final title
+        gsap.from(".final-title", {
+            opacity: 0,
+            y: -50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: slides[slides.length - 1],
+                start: "top bottom",
+                end: "center center",
+                scrub: 1,
+            }
+        });
+
+        // Fade in the heart and Shane text
+        gsap.from(".final-heart", {
+            opacity: 0,
+            scale: 0.5,
+            duration: 1,
+            scrollTrigger: {
+                trigger: slides[slides.length - 1],
+                start: "top bottom",
+                end: "center center",
+                scrub: 1,
+            }
+        });
+    </script>
+<script>
+document.addEventListener('mousemove', function(e) {
+    const title = document.querySelector('.gradient-text');
+    const rect = title.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    
+    const xPercent = Math.max(0, Math.min(100, x * 100));
+    const yPercent = Math.max(0, Math.min(100, y * 100));
+    
+    title.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+});
+    </script>
+</body>
+</html>
