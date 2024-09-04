@@ -144,7 +144,20 @@
             50% { transform: scale(1.1); filter: brightness(150%); }
             100% { transform: scale(1); filter: brightness(100%); }
         }
+  /* Add this new style for picture elements */
+  .slide picture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
+        .slide picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         /* Mobile Styles */
         @media (max-width: 768px) {
             .content {
@@ -197,6 +210,16 @@
                 overflow-x: hidden;
                 width: 100%;
             }
+            .slide picture source[media="(min-width: 769px)"] {
+                display: none;
+            }
+        }
+                /* Desktop Styles */
+                @media (min-width: 769px) {
+            /* Hide mobile images on desktop */
+            .slide picture source[media="(max-width: 768px)"] {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -209,7 +232,12 @@
         </div>
     </div>
 
-    <div class="slide" style="background-image: url('images/HC27230.webp');">
+    <div class="slide">
+        <picture>
+            <source media="(max-width: 768px)" srcset="images/HC19107.webp">
+            <source media="(min-width: 769px)" srcset="images/HC27230.webp">
+            <img src="images/HC27230.webp" alt="Slide 2 background">
+        </picture>
         <div class="content">
             <p>Twenty years, my love, how swift they've flown,<br>
             From Guelph's green fields where our love has grown.<br>
@@ -263,7 +291,12 @@
         </div>
     </div>
 
-    <div class="slide" style="background-image: url('images/HC27752.webp');">
+    <div class="slide">
+        <picture>
+            <source media="(max-width: 768px)" srcset="images/HC19158.webp">
+            <source media="(min-width: 769px)" srcset="images/HC27752.webp">
+            <img src="images/HC27752.webp" alt="Slide 8 background">
+        </picture>
         <div class="content">
             <p>Two decades on, my love grows ever stronger,<br>
             Each day with you, I wish was somehow longer.<br>
@@ -272,7 +305,12 @@
         </div>
     </div>
 
-    <div class="slide" style="background-image: url('images/HC27073.webp');">
+    <div class="slide">
+        <picture>
+            <source media="(max-width: 768px)" srcset="images/HC19202.webp">
+            <source media="(min-width: 769px)" srcset="images/HC27073.webp">
+            <img src="images/HC27073.webp" alt="Slide 9 background">
+        </picture>
         <div class="content">
             <p>My Melly, my Bob, my partner, my friend,<br>
             Our love's a loop, a circle without end.<br>
