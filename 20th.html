@@ -150,39 +150,52 @@
             .content {
                 padding: 20px;
                 font-size: 1.2em;
+                max-width: 90%;
             }
 
             .title {
-                font-size: 3em;
+                font-size: 2.5em;
+                white-space: normal;
+            }
+
+            .slide {
+                background-position: center center;
+                background-size: cover;
             }
 
             .ring {
-                width: 100px;
-                height: 100px;
+                width: 80px;
+                height: 80px;
                 right: 10px;
-                top: 20%;
-            }
-
-            .pet {
-                width: 50px;
+                top: 10%;
+                position: absolute;
             }
 
             #isla {
                 width: 100px;
+                left: -100px;
             }
 
             .final-title {
-                font-size: 3em;
+                font-size: 2.5em;
+                top: 10px;
             }
 
             .couple-image {
-                width: 200px;
+                width: 150px;
+                bottom: 20%;
             }
 
             .final-heart {
-                font-size: 2em;
-                bottom: 30px;
-                right: 50px;
+                font-size: 1.5em;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            /* Prevent horizontal scrolling */
+            body {
+                overflow-x: hidden;
+                width: 100%;
             }
         }
     </style>
@@ -423,7 +436,22 @@ slides.forEach((slide, index) => {
             );
         });
     
-        // Animate Isla
+       // Animate Isla
+    if (window.innerWidth <= 768) {
+        // Mobile animation for Isla
+        gsap.to(isla, {
+            x: window.innerWidth,
+            duration: 10,
+            ease: "none",
+            scrollTrigger: {
+                trigger: slides[5],
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+    } else {
+        // Desktop animation for Isla (unchanged)
         gsap.to(isla, {
             x: window.innerWidth + 200,
             duration: 10,
@@ -435,48 +463,86 @@ slides.forEach((slide, index) => {
                 scrub: 1
             }
         });
-  // Refined couple image animation
-gsap.fromTo("#coupleImage",
-    { 
-        y: '-100vh', 
-        opacity: 0, 
-        rotation: 0,
-        scale: 0.1
-    },
-    {
-        y: 100,  // Adjusted end position
-        opacity: 1,
-        rotation: 720,
-        scale: 1,
-        duration: 1,
-        ease: "none",
-        scrollTrigger: {
-            trigger: slides[slides.length - 1],
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: 1,
-            onUpdate: (self) => {
-                const progress = self.progress;
-                
-                // Keep the couple at the top for longer
-                const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
-                
-                // Slow growth and opacity increase
-                const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
-                
-                // Continuous rotation
-                const rotation = progress * 720; // Two full rotations
-
-                gsap.set("#coupleImage", {
-                    y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
-                    scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
-                    opacity: gsap.utils.interpolate(0, 1, scaleProgress),
-                    rotation: rotation
-                });
-            }
-        }
     }
-);
+
+    // Couple image animation
+    if (window.innerWidth <= 768) {
+        // Mobile animation for couple image
+        gsap.fromTo("#coupleImage",
+            { 
+                y: '-100vh', 
+                opacity: 0, 
+                rotation: 0,
+                scale: 0.1
+            },
+            {
+                y: 150,
+                opacity: 1,
+                rotation: 720,
+                scale: 1,
+                duration: 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: slides[slides.length - 1],
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        
+                        const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.5) * 2)));
+                        const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
+                        const rotation = progress * 720;
+
+                        gsap.set("#coupleImage", {
+                            y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
+                            scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
+                            opacity: gsap.utils.interpolate(0, 1, scaleProgress),
+                            rotation: rotation
+                        });
+                    }
+                }
+            }
+        );
+    } else {
+        // Desktop animation for couple image (unchanged)
+        gsap.fromTo("#coupleImage",
+            { 
+                y: '-100vh', 
+                opacity: 0, 
+                rotation: 0,
+                scale: 0.1
+            },
+            {
+                y: 100,
+                opacity: 1,
+                rotation: 720,
+                scale: 1,
+                duration: 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: slides[slides.length - 1],
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        
+                        const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
+                        const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
+                        const rotation = progress * 720;
+
+                        gsap.set("#coupleImage", {
+                            y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
+                            scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
+                            opacity: gsap.utils.interpolate(0, 1, scaleProgress),
+                            rotation: rotation
+                        });
+                    }
+                }
+            }
+        );
+    }
 
         // Fade in the final title
         gsap.from(".final-title", {
