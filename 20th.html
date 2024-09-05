@@ -515,7 +515,7 @@ if (window.innerWidth <= 768) {
 const coupleImage = document.getElementById('coupleImage');
 
 if (window.innerWidth <= 768) {
-    // Enhanced mobile animation for couple image
+    // Revised mobile animation for couple image
     gsap.set(coupleImage, { 
         y: '-90vh',
         opacity: 0,
@@ -528,8 +528,7 @@ if (window.innerWidth <= 768) {
         opacity: 1,
         rotation: 720,
         scale: 1,
-        duration: 1,
-        ease: "power2.out",
+        ease: "none",
         scrollTrigger: {
             trigger: slides[slides.length - 1],
             start: "top bottom",
@@ -540,24 +539,25 @@ if (window.innerWidth <= 768) {
                 
                 // Custom easing function to delay vertical movement
                 const easeVertical = t => {
-                    if (t < 0.7) return 0;
-                    return (t - 0.7) / 0.3;
+                    if (t < 0.7) return gsap.parseEase("power1.in")(t / 0.7) * 0.2;
+                    return 0.2 + (t - 0.7) / 0.3 * 0.8;
                 };
                 
                 // Easing for scale and opacity
-                const easeScaleOpacity = t => t < .5 ? 2*t*t : -1+(4-2*t)*t;
+                const easeScaleOpacity = gsap.parseEase("power2.out");
                 
                 // Calculate position, scale, and opacity
                 const y = gsap.utils.interpolate('-90vh', '70vh', easeVertical(progress));
                 const scale = gsap.utils.interpolate(0.1, 1, easeScaleOpacity(progress));
                 const opacity = gsap.utils.interpolate(0, 1, easeScaleOpacity(progress));
+                const rotation = progress * 720;
                 
-                // Set properties
+                // Apply all properties in a single set operation
                 gsap.set(coupleImage, {
                     y: y,
                     scale: scale,
                     opacity: opacity,
-                    rotation: progress * 720
+                    rotation: rotation
                 });
             }
         }
