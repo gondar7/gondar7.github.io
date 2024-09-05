@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -477,47 +478,32 @@ slides.forEach((slide, index) => {
     
 // Animate Isla
 if (window.innerWidth <= 768) {
-    // Mobile animation for Isla
-    gsap.set(isla, {
-        x: -100,
-        bottom: 0,
-        width: '100px',
-        height: 'auto'
-    });
-    
-    gsap.to(isla, {
-        x: window.innerWidth + 100, // Move Isla off-screen to the right
-        duration: 10,
-        ease: "none",
-        scrollTrigger: {
-            trigger: slides[5],
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-            onUpdate: (self) => {
-                // Ensure Isla's movement doesn't affect page scrolling
-                document.body.style.overflowX = 'hidden';
-            },
-            onComplete: () => {
-                // Hide Isla when she's completely off-screen
-                gsap.set(isla, { display: 'none' });
+        // Mobile animation for Isla
+        gsap.to(isla, {
+            x: window.innerWidth + 200,
+            duration: 10,
+            ease: "none",
+            scrollTrigger: {
+                trigger: slides[5],
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
             }
-        }
-    });
-} else {
-    // Desktop animation for Isla (unchanged)
-    gsap.to(isla, {
-        x: window.innerWidth + 200,
-        duration: 10,
-        ease: "none",
-        scrollTrigger: {
-            trigger: slides[5],
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1
-        }
-    });
-}
+        });
+    } else {
+        // Desktop animation for Isla (unchanged)
+        gsap.to(isla, {
+            x: window.innerWidth + 200,
+            duration: 10,
+            ease: "none",
+            scrollTrigger: {
+                trigger: slides[5],
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+    }
 
 // Ensure overflow is reset when leaving the relevant section
 ScrollTrigger.create({
