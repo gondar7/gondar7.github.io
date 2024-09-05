@@ -83,6 +83,7 @@
             right: 20px;
             top: 40%;
             z-index: 100;
+            pointer-events: none;
         }
 
         .pet {
@@ -96,6 +97,7 @@
             bottom: 0px;
             left: -200px;
             width: 200px;
+            pointer-events: none;
         }
 
         .final-title {
@@ -116,6 +118,7 @@
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
+            pointer-events: none;
         }
 
         .final-heart {
@@ -183,6 +186,7 @@
                 right: 10%;
                 top: 10%;
                 position: absolute;
+                pointer-events: none;
             }
 
             #isla {
@@ -191,6 +195,7 @@
         left: -180px;
         width: 35vw; /* Adjust as needed */
         height: auto;
+        pointer-events: none;
         
     }
 
@@ -202,6 +207,7 @@
             .couple-image {
                 width: 150px;
                 bottom: 20%;
+                pointer-events: none;
             }
 
             .final-heart {
@@ -421,7 +427,7 @@ ScrollTrigger.config({
 // Animate the initial bounce of the ring
 gsap.fromTo(ring, 
     { y: -600, opacity: 0 }, 
-    { y: 0, opacity: 1, duration: 1, ease: "bounce.out", delay: 1 }
+    { y: 0, opacity: 1, duration: 1, ease: "bounce.out", delay: 0.5 }
 );
 
 // Animate the ring spinning on scroll
