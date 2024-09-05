@@ -187,11 +187,11 @@
 
             #isla {
         position: fixed;
-        bottom: 10vh; /* Adjust as needed */
-        left: -100px;
-        width: 20vw; /* Adjust as needed */
+        bottom: 0vh; /* Adjust as needed */
+        left: -180px;
+        width: 35vw; /* Adjust as needed */
         height: auto;
-        z-index: 10;
+        
     }
 
             .final-title {
@@ -485,7 +485,7 @@ slides.forEach((slide, index) => {
 if (window.innerWidth <= 768) {
         // Mobile animation for Isla
         gsap.to(isla, {
-            x: window.innerWidth + 100,
+            x: window.innerWidth + 170,
             duration: 10,
             ease: "none",
             scrollTrigger: {
