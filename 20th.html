@@ -507,14 +507,6 @@ if (window.innerWidth <= 768) {
         });
     }
 
-// Ensure overflow is reset when leaving the relevant section
-ScrollTrigger.create({
-    trigger: slides[6],
-    start: "top bottom",
-    onEnter: () => {
-        document.body.style.overflowX = '';
-    }
-});
 
     // Couple image animation
     if (window.innerWidth <= 768) {
