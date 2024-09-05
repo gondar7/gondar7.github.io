@@ -511,22 +511,23 @@ if (window.innerWidth <= 768) {
     }
 
 
-  // Couple image animation
+// Couple image animation
 const coupleImage = document.getElementById('coupleImage');
 
 if (window.innerWidth <= 768) {
-    // Simplified mobile animation for couple image
+    // Enhanced mobile animation for couple image
     gsap.set(coupleImage, { 
-        y: '-100vh',
+        y: '-90vh',
         opacity: 0,
         rotation: 0,
-        scale: 1
+        scale: 0.1
     });
 
     gsap.to(coupleImage, {
         y: 150, // Adjust this value to match the final position you want
         opacity: 1,
         rotation: 720,
+        scale: 1,
         duration: 1,
         ease: "power2.out",
         scrollTrigger: {
@@ -537,16 +538,24 @@ if (window.innerWidth <= 768) {
             onUpdate: (self) => {
                 const progress = self.progress;
                 
-                // Simple easing function
-                const ease = t => t<.5 ? 2*t*t : -1+(4-2*t)*t;
+                // Custom easing function to delay vertical movement
+                const easeVertical = t => {
+                    if (t < 0.7) return 0;
+                    return (t - 0.7) / 0.3;
+                };
                 
-                // Calculate position and opacity
-                const y = gsap.utils.interpolate('-100vh', 100, ease(progress));
-                const opacity = gsap.utils.interpolate(0, 1, ease(progress));
+                // Easing for scale and opacity
+                const easeScaleOpacity = t => t < .5 ? 2*t*t : -1+(4-2*t)*t;
+                
+                // Calculate position, scale, and opacity
+                const y = gsap.utils.interpolate('-90vh', '70vh', easeVertical(progress));
+                const scale = gsap.utils.interpolate(0.1, 1, easeScaleOpacity(progress));
+                const opacity = gsap.utils.interpolate(0, 1, easeScaleOpacity(progress));
                 
                 // Set properties
                 gsap.set(coupleImage, {
                     y: y,
+                    scale: scale,
                     opacity: opacity,
                     rotation: progress * 720
                 });
