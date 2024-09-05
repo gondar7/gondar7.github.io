@@ -524,7 +524,7 @@ if (window.innerWidth <= 768) {
     });
 
     gsap.to(coupleImage, {
-        y: '16vh', // Adjust this value if needed
+        y: '16vh',
         opacity: 1,
         rotation: 720,
         scale: 1,
@@ -534,7 +534,7 @@ if (window.innerWidth <= 768) {
             trigger: slides[slides.length - 1],
             start: "top bottom",
             end: "bottom bottom",
-            scrub: 1,
+            scrub: true,
             onUpdate: (self) => {
                 const progress = self.progress;
                 
@@ -551,18 +551,6 @@ if (window.innerWidth <= 768) {
             }
         }
     });
-
-    // Function to update ScrollTrigger on resize and orientation change
-    function updateScrollTrigger() {
-        ScrollTrigger.refresh();
-    }
-
-    // Update on resize and orientation change
-    window.addEventListener('resize', updateScrollTrigger);
-    window.addEventListener('orientationchange', () => {
-        setTimeout(updateScrollTrigger, 100);
-    });
-
 } else {
     // Desktop animation (unchanged)
     gsap.fromTo(coupleImage,
