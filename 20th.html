@@ -511,84 +511,87 @@ if (window.innerWidth <= 768) {
     }
 
 
-    // Couple image animation
-    if (window.innerWidth <= 768) {
-        // Mobile animation for couple image
-        gsap.fromTo("#coupleImage",
-            { 
-                y: '-100vh', 
-                opacity: 0, 
-                rotation: 0,
-                scale: 0.1
-            },
-            {
-                y: 150,
-                opacity: 1,
-                rotation: 720,
-                scale: 1,
-                duration: 1,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: slides[slides.length - 1],
-                    start: "top bottom",
-                    end: "bottom bottom",
-                    scrub: 0.5,
-                    onUpdate: (self) => {
-                        const progress = self.progress;
-                        
-                        const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.5) * 2)));
-                        const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
-                        const rotation = progress * 720;
+  // Couple image animation
+const coupleImage = document.getElementById('coupleImage');
 
-                        gsap.set("#coupleImage", {
-                            y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
-                            scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
-                            opacity: gsap.utils.interpolate(0, 1, scaleProgress),
-                            rotation: rotation
-                        });
-                    }
+if (window.innerWidth <= 768) {
+    // Simplified mobile animation for couple image
+    gsap.set(coupleImage, { 
+        y: '-100vh',
+        opacity: 0,
+        rotation: 0,
+        scale: 1
+    });
+
+    gsap.to(coupleImage, {
+        y: 150, // Adjust this value to match the final position you want
+        opacity: 1,
+        rotation: 720,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: slides[slides.length - 1],
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: 1,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                
+                // Simple easing function
+                const ease = t => t<.5 ? 2*t*t : -1+(4-2*t)*t;
+                
+                // Calculate position and opacity
+                const y = gsap.utils.interpolate('-100vh', 100, ease(progress));
+                const opacity = gsap.utils.interpolate(0, 1, ease(progress));
+                
+                // Set properties
+                gsap.set(coupleImage, {
+                    y: y,
+                    opacity: opacity,
+                    rotation: progress * 720
+                });
+            }
+        }
+    });
+} else {
+    // Desktop animation (unchanged)
+    gsap.fromTo(coupleImage,
+        { 
+            y: '-100vh', 
+            opacity: 0, 
+            rotation: 0,
+            scale: 0.1
+        },
+        {
+            y: 100,
+            opacity: 1,
+            rotation: 720,
+            scale: 1,
+            duration: 1,
+            ease: "none",
+            scrollTrigger: {
+                trigger: slides[slides.length - 1],
+                start: "top bottom",
+                end: "bottom bottom",
+                scrub: 1,
+                onUpdate: (self) => {
+                    const progress = self.progress;
+                    
+                    const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
+                    const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
+                    const rotation = progress * 720;
+
+                    gsap.set(coupleImage, {
+                        y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
+                        scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
+                        opacity: gsap.utils.interpolate(0, 1, scaleProgress),
+                        rotation: rotation
+                    });
                 }
             }
-        );
-    } else {
-        // Desktop animation for couple image (unchanged)
-        gsap.fromTo("#coupleImage",
-            { 
-                y: '-100vh', 
-                opacity: 0, 
-                rotation: 0,
-                scale: 0.1
-            },
-            {
-                y: 100,
-                opacity: 1,
-                rotation: 720,
-                scale: 1,
-                duration: 1,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: slides[slides.length - 1],
-                    start: "top bottom",
-                    end: "bottom bottom",
-                    scrub: 1,
-                    onUpdate: (self) => {
-                        const progress = self.progress;
-                        
-                        const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
-                        const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
-                        const rotation = progress * 720;
-
-                        gsap.set("#coupleImage", {
-                            y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
-                            scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
-                            opacity: gsap.utils.interpolate(0, 1, scaleProgress),
-                            rotation: rotation
-                        });
-                    }
-                }
-            }
-        );
-    }
+        }
+    );
+}
 
         // Fade in the final title
         gsap.from(".final-title", {
