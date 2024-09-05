@@ -478,14 +478,9 @@ slides.forEach((slide, index) => {
             );
         });
     
-// Function to handle Isla animation for mobile/desktop
-function animateIsla() {
-    // Reset any existing GSAP animations for 'isla'
-    gsap.killTweensOf(isla);
-
-    if (window.innerWidth <= 768) {
+// Animate Isla
+if (window.innerWidth <= 768) {
         // Mobile animation for Isla
-        console.log("Mobile animation triggered, screen width:", window.innerWidth);
         gsap.to(isla, {
             x: window.innerWidth + 200,
             duration: 10,
@@ -499,7 +494,6 @@ function animateIsla() {
         });
     } else {
         // Desktop animation for Isla (unchanged)
-        console.log("Desktop animation triggered, screen width:", window.innerWidth);
         gsap.to(isla, {
             x: window.innerWidth + 200,
             duration: 10,
@@ -512,19 +506,6 @@ function animateIsla() {
             }
         });
     }
-
-    // Refresh ScrollTrigger to apply changes
-    ScrollTrigger.refresh();
-}
-
-// Initial call to animateIsla
-animateIsla();
-
-// Add resize event listener to update animation on screen resize
-window.addEventListener("resize", function() {
-    animateIsla();
-});
-
 
 // Ensure overflow is reset when leaving the relevant section
 ScrollTrigger.create({
