@@ -558,10 +558,10 @@ if (window.innerWidth <= 768) {
     }
 
     // Update on resize and orientation change
-    //window.addEventListener('resize', updateScrollTrigger);
-    //window.addEventListener('orientationchange', () => {
-    //    setTimeout(updateScrollTrigger, 100);
-    //});
+    window.addEventListener('resize', updateScrollTrigger);
+    window.addEventListener('orientationchange', () => {
+        setTimeout(updateScrollTrigger, 100);
+    });
 
 } else {
     // Desktop animation (unchanged)
