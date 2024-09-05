@@ -421,7 +421,7 @@ ScrollTrigger.config({
 // Animate the initial bounce of the ring
 gsap.fromTo(ring, 
     { y: -600, opacity: 0 }, 
-    { y: 0, opacity: 1, duration: 1, ease: "bounce.out", delay: 2 }
+    { y: 0, opacity: 1, duration: 1, ease: "bounce.out", delay: 1 }
 );
 
 // Animate the ring spinning on scroll
@@ -532,7 +532,7 @@ if (window.innerWidth <= 768) {
                     trigger: slides[slides.length - 1],
                     start: "top bottom",
                     end: "bottom bottom",
-                    scrub: 1,
+                    scrub: 0.5,
                     onUpdate: (self) => {
                         const progress = self.progress;
                         
