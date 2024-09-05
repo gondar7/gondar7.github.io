@@ -186,10 +186,13 @@
             }
 
             #isla {
-                width: 100px;
-                left: -100px;
-                bottom: 0;
-            }
+        position: fixed;
+        bottom: 10vh; /* Adjust as needed */
+        left: -100px;
+        width: 20vw; /* Adjust as needed */
+        height: auto;
+        z-index: 10;
+    }
 
             .final-title {
                 font-size: 2.5em;
@@ -482,7 +485,7 @@ slides.forEach((slide, index) => {
 if (window.innerWidth <= 768) {
         // Mobile animation for Isla
         gsap.to(isla, {
-            x: window.innerWidth + 200,
+            x: window.innerWidth + 100,
             duration: 10,
             ease: "none",
             scrollTrigger: {
