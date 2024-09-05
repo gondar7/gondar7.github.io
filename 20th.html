@@ -553,15 +553,15 @@ if (window.innerWidth <= 768) {
     });
 
     // Function to update ScrollTrigger on resize and orientation change
-    function updateScrollTrigger() {
-        ScrollTrigger.refresh();
-    }
+    //function updateScrollTrigger() {
+    //    ScrollTrigger.refresh();
+    //}
 
     // Update on resize and orientation change
-    window.addEventListener('resize', updateScrollTrigger);
-    window.addEventListener('orientationchange', () => {
-        setTimeout(updateScrollTrigger, 100);
-    });
+    //window.addEventListener('resize', updateScrollTrigger);
+    //window.addEventListener('orientationchange', () => {
+    //    setTimeout(updateScrollTrigger, 100);
+    //});
 
 } else {
     // Desktop animation (unchanged)
@@ -592,7 +592,7 @@ if (window.innerWidth <= 768) {
                     const rotation = progress * 720;
 
                     gsap.set(coupleImage, {
-                        y: gsap.utils.interpolate(-100, 70, yProgress) + 'vh',
+                        y: gsap.utils.interpolate(-100, 100, yProgress) + 'vh',
                         scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
                         opacity: gsap.utils.interpolate(0, 1, scaleProgress),
                         rotation: rotation
