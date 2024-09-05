@@ -433,7 +433,7 @@ slides.forEach((slide, index) => {
             trigger: slide,
             start: "top center",
             end: "bottom center",
-            scrub: 0.5,
+            scrub: 1,
         }
     });
 });
@@ -534,7 +534,7 @@ if (window.innerWidth <= 768) {
             trigger: slides[slides.length - 1],
             start: "top bottom",
             end: "bottom bottom",
-            scrub: 0.5,
+            scrub: 1,
             onUpdate: (self) => {
                 const progress = self.progress;
                 
