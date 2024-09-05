@@ -336,9 +336,11 @@
     <img src="images/ring.webp" alt="Ring" class="ring">
     <img src="images/isla.webp" alt="Isla" id="isla">
 
-    <audio id="backgroundMusic">
+    <audio id="backgroundMusic" autoplay loop>
         <source src="images/zmusic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
+    
 
     <script>
         
@@ -476,9 +478,14 @@ slides.forEach((slide, index) => {
             );
         });
     
-// Animate Isla
-if (window.innerWidth <= 768) {
+// Function to handle Isla animation for mobile/desktop
+function animateIsla() {
+    // Reset any existing GSAP animations for 'isla'
+    gsap.killTweensOf(isla);
+
+    if (window.innerWidth <= 768) {
         // Mobile animation for Isla
+        console.log("Mobile animation triggered, screen width:", window.innerWidth);
         gsap.to(isla, {
             x: window.innerWidth + 200,
             duration: 10,
@@ -492,6 +499,7 @@ if (window.innerWidth <= 768) {
         });
     } else {
         // Desktop animation for Isla (unchanged)
+        console.log("Desktop animation triggered, screen width:", window.innerWidth);
         gsap.to(isla, {
             x: window.innerWidth + 200,
             duration: 10,
@@ -504,6 +512,19 @@ if (window.innerWidth <= 768) {
             }
         });
     }
+
+    // Refresh ScrollTrigger to apply changes
+    ScrollTrigger.refresh();
+}
+
+// Initial call to animateIsla
+animateIsla();
+
+// Add resize event listener to update animation on screen resize
+window.addEventListener("resize", function() {
+    animateIsla();
+});
+
 
 // Ensure overflow is reset when leaving the relevant section
 ScrollTrigger.create({
