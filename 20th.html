@@ -541,11 +541,20 @@ function createHeart() {
 
 // Function to animate a heart
 function animateHeart(heart, startX, startY) {
+    const isMobile = window.innerWidth <= 768;
     const endX = startX + (Math.random() - 0.5) * 200;
-    const endY = startY - 100 - Math.random() * 100;
+    let endY;
+    
+    if (isMobile) {
+        // Adjust these values to fine-tune the heart position on mobile
+        const mobileStartY = startY + window.innerHeight * 0.27; // Lower the start position
+        endY = mobileStartY - 100 - Math.random() * 100; // Reduce the upward movement
+    } else {
+        endY = startY - 100 - Math.random() * 100;
+    }
     
     gsap.fromTo(heart, 
-        { x: startX, y: startY, opacity: 1, scale: 0 },
+        { x: startX, y: isMobile ? startY + window.innerHeight * 0.2 : startY, opacity: 1, scale: 0 },
         { x: endX, y: endY, opacity: 0, scale: 1, duration: 3 + Math.random() * 2, ease: "power1.out",
           onComplete: () => heart.remove() }
     );
@@ -662,22 +671,22 @@ gsap.fromTo(coupleImage,
 
                 // Start effects when couple reaches destination
                 if (yProgress >= 0.99 && !effectsStarted) {
-                    effectsStarted = true;
-                    const rect = coupleImage.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2;
-                    const topY = rect.top + rect.height * 0.2;
+    effectsStarted = true;
+    const rect = coupleImage.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const topY = rect.top + (window.innerWidth <= 768 ? rect.height * 0.5 : rect.height * 0.2); // Adjusted for mobile
 
-                    // Create hearts
-                    const createHearts = () => {
-                        const heart = createHeart();
-                        effectsContainer.appendChild(heart);
-                        const startX = centerX + (Math.random() - 0.5) * rect.width;
-                        animateHeart(heart, startX, topY);
-                        if (effectsStarted) {
-                            setTimeout(createHearts, 100 + Math.random() * 200);
-                        }
-                    };
-                    createHearts();
+    // Create hearts
+    const createHearts = () => {
+        const heart = createHeart();
+        effectsContainer.appendChild(heart);
+        const startX = centerX + (Math.random() - 0.5) * rect.width;
+        animateHeart(heart, startX, topY);
+        if (effectsStarted) {
+            setTimeout(createHearts, 100 + Math.random() * 200);
+        }
+    };
+    createHearts();
 
                     // Create fireworks
                     const launchFireworks = () => {
