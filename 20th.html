@@ -357,15 +357,14 @@
     <script>
         
         gsap.registerPlugin(ScrollTrigger);
-    
-        const audio = document.getElementById('backgroundMusic');
-        const slides = document.querySelectorAll('.slide');
-        const contents = document.querySelectorAll('.content');
-        const pets = document.querySelectorAll('.pet');
-        const isla = document.getElementById('isla');
-        const ring = document.querySelector('.ring');
-        const title = document.querySelector('.title');
-    
+
+const audio = document.getElementById('backgroundMusic');
+const slides = document.querySelectorAll('.slide');
+const contents = document.querySelectorAll('.content');
+const pets = document.querySelectorAll('.pet');
+const isla = document.getElementById('isla');
+const ring = document.querySelector('.ring');
+const title = document.querySelector('.title');
 
 // Function to play audio if not already playing
 function playAudio() {
@@ -375,14 +374,13 @@ function playAudio() {
         });
     }
 }
- // Play audio on user interaction
- function playAudio() {
-            audio.play();
-            document.removeEventListener('click', playAudio);
-        }
 
-        document.addEventListener('click', playAudio);
-    
+// Play audio on user interaction
+document.addEventListener('click', function playAudioOnce() {
+    playAudio();
+    document.removeEventListener('click', playAudioOnce);
+});
+
 // Play music when the user starts scrolling
 let musicStarted = false;
 window.addEventListener('scroll', () => {
@@ -393,39 +391,40 @@ window.addEventListener('scroll', () => {
 });
 
 ScrollTrigger.config({
-            ignoreMobileResize: true,
-            autoRefreshEvents: "DOMContentLoaded,load,resize,visibilitychange",
-        });
+    ignoreMobileResize: true,
+    autoRefreshEvents: "DOMContentLoaded,load,resize,visibilitychange",
+});
 
-        // Function to update ScrollTrigger
-        function updateScrollTrigger() {
-            ScrollTrigger.update();
-            requestAnimationFrame(updateScrollTrigger);
-        }
+// Function to update ScrollTrigger
+function updateScrollTrigger() {
+    ScrollTrigger.update();
+    requestAnimationFrame(updateScrollTrigger);
+}
 
-        // Start the update loop
-        updateScrollTrigger();
+// Start the update loop
+updateScrollTrigger();
 
-        // Add various event listeners
-        ["scroll", "touchmove", "wheel"].forEach(eventType => {
-            window.addEventListener(eventType, () => {
-                ScrollTrigger.update();
-            }, {passive: true});
-        });
+// Add various event listeners
+["scroll", "touchmove", "wheel"].forEach(eventType => {
+    window.addEventListener(eventType, () => {
+        ScrollTrigger.update();
+    }, {passive: true});
+});
 
-        // Refresh on orientation change
-        window.addEventListener("orientationchange", () => {
-            setTimeout(() => {
-                ScrollTrigger.refresh();
-            }, 100);
-        });
-        // Animate title text
-        gsap.from(title, {
-            opacity: 0,
-            y: 50,
-            duration: 2,
-            ease: "power2.out"
-        });
+// Refresh on orientation change
+window.addEventListener("orientationchange", () => {
+    setTimeout(() => {
+        ScrollTrigger.refresh();
+    }, 100);
+});
+
+// Animate title text
+gsap.from(title, {
+    opacity: 0,
+    y: 50,
+    duration: 2,
+    ease: "power2.out"
+});
 
 // Animate the initial bounce of the ring
 gsap.fromTo(ring, 
@@ -447,187 +446,287 @@ slides.forEach((slide, index) => {
     });
 });
 
+// Background music
+ScrollTrigger.create({
+    trigger: slides[0],
+    start: "bottom top",
+    onLeave: () => audio.play(),
+});
 
-        // Background music
-        ScrollTrigger.create({
-            trigger: slides[0],
-            start: "bottom top",
-            onLeave: () => audio.play(),
-        });
-    
-        // Animate content
-        contents.forEach((content, index) => {
-            gsap.from(content, {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: slides[index],
-                    start: "top center",
-                    end: "bottom center",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        });
-    
-        // Animate pets
-        const petSlide = slides[4];
-        pets.forEach((pet, index) => {
-            const direction = index % 2 === 0 ? 1 : -1;
-            gsap.fromTo(pet,
-                { x: direction * 100, opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: petSlide,
-                        start: "top center",
-                        end: "bottom center",
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        });
-    
-// Animate Isla
-if (window.innerWidth <= 768) {
-        // Mobile animation for Isla
-        gsap.to(isla, {
-            x: window.innerWidth + 170,
-            duration: 10,
-            ease: "none",
-            scrollTrigger: {
-                trigger: slides[5],
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1
-            }
-        });
-    } else {
-        // Desktop animation for Isla (unchanged)
-        gsap.to(isla, {
-            x: window.innerWidth + 200,
-            duration: 10,
-            ease: "none",
-            scrollTrigger: {
-                trigger: slides[5],
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1
-            }
-        });
-    }
+// Animate content
+contents.forEach((content, index) => {
+    gsap.from(content, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        scrollTrigger: {
+            trigger: slides[index],
+            start: "top center",
+            end: "bottom center",
+            toggleActions: "play none none reverse"
+        }
+    });
+});
 
-
- // Couple image animation
-const coupleImage = document.getElementById('coupleImage');
-
-if (window.innerWidth <= 768) {
-    // Desktop animation (unchanged)
-    gsap.fromTo(coupleImage,
-        { 
-            y: '-100vh', 
-            opacity: 0, 
-            rotation: 0,
-            scale: 0.1
-        },
+// Animate pets
+const petSlide = slides[4];
+pets.forEach((pet, index) => {
+    const direction = index % 2 === 0 ? 1 : -1;
+    gsap.fromTo(pet,
+        { x: direction * 100, opacity: 0 },
         {
-            y: '16vh',
+            x: 0,
             opacity: 1,
-            rotation: 720,
-            scale: 1,
             duration: 1,
-            ease: "none",
             scrollTrigger: {
-                trigger: slides[slides.length - 1],
-                start: "top bottom",
-                end: "html",
-                scrub: 1,
-                onUpdate: (self) => {
-                    const progress = self.progress;
-                    
-                    const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
-                    const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
-                    const rotation = progress * 720;
-
-                    gsap.set(coupleImage, {
-                        y: gsap.utils.interpolate('-100vh', '16vh', yProgress) + 'vh',
-                        scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
-                        opacity: gsap.utils.interpolate(0, 1, scaleProgress),
-                        rotation: rotation
-                    });
-                }
+                trigger: petSlide,
+                start: "top center",
+                end: "bottom center",
+                toggleActions: "play none none reverse"
             }
         }
     );
-} else {
-    // Desktop animation (unchanged)
-    gsap.fromTo(coupleImage,
-        { 
-            y: '-100vh', 
-            opacity: 0, 
-            rotation: 0,
-            scale: 0.1
-        },
-        {
-            y: 100,
-            opacity: 1,
-            rotation: 720,
-            scale: 1,
-            duration: 1,
-            ease: "none",
-            scrollTrigger: {
-                trigger: slides[slides.length - 1],
-                start: "top bottom",
-                end: "bottom bottom",
-                scrub: 1,
-                onUpdate: (self) => {
-                    const progress = self.progress;
-                    
-                    const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
-                    const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
-                    const rotation = progress * 720;
+});
 
-                    gsap.set(coupleImage, {
-                        y: gsap.utils.interpolate(-100, 100, yProgress) + 'vh',
-                        scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
-                        opacity: gsap.utils.interpolate(0, 1, scaleProgress),
-                        rotation: rotation
-                    });
-                }
+// Animate Isla
+if (window.innerWidth <= 768) {
+    // Mobile animation for Isla
+    gsap.to(isla, {
+        x: window.innerWidth + 170,
+        duration: 10,
+        ease: "none",
+        scrollTrigger: {
+            trigger: slides[5],
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1
+        }
+    });
+} else {
+    // Desktop animation for Isla
+    gsap.to(isla, {
+        x: window.innerWidth + 200,
+        duration: 10,
+        ease: "none",
+        scrollTrigger: {
+            trigger: slides[5],
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1
+        }
+    });
+}
+
+// Create container for hearts and fireworks
+const effectsContainer = document.createElement('div');
+effectsContainer.style.position = 'fixed';
+effectsContainer.style.top = '0';
+effectsContainer.style.left = '0';
+effectsContainer.style.width = '100%';
+effectsContainer.style.height = '100%';
+effectsContainer.style.pointerEvents = 'none';
+effectsContainer.style.zIndex = '1000';
+document.body.appendChild(effectsContainer);
+
+// Function to create a heart
+function createHeart() {
+    const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    heart.setAttribute('viewBox', '0 0 24 24');
+    heart.style.position = 'absolute';
+    heart.style.width = '20px';
+    heart.style.height = '20px';
+    heart.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="red"/>';
+    return heart;
+}
+
+// Function to animate a heart
+function animateHeart(heart, startX, startY) {
+    const endX = startX + (Math.random() - 0.5) * 200;
+    const endY = startY - 100 - Math.random() * 100;
+    
+    gsap.fromTo(heart, 
+        { x: startX, y: startY, opacity: 1, scale: 0 },
+        { x: endX, y: endY, opacity: 0, scale: 1, duration: 3 + Math.random() * 2, ease: "power1.out",
+          onComplete: () => heart.remove() }
+    );
+}
+
+// Function to create and animate a firework
+function createFirework() {
+    const firework = document.createElement('div');
+    firework.style.position = 'absolute';
+    firework.style.width = '8px';  // Increased size
+    firework.style.height = '8px';  // Increased size
+    firework.style.borderRadius = '50%';
+    firework.style.backgroundColor = getRandomColor();  // New function for vibrant colors
+    effectsContainer.appendChild(firework);
+
+    const startX = Math.random() * window.innerWidth;
+    const startY = window.innerHeight;
+    const endX = startX + (Math.random() - 0.5) * 200;  // Increased spread
+    const endY = Math.random() * window.innerHeight * 0.6;  // Adjusted to cover more of the screen
+
+    gsap.fromTo(firework,
+        { x: startX, y: startY, scale: 0.5, opacity: 1 },
+        { 
+            x: endX, 
+            y: endY, 
+            scale: 1.5,  // Increased scale
+            opacity: 0,
+            duration: 2 + Math.random(),  // Longer duration
+            ease: "power1.out",
+            onComplete: () => {
+                firework.remove();
+                createFireworkBurst(endX, endY);
             }
         }
     );
 }
 
-        // Fade in the final title
-        gsap.from(".final-title", {
-            opacity: 0,
-            y: -50,
-            duration: 1,
-            scrollTrigger: {
-                trigger: slides[slides.length - 1],
-                start: "top bottom",
-                end: "center center",
-                scrub: 1,
-            }
-        });
+// Function to create firework burst
+function createFireworkBurst(x, y) {
+    const burstSize = 20;  // Increased number of particles
+    const color = getRandomColor();
 
-        // Fade in the heart and Shane text
-        gsap.from(".final-heart", {
-            opacity: 0,
-            scale: 0.5,
-            duration: 1,
-            scrollTrigger: {
-                trigger: slides[slides.length - 1],
-                start: "top bottom",
-                end: "center center",
-                scrub: 1,
+    for (let i = 0; i < burstSize; i++) {
+        const particle = document.createElement('div');
+        particle.style.position = 'absolute';
+        particle.style.width = '5px';  // Increased size
+        particle.style.height = '5px';  // Increased size
+        particle.style.backgroundColor = color;
+        particle.style.borderRadius = '50%';
+        effectsContainer.appendChild(particle);
+
+        const angle = (i / burstSize) * Math.PI * 2;
+        const distance = 50 + Math.random() * 50;  // Increased spread
+
+        gsap.fromTo(particle,
+            { x: x, y: y, opacity: 1 },
+            {
+                x: x + Math.cos(angle) * distance,
+                y: y + Math.sin(angle) * distance,
+                opacity: 0,
+                duration: 1.2 + Math.random() * 0.8,  // Longer duration
+                ease: "power2.out",
+                onComplete: () => particle.remove()
             }
-        });
-    </script>
-<script>
+        );
+    }
+}
+
+// New function to generate vibrant colors
+function getRandomColor() {
+    const hue = Math.random() * 360;
+    const saturation = 80 + Math.random() * 20;  // 80-100%
+    const lightness = 50 + Math.random() * 10;   // 50-60%
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+// Modify the existing couple image animation
+const coupleImage = document.getElementById('coupleImage');
+let effectsStarted = false;
+
+gsap.fromTo(coupleImage,
+    { 
+        y: '-100vh', 
+        opacity: 0, 
+        rotation: 0,
+        scale: 0.1
+    },
+    {
+        y: window.innerWidth <= 768 ? '16vh' : '100',
+        opacity: 1,
+        rotation: 720,
+        scale: 1,
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+            trigger: slides[slides.length - 1],
+            start: "top bottom",
+            end: window.innerWidth <= 768 ? "html" : "bottom bottom",
+            scrub: 1,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                
+                const yProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power4.in")(Math.max(0, (progress - 0.7) * 3.33)));
+                const scaleProgress = gsap.utils.clamp(0, 1, gsap.parseEase("power2.in")(progress * 1.25));
+                const rotation = progress * 720;
+
+                const yValue = gsap.utils.interpolate(window.innerWidth <= 768 ? '-100vh' : -100, window.innerWidth <= 768 ? '16vh' : 100, yProgress);
+                gsap.set(coupleImage, {
+                    y: window.innerWidth <= 768 ? yValue + 'vh' : yValue,
+                    scale: gsap.utils.interpolate(0.1, 1, scaleProgress),
+                    opacity: gsap.utils.interpolate(0, 1, scaleProgress),
+                    rotation: rotation
+                });
+
+                // Start effects when couple reaches destination
+                if (yProgress >= 0.99 && !effectsStarted) {
+                    effectsStarted = true;
+                    const rect = coupleImage.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const topY = rect.top + rect.height * 0.2;
+
+                    // Create hearts
+                    const createHearts = () => {
+                        const heart = createHeart();
+                        effectsContainer.appendChild(heart);
+                        const startX = centerX + (Math.random() - 0.5) * rect.width;
+                        animateHeart(heart, startX, topY);
+                        if (effectsStarted) {
+                            setTimeout(createHearts, 100 + Math.random() * 200);
+                        }
+                    };
+                    createHearts();
+
+                    // Create fireworks
+                    const launchFireworks = () => {
+                        createFirework();
+                        if (effectsStarted) {
+                            setTimeout(launchFireworks, 200 + Math.random() * 300);  // Increased frequency
+                        }
+                    };
+                    
+                    // Launch multiple fireworks initially
+                    for (let i = 0; i < 8; i++) {  // Increased initial fireworks
+                        setTimeout(() => createFirework(), i * 150);
+                    }
+                    
+                    // Continue launching fireworks
+                    launchFireworks();
+                }
+            }
+        }
+    }
+);
+
+// Fade in the final title
+gsap.from(".final-title", {
+    opacity: 0,
+    y: -50,
+    duration: 1,
+    scrollTrigger: {
+        trigger: slides[slides.length - 1],
+        start: "top bottom",
+        end: "center center",
+        scrub: 1,
+    }
+});
+
+// Fade in the heart and Shane text
+gsap.from(".final-heart", {
+    opacity: 0,
+    scale: 0.5,
+    duration: 1,
+    scrollTrigger: {
+        trigger: slides[slides.length - 1],
+        start: "top bottom",
+        end: "center center",
+        scrub: 1,
+    }
+});
+
+// Gradient text effect
 document.addEventListener('mousemove', function(e) {
     const title = document.querySelector('.gradient-text');
     const rect = title.getBoundingClientRect();
