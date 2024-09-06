@@ -547,7 +547,7 @@ function animateHeart(heart, startX, startY) {
     
     if (isMobile) {
         // Adjust these values to fine-tune the heart position on mobile
-        const mobileStartY = startY + window.innerHeight * 0.27; // Lower the start position
+        const mobileStartY = startY + window.innerHeight * 0.1; // Lower the start position
         endY = mobileStartY - 100 - Math.random() * 100; // Reduce the upward movement
     } else {
         endY = startY - 100 - Math.random() * 100;
