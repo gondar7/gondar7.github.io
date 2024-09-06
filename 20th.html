@@ -53,6 +53,7 @@
     line-height: 1.6;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);  /* Stronger text shadow */
     font-weight: 500;  /* Slightly bolder text */
+    z-index: 2;
 }
 
 
@@ -173,6 +174,7 @@
                 padding: 20px;
                 font-size: 1.2em;
                 max-width: 90%;
+                z-index: 2;
             }
 
             .title {
@@ -203,6 +205,12 @@
         pointer-events: none;
         
     }
+    .photo {
+            position: absolute;
+            opacity: 0;
+            width: 130px; /* Increased size */
+            height: auto;
+        }
 
             .final-title {
                 font-size: 2.5em;
@@ -236,11 +244,28 @@
             .slide picture source[media="(max-width: 768px)"] {
                 display: none;
             }
+            .photo {
+            position: absolute;
+            opacity: 0;
+            width: 250px; /* Increased size */
+            height: auto;
         }
+        }
+        .photo-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
     </style>
 </head>
 <body>
     <div class="slide" style="background-image: url('images/HC27378.webp');">
+        <div class="photo-container" id="photoContainer"></div>
         <div class="content">
             <h1 class="title">
                 <span class="gradient-text">Two Decades of Us</span>
@@ -753,6 +778,135 @@ document.addEventListener('mousemove', function(e) {
     const yPercent = Math.max(0, Math.min(100, y * 100));
     
     title.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+});
+  // Code for the photo animation effect
+  const photoContainer = document.getElementById('photoContainer');
+const numPhotos = 24;
+const maxActivePhotos = 5;
+let activePhotos = [];
+let availableSections = [];
+let usedPhotoIndices = new Set();
+
+function initializeSections() {
+    availableSections = [
+        {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0},
+        {x: 0, y: 1},              {x: 2, y: 1},
+        {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}
+    ];
+}
+
+function getRandomSection() {
+    if (availableSections.length === 0) {
+        return null; // No available sections
+    }
+    const index = Math.floor(Math.random() * availableSections.length);
+    return availableSections.splice(index, 1)[0];
+}
+
+function getUniquePhotoIndex() {
+    if (usedPhotoIndices.size === numPhotos) {
+        usedPhotoIndices.clear();
+    }
+    let index;
+    do {
+        index = Math.floor(Math.random() * numPhotos) + 1;
+    } while (usedPhotoIndices.has(index));
+    usedPhotoIndices.add(index);
+    return index;
+}
+
+function createPhoto(index, section) {
+    const photo = document.createElement('img');
+    photo.src = `images/${index}.webp`;
+    photo.classList.add('photo');
+    
+    const sectionWidth = 100 / 3;
+    const sectionHeight = 100 / 3;
+    
+    let left, top;
+
+    // Adjust positioning to avoid the center
+    if (section.x === 1) {
+        // Top or bottom center sections
+        left = section.x * sectionWidth + Math.random() * (sectionWidth - 20);
+        top = section.y === 0 ? Math.random() * (sectionHeight - 20) : 
+                                2 * sectionHeight + Math.random() * (sectionHeight - 20);
+    } else {
+        // Left or right sections
+        left = section.x * sectionWidth + Math.random() * (sectionWidth - 20);
+        top = section.y * sectionHeight + Math.random() * (sectionHeight - 20);
+    }
+    
+    photo.style.left = `${left}%`;
+    photo.style.top = `${top}%`;
+    photoContainer.appendChild(photo);
+    return photo;
+}
+
+function animatePhoto(photo, section) {
+    gsap.to(photo, {
+        opacity: 1,
+        scale: Math.random() * 0.3 + 0.85,
+        duration: 2,
+        ease: "power1.inOut",
+        onComplete: () => {
+            gsap.to(photo, {
+                opacity: 0,
+                scale: Math.random() * 0.3 + 0.85,
+                duration: 2,
+                delay: 3,
+                ease: "power1.inOut",
+                onComplete: () => {
+                    activePhotos = activePhotos.filter(p => p !== photo);
+                    photo.remove();
+                    availableSections.push(section);
+                    if (photoContainer.style.display !== 'none') {
+                        addNewPhoto();
+                    }
+                }
+            });
+        }
+    });
+}
+
+function addNewPhoto() {
+    if (activePhotos.length < maxActivePhotos) {
+        const section = getRandomSection();
+        if (section) {
+            const index = getUniquePhotoIndex();
+            const photo = createPhoto(index, section);
+            activePhotos.push(photo);
+            animatePhoto(photo, section);
+        }
+    }
+}
+
+function startPhotoAnimation() {
+    initializeSections();
+    usedPhotoIndices.clear();
+    activePhotos.forEach(photo => photo.remove());
+    activePhotos = [];
+    for (let i = 0; i < maxActivePhotos; i++) {
+        addNewPhoto();
+    }
+}
+
+// Start the photo animation
+startPhotoAnimation();
+
+// Stop the animation when scrolling to the second slide
+ScrollTrigger.create({
+    trigger: slides[1],
+    start: "top bottom",
+    onEnter: () => {
+        photoContainer.style.display = 'none';
+    },
+    onLeaveBack: () => {
+        photoContainer.style.display = 'block';
+        if (activePhotos.length === 0) {
+            startPhotoAnimation();
+        }
+    }
 });
     </script>
 </body>
