@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shane's Recordings</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            position: relative;
+        }
+
+        .visualizer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .playlist-container {
+            width: 300px;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .playlist-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .playlist {
+            list-style: none;
+        }
+
+        .playlist li {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .playlist li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .playlist li.playing {
+            background: rgba(66, 135, 245, 0.2);
+            border-left: 4px solid #4287f5;
+        }
+
+        .player-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            z-index: 2;
+        }
+
+        .now-playing {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #4287f5;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: #5494f5;
+        }
+
+        .play-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background: #4287f5;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas class="visualizer"></canvas>
+        
+        <div class="playlist-container">
+            <h2 class="playlist-title">Your Recordings</h2>
+            <ul class="playlist">
+                <!-- Playlist items will be added here dynamically -->
+            </ul>
+        </div>
+
+        <div class="player-container">
+            <h1 class="now-playing">Select a track</h1>
+            <div class="controls">
+                <button class="play-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="time">
+                    <span class="current">0:00</span>
+                    <span class="duration">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample recordings (replace with your actual files)
+        const recordings = [
+            'George Ezra - Budapest.m4a',
+            'Something in the way.m4a'
+        ];
+
+        // Audio Context and visualization setup
+        let audioContext, analyser, source;
+        let isPlaying = false;
+        let currentAudio = null;
+
+        // Initialize audio context
+        function initAudioContext() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 256;
+        }
+
+        // Canvas setup for visualizer
+        const canvas = document.querySelector('.visualizer');
+        const ctx = canvas.getContext('2d');
+        let circles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Create initial circles for background
+        function createCircles() {
+            circles = [];
+            for (let i = 0; i < 50; i++) {
+                circles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 50 + 20,
+                    color: `hsla(${Math.random() * 360}, 70%, 50%, 0.3)`,
+                    vx: Math.random() * 2 - 1,
+                    vy: Math.random() * 2 - 1
+                });
+            }
+        }
+        createCircles();
+
+        // Animate background circles
+        function animateBackground() {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.2)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            circles.forEach(circle => {
+                ctx.beginPath();
+                ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = circle.color;
+                ctx.fill();
+
+                // Update position
+                circle.x += circle.vx;
+                circle.y += circle.vy;
+
+                // Bounce off walls
+                if (circle.x < 0 || circle.x > canvas.width) circle.vx *= -1;
+                if (circle.y < 0 || circle.y > canvas.height) circle.vy *= -1;
+            });
+
+            // If audio is playing, use it to modify circles
+            if (isPlaying && analyser) {
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(dataArray);
+                
+                const average = dataArray.reduce((a, b) => a + b) / dataArray.length;
+                
+                circles.forEach((circle, index) => {
+                    const freq = dataArray[index % dataArray.length];
+                    circle.radius = (freq / 255) * 50 + 20;
+                    circle.color = `hsla(${freq}, 70%, 50%, 0.3)`;
+                });
+            }
+
+            requestAnimationFrame(animateBackground);
+        }
+        animateBackground();
+
+        // Playlist setup
+        const playlist = document.querySelector('.playlist');
+        const playBtn = document.querySelector('.play-btn');
+        const nowPlaying = document.querySelector('.now-playing');
+        const progressBar = document.querySelector('.progress-bar');
+        const progress = document.querySelector('.progress');
+        const currentTime = document.querySelector('.current');
+        const duration = document.querySelector('.duration');
+
+        // Populate playlist
+        recordings.forEach(recording => {
+            const li = document.createElement('li');
+            li.textContent = recording.replace('.m4a', '');
+            li.dataset.file = recording;
+            playlist.appendChild(li);
+
+            li.addEventListener('click', () => loadTrack(recording));
+        });
+
+        // Load and play track
+        function loadTrack(file) {
+            if (currentAudio) {
+                currentAudio.pause();
+                if (source) {
+                    source.disconnect();
+                }
+            }
+
+            currentAudio = new Audio(file);
+            nowPlaying.textContent = file.replace('.m4a', '');
+            
+            // Reset play button and progress
+            playBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            progress.style.width = '0%';
+            
+            // Initialize audio context if needed
+            if (!audioContext) initAudioContext();
+            
+            currentAudio.addEventListener('loadedmetadata', () => {
+                duration.textContent = formatTime(currentAudio.duration);
+            });
+
+            currentAudio.addEventListener('timeupdate', updateProgress);
+            
+            // Connect to analyzer for visualization
+            source = audioContext.createMediaElementSource(currentAudio);
+            source.connect(analyser);
+            analyser.connect(audioContext.destination);
+
+            // Update playlist highlighting
+            document.querySelectorAll('.playlist li').forEach(li => {
+                li.classList.remove('playing');
+                if (li.dataset.file === file) {
+                    li.classList.add('playing');
+                }
+            });
+
+            playTrack();
+        }
+
+        // Play/Pause functionality
+        function playTrack() {
+            if (!currentAudio) return;
+
+            if (currentAudio.paused) {
+                currentAudio.play();
+                playBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+                isPlaying = true;
+            } else {
+                currentAudio.pause();
+                playBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+                isPlaying = false;
+            }
+        }
+
+        playBtn.addEventListener('click', playTrack);
+
+        // Progress bar functionality
+        function updateProgress() {
+            const percent = (currentAudio.currentTime / currentAudio.duration) * 100;
+            progress.style.width = percent + '%';
+            currentTime.textContent = formatTime(currentAudio.currentTime);
+        }
+
+        progressBar.addEventListener('click', (e) => {
+            if (!currentAudio) return;
+            
+            const clickPosition = (e.pageX - progressBar.offsetLeft) / progressBar.offsetWidth;
+            currentAudio.currentTime = clickPosition * currentAudio.duration;
+        });
+
+        // Time formatting helper
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
