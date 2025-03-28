@@ -202,7 +202,18 @@
          .quote-description { font-size: 0.8rem; color: #718096; margin-top: 0.25rem; }
          .quote-nav { background: none; border: none; color: #a0aec0; font-size: 1.75rem; cursor: pointer; padding: 0.5rem; transition: color 0.3s ease; }
          .quote-nav:hover { color: #4a5568; }
-         @media (max-width: 640px) { .quote-carousel { padding: 1.5rem 1rem; flex-direction: column; } .quote-content { padding: 0; margin-bottom: 1rem;} .quote-controls { display: flex; justify-content: center; width: 100%; order: 3; margin-top: 1rem; } .quote-nav.next-quote.hidden.sm\:block { display: none; } .quote-nav.prev-quote.hidden.sm\:block {display: none; } }
+         @media (max-width: 640px) {
+            .quote-carousel {
+                padding: 1.5rem 1rem;
+                flex-direction: column;
+                align-items: center; /* Keep this */
+                text-align: center; /* Add this */
+             }
+             .quote-content { padding: 0; margin-bottom: 1rem; }
+             .quote-controls { display: flex; justify-content: center; width: 100%; order: 3; margin-top: 1rem; }
+             .quote-nav.next-quote.hidden.sm\:block { display: none; }
+             .quote-nav.prev-quote.hidden.sm\:block { display: none; }
+         }
          .holding-match-4 { background-color: #c6f6d5; color: #2f855a; } .holding-match-3 { background-color: #bee3f8; color: #2b6cb0; } .holding-match-2 { background-color: #faf089; color: #b7791f; } .holding-match-1 { background-color: #fed7d7; color: #c53030; }
          .performance-rank-1 { color: #2f855a; font-weight: 700; } .performance-rank-2 { color: #2b6cb0; } .performance-rank-3 { color: #b7791f; } .performance-rank-4 { color: #c53030; }
 
@@ -248,7 +259,7 @@
                 </a>
                 <p class="text-sm text-gray-500 mt-2">Commission-free trading. Simple setup. Start today.</p>
 
-                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
+                <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 hidden md:block"> 
                      <a href="#problem-solution" aria-label="Scroll down">
                         <i class="fas fa-chevron-down text-gray-400 text-2xl animate-bounce"></i>
                      </a>
@@ -311,19 +322,20 @@
 
         <div class="quote-carousel-container">
             <div class="quote-carousel">
-              
+              <button class="quote-nav prev-quote hidden sm:block" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
               <div class="quote-content">
                 <div class="quote-text"></div>
                 <div class="quote-author"></div>
                 <div class="quote-description"></div>
               </div>
-               <div class="quote-controls sm:hidden">
-                 <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
+               <div class="quote-controls sm:hidden block"> <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
                  <button class="quote-nav next-quote" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
               </div>
               <button class="quote-nav next-quote hidden sm:block" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
+
+        
 
          <section id="all-in-one-etfs" class="section bg-gray-50">
             <div class="content-box">
@@ -412,14 +424,13 @@
 
         <div class="quote-carousel-container">
             <div class="quote-carousel">
-              
+              <button class="quote-nav prev-quote hidden sm:block" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
               <div class="quote-content">
                 <div class="quote-text"></div>
                 <div class="quote-author"></div>
                 <div class="quote-description"></div>
               </div>
-               <div class="quote-controls sm:hidden">
-                 <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
+               <div class="quote-controls sm:hidden block"> <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
                  <button class="quote-nav next-quote" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
               </div>
               <button class="quote-nav next-quote hidden sm:block" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
@@ -513,14 +524,13 @@
 
         <div class="quote-carousel-container">
             <div class="quote-carousel">
-              
+              <button class="quote-nav prev-quote hidden sm:block" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
               <div class="quote-content">
                 <div class="quote-text"></div>
                 <div class="quote-author"></div>
                 <div class="quote-description"></div>
               </div>
-               <div class="quote-controls sm:hidden">
-                 <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
+               <div class="quote-controls sm:hidden block"> <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
                  <button class="quote-nav next-quote" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
               </div>
               <button class="quote-nav next-quote hidden sm:block" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
@@ -582,7 +592,7 @@
 
                         <h3 class="text-xl font-bold text-gray-700 mb-4">Buying Your First ETF on Wealthsimple</h3>
                          <ol class="list-decimal pl-5 space-y-2 text-gray-700 text-sm mb-6">
-                             <li><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="font-semibold">Sign Up for Wealthsimple</a> (Use the link for a potential bonus!). Choose "Trade stocks and ETFs" (Self-Directed Investing).
+                             <li><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="font-semibold">Sign Up for Wealthsimple</a> (Use the link for a $25 bonus!). Choose "Trade stocks and ETFs" (Self-Directed Investing).
                                 <span class="tooltip">
                                      <i class="fas fa-info-circle ml-1 text-blue-500"></i>
                                     <span class="tooltiptext">Wealthsimple offers 'Managed Investing' (robo-advisor) and 'Self-Directed Investing' (Trade). This guide focuses on Self-Directed for buying ETFs yourself to minimize fees.</span>
@@ -614,14 +624,13 @@
 
         <div class="quote-carousel-container">
             <div class="quote-carousel">
-              
+              <button class="quote-nav prev-quote hidden sm:block" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
               <div class="quote-content">
                 <div class="quote-text"></div>
                 <div class="quote-author"></div>
                 <div class="quote-description"></div>
               </div>
-               <div class="quote-controls sm:hidden">
-                 <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
+               <div class="quote-controls sm:hidden block"> <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
                  <button class="quote-nav next-quote" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
               </div>
               <button class="quote-nav next-quote hidden sm:block" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
@@ -715,14 +724,13 @@
 
         <div class="quote-carousel-container">
             <div class="quote-carousel">
-              
+              <button class="quote-nav prev-quote hidden sm:block" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
               <div class="quote-content">
                 <div class="quote-text"></div>
                 <div class="quote-author"></div>
                 <div class="quote-description"></div>
               </div>
-               <div class="quote-controls sm:hidden">
-                 <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
+               <div class="quote-controls sm:hidden block"> <button class="quote-nav prev-quote" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
                  <button class="quote-nav next-quote" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
               </div>
               <button class="quote-nav next-quote hidden sm:block" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
