@@ -58,6 +58,7 @@
             color: #333;
             background-color: #f8f9fa;
             line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
@@ -70,6 +71,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%; /* Ensure sections don't cause overflow */
+            box-sizing: border-box; /* Include padding in width calculation */
         }
          #hero {
              min-height: 100vh;
@@ -92,6 +95,7 @@
             max-width: 1200px;
             width: 100%;
             margin: 1rem 0;
+            box-sizing: border-box;
         }
          @media (min-width: 768px) { .content-box { padding: 2.5rem; } }
         @media (min-width: 1024px) { .content-box { padding: 3rem; } }
@@ -102,7 +106,21 @@
         .cta-button-secondary { background-color: transparent; color: #2dce89; border: 2px solid #2dce89; }
         .cta-button-secondary:hover { background-color: rgba(45, 206, 137, 0.1); color: #26b878; transform: translateY(-2px); }
          .header {
-            background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 50; padding: 1rem 0;
+            background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 50; padding: 1rem 0; width: 100%;
+        }
+        .header .container { /* Ensure container within header doesn't overflow */
+            width: 100%;
+            max-width: 1280px; /* Example max-width, adjust as needed */
+        }
+        /* Adjust header button size on mobile */
+        @media (max-width: 640px) {
+             .header .cta-button {
+                font-size: 0.8rem; /* Smaller font */
+                padding: 0.5rem 0.8rem; /* Smaller padding */
+             }
+             .logo {
+                 font-size: 1.2rem; /* Slightly smaller logo on mobile */
+             }
         }
         .logo {
             font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1a202c; display: flex; align-items: center;
@@ -171,9 +189,9 @@
         .footer-links a { margin: 0 0.5rem; font-size: 0.875rem; }
         .social-links { position: relative; }
         .social-links a {
-             font-size: 1.2rem; color: #495057; transition: color 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; vertical-align: middle; /* Align icon/image vertically */
+             font-size: 1.2rem; color: #495057; transition: color 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; vertical-align: middle;
         }
-         .social-links img.social-icon { height: 0.8em; /* Adjusted height */ width: auto; opacity: 0.7; transition: opacity 0.3s; vertical-align: middle; }
+         .social-links img.social-icon { height: 0.8em; width: auto; opacity: 0.7; transition: opacity 0.3s; vertical-align: middle; }
          .social-links a:hover img.social-icon { opacity: 1; }
         .social-links a:hover { color: #1a202c; }
          .quote-carousel-container { padding: 4rem 1rem; background-color: #e9ecef; }
@@ -184,12 +202,12 @@
          .quote-description { font-size: 0.8rem; color: #718096; margin-top: 0.25rem; }
          .quote-nav { background: none; border: none; color: #a0aec0; font-size: 1.75rem; cursor: pointer; padding: 0.5rem; transition: color 0.3s ease; }
          .quote-nav:hover { color: #4a5568; }
-         @media (max-width: 640px) { .quote-carousel { padding: 1.5rem 1rem; flex-direction: column; } .quote-content { padding: 0; margin-bottom: 1rem;} .quote-controls { display: flex; justify-content: center; width: 100%; order: 3; margin-top: 1rem; } .quote-nav.next-quote.hidden.sm\:block { display: none; } }
+         @media (max-width: 640px) { .quote-carousel { padding: 1.5rem 1rem; flex-direction: column; } .quote-content { padding: 0; margin-bottom: 1rem;} .quote-controls { display: flex; justify-content: center; width: 100%; order: 3; margin-top: 1rem; } .quote-nav.next-quote.hidden.sm\:block { display: none; } .quote-nav.prev-quote.hidden.sm\:block {display: none; } }
          .holding-match-4 { background-color: #c6f6d5; color: #2f855a; } .holding-match-3 { background-color: #bee3f8; color: #2b6cb0; } .holding-match-2 { background-color: #faf089; color: #b7791f; } .holding-match-1 { background-color: #fed7d7; color: #c53030; }
          .performance-rank-1 { color: #2f855a; font-weight: 700; } .performance-rank-2 { color: #2b6cb0; } .performance-rank-3 { color: #b7791f; } .performance-rank-4 { color: #c53030; }
 
          #footer-donate-options {
-            position: absolute; bottom: 100%; /* Position above the trigger link */ right: 0; margin-bottom: 0.5rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 0.5rem; width: 250px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 60;
+            position: absolute; bottom: 100%; right: 0; margin-bottom: 0.5rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 0.5rem; width: 250px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 60;
         }
         #footer-donate-options.active { opacity: 1; visibility: visible; transform: translateY(0); }
         #footer-donate-options p { text-align: center; font-size: 0.875rem; color: #4a5568; font-weight: 600; margin-bottom: 0.5rem; padding: 0.25rem 0.5rem; }
@@ -632,7 +650,7 @@
                             <td class="p-2 border-b text-center font-bold text-green-600">
                                 1.75% - 2.75%*
                                 <span class="tooltip">?
-                                    <span class="tooltiptext !w-[280px]">Rate based off of assets held at Wealthsimple</span>
+                                    <span class="tooltiptext !w-[280px]">Base rate is 1.75% (as of Mar 17, 2025). Can increase to 2.25% (Premium/Core+Boost) or 2.75% (Generation/Premium+Boost) based on client status & qualifying direct deposits. Rates subject to change. *Not promotional rates.</span>
                                 </span>
                             </td>
                             <td class="p-2 border-b text-center text-gray-500">~0.01% - 1%</td>
@@ -750,7 +768,7 @@
                             <li><a href="https://www.youtube.com/channel/UCDXTQ8nWmx_EhZ2v-kp7QxA" target="_blank"><i class="fab fa-youtube fa-fw mr-2 icon-red"></i>Ben Felix's YouTube Channel</a> (Rational Reminder)</li>
                             <li><a href="https://www.wealthsimple.com/en-ca/learn" target="_blank"><i class="fas fa-book-open fa-fw mr-2 icon-blue"></i>Wealthsimple Learn</a></li>
                              <li><a href="https://x.com/iCanInvestCA" target="_blank"><i class="fab fa-x-twitter fa-fw mr-2 icon-gray"></i>Follow iCanInvest on X</a></li>
-                             <li><a href="https://bsky.app/profile/icaninvest.ca" target="_blank"><img src="images/bluesky.png" alt="Bluesky icon" class="social-icon inline-block h-[0.9em] mr-2">Follow iCanInvest on Bluesky</a></li>
+                             <li><a href="https://bsky.app/profile/icaninvest.ca" target="_blank"><img src="images/bluesky.png" alt="Bluesky icon" class="social-icon inline-block h-[0.8em] mr-2">Follow iCanInvest on Bluesky</a></li>
                              <li><a href="https://www.youtube.com/@iCanInvestCA" target="_blank"><i class="fab fa-youtube fa-fw mr-2 icon-red"></i>iCanInvest YouTube Channel</a></li>
                         </ul>
                         <div class="bg-green-50 p-4 rounded-lg mt-6 border-l-4 border-green-300">
@@ -822,11 +840,9 @@
                  <a href="https://bsky.app/profile/icaninvest.ca" target="_blank" aria-label="Follow on Bluesky" title="Follow on Bluesky"><img src="images/bluesky.png" alt="Bluesky icon" class="social-icon inline-block"></a>
                 <a href="https://www.youtube.com/@iCanInvestCA" target="_blank" aria-label="Subscribe on YouTube" title="Subscribe on YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="mailto:contact@icaninvest.ca" aria-label="Email Contact" title="Email Contact"><i class="fas fa-envelope"></i></a>
-                 
                  <a href="#" id="footer-donate-toggle" class="cursor-pointer" aria-label="Support the site" title="Support the site">
                      <i class="fas fa-mug-hot text-yellow-600"></i>
                  </a>
-                 
                  <div id="footer-donate-options" class="">
                    <p>Thanks for your support!</p>
                    <a href="https://paypal.me/iCanInvest?country.x=CA&locale.x=en_US" target="_blank" rel="noopener noreferrer">
@@ -874,41 +890,32 @@
 
         // Google Analytics Tracking
         function trackClick(category, label, url = null) { if(typeof gtag === 'function'){ gtag('event', 'click', { 'event_category': category, 'event_label': label, 'transport_type': 'beacon', 'event_callback': url ? function() { window.location = url; } : null }); } if (url && (typeof gtag === 'undefined' || Math.random() < 0.1)) { setTimeout(function(){ window.location = url; }, 300); } }
-        document.addEventListener('DOMContentLoaded', function() { document.querySelectorAll('a[href="https://icaninvest.ca/wealthsimple"]').forEach((link, index) => { link.addEventListener('click', function(e) { e.preventDefault(); const label = `Wealthsimple CTA ${index + 1} - ${link.closest('section, header, footer')?.id || 'unknown'}`; trackClick('Wealthsimple Sign Up', label, this.href); }); }); const linksToTrack = [ { selector: 'a[href*="spglobal.com"]', label: 'SPIVA Report' }, { selector: 'a[href*="vanguard.com/tools-calculators"]', label: 'Vanguard Questionnaire' }, { selector: 'a[href*="vanguard.ca"]', label: 'Vanguard Site' }, { selector: 'a[href*="blackrock.com"]', label: 'iShares Site' }, { selector: 'a[href*="bmogam.com"]', label: 'BMO GAM Site' }, { selector: 'a[href*="wealthsimple.com/en-ca/accounts"]', label: 'WS Account Info' }, { selector: 'a[href*="wealthsimple.com/en-ca/learn"]', label: 'WS Learn' }, { selector: 'a[href*="blue.mbsy.co"]', label: 'Simplii Link' }, { selector: 'a[href*="tangerine.ca"]', label: 'Tangerine Link' }, { selector: 'a[href*="canadiancouchpotato.com"]', label: 'Canadian Couch Potato' }, { selector: 'a[href*="canadianportfoliomanagerblog.com"]', label: 'Canadian Portfolio Manager' }, { selector: 'a[href*="reddit.com/r/PersonalFinanceCanada"]', label: 'Reddit PFC' }, { selector: 'a[href*="reddit.com/r/CanadianInvestor"]', label: 'Reddit CI' }, { selector: 'a[href*="bsky.app/profile/icaninvest.ca"]', label: 'Bluesky Link' }, { selector: 'a[href*="youtube.com"]', label: 'YouTube Link' } ]; linksToTrack.forEach(item => { document.querySelectorAll(item.selector).forEach(link => { link.addEventListener('click', function() { trackClick('Outbound Link', item.label); }); }); }); document.querySelectorAll('#open-holdings, #open-performance, #open-geo').forEach(button => { button.addEventListener('click', () => { trackClick('Modal Interaction', `Open ${button.id.replace('open-', '')} Modal`); }); }); });
+        document.addEventListener('DOMContentLoaded', function() { document.querySelectorAll('a[href="https://icaninvest.ca/wealthsimple"]').forEach((link, index) => { link.addEventListener('click', function(e) { e.preventDefault(); const label = `Wealthsimple CTA ${index + 1} - ${link.closest('section, header, footer')?.id || 'unknown'}`; trackClick('Wealthsimple Sign Up', label, this.href); }); }); const linksToTrack = [ { selector: 'a[href*="spglobal.com"]', label: 'SPIVA Report' }, { selector: 'a[href*="vanguard.com/tools-calculators"]', label: 'Vanguard Questionnaire' }, { selector: 'a[href*="vanguard.ca"]', label: 'Vanguard Site' }, { selector: 'a[href*="blackrock.com"]', label: 'iShares Site' }, { selector: 'a[href*="bmogam.com"]', label: 'BMO GAM Site' }, { selector: 'a[href*="wealthsimple.com/en-ca/accounts"]', label: 'WS Account Info' }, { selector: 'a[href*="wealthsimple.com/en-ca/learn"]', label: 'WS Learn' }, { selector: 'a[href*="blue.mbsy.co"]', label: 'Simplii Link' }, { selector: 'a[href*="tangerine.ca"]', label: 'Tangerine Link' }, { selector: 'a[href*="canadiancouchpotato.com"]', label: 'Canadian Couch Potato' }, { selector: 'a[href*="canadianportfoliomanagerblog.com"]', label: 'Canadian Portfolio Manager' }, { selector: 'a[href*="reddit.com/r/PersonalFinanceCanada"]', label: 'Reddit PFC' }, { selector: 'a[href*="reddit.com/r/CanadianInvestor"]', label: 'Reddit CI' }, { selector: 'a[href*="bsky.app/profile/icaninvest.ca"]', label: 'Bluesky Link' }, { selector: 'a[href*="paypal.me/iCanInvest"]', label: 'PayPal Donate Link' }, { selector: 'a[href*="youtube.com"]', label: 'YouTube Link' } ]; linksToTrack.forEach(item => { document.querySelectorAll(item.selector).forEach(link => { link.addEventListener('click', function(e) { if (!link.id || !link.id.includes('donate-toggle')) { trackClick('Outbound Link', item.label); } }); }); }); document.querySelectorAll('#open-holdings, #open-performance, #open-geo').forEach(button => { button.addEventListener('click', () => { trackClick('Modal Interaction', `Open ${button.id.replace('open-', '')} Modal`); }); }); });
 
         // Quote Carousel Logic
         const quotes = [ { text: "The best way to own common stocks is through an index fund.", author: "Warren Buffett", description: "CEO of Berkshire Hathaway" }, { text: "The simplest and most efficient investment strategy is to buy and hold all of the nation's publicly held businesses at very low cost.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "The less you pay for an investment, the more of the investment return you keep for yourself.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" }, { text: "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "Diversification is the only free lunch in investing.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" }, { text: "In investing, you get what you don't pay for.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "The greatest way to optimize your investing is through proper asset allocation. Second is keeping fees low. These two things are the most important part of investing.", author: "Dan Bortolotti", description: "Author of 'Reboot Your Portfolio'" }, { text: "In my view, owning the market and holding it forever is the ultimate strategy for winners.", author: "Jack Bogle", description: "Founder of Vanguard Group" }, { text: "The growth of ETFs has been one of the best things to happen to DIY investors in the last decade. ETFs offer instant diversification, rock-bottom costs and transparency that mutual funds simply can't match.", author: "Dan Bortolotti", description: "Author of 'Reboot Your Portfolio'" }, { text: "Owning the market over the long term is a winner's game, but attempting to beat the market is a loser's game.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "If you believe in the power of passive investing and want to implement that belief in your portfolio, then ETFs are the way to go. They provide broad-market exposure at a low cost, they're highly tax-efficient, and they're transparent.", author: "Justin Bender", description: "Portfolio Manager at PWL Capital" }, { text: "ETFs have democratized investing by giving every investor access to global markets, in a low-cost, transparent and liquid structure.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" }, { text: "Over the past decade, we've seen a significant shift away from traditional mutual funds and towards ETFs. Canadian investors are increasingly recognizing the benefits of low costs, transparency, and flexibility that ETFs provide.", author: "Pat Chiefalo", description: "Managing Director, Head of iShares Canada" }, { text: "One of the beautiful things about ETFs is that they provide access to strategies that were previously unavailable to most investors, and they do so at a very low cost.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" }, { text: "Canadians pay some of the highest mutual fund fees in the world. A 2018 study by Morningstar found that the median asset-weighted expense ratio for Canadian equity funds was 2.23%, compared with 0.59% in the U.S.", author: "Rob Carrick", description: "Personal Finance Columnist at The Globe and Mail" }, { text: "The investment industry has been able to convince people that they are better off paying 2% or 3% to an actively managed mutual fund than 0.2% or 0.3% for an index ETF. But the math just doesn't add up.", author: "John De Goey", description: "Portfolio Manager at Wellington-Altus Private Wealth" }, { text: "In 2020, Canadian ETFs saw record inflows of over $40 billion, while mutual funds experienced net outflows of nearly $15 billion. This accelerating trend demonstrates that Canadian investors are voting with their dollars and embracing the advantages of ETFs.", author: "Daniel Straus", description: "Director of ETFs and Financial Products Research at National Bank Financial" }, { text: "The high fees charged by most Canadian mutual funds are a huge drag on investor returns over the long term. By contrast, low-cost index ETFs allow investors to keep more of their hard-earned money working for them.", author: "Justin Bender", description: "Portfolio Manager at PWL Capital" }, { text: "You don't need a lot of money to invest, but you do need to invest wisely. ETFs provide a cost-effective way to grow your wealth over time.", author: "Preet Banerjee", description: "Personal Finance Expert and Author" }, { text: "Low fees and broad diversification are the two best allies of the long-term investor.", author: "Andrew Hallam", description: "Author of 'Millionaire Teacher'" }, { text: "ETFs have transformed the investment landscape by making diversified portfolios accessible to every investor, regardless of their wealth.", author: "Larry Bates", description: "Author of 'Beat the Bank'" }, { text: "When it comes to investing, costs matter. Reducing your fees, even by a small amount, can significantly increase your returns over time.", author: "Fred Vettese", description: "Former Chief Actuary of Morneau Shepell" }, { text: "Index investing is not only a strategy that's accessible to everyone, it's also a strategy that has been proven to work over the long term.", author: "Jonathan Chevreau", description: "Founder of Financial Independence Hub" }, { text: "The best way to achieve investment success is to minimize costs, maintain a diversified portfolio, and stay the course.", author: "David Chilton", description: "Author of 'The Wealthy Barber'" }, { text: "Investing should be more like watching paint dry or watching grass grow. If you want excitement, take $800 and go to Las Vegas.", author: "Paul Samuelson", description: "Nobel Laureate in Economics" }, { text: "High mutual fund fees are a silent killer of your investment returns. ETFs are a powerful antidote.", author: "Robb Engen", description: "Co-founder of Boomer & Echo Personal Finance" }, { text: "Canadian investors have been overpaying for investment advice for far too long. Low-cost ETFs are a game changer.", author: "Tom Bradley", description: "Co-founder and Chief Investment Officer of Steadyhand Investment Funds" }, { text: "The real enemy of a great investment plan is high fees. ETFs are a simple, effective solution to this problem.", author: "Dan Hallett", description: "Vice-President and Principal at Highview Financial Group" }, { text: "Successful investing is about managing risk, not avoiding it. ETFs offer a diversified and low-cost way to do just that.", author: "John Robertson", description: "Author of 'The Value of Simple'" }, { text: "The best way to build wealth is to stick with a simple, low-cost investment strategy. ETFs are an excellent vehicle for this approach.", author: "Scott Ronalds", description: "Manager of Research & Communications at Steadyhand Investment Funds" }, { text: "Most people probably shouldn't do anything other than have index funds.", author: "Charlie Munger", description: "Vice Chairman of Berkshire Hathaway" }, { text: "The key to successful investing is not to get caught up in market timing, but to stay the course with a diversified, low-cost portfolio.", author: "Christine Benz", description: "Director of Personal Finance at Morningstar" }, { text: "Simplicity is the ultimate sophistication. The simplest investment strategy—buying and holding low-cost ETFs—often leads to the best outcomes.", author: "James Montier", description: "Member of GMO's Asset Allocation Team" }, { text: "Over time, high fees and active management rarely beat a diversified, low-cost portfolio of index ETFs.", author: "Meb Faber", description: "Co-founder and Chief Investment Officer of Cambria Investment Management" }, { text: "A sound investment plan is built on the foundation of low fees, broad diversification, and a long-term perspective. ETFs excel in all three.", author: "Rick Ferri", description: "Founder of Ferri Investment Solutions" }, { text: "For most investors, the simplest and most effective approach is to build a diversified portfolio of low-cost ETFs and stick with it.", author: "Allan Roth", description: "Founder of Wealth Logic, LLC" }, { text: "You are better off focusing on controlling what you can—your costs—by using low-cost index ETFs.", author: "Larry Swedroe", description: "Chief Research Officer at Buckingham Strategic Wealth" }, { text: "The best way to invest in the markets is to own a low-cost, globally diversified portfolio, which is exactly what ETFs provide.", author: "Jonathan Chevreau", description: "Founder of Financial Independence Hub" }, { text: "Most mutual funds simply don't justify their fees. Low-cost ETFs are the clear alternative for most investors.", author: "Rob Carrick", description: "Personal Finance Columnist at The Globe and Mail" }, { text: "In a low-cost ETF, every basis point of expense you save adds to your bottom line. It's one of the few things in investing where less is more.", author: "Michael Batnick", description: "Director of Research at Ritholtz Wealth Management" }, { text: "The difference between a great investor and an average investor is often nothing more than the discipline to stick with a low-cost, diversified ETF strategy.", author: "Morgan Housel", description: "Partner at The Collaborative Fund" }, { text: "The simplicity and low costs of ETFs make them the best choice for most investors who want to grow their wealth over time.", author: "Barry Ritholtz", description: "Chairman and Chief Investment Officer of Ritholtz Wealth Management" } ];
-        document.addEventListener('DOMContentLoaded', () => { const carousels = document.querySelectorAll('.quote-carousel'); if (!carousels.length || !quotes.length) return; let currentQuoteIndices = new Array(carousels.length).fill(0); function updateCarousel(carouselIndex) { const carousel = carousels[carouselIndex]; const quote = quotes[currentQuoteIndices[carouselIndex]]; const textEl = carousel.querySelector('.quote-text'); const authorEl = carousel.querySelector('.quote-author'); const descEl = carousel.querySelector('.quote-description'); if (textEl) textEl.textContent = `"${quote.text}"`; if (authorEl) authorEl.textContent = `- ${quote.author}`; if (descEl) descEl.textContent = quote.description; } carousels.forEach((carousel, index) => { updateCarousel(index); const prevButtons = carousel.querySelectorAll('.prev-quote'); const nextButtons = carousel.querySelectorAll('.next-quote'); prevButtons.forEach(button => { button.addEventListener('click', () => { currentQuoteIndices[index] = (currentQuoteIndices[index] - 1 + quotes.length) % quotes.length; updateCarousel(index); }); }); nextButtons.forEach(button => { button.addEventListener('click', () => { currentQuoteIndices[index] = (currentQuoteIndices[index] + 1) % quotes.length; updateCarousel(index); }); }); }); });
+        document.addEventListener('DOMContentLoaded', () => { const carousels = document.querySelectorAll('.quote-carousel'); if (!carousels.length || !quotes.length) return; let currentQuoteIndices = new Array(carousels.length).fill(0); function updateCarousel(carouselIndex) { if(carouselIndex >= carousels.length || carouselIndex < 0) return; const carousel = carousels[carouselIndex]; if (!carousel) return; const quote = quotes[currentQuoteIndices[carouselIndex]]; const textEl = carousel.querySelector('.quote-text'); const authorEl = carousel.querySelector('.quote-author'); const descEl = carousel.querySelector('.quote-description'); if (textEl) textEl.textContent = `"${quote.text}"`; if (authorEl) authorEl.textContent = `- ${quote.author}`; if (descEl) descEl.textContent = quote.description; } carousels.forEach((carousel, index) => { updateCarousel(index); const prevButtons = carousel.querySelectorAll('.prev-quote'); const nextButtons = carousel.querySelectorAll('.next-quote'); prevButtons.forEach(button => { button.addEventListener('click', () => { currentQuoteIndices[index] = (currentQuoteIndices[index] - 1 + quotes.length) % quotes.length; updateCarousel(index); }); }); nextButtons.forEach(button => { button.addEventListener('click', () => { currentQuoteIndices[index] = (currentQuoteIndices[index] + 1) % quotes.length; updateCarousel(index); }); }); }); });
 
-        // Tooltip Fixed Positioning Logic
-        document.addEventListener('DOMContentLoaded', function() { const tooltips = document.querySelectorAll('#wealthsimple-cash .tooltip'); tooltips.forEach(tooltip => { const tooltiptext = tooltip.querySelector('.tooltiptext'); if (!tooltiptext) return; tooltip.addEventListener('mouseenter', () => { tooltiptext.style.visibility = 'visible'; const rect = tooltip.getBoundingClientRect(); tooltiptext.classList.add('fixed-tooltip'); let top = rect.bottom + 8; let left = rect.left + rect.width / 2 - tooltiptext.offsetWidth / 2; if (left < 10) left = 10; if (left + tooltiptext.offsetWidth > window.innerWidth - 10) left = window.innerWidth - tooltiptext.offsetWidth - 10; if (top + tooltiptext.offsetHeight > window.innerHeight - 10) top = rect.top - tooltiptext.offsetHeight - 8; tooltiptext.style.top = `${top}px`; tooltiptext.style.left = `${left}px`; tooltiptext.style.opacity = '1'; }); tooltip.addEventListener('mouseleave', () => { tooltiptext.classList.remove('fixed-tooltip'); tooltiptext.style.top = ''; tooltiptext.style.left = ''; tooltiptext.style.opacity = '0'; tooltiptext.style.visibility = 'hidden'; }); }); });
+        // Tooltip Fixed Positioning Logic
+        document.addEventListener('DOMContentLoaded', function() { const tooltips = document.querySelectorAll('#wealthsimple-cash .tooltip'); tooltips.forEach(tooltip => { const tooltiptext = tooltip.querySelector('.tooltiptext'); if (!tooltiptext) return; tooltip.addEventListener('mouseenter', () => { tooltiptext.style.visibility = 'visible'; const rect = tooltip.getBoundingClientRect(); tooltiptext.classList.add('fixed-tooltip'); let top = rect.bottom + 8; let left = rect.left + rect.width / 2 - tooltiptext.offsetWidth / 2; if (left < 10) left = 10; if (left + tooltiptext.offsetWidth > window.innerWidth - 10) left = window.innerWidth - tooltiptext.offsetWidth - 10; if (top + tooltiptext.offsetHeight > window.innerHeight - 10) top = rect.top - tooltiptext.offsetHeight - 8; tooltiptext.style.top = `${top}px`; tooltiptext.style.left = `${left}px`; tooltiptext.style.opacity = '1'; }); tooltip.addEventListener('mouseleave', () => { tooltiptext.classList.remove('fixed-tooltip'); tooltiptext.style.top = ''; tooltiptext.style.left = ''; tooltiptext.style.opacity = '0'; tooltiptext.style.visibility = 'hidden'; }); }); });
 
-        // Footer Donation Button Logic
-        document.addEventListener('DOMContentLoaded', function() {
-            const donateToggle = document.getElementById('footer-donate-toggle'); // Trigger is the mug link
-            const donateOptions = document.getElementById('footer-donate-options'); // The popup div
-            const copyButtons = document.querySelectorAll('#footer-donate-options .copy-button');
+        // Footer Donation Button Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const donateToggle = document.getElementById('footer-donate-toggle');
+            const donateOptions = document.getElementById('footer-donate-options');
+            const copyButtons = document.querySelectorAll('#footer-donate-options .copy-button');
 
-            if (donateToggle && donateOptions) {
-                 donateToggle.addEventListener('click', function(e) {
-                    // Prevent default ONLY if it's the toggle itself, allow default for PayPal link within popup
-                    if (e.currentTarget.id === 'footer-donate-toggle') {
-                         e.preventDefault();
-                     }
-                    e.stopPropagation();
-                    donateOptions.classList.toggle('active');
-                 });
-                // Close when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!donateOptions.contains(e.target) && e.target !== donateToggle && !donateToggle.contains(e.target)) {
-                         donateOptions.classList.remove('active');
-                     }
-                 });
-            }
-            copyButtons.forEach(button => { button.addEventListener('click', function() { const textToCopy = this.getAttribute('data-copy-text'); const feedbackSpan = this.querySelector('.copy-feedback'); navigator.clipboard.writeText(textToCopy).then(() => { if (feedbackSpan) { feedbackSpan.textContent = 'Copied!'; feedbackSpan.style.display = 'inline'; } setTimeout(() => { if (feedbackSpan) { feedbackSpan.style.display = 'none'; feedbackSpan.textContent = ''; } }, 2000); }).catch(err => { console.error('Failed to copy text: ', err); if (feedbackSpan) { feedbackSpan.textContent = 'Error'; feedbackSpan.style.display = 'inline'; setTimeout(() => { if (feedbackSpan) feedbackSpan.style.display = 'none'; }, 2000); } }); }); });
-        });
+            if (donateToggle && donateOptions) {
+                 donateToggle.addEventListener('click', function(e) {
+                    e.preventDefault(); e.stopPropagation(); donateOptions.classList.toggle('active');
+                 });
+                // Close when clicking outside
+                document.addEventListener('click', function(e) { if (!donateOptions.contains(e.target) && e.target !== donateToggle && !donateToggle.contains(e.target)) { donateOptions.classList.remove('active'); } });
+            }
+            copyButtons.forEach(button => { button.addEventListener('click', function() { const textToCopy = this.getAttribute('data-copy-text'); const feedbackSpan = this.querySelector('.copy-feedback'); navigator.clipboard.writeText(textToCopy).then(() => { if (feedbackSpan) { feedbackSpan.textContent = 'Copied!'; feedbackSpan.style.display = 'inline'; } setTimeout(() => { if (feedbackSpan) { feedbackSpan.style.display = 'none'; feedbackSpan.textContent = ''; } }, 2000); }).catch(err => { console.error('Failed to copy text: ', err); if (feedbackSpan) { feedbackSpan.textContent = 'Error'; feedbackSpan.style.display = 'inline'; setTimeout(() => { if (feedbackSpan) feedbackSpan.style.display = 'none'; }, 2000); } }); }); });
+        });
 
-    </script>
+    </script>
 
 </body>
 </html>
