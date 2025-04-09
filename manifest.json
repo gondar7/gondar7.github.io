@@ -1,0 +1,17 @@
+{
+  "name": "iCanInvest: Simplified Low-Cost ETF Investing",
+  "short_name": "iCanInvest",
+  "description": "Your guide to low-cost ETF investing in Canada with Wealthsimple.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2dce89",
+  "icons": [
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

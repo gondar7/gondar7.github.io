@@ -14,7 +14,8 @@
     <title>iCanInvest: Simplified Low-Cost ETF Investing for Canadians</title>
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍁</text></svg>">
-    <link rel="apple-touch-icon" href="/path/to/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"> <!-- Ensure this file exists in the images/ directory -->
+    <link rel="manifest" href="/manifest.json">
 
     <meta name="description" content="Your guide to low-cost ETF investing in Canada with Wealthsimple. Learn about index funds, TFSAs, RRSPs, and start building wealth efficiently.">
     <meta name="keywords" content="Wealthsimple, Canadian investing, ETFs, index funds, low-cost investing, passive investing, financial education, TFSA, RRSP, FHSA, beginner investor, Canadian ETFs, all-in-one ETFs, index investing, DIY investing, commission-free trading">
@@ -210,6 +211,49 @@
         #footer-donate-options .copy-feedback { font-size: 0.75rem; color: green; margin-left: auto; display: none; }
 
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "url": "https://www.icaninvest.ca",
+          "name": "iCanInvest.ca",
+          "description": "Your guide to low-cost ETF investing in Canada with Wealthsimple. Learn about index funds, TFSAs, RRSPs, and start building wealth efficiently.",
+          "author": {
+            "@type": "Organization",
+            "name": "iCanInvest.ca"
+          },
+          "inLanguage": "en-CA"
+        },
+        {
+          "@type": "Article",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.icaninvest.ca"
+          },
+          "headline": "Stop Paying High Fees: The Smart Canadian's Guide to Index ETFs",
+          "description": "Unlock your financial potential with low-cost ETFs through Wealthsimple. This guide simplifies everything you need to know to start building wealth efficiently.",
+          "image": "https://www.icaninvest.ca/images/social-share-image.webp",
+          "author": {
+            "@type": "Organization",
+            "name": "iCanInvest.ca"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "iCanInvest.ca",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.icaninvest.ca/images/social-share-image.webp" // Consider creating a dedicated logo image
+            }
+          },
+          "datePublished": "2024-08-24", // Update this if the content was published/updated on a different date
+          "dateModified": "2024-08-24" // Update this to the last modified date
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="text-base">
 
@@ -735,7 +779,7 @@
                             <li><a href="https://www.youtube.com/channel/UCDXTQ8nWmx_EhZ2v-kp7QxA" target="_blank"><i class="fab fa-youtube fa-fw mr-2 icon-red"></i>Ben Felix's YouTube Channel</a> (Rational Reminder)</li>
                             <li><a href="https://www.wealthsimple.com/en-ca/learn" target="_blank"><i class="fas fa-book-open fa-fw mr-2 icon-blue"></i>Wealthsimple Learn</a></li>
                              <li><a href="https://x.com/iCanInvestCA" target="_blank"><i class="fab fa-x-twitter fa-fw mr-2 icon-gray"></i>Follow iCanInvest on X</a></li>
-                             <li><a href="https://bsky.app/profile/icaninvest.ca" target="_blank"><img src="images/bluesky.png" alt="Bluesky icon" class="social-icon inline-block h-[0.8em] mr-2">Follow iCanInvest on Bluesky</a></li>
+                             <li><a href="https://bsky.app/profile/icaninvest.ca" target="_blank"><img src="images/bluesky.png" alt="iCanInvest on Bluesky" class="social-icon inline-block h-[0.8em] mr-2">Follow iCanInvest on Bluesky</a></li>
                              <li><a href="https://www.youtube.com/@iCanInvestCA" target="_blank"><i class="fab fa-youtube fa-fw mr-2 icon-red"></i>iCanInvest YouTube Channel</a></li>
                         </ul>
                         <div class="bg-green-50 p-4 rounded-lg mt-6 border-l-4 border-green-300">
@@ -804,7 +848,7 @@
             </div>
              <div class="mb-2 social-links space-x-4 relative">
                 <a href="https://x.com/iCanInvestCA" target="_blank" aria-label="Follow on X" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
-                 <a href="https://bsky.app/profile/icaninvest.ca" target="_blank" aria-label="Follow on Bluesky" title="Follow on Bluesky"><img src="images/bluesky.png" alt="Bluesky icon" class="social-icon inline-block"></a>
+                 <a href="https://bsky.app/profile/icaninvest.ca" target="_blank" aria-label="Follow on Bluesky" title="Follow on Bluesky"><img src="images/bluesky.png" alt="iCanInvest on Bluesky" class="social-icon inline-block"></a>
                 <a href="https://www.youtube.com/@iCanInvestCA" target="_blank" aria-label="Subscribe on YouTube" title="Subscribe on YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="mailto:contact@icaninvest.ca" aria-label="Email Contact" title="Email Contact"><i class="fas fa-envelope"></i></a>
                  <a href="#" id="footer-donate-toggle" class="cursor-pointer" aria-label="Support the site" title="Support the site">
