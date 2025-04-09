@@ -3,50 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to Wealthsimple</title>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <title>Connecting to Wealthsimple...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Lato:wght@400&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Merriweather', serif;
-            background-color: #000;
-            color: #fff;
+            padding: 1rem; /* Add padding for smaller screens */
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f9fa; /* Match index.html background */
+            color: #333; /* Match index.html text color */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('../images/PiggyMountain.webp');
-            background-size: cover;
-            background-position: center;
+            box-sizing: border-box;
         }
         .content {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 2rem;
-            border-radius: 1rem;
-            max-width: 80%;
+            max-width: 500px; /* Limit width */
+            width: 100%;
         }
         h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif; /* Match index.html heading font */
+            font-weight: 600;
+            font-size: 1.5rem; /* Slightly smaller heading */
+            margin-bottom: 0.75rem;
+            color: #1a202c; /* Match index.html heading color */
         }
         p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1rem; /* Standard text size */
+            margin-bottom: 1.5rem;
+            color: #4a5568; /* Match index.html paragraph color */
         }
-        .loader {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #3498db;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 1rem auto;
+        a {
+            color: #5e72e4; /* Match index.html link color */
+            text-decoration: underline;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        a:hover {
+            color: #324cdd; /* Match index.html link hover color */
         }
     </style>
     <!-- Google tag (gtag.js) -->
@@ -68,21 +64,21 @@
             'event_label': 'Wealthsimple Referral',
             'transport_type': 'beacon',
             'event_callback': function() {
-                // Set timeout for redirect
-                setTimeout(redirectToWealthsimple, 3000); // 3 seconds delay
+                // Set timeout for redirect - Reduced delay
+                setTimeout(redirectToWealthsimple, 500); // 0.5 seconds delay
             }
         });
 
-        // Fallback in case gtag fails
-        setTimeout(redirectToWealthsimple, 4000); // 4 seconds delay as fallback
+        // Fallback in case gtag fails - Reduced delay
+        setTimeout(redirectToWealthsimple, 600); // 0.6 seconds delay as fallback
     </script>
 </head>
 <body>
     <div class="content">
-        <h1>Preparing Your Wealth-Building Journey</h1>
-        <p>You're about to be redirected to Wealthsimple. Get ready to start your investment adventure!</p>
-        <div class="loader"></div>
-        <p>If you're not redirected in a few seconds, <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA" style="color: #3498db;">click here</a>.</p>
+        <h1>Connecting you securely to Wealthsimple...</h1>
+        <p>Applying your referral bonus. Please wait a moment.</p>
+        <!-- Loader removed -->
+        <p>If you are not redirected shortly, <a href="https://my.wealthsimple.com/app/public/trade-referral-signup?code=AEXLPA">click here</a>.</p>
     </div>
 </body>
 </html>
