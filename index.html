@@ -84,6 +84,11 @@
              align-items: center;
              justify-content: center;
              position: relative;
+             /* Refined Hero Background - Subtle Gradient */
+             background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+             --tw-gradient-from: #e0f2fe; /* sky-100 */
+             --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(224, 242, 254, 0));
+             --tw-gradient-to: #f9fafb; /* gray-50 */
         }
         @media (min-width: 768px) {
             .section { padding: 6rem 2rem; }
@@ -102,11 +107,15 @@
          @media (min-width: 768px) { .content-box { padding: 2.5rem; } }
         @media (min-width: 1024px) { .content-box { padding: 3rem; } }
         .cta-button {
-            font-family: 'Poppins', sans-serif; font-weight: 600; background-color: #2dce89; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: background-color 0.3s ease, transform 0.3s ease; display: inline-block; text-align: center;
+            font-family: 'Poppins', sans-serif; font-weight: 600; background-color: #2dce89; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; display: inline-block; text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle base shadow */
         }
-        .cta-button:hover { background-color: #26b878; transform: translateY(-2px); }
-        .cta-button-secondary { background-color: transparent; color: #2dce89; border: 2px solid #2dce89; }
-        .cta-button-secondary:hover { background-color: rgba(45, 206, 137, 0.1); color: #26b878; transform: translateY(-2px); }
+        .cta-button:hover {
+            background-color: #36f1a1; /* Slightly brighter green */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(45, 206, 137, 0.3); /* More pronounced shadow on hover */
+        }
+        .cta-button-secondary { background-color: transparent; color: #2dce89; border: 2px solid #2dce89; box-shadow: none; /* Remove base shadow for secondary */ }
+        .cta-button-secondary:hover { background-color: rgba(45, 206, 137, 0.1); color: #26b878; transform: translateY(-2px); box-shadow: none; }
          .header {
             background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 50; padding: 1rem 0; width: 100%;
         }
@@ -170,9 +179,12 @@
         a { color: #5e72e4; text-decoration: none; transition: color 0.3s ease; }
         a:hover { color: #324cdd; text-decoration: underline; }
         .feature-box {
-            background-color: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;
+            background-color: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 1px solid #e2e8f0; /* Add subtle border */
         }
-        .feature-box:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); }
+        .feature-box:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Slightly more pronounced shadow */
+        }
         .feature-box i { font-size: 2.5rem; margin-bottom: 1rem; }
          .feature-box h3 { margin-bottom: 0.5rem; }
          .feature-box p { flex-grow: 1; }
@@ -209,6 +221,28 @@
         #footer-donate-options a i, #footer-donate-options button i { margin-right: 0.75rem; width: 16px; text-align: center; color: #666; }
         #footer-donate-options a:hover, #footer-donate-options button:hover { background-color: #f1f5f9; }
         #footer-donate-options .copy-feedback { font-size: 0.75rem; color: green; margin-left: auto; display: none; }
+
+        /* --- Scroll Animation Styles --- */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(40px); /* Increased distance */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* --- End Scroll Animation Styles --- */
+
+        /* --- Quote Carousel Fade Transition --- */
+        .quote-content {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 1;
+        }
+        .quote-content.fade-out {
+            opacity: 0;
+        }
+        /* --- End Quote Carousel Fade Transition --- */
 
     </style>
 
@@ -294,7 +328,7 @@
         </section>
 
         <section id="problem-solution" class="section">
-            <div class="content-box">
+            <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-exchange-alt mr-2 icon-red"></i>The Old Way vs. The Smart Way
                 </h2>
@@ -357,7 +391,7 @@
         </div>
 
          <section id="all-in-one-etfs" class="section bg-gray-50">
-            <div class="content-box">
+            <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-puzzle-piece mr-2 icon-blue"></i>All-in-One ETFs: Investing Made Simple
                 </h2>
@@ -456,7 +490,7 @@
         </div>
 
         <section id="fees-impact" class="section">
-            <div class="content-box">
+            <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-coins mr-2 icon-yellow"></i>Fees Drain Your Wealth: See the Impact
                 </h2>
@@ -551,7 +585,7 @@
         </div>
 
         <section id="accounts-buying" class="section bg-gray-50">
-            <div class="content-box">
+            <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-university mr-2 icon-purple"></i>Accounts & Getting Started with Wealthsimple
                 </h2>
@@ -646,7 +680,7 @@
         </div>
 
          <section id="wealthsimple-cash" class="section">
-            <div class="content-box">
+            <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-wallet mr-2 icon-blue"></i>Bonus: Level Up Your Banking with Wealthsimple Cash
                 </h2>
@@ -741,7 +775,7 @@
         </div>
 
          <section id="success-learning" class="section bg-gray-50">
-            <div class="content-box">
+            <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-graduation-cap mr-2 icon-purple"></i>Stay the Course & Keep Learning
                 </h2>
@@ -793,8 +827,9 @@
             </div>
         </section>
 
-         <section id="conclusion" class="section text-center bg-gradient-to-b from-gray-50 to-white">
-            <div class="container mx-auto px-4 md:px-6">
+         <!-- Removed gradient class from #conclusion section tag -->
+         <section id="conclusion" class="section text-center">
+            <div class="container mx-auto px-4 md:px-6 scroll-animate">
                  <i class="fas fa-rocket text-5xl text-green-500 mb-4"></i>
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-800">
                     Ready to Take Control of Your Financial Future?
@@ -964,9 +999,10 @@
 
             let currentQuoteIndices = new Array(carousels.length);
 
-            function updateCarousel(carouselIndex) {
+            function updateCarousel(carouselIndex, isInitial = false) {
                 if(carouselIndex >= carousels.length || carouselIndex < 0 || currentQuoteIndices[carouselIndex] === undefined) return;
                 const carousel = carousels[carouselIndex]; if (!carousel) return;
+                const contentEl = carousel.querySelector('.quote-content'); if (!contentEl) return;
 
                 // Ensure the index stays within bounds
                 let actualIndex = currentQuoteIndices[carouselIndex] % quotes.length;
@@ -975,23 +1011,30 @@
                 }
 
                 const quote = quotes[actualIndex];
-                const textEl = carousel.querySelector('.quote-text');
-                const authorEl = carousel.querySelector('.quote-author');
-                const descEl = carousel.querySelector('.quote-description');
-                if (textEl) textEl.textContent = `"${quote.text}"`;
-                if (authorEl) authorEl.textContent = `- ${quote.author}`;
-                if (descEl) descEl.textContent = quote.description;
+                const textEl = contentEl.querySelector('.quote-text');
+                const authorEl = contentEl.querySelector('.quote-author');
+                const descEl = contentEl.querySelector('.quote-description');
+
+                const updateContent = () => {
+                    if (textEl) textEl.textContent = `"${quote.text}"`;
+                    if (authorEl) authorEl.textContent = `- ${quote.author}`;
+                    if (descEl) descEl.textContent = quote.description;
+                    contentEl.classList.remove('fade-out'); // Fade in
+                };
+
+                if (isInitial) {
+                    updateContent(); // Set initial content without fade
+                } else {
+                    contentEl.classList.add('fade-out'); // Start fade out
+                    setTimeout(updateContent, 300); // Update content after fade out duration
+                }
             }
 
             carousels.forEach((carousel, index) => {
-                // Assign a unique random starting index to each carousel
-                // Use modulo in case there are more carousels than quotes
                 currentQuoteIndices[index] = availableIndices[index % availableIndices.length];
-
-                updateCarousel(index);
+                updateCarousel(index, true); // Initial load
 
                 carousel.addEventListener('click', (event) => {
-                    // Prevent navigation if clicking on a link inside the carousel
                     if (event.target.closest('a')) {
                         return;
                     }
@@ -1003,11 +1046,41 @@
                     } else {
                         currentQuoteIndices[index]++; // Go to next quote index
                     }
-                    updateCarousel(index); // Update display
+                    updateCarousel(index); // Update display with fade
                 });
             });
         });
          // --- END: Updated Quote Carousel Logic ---
+
+        // --- START: Scroll Animation Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.scroll-animate');
+
+            if ("IntersectionObserver" in window) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            // Optional: Stop observing once visible to improve performance
+                            // observer.unobserve(entry.target);
+                        }
+                        // Optional: Remove 'visible' class if element scrolls out of view
+                        // else {
+                        //     entry.target.classList.remove('visible');
+                        // }
+                    });
+                }, {
+                    rootMargin: '0px', // Adjust margin if needed (e.g., '-50px' to trigger earlier)
+                    threshold: 0.1 // Trigger when 10% of the element is visible
+                });
+
+                animatedElements.forEach(el => observer.observe(el));
+            } else {
+                // Fallback for older browsers: make elements visible immediately
+                animatedElements.forEach(el => el.classList.add('visible'));
+            }
+        });
+        // --- END: Scroll Animation Logic ---
 
         // Tooltip positioning for Wealthsimple Cash section (Keep this section as is)
         document.addEventListener('DOMContentLoaded', function() { const tooltips = document.querySelectorAll('#wealthsimple-cash .tooltip'); tooltips.forEach(tooltip => { const tooltiptext = tooltip.querySelector('.tooltiptext'); if (!tooltiptext) return; tooltip.addEventListener('mouseenter', () => { tooltiptext.style.visibility = 'visible'; const rect = tooltip.getBoundingClientRect(); tooltiptext.classList.add('fixed-tooltip'); let top = rect.bottom + 8; let left = rect.left + rect.width / 2 - tooltiptext.offsetWidth / 2; if (left < 10) left = 10; if (left + tooltiptext.offsetWidth > window.innerWidth - 10) left = window.innerWidth - tooltiptext.offsetWidth - 10; if (top + tooltiptext.offsetHeight > window.innerHeight - 10) top = rect.top - tooltiptext.offsetHeight - 8; tooltiptext.style.top = `${top}px`; tooltiptext.style.left = `${left}px`; tooltiptext.style.opacity = '1'; }); tooltip.addEventListener('mouseleave', () => { tooltiptext.classList.remove('fixed-tooltip'); tooltiptext.style.top = ''; tooltiptext.style.left = ''; tooltiptext.style.opacity = '0'; tooltiptext.style.visibility = 'hidden'; }); }); });
