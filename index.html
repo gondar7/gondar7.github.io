@@ -53,19 +53,19 @@
          html {
              scroll-behavior: smooth;
              overflow-x: hidden;
-        }
+         }
          body {
              font-family: 'Lato', sans-serif;
              color: #333;
              background-color: #f8f9fa;
              line-height: 1.6;
              overflow-x: hidden;
-        }
+         }
          h1, h2, h3, h4, h5, h6 {
              font-family: 'Poppins', sans-serif;
              font-weight: 600;
              color: #1a202c;
-        }
+         }
          .section {
              padding: 4rem 1rem;
              min-height: 80vh;
@@ -74,7 +74,7 @@
              justify-content: center;
              width: 100%;
              box-sizing: border-box;
-        }
+         }
          #hero {
               min-height: 100vh;
               padding-top: 6rem;
@@ -88,11 +88,11 @@
               --tw-gradient-from: #e0f2fe; /* sky-100 */
               --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(224, 242, 254, 0));
               --tw-gradient-to: #f9fafb; /* gray-50 */
-        }
+         }
          @media (min-width: 768px) {
              .section { padding: 6rem 2rem; }
               #hero { padding-top: 8rem; padding-bottom: 8rem; }
-        }
+         }
          .content-box {
              background-color: #ffffff;
              border-radius: 0.75rem;
@@ -102,107 +102,107 @@
              width: 100%;
              margin: 1rem 0;
              box-sizing: border-box;
-        }
+         }
          @media (min-width: 768px) { .content-box { padding: 2.5rem; } }
-        @media (min-width: 1024px) { .content-box { padding: 3rem; } }
+         @media (min-width: 1024px) { .content-box { padding: 3rem; } }
          .cta-button {
              font-family: 'Poppins', sans-serif; font-weight: 600; background-color: #2dce89; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; display: inline-block; text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle base shadow */
-        }
+         }
          .cta-button:hover {
              background-color: #36f1a1; /* Slightly brighter green */
              transform: translateY(-2px);
              box-shadow: 0 4px 8px rgba(45, 206, 137, 0.3); /* More pronounced shadow on hover */
-        }
+         }
          .cta-button-secondary { background-color: transparent; color: #2dce89; border: 2px solid #2dce89; box-shadow: none; /* Remove base shadow for secondary */ }
          .cta-button-secondary:hover { background-color: rgba(45, 206, 137, 0.1); color: #26b878; transform: translateY(-2px); box-shadow: none; }
           .header {
              background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 50; padding: 1rem 0; width: 100%;
-        }
+         }
          .header .container {
              width: 100%; max-width: 1280px;
-        }
+         }
          @media (max-width: 640px) {
               .header .cta-button { font-size: 0.8rem; padding: 0.5rem 0.8rem; }
               .logo { font-size: 1.2rem; }
-        }
+         }
          .logo {
              font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1a202c; display: flex; align-items: center;
-        }
+         }
          .logo i { color: #2dce89; margin-right: 0.5rem; }
          .logo-highlight { color: #5e72e4; }
          .tooltip {
-            position: relative; display: inline-block; border-bottom: 1px dotted #5e72e4; cursor: help;
-        }
+             position: relative; display: inline-block; border-bottom: 1px dotted #5e72e4; cursor: help;
+         }
          .tooltip .tooltiptext {
-            visibility: hidden; width: 220px; background-color: #333; color: #fff; text-align: left; border-radius: 6px; padding: 10px 12px; position: absolute; z-index: 10; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s, visibility 0s linear 0.3s; font-size: 0.875rem; line-height: 1.4; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); pointer-events: none;
-        }
+             visibility: hidden; width: 220px; background-color: #333; color: #fff; text-align: left; border-radius: 6px; padding: 10px 12px; position: absolute; z-index: 10; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s, visibility 0s linear 0.3s; font-size: 0.875rem; line-height: 1.4; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); pointer-events: none;
+         }
          .tooltip .tooltiptext.fixed-tooltip {
               position: fixed; bottom: auto; left: auto; transform: none; transition: opacity 0.3s; z-index: 1000;
          }
          .tooltip .tooltiptext::after {
-            content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent;
-        }
+             content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent;
+         }
          .tooltip .tooltiptext.fixed-tooltip::after { display: none; }
          .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; transition-delay: 0s; pointer-events: auto; }
          .tooltiptext img { max-width: 100%; height: auto; margin-top: 8px; border-radius: 4px; }
          table {
-            border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 0.5rem; overflow: hidden;
-        }
+             border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 0.5rem; overflow: hidden;
+         }
          th, td {
-            padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: #4a5568; vertical-align: middle; position: relative;
-        }
+             padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: #4a5568; vertical-align: middle; position: relative;
+         }
          th {
-            background-color: #f8f9fa; font-weight: 600; color: #1a202c; font-family: 'Poppins', sans-serif;
-        }
+             background-color: #f8f9fa; font-weight: 600; color: #1a202c; font-family: 'Poppins', sans-serif;
+         }
          tr:last-child td { border-bottom: none; }
          tr:hover { background-color: #f8f9fa; }
          .fees-table .fee-high { font-weight: bold; color: #f56565; }
          .fees-table .fee-low { font-weight: bold; color: #48bb78; }
          .modal {
               position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; padding: 1rem;
-        }
+         }
          .modal.active { opacity: 1; visibility: visible; }
          .modal-content {
               background-color: #fff; border-radius: 0.75rem; padding: 1.5rem; max-width: 95%; width: auto; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); transform: scale(0.95); transition: transform 0.3s ease; position: relative;
-        }
+         }
          @media (min-width: 768px) { .modal-content { padding: 2rem; max-width: 80%; } }
          @media (min-width: 1024px) { .modal-content { max-width: 70%; } }
          @media (min-width: 1280px) { .modal-content { max-width: 60%; } }
           .modal.active .modal-content { transform: scale(1); }
          .modal-close-button {
               position: absolute; top: 0.75rem; right: 0.75rem; background: #eee; border: none; border-radius: 50%; width: 28px; height: 28px; font-size: 1rem; color: #555; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; line-height: 1;
-        }
+         }
          .modal-close-button:hover { background: #ddd; color: #111; transform: rotate(90deg); }
          .icon-green { color: #2dce89; } .icon-blue { color: #5e72e4; } .icon-red { color: #f5365c; } .icon-yellow { color: #fb6340; } .icon-purple { color: #8965e0; } .icon-teal { color: #11cdef; } .icon-pink { color: #f3a4b5; } .icon-orange { color: #fb8c00; } .icon-gray { color: #8898aa; }
          a { color: #5e72e4; text-decoration: none; transition: color 0.3s ease; }
          a:hover { color: #324cdd; text-decoration: underline; }
          .feature-box {
-              background-color: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 1px solid #e2e8f0; /* Add subtle border */
-        }
+             background-color: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 1px solid #e2e8f0; /* Add subtle border */
+         }
          .feature-box:hover {
-              transform: translateY(-5px);
-              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Slightly more pronounced shadow */
-        }
+             transform: translateY(-5px);
+             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Slightly more pronounced shadow */
+         }
          .feature-box i { font-size: 2.5rem; margin-bottom: 1rem; }
           .feature-box h3 { margin-bottom: 0.5rem; }
           .feature-box p { flex-grow: 1; }
          footer {
               background-color: #e9ecef; padding: 2rem 1rem; margin-top: 4rem; border-top: 1px solid #dee2e6; position: relative;
-        }
+         }
          footer a { color: #495057; }
          footer a:hover { color: #1a202c; }
          .footer-links a { margin: 0 0.5rem; font-size: 0.875rem; }
          .social-links { position: relative; }
          .social-links a {
               font-size: 1.2rem; color: #495057; transition: color 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; vertical-align: middle;
-        }
+         }
           .social-links img.social-icon { height: 0.8em; width: auto; opacity: 0.7; transition: opacity 0.3s; vertical-align: middle; }
           .social-links a:hover img.social-icon { opacity: 1; }
          .social-links a:hover { color: #1a202c; }
           .quote-carousel-container { padding: 4rem 1rem; background-color: #e9ecef; }
           .quote-carousel {
                background-color: #fff; border-radius: 0.75rem; padding: 2rem 0.5rem; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
-        }
+         }
           .quote-content { text-align: center; padding: 0 1rem; }
           .quote-text { font-style: italic; font-size: 1.1rem; margin-bottom: 0.75rem; color: #4a5568; }
           .quote-author { font-weight: 600; color: #1a202c; }
@@ -212,7 +212,7 @@
           .performance-rank-1 { color: #2f855a; font-weight: 700; } .performance-rank-2 { color: #2b6cb0; } .performance-rank-3 { color: #b7791f; } .performance-rank-4 { color: #c53030; }
           #footer-donate-options {
                position: absolute; bottom: 100%; right: 0; margin-bottom: 0.5rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 0.5rem; width: 250px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 60;
-        }
+         }
          #footer-donate-options.active { opacity: 1; visibility: visible; transform: translateY(0); }
          #footer-donate-options p { text-align: center; font-size: 0.875rem; color: #4a5568; font-weight: 600; margin-bottom: 0.5rem; padding: 0.25rem 0.5rem; }
          #footer-donate-options a, #footer-donate-options button { display: flex; align-items: center; width: 100%; text-align: left; padding: 0.6rem 0.75rem; font-size: 0.875rem; color: #333; border-radius: 0.25rem; transition: background-color 0.2s; border: none; background: none; cursor: pointer; }
@@ -220,27 +220,27 @@
          #footer-donate-options a:hover, #footer-donate-options button:hover { background-color: #f1f5f9; }
          #footer-donate-options .copy-feedback { font-size: 0.75rem; color: green; margin-left: auto; display: none; }
 
-        /* --- Scroll Animation Styles --- */
+         /* --- Scroll Animation Styles --- */
          .scroll-animate {
               opacity: 0;
               transform: translateY(40px); /* Increased distance */
               transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
+         }
          .scroll-animate.visible {
               opacity: 1;
               transform: translateY(0);
-        }
-        /* --- End Scroll Animation Styles --- */
+         }
+         /* --- End Scroll Animation Styles --- */
 
-        /* --- Quote Carousel Fade Transition --- */
+         /* --- Quote Carousel Fade Transition --- */
          .quote-content {
               transition: opacity 0.3s ease-in-out;
               opacity: 1;
-        }
+         }
          .quote-content.fade-out {
               opacity: 0;
-        }
-        /* --- End Quote Carousel Fade Transition --- */
+         }
+         /* --- End Quote Carousel Fade Transition --- */
 
     </style>
 
@@ -329,7 +329,7 @@
              <div class="max-w-4xl mx-auto text-center bg-sky-50 p-6 md:p-8 rounded-lg border border-sky-200 scroll-animate">
                  <h2 class="text-2xl font-bold text-gray-800 mb-3">A Simple Guide from One Canadian Investor to Another.</h2>
                  <p class="text-gray-700 md:text-lg">
-                  Hi, I'm Shane. When I started investing, I was shocked to discover how much of my potential returns were being eaten by the high fees in typical bank mutual funds. I created this no-fluff guide to share what I learned and help you avoid the same mistakes. My goal is to show you the simpler, cheaper, and more effective way to build your wealth in Canada.
+                 Hi, I'm Shane. When I started investing, I was shocked to discover how much of my potential returns were being eaten by the high fees in typical bank mutual funds. I created this no-fluff guide to share what I learned and help you avoid the same mistakes. My goal is to show you the simpler, cheaper, and more effective way to build your wealth in Canada.
                  </p>
              </div>
         </section>
@@ -398,7 +398,7 @@
             </div>
         </div>
 
-         <section id="all-in-one-etfs" class="section bg-gray-50">
+        <section id="all-in-one-etfs" class="section bg-gray-50">
             <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-puzzle-piece mr-2 icon-blue"></i>The "One-Click" Portfolio: A Simpler Way to Invest
@@ -481,7 +481,7 @@
                    <button id="close-geo" class="modal-close-button" aria-label="Close modal">×</button>
                    <h3 class="text-xl font-bold mb-4 text-gray-800">Geographic Allocation Comparison (Sample: Growth 80/20)</h3>
                    <div class="overflow-x-auto">
-                      <div class="w-full h-80 md:h-96 min-w-[300px]"><canvas id="geoChart"></canvas></div>
+                     <div class="w-full h-80 md:h-96 min-w-[300px]"><canvas id="geoChart"></canvas></div>
                    </div>
               </div>
             </div>
@@ -507,14 +507,18 @@
                         <h3 class="text-xl font-bold text-gray-700 mb-4">Key Fees Explained</h3>
                          <div class="mb-4">
                               <h4 class="font-semibold text-gray-800"><i class="fas fa-percentage fa-fw mr-2 icon-teal"></i>Management Expense Ratio (MER)</h4>
-                              <p class="text-gray-600 text-sm">Annual fee charged by the ETF provider (e.g., 0.20%). Deducted automatically.</p>
+                              <p class="text-gray-600 text-sm">Annual fee charged by the ETF/fund provider (e.g., 0.20%). Deducted automatically from returns.</p>
                          </div>
-                         <div>
+                         <div class="mb-4">
                               <h4 class="font-semibold text-gray-800"><i class="fas fa-shopping-cart fa-fw mr-2 icon-purple"></i>Commissions (Trading Fees)</h4>
                               <p class="text-gray-600 text-sm">
-                                   Fee paid to the brokerage per trade (buy/sell).<br>
-                                   • <strong class="text-green-600">Wealthsimple Trade: $0</strong> for stocks & ETFs.<br>
-                                   • Banks/Others: Often $5-$10 per trade.
+                                   Fee paid to the brokerage per trade (buy/sell). Often $5-$10 at big banks.
+                              </p>
+                         </div>
+                         <div>
+                              <h4 class="font-semibold text-gray-800"><i class="fas fa-university fa-fw mr-2 icon-red"></i>Monthly Bank Account Fees</h4>
+                              <p class="text-gray-600 text-sm">
+                                   A separate monthly fee just for having a chequing account. Typically $15+ at big banks.
                               </p>
                          </div>
 
@@ -531,7 +535,7 @@
                                 </div>
                                 <input type="range" id="initial-slider" min="0" max="1000000" step="10000" value="0" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                             </div>
-                        
+                         
                             <div class="mb-4">
                                 <div class="flex justify-between items-center mb-1">
                                     <label for="monthly-input" class="text-sm font-medium text-gray-700">Monthly Contribution</label>
@@ -542,7 +546,18 @@
                                 </div>
                                 <input type="range" id="monthly-slider" min="0" max="5000" step="50" value="1000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                             </div>
-                        
+
+                            <div class="mb-4">
+                                <div class="flex justify-between items-center mb-1">
+                                    <label for="bankfee-input" class="text-sm font-medium text-gray-700">Monthly Bank Fee</label>
+                                    <div class="flex items-center">
+                                        <span class="text-gray-500 mr-1">$</span>
+                                        <input type="number" id="bankfee-input" min="0" step="1" value="15" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
+                                    </div>
+                                </div>
+                                <input type="range" id="bankfee-slider" min="0" max="30" step="1" value="15" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            </div>
+                         
                             <div>
                                 <div class="flex justify-between items-center mb-1">
                                     <label for="period-input" class="text-sm font-medium text-gray-700">Investment Period</label>
@@ -559,9 +574,9 @@
                         <h3 class="text-xl font-bold text-gray-700 mb-4 text-center lg:text-left">How Fees Erode Your Growth (7% Annual Return Assumed)</h3>
                         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                             <div class="mb-4 flex flex-wrap justify-center gap-2">
-                              <button class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded border border-green-300" onclick="toggleDataset(0)">Low-fee ETF (0.2%)</button>
-                              <button class="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded border border-yellow-300" onclick="toggleDataset(1)">ETF + Commissions (0.2% + $20/mo)</button>
-                              <button class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded border border-red-300" onclick="toggleDataset(2)">Mutual Fund (2%)</button>
+                              <button class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded border border-green-300" onclick="toggleDataset(0)">Wealthsimple (0.2% MER)</button>
+                              <button class="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded border border-yellow-300" onclick="toggleDataset(1)">Bank ETF (0.2% + Comm. + Fees)</button>
+                              <button class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded border border-red-300" onclick="toggleDataset(2)">Bank Fund (2% + Fees)</button>
                             </div>
                             <div style="height: 300px; position: relative;">
                               <canvas id="fee-impact-chart"></canvas>
@@ -570,31 +585,30 @@
                                   <h4 class="font-bold mb-2 text-center">After <span id="summary-years">25</span> years:</h4>
                                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                                        <div>
-                                           <p class="font-semibold">Low-fee ETF:</p>
+                                           <p class="font-semibold">Wealthsimple:</p>
                                            <p class="text-green-600 font-bold text-lg">$<span id="low-fee-result">0</span></p>
                                        </div>
                                        <div>
-                                           <p class="font-semibold">ETF + Commissions:</p>
+                                           <p class="font-semibold">Bank ETF:</p>
                                            <p class="text-yellow-600 font-bold text-lg">$<span id="bank-brokerage-result">0</span></p>
                                        </div>
                                        <div>
-                                           <p class="font-semibold">Mutual Fund:</p>
+                                           <p class="font-semibold">Bank Mutual Fund:</p>
                                            <p class="text-red-600 font-bold text-lg">$<span id="mutual-fund-result">0</span></p>
                                        </div>
                                   </div>
                                   <div class="mt-3 text-center border-t pt-3 border-blue-200">
-                                       <p class="font-bold">Difference (Low-fee ETF vs Mutual Fund):</p>
+                                       <p class="font-bold">Difference (Wealthsimple vs Bank Mutual Fund):</p>
                                        <p class="text-green-700 font-bold text-xl">$<span id="difference-result">0</span> more!</p>
                                        <p class="text-green-700 font-semibold">(<span id="difference-percentage">0</span>% more growth)</p>
                                   </div>
                              </div>
-                            <p class="text-xs text-gray-500 mt-2 text-center">*Assumes twice-monthly purchases/commissions where applicable.</p>
+                            <p class="text-xs text-gray-500 mt-2 text-center">*Assumes twice-monthly purchases/commissions ($20/mo) where applicable. Bank fees are applied monthly.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
         <div class="quote-carousel-container">
             <div class="quote-carousel">
                  <div class="quote-content">
@@ -604,15 +618,31 @@
               </div>
                  </div>
         </div>
-
+        
         <section id="wealthsimple-ecosystem" class="section bg-gray-50">
             <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-4">
-                    <i class="fas fa-layer-group mr-2 icon-purple"></i>Your Entire Financial Life, Simplified
+                    <i class="fas fa-university mr-2 icon-purple"></i>More Than an Investment App: Your New Bank
                 </h2>
-                <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">Wealthsimple isn't just a place to buy ETFs; it's a complete toolkit to replace your bank and manage your money better, all within one simple app.</p>
+                <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">Wealthsimple is a complete toolkit to replace your bank and manage your money better, all within one simple app and without the frustrating monthly fees.</p>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    
+                    <div class="feature-box !text-left">
+                        <h3 class="text-xl font-bold text-gray-700 mb-4 text-center"><i class="fas fa-ban mr-2 icon-orange"></i>No Monthly Fees</h3>
+                        <p class="text-center text-gray-600 mb-4">Stop paying banks just to hold your money. Wealthsimple charges nothing for what matters most.</p>
+                        <ul class="list-none pl-0 space-y-4 text-gray-700 text-sm">
+                                <li class="flex items-start"><i class="fas fa-times-circle fa-fw text-red-500 mr-3 mt-1"></i><div><strong>Your Bank: ~$300/year</strong> in typical chequing & investment account fees.</div></li>
+                                <li class="flex items-start"><i class="fas fa-check-circle fa-fw text-green-500 mr-3 mt-1"></i><div><strong>Wealthsimple: $0/year</strong> for chequing, saving, and investing accounts.</div></li>
+                                <li class="flex items-start"><i class="fas fa-lock-open fa-fw text-blue-500 mr-3 mt-1"></i><div>No minimum balance required to waive fees. Your money is always yours to use or invest.</div></li>
+                        </ul>
+                         <div class="bg-gray-100 p-3 rounded-lg mt-auto">
+                              <a href="#fees-impact" class="text-sm text-blue-600 hover:underline font-semibold">
+                                   <i class="fas fa-calculator mr-1"></i>See How Bank Fees Cost You →
+                              </a>
+                         </div>
+                    </div>
+                    
                     <div class="feature-box !text-left">
                         <h3 class="text-xl font-bold text-gray-700 mb-4 text-center"><i class="fas fa-chart-line mr-2 icon-green"></i>Invest</h3>
                         <p class="text-center text-gray-600 mb-4">Build your own portfolio with commission-free trading or let experts manage it for you.</p>
@@ -628,11 +658,12 @@
                               </a>
                          </div>
                     </div>
+
                     <div class="feature-box !text-left">
                         <h3 class="text-xl font-bold text-gray-700 mb-4 text-center"><i class="fas fa-wallet mr-2 icon-blue"></i>Spend</h3>
                         <p class="text-center text-gray-600 mb-4">A chequing account that actually pays you, with features your bank can't match.</p>
                         <ul class="list-none pl-0 space-y-4 text-gray-700 text-sm">
-                            <li class="flex items-start"><i class="fas fa-percent fa-fw text-green-500 mr-3 mt-1"></i><div>Earn high interest on your balance <span class="tooltip">(4% - 5%*)<span class="tooltiptext !w-[280px]">Base rates (as of late 2025, subject to change): Core (4%), Premium (4.5%), Generation (5%). Get a 0.5% boost (Core/Premium) with qualifying direct deposits ($2k+/month).</span></span>.</div></li>
+                            <li class="flex items-start"><i class="fas fa-percent fa-fw text-green-500 mr-3 mt-1"></i><div>Earn high interest on your balance <span class="tooltip">(up to 2.5%*)<span class="tooltiptext !w-[280px]">Rates (subject to change): Core (1.5%), Premium (2.0%), Generation (2.5%). Core/Premium clients can get a 0.5% boost with an eligible direct deposit of $2k+/month.</span></span>.</div></li>
                             <li class="flex items-start"><i class="fas fa-credit-card fa-fw text-purple-500 mr-3 mt-1"></i><div>Get 1% back in stock or cash on all spending.</div></li>
                             <li class="flex items-start"><i class="fas fa-plane-departure fa-fw text-teal-500 mr-3 mt-1"></i><div>No foreign transaction fees from Wealthsimple.</div></li>
                             <li class="flex items-start"><i class="fas fa-shield-alt fa-fw text-blue-500 mr-3 mt-1"></i><div>Eligible for CDIC protection up to $1M.</div></li>
@@ -643,11 +674,12 @@
                               </a>
                          </div>
                     </div>
+
                     <div class="feature-box !text-left">
                         <h3 class="text-xl font-bold text-gray-700 mb-4 text-center"><i class="fas fa-hand-holding-usd mr-2 icon-yellow"></i><span class="tooltip">Borrow<span class="tooltiptext !w-[280px]">Using your investments as collateral to get a low-interest loan (a 'margin loan'). This lets you access cash without selling your long-term investments.</span></span></h3>
                         <p class="text-center text-gray-600 mb-4">Access cash when you need it by borrowing against your portfolio at low rates.</p>
                         <ul class="list-none pl-0 space-y-4 text-gray-700 text-sm">
-                              <li class="flex items-start"><i class="fas fa-tag fa-fw text-green-500 mr-3 mt-1"></i><div>Rates from <span class="tooltip">6.2% - 7.2%*<span class="tooltiptext !w-[280px]">Borrowing rates depend on client tier (as of late 2025): Core (7.2%), Premium (6.7%), Generation (6.2%). Rates are variable and based on the prime rate.</span></span>.</div></li>
+                              <li class="flex items-start"><i class="fas fa-tag fa-fw text-green-500 mr-3 mt-1"></i><div>Rates from <span class="tooltip">4.2% - 5.2%*<span class="tooltiptext !w-[280px]">Borrowing rates depend on assets (subject to change): Core (<$100k): 5.2%, Premium ($100k+): 4.7%, Generation ($500k+): 4.2%. Rates are variable.</span></span>.</div></li>
                               <li class="flex items-start"><i class="fas fa-bolt fa-fw text-teal-500 mr-3 mt-1"></i><div>No applications, no credit checks.</div></li>
                               <li class="flex items-start"><i class="fas fa-undo fa-fw text-purple-500 mr-3 mt-1"></i><div>Pay back on your own schedule.</div></li>
                               <li class="flex items-start"><i class="fas fa-file-invoice-dollar fa-fw text-blue-500 mr-3 mt-1"></i><div>A smart alternative to high-interest debt.</div></li>
@@ -740,10 +772,10 @@
                              <h3 class="text-xl font-bold text-gray-700 mb-4"><i class="fas fa-exchange-alt mr-2 icon-teal"></i>Already Investing Elsewhere?</h3>
                              <p class="text-gray-600 mb-4 text-sm">Have an account at another bank? Wealthsimple makes transferring simple. They handle the paperwork and will reimburse the transfer-out fee for qualifying accounts over $25,000. <a href="https://help.wealthsimple.com/hc/en-ca/articles/1500003503661-Transfer-an-account-to-Wealthsimple" target="_blank">Learn more here →</a></p>
                              <ol class="list-decimal pl-5 space-y-2 text-gray-700 text-sm">
-                                  <li><strong>Initiate the transfer inside the Wealthsimple app</strong> (Go to Move → Transfer an account).</li>
-                                  <li><strong>Provide your account details</strong> from a recent statement.</li>
-                                  <li><strong>Choose to transfer <span class="tooltip">"in-kind"<span class="tooltiptext">Moves your investments as-is. This is usually the best option for registered accounts as you stay invested.</span></span> or <span class="tooltip">"in cash"<span class="tooltiptext">Sells your investments and moves the cash. You'll be out of the market during the transfer.</span></span>.</strong></li>
-                                  <li><strong>Let Wealthsimple handle the rest</strong> (typically takes 1-4 weeks).</li>
+                                   <li><strong>Initiate the transfer inside the Wealthsimple app</strong> (Go to Move → Transfer an account).</li>
+                                   <li><strong>Provide your account details</strong> from a recent statement.</li>
+                                   <li><strong>Choose to transfer <span class="tooltip">"in-kind"<span class="tooltiptext">Moves your investments as-is. This is usually the best option for registered accounts as you stay invested.</span></span> or <span class="tooltip">"in cash"<span class="tooltiptext">Sells your investments and moves the cash. You'll be out of the market during the transfer.</span></span>.</strong></li>
+                                   <li><strong>Let Wealthsimple handle the rest</strong> (typically takes 1-4 weeks).</li>
                              </ol>
                         </div>
                          </div>
@@ -761,7 +793,7 @@
                  </div>
         </div>
 
-         <section id="success-learning" class="section bg-gray-50">
+        <section id="success-learning" class="section bg-gray-50">
             <div class="content-box scroll-animate">
                 <h2 class="text-3xl font-bold text-center mb-8">
                     <i class="fas fa-graduation-cap mr-2 icon-purple"></i>Stay the Course & Keep Learning
@@ -770,21 +802,21 @@
                     <div>
                         <h3 class="text-xl font-bold text-gray-700 mb-4">Keys to Long-Term Success</h3>
                         <ul class="list-none pl-0 space-y-3 text-gray-700 mb-6">
-                              <li><i class="fas fa-calendar-check fa-fw icon-green mr-2"></i><strong class="font-semibold">Be Consistent:</strong> Set up regular, automatic investments (e.g., every payday).</li>
+                                <li><i class="fas fa-calendar-check fa-fw icon-green mr-2"></i><strong class="font-semibold">Be Consistent:</strong> Set up regular, automatic investments (e.g., every payday).</li>
                             <li><i class="fas fa-hourglass-half fa-fw icon-blue mr-2"></i><strong class="font-semibold">Be Patient:</strong> Investing is a marathon, not a sprint. Think long-term (5-10+ years).</li>
-                              <li><i class="fas fa-heartbeat fa-fw icon-purple mr-2"></i><strong class="font-semibold">Stay Calm:</strong> Don't panic sell during market dips. Stick to your plan.</li>
-                              <li><i class="fas fa-dollar-sign fa-fw icon-teal mr-2"></i><strong class="font-semibold">Minimize Fees:</strong> Stick to CAD-listed ETFs on commission-free platforms like Wealthsimple.</li>
-                              <li><i class="fas fa-info-circle fa-fw icon-yellow mr-2"></i><strong class="font-semibold">Know Your Timeline:</strong> Only invest money you won't need for at least 5 years.
+                                <li><i class="fas fa-heartbeat fa-fw icon-purple mr-2"></i><strong class="font-semibold">Stay Calm:</strong> Don't panic sell during market dips. Stick to your plan.</li>
+                                <li><i class="fas fa-dollar-sign fa-fw icon-teal mr-2"></i><strong class="font-semibold">Minimize Fees:</strong> Stick to CAD-listed ETFs on commission-free platforms like Wealthsimple.</li>
+                                <li><i class="fas fa-info-circle fa-fw icon-yellow mr-2"></i><strong class="font-semibold">Know Your Timeline:</strong> Only invest money you won't need for at least 5 years.
                                    <span class="tooltip">
                                         <i class="fas fa-info-circle ml-1 text-blue-500"></i>
-                                       <span class="tooltiptext">Markets fluctuate. A longer timeline gives your investments time to recover. For short-term savings (under 5 years), consider High-Interest Savings ETFs like CASH.TO (current yield ~4.8%) or HISA/PSA funds within Wealthsimple.</span>
+                                       <span class="tooltiptext">Markets fluctuate. A longer timeline gives your investments time to recover. For short-term savings (under 5 years), consider High-Interest Savings ETFs like CASH.TO (current yield 2.55%) or HISA/PSA funds within Wealthsimple.</span>
                                    </span>
-                              </li>
-                              <li><i class="fas fa-users fa-fw icon-pink mr-2"></i><strong class="font-semibold">Seek Advice (If Needed):</strong> Consider <span class="tooltip">fee-only financial advice<span class="tooltiptext">An advisor you pay directly for their time/plan, not one who earns commissions selling you products. This avoids conflicts of interest.</span></span> from a <span class="tooltip">fiduciary<span class="tooltiptext">Someone legally obligated to act in your best interest.</span></span> planner for complex situations.</li>
+                                </li>
+                                <li><i class="fas fa-users fa-fw icon-pink mr-2"></i><strong class="font-semibold">Seek Advice (If Needed):</strong> Consider <span class="tooltip">fee-only financial advice<span class="tooltiptext">An advisor you pay directly for their time/plan, not one who earns commissions selling you products. This avoids conflicts of interest.</span></span> from a <span class="tooltip">fiduciary<span class="tooltiptext">Someone legally obligated to act in your best interest.</span></span> planner for complex situations.</li>
                         </ul>
                          <div class="bg-blue-50 p-4 rounded-lg text-sm mt-4 border-l-4 border-blue-300">
                               <blockquote class="text-gray-700 italic mb-2">
-                                  "The stock market is a device for transferring money from the impatient to the patient."
+                                   "The stock market is a device for transferring money from the impatient to the patient."
                               </blockquote>
                               <p class="text-right text-blue-600 text-xs font-semibold">- Warren Buffett</p>
                          </div>
@@ -814,7 +846,7 @@
             </div>
         </section>
 
-         <section id="conclusion" class="section text-center">
+        <section id="conclusion" class="section text-center">
             <div class="container mx-auto px-4 md:px-6 scroll-animate">
                  <i class="fas fa-rocket text-5xl text-green-500 mb-4"></i>
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-800">
@@ -892,7 +924,7 @@
     </footer>
 
     <script>
-        // Modal Handling (Keep this section as is)
+        // Modal Handling
         const modals = document.querySelectorAll('.modal');
         const openButtons = document.querySelectorAll('[id^="open-"]');
         const closeButtons = document.querySelectorAll('[id^="close-"]');
@@ -900,12 +932,12 @@
         closeButtons.forEach(button => { button.addEventListener('click', () => { button.closest('.modal').classList.remove('active'); }); });
         modals.forEach(modal => { modal.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.remove('active'); } }); document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('active')) { modal.classList.remove('active'); } }); });
 
-        // Modal Data (Keep this section as is)
+        // Modal Data
         const topHoldings = { VGRO: ['Microsoft', 'NVIDIA', 'Apple', 'Royal Bank', 'Amazon', 'TD Bank', 'Enbridge', 'Canadian Natural Resources', 'Alphabet', 'Meta Platforms', 'CP Railway', 'Shopify', 'CN Railway', 'Brookfield', 'Bank of Montreal', 'Constellation Software'], XGRO: ['Microsoft', 'NVIDIA', 'Apple', 'Royal Bank', 'Amazon', 'TD Bank', 'Enbridge', 'Canadian Natural Resources', 'Alphabet', 'Meta Platforms', 'CP Railway', 'Shopify', 'CN Railway', 'Brookfield', 'Berkshire Hathaway', 'Eli Lilly'], ZGRO: ['Microsoft', 'NVIDIA', 'Apple', 'Royal Bank', 'Amazon', 'TD Bank', 'Enbridge', 'Canadian Natural Resources', 'Alphabet', 'Meta Platforms', 'CP Railway', 'Shopify', 'CN Railway', 'Brookfield', 'Berkshire Hathaway', 'Eli Lilly'], RBF459: ['Microsoft', 'NVIDIA', 'Apple', 'Royal Bank', 'Amazon', 'TD Bank', 'Enbridge', 'Canadian Natural Resources', 'Alphabet', 'Meta Platforms', 'CP Railway', 'Taiwan Semiconductor', 'Visa', 'Novo Nordisk', 'UnitedHealth Group', 'JPMorgan Chase'] };
         const performanceData = { VGRO: { '1Year': 16.82, '3Year': 16.67, 'MaxFeb2019': 59.10 }, XGRO: { '1Year': 17.08, '3Year': 17.33, 'MaxFeb2019': 61.57 }, ZGRO: { '1Year': 17.31, '3Year': 18.57, 'MaxFeb2019': 61.84 }, RBF459: { '1Year': 14.23, '3Year': 8.92, 'MaxFeb2019': 44.89 } };
         const geoAllocation = { VGRO: { Canada: 24.0, US: 36.5, Developed: 14.6, Emerging: 5.4 }, XGRO: { Canada: 19.9, US: 36.4, Developed: 19.4, Emerging: 4.1 }, ZGRO: { Canada: 19.8, US: 39.3, Developed: 15.1, Emerging: 6.0 }, RBF459: { Canada: 18.4, US: 31.5, Developed: 15.5, Emerging: 10.3 } };
 
-        // Modal Population Functions (Keep this section as is)
+        // Modal Population Functions
         function getHoldingMatchColorClass(holding, index, allHoldingsData) { const funds = Object.keys(allHoldingsData); const matchCount = funds.filter(fund => allHoldingsData[fund][index] === holding).length; switch(matchCount) { case 4: return 'holding-match-4'; case 3: return 'holding-match-3'; case 2: return 'holding-match-2'; default: return 'holding-match-1'; } }
         function populateHoldingsTable() { const tableBody = document.getElementById('holdings-table-body'); if (!tableBody) return; tableBody.innerHTML = ''; const funds = Object.keys(topHoldings); const numRows = 16; for (let i = 0; i < numRows; i++) { const row = document.createElement('tr'); funds.forEach(fund => { const cell = document.createElement('td'); const holding = topHoldings[fund][i] || '-'; cell.textContent = holding; if (holding !== '-') { cell.className = getHoldingMatchColorClass(holding, i, topHoldings); } row.appendChild(cell); }); tableBody.appendChild(row); } }
         function getPerformanceRankClass(value, periodData) { const sortedValues = Object.values(periodData).filter(v => v !== undefined).sort((a, b) => b - a); const rank = sortedValues.indexOf(value); if (rank === 0) return 'performance-rank-1'; if (rank === 1) return 'performance-rank-2'; if (rank === 2) return 'performance-rank-3'; return 'performance-rank-4'; }
@@ -913,64 +945,46 @@
         let geoChartInstance = null;
         function createGeoChart() { const ctx = document.getElementById('geoChart')?.getContext('2d'); if (!ctx) return; if (geoChartInstance) { geoChartInstance.destroy(); } geoChartInstance = new Chart(ctx, { type: 'radar', data: { labels: ['Canada', 'US', 'Developed', 'Emerging'], datasets: Object.entries(geoAllocation).map(([fund, data], index) => { const colors = ['rgba(45, 206, 137, 0.7)', 'rgba(94, 114, 228, 0.7)', 'rgba(251, 99, 64, 0.7)', 'rgba(245, 54, 92, 0.7)']; const borderColors = ['rgb(45, 206, 137)', 'rgb(94, 114, 228)', 'rgb(251, 99, 64)', 'rgb(245, 54, 92)']; return { label: fund, data: Object.values(data), fill: true, backgroundColor: colors[index % colors.length].replace('0.7', '0.2'), borderColor: borderColors[index % borderColors.length], pointBackgroundColor: borderColors[index % borderColors.length], pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: borderColors[index % borderColors.length] }; }) }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { angleLines: { color: 'rgba(0, 0, 0, 0.1)' }, grid: { color: 'rgba(0, 0, 0, 0.1)' }, pointLabels: { font: { size: 10 }, color: '#666' }, ticks: { backdropColor: 'transparent', color: '#666', stepSize: 10, font: { size: 9 } }, suggestedMin: 0, suggestedMax: 40 } }, plugins: { legend: { position: 'top', labels: { color: '#333', font: { size: 11 } } }, tooltip: { callbacks: { label: function(context) { return `${context.dataset.label}: ${context.formattedValue}%`; } } } } } }); }
 
-        // Fee Impact Chart Logic
+        // /// START: UPDATED FEE IMPACT CALCULATOR LOGIC ///
         document.addEventListener('DOMContentLoaded', function() {
-            // --- START: New Configuration & Setup ---
-            const MAX_INITIAL = 10000000; // Cap at $10 Million
-            const MAX_MONTHLY = 25000;    // Cap at $25k/month
-            const MAX_YEARS = 60;         // Cap at 60 years
-        
+            const MAX_INITIAL = 10000000;
+            const MAX_MONTHLY = 25000;
+            const MAX_BANKFEE = 100;
+            const MAX_YEARS = 60;
             let feeChart;
         
-            /**
-             * Creates a two-way binding between a number input and a range slider.
-             * @param {string} inputId - The ID of the number input element.
-             * @param {string} sliderId - The ID of the range slider element.
-             * @param {number} cap - The absolute maximum value allowed.
-             * @param {function} updateCallback - The function to call when a value changes.
-             */
             function setupTwoWayBinding(inputId, sliderId, cap, updateCallback) {
                 const input = document.getElementById(inputId);
                 const slider = document.getElementById(sliderId);
                 if (!input || !slider) return;
         
-                // Function to handle updates from the number input
                 const updateFromInput = () => {
                     let value = parseInt(input.value, 10);
                     if (isNaN(value) || value < parseInt(input.min, 10)) {
                         value = parseInt(input.min, 10) || 0;
                     }
-        
-                    // Enforce the absolute cap
                     if (value > cap) {
                         value = cap;
                         input.value = cap;
                     }
-                    
-                    // Dynamically adjust the slider's max range if the user enters a higher number
                     if (value > parseInt(slider.max, 10)) {
                         slider.max = value;
                     }
-                    
                     slider.value = value;
                     updateCallback();
                 };
         
-                // Function to handle updates from the slider
                 const updateFromSlider = () => {
                     input.value = slider.value;
                     updateCallback();
                 };
         
                 input.addEventListener('input', updateFromInput);
-                input.addEventListener('change', () => { // Handles when user blurs the input
-                     if (input.value === "") input.value = slider.value;
-                });
+                input.addEventListener('change', () => { if (input.value === "") input.value = slider.value; });
                 slider.addEventListener('input', updateFromSlider);
             }
-            // --- END: New Configuration & Setup ---
         
-            function calculateInvestmentGrowth(initial, monthly, years, annualRate, feePercent, monthlyCommission = 0) {
+            function calculateInvestmentGrowth(initial, monthly, years, annualRate, feePercent, monthlyCommission = 0, monthlyBankFee = 0) {
                 let balance = initial;
                 const monthlyRate = (annualRate / 100 - feePercent / 100) / 12;
                 const totalMonths = years * 12;
@@ -978,7 +992,8 @@
                 for (let month = 1; month <= totalMonths; month++) {
                     balance *= (1 + monthlyRate);
                     balance += monthly;
-                    balance -= (monthlyCommission * 2);
+                    balance -= (monthlyCommission * 2); // Assumes 2 trades/month
+                    balance -= monthlyBankFee;
                     if (month % 12 === 0) {
                         balanceData.push(Math.max(0, Math.round(balance)));
                     }
@@ -987,38 +1002,41 @@
             }
         
             function updateFeeChart() {
-                // Read values from the sliders, which are synced with the inputs
                 const initial = parseFloat(document.getElementById('initial-slider')?.value || 0);
                 const monthly = parseFloat(document.getElementById('monthly-slider')?.value || 0);
                 const years = parseInt(document.getElementById('period-slider')?.value || 1);
+                const bankFee = parseFloat(document.getElementById('bankfee-slider')?.value || 0);
         
                 const rate = 7;
                 const lowFeeRate = 0.2;
                 const highFeeRate = 2.0;
                 const monthlyCommission = monthly > 0 ? 10 : 0;
-                const lowFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, 0);
-                const bankBrokerageGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, monthlyCommission);
-                const highFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, highFeeRate, 0);
+        
+                const lowFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, 0, 0);
+                const bankBrokerageGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, monthlyCommission, bankFee);
+                const highFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, highFeeRate, 0, bankFee);
+                
                 const labels = Array.from({length: years + 1}, (_, i) => `Year ${i}`);
                 const ctx = document.getElementById('fee-impact-chart')?.getContext('2d');
                 if (!ctx) return;
+        
+                const datasets = [
+                    { label: 'Wealthsimple (0.2% MER)', data: lowFeeGrowth, borderColor: '#2dce89', tension: 0.1, pointRadius: 0, borderWidth: 2 },
+                    { label: `Bank ETF (0.2% + Comm. + $${bankFee}/mo)`, data: bankBrokerageGrowth, borderColor: '#fb6340', tension: 0.1, pointRadius: 0, borderWidth: 2 },
+                    { label: `Bank Fund (2% + $${bankFee}/mo)`, data: highFeeGrowth, borderColor: '#f5365c', tension: 0.1, pointRadius: 0, borderWidth: 2 }
+                ];
+
                 if (feeChart) {
                     feeChart.data.labels = labels;
-                    feeChart.data.datasets[0].data = lowFeeGrowth;
-                    feeChart.data.datasets[1].data = bankBrokerageGrowth;
-                    feeChart.data.datasets[2].data = highFeeGrowth;
+                    feeChart.data.datasets.forEach((dataset, index) => {
+                        dataset.data = datasets[index].data;
+                        dataset.label = datasets[index].label;
+                    });
                     feeChart.update();
                 } else {
                     feeChart = new Chart(ctx, {
                         type: 'line',
-                        data: {
-                            labels: labels,
-                            datasets: [
-                                { label: 'Low-fee ETF (0.2%)', data: lowFeeGrowth, borderColor: '#2dce89', tension: 0.1, pointRadius: 0, borderWidth: 2 },
-                                { label: 'ETF + Comm. (0.2% + $20/mo)', data: bankBrokerageGrowth, borderColor: '#fb6340', tension: 0.1, pointRadius: 0, borderWidth: 2 },
-                                { label: 'Mutual Fund (2%)', data: highFeeGrowth, borderColor: '#f5365c', tension: 0.1, pointRadius: 0, borderWidth: 2 }
-                            ]
-                        },
+                        data: { labels: labels, datasets: datasets },
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
@@ -1033,34 +1051,27 @@
                         }
                     });
                 }
+                
                 const lowFeeFinal = lowFeeGrowth[lowFeeGrowth.length - 1];
                 const bankBrokerageFinal = bankBrokerageGrowth[bankBrokerageGrowth.length - 1];
                 const highFeeFinal = highFeeGrowth[highFeeGrowth.length - 1];
                 const difference = lowFeeFinal - highFeeFinal;
                 const percentageDiff = highFeeFinal > 0 ? ((difference / highFeeFinal) * 100) : (lowFeeFinal > 0 ? Infinity : 0);
                 
-                // Update summary text
-                const summaryYearsEl = document.getElementById('summary-years');
-                const lowFeeResultEl = document.getElementById('low-fee-result');
-                const bankBrokerageResultEl = document.getElementById('bank-brokerage-result');
-                const mutualFundResultEl = document.getElementById('mutual-fund-result');
-                const differenceResultEl = document.getElementById('difference-result');
-                const differencePercentageEl = document.getElementById('difference-percentage');
-        
-                if (summaryYearsEl) summaryYearsEl.textContent = years;
-                if (lowFeeResultEl) lowFeeResultEl.textContent = lowFeeFinal.toLocaleString();
-                if (bankBrokerageResultEl) bankBrokerageResultEl.textContent = bankBrokerageFinal.toLocaleString();
-                if (mutualFundResultEl) mutualFundResultEl.textContent = highFeeFinal.toLocaleString();
-                if (differenceResultEl) differenceResultEl.textContent = difference.toLocaleString();
-                if (differencePercentageEl) differencePercentageEl.textContent = percentageDiff === Infinity ? '∞' : percentageDiff.toFixed(1);
+                document.getElementById('summary-years').textContent = years;
+                document.getElementById('low-fee-result').textContent = lowFeeFinal.toLocaleString();
+                document.getElementById('bank-brokerage-result').textContent = bankBrokerageFinal.toLocaleString();
+                document.getElementById('mutual-fund-result').textContent = highFeeFinal.toLocaleString();
+                document.getElementById('difference-result').textContent = difference.toLocaleString();
+                document.getElementById('difference-percentage').textContent = percentageDiff === Infinity ? '∞' : percentageDiff.toFixed(1);
             }
-            
-            // --- Initialize the bindings and the chart ---
+        
             setupTwoWayBinding('initial-input', 'initial-slider', MAX_INITIAL, updateFeeChart);
             setupTwoWayBinding('monthly-input', 'monthly-slider', MAX_MONTHLY, updateFeeChart);
+            setupTwoWayBinding('bankfee-input', 'bankfee-slider', MAX_BANKFEE, updateFeeChart);
             setupTwoWayBinding('period-input', 'period-slider', MAX_YEARS, updateFeeChart);
         
-            updateFeeChart(); // Initial chart calculation
+            updateFeeChart();
         
             window.toggleDataset = function(index) {
                 if (feeChart) {
@@ -1070,171 +1081,34 @@
                 }
             }
         });
+        // /// END: UPDATED FEE IMPACT CALCULATOR LOGIC ///
 
-        // Smooth Scrolling (Keep this section as is)
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId); if(targetElement) { const headerOffset = document.querySelector('.header')?.offsetHeight || 0; const elementPosition = targetElement.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - headerOffset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }); });
 
-        // Google Analytics Tracking (Keep this section as is)
+        // Google Analytics Tracking
         function trackClick(category, label, url = null) { if(typeof gtag === 'function'){ gtag('event', 'click', { 'event_category': category, 'event_label': label, 'transport_type': 'beacon', 'event_callback': url ? function() { window.location = url; } : null }); } if (url && (typeof gtag === 'undefined' || Math.random() < 0.1)) { setTimeout(function(){ window.location = url; }, 300); } }
         document.addEventListener('DOMContentLoaded', function() { document.querySelectorAll('a[href="https://icaninvest.ca/wealthsimple"]').forEach((link, index) => { link.addEventListener('click', function(e) { e.preventDefault(); const label = `Wealthsimple CTA ${index + 1} - ${link.closest('section, header, footer')?.id || 'unknown'}`; trackClick('Wealthsimple Sign Up', label, this.href); }); }); const linksToTrack = [ { selector: 'a[href*="spglobal.com"]', label: 'SPIVA Report' }, { selector: 'a[href*="vanguard.com/tools-calculators"]', label: 'Vanguard Questionnaire' }, { selector: 'a[href*="vanguard.ca"]', label: 'Vanguard Site' }, { selector: 'a[href*="blackrock.com"]', label: 'iShares Site' }, { selector: 'a[href*="bmogam.com"]', label: 'BMO GAM Site' }, { selector: 'a[href*="wealthsimple.com/en-ca/accounts"]', label: 'WS Account Info' }, { selector: 'a[href*="wealthsimple.com/en-ca/learn"]', label: 'WS Learn' }, { selector: 'a[href*="blue.mbsy.co"]', label: 'Simplii Link' }, { selector: 'a[href*="tangerine.ca"]', label: 'Tangerine Link' }, { selector: 'a[href*="canadiancouchpotato.com"]', label: 'Canadian Couch Potato' }, { selector: 'a[href*="canadianportfoliomanagerblog.com"]', label: 'Canadian Portfolio Manager' }, { selector: 'a[href*="reddit.com/r/PersonalFinanceCanada"]', label: 'Reddit PFC' }, { selector: 'a[href*="reddit.com/r/CanadianInvestor"]', label: 'Reddit CI' }, { selector: 'a[href*="bsky.app/profile/icaninvest.ca"]', label: 'Bluesky Link' }, { selector: 'a[href*="paypal.me/iCanInvest"]', label: 'PayPal Donate Link' }, { selector: 'a[href*="youtube.com"]', label: 'YouTube Link' } ]; linksToTrack.forEach(item => { document.querySelectorAll(item.selector).forEach(link => { link.addEventListener('click', function(e) { if (!link.id || !link.id.includes('donate-toggle')) { trackClick('Outbound Link', item.label); } }); }); }); document.querySelectorAll('#open-holdings, #open-performance, #open-geo').forEach(button => { button.addEventListener('click', () => { trackClick('Modal Interaction', `Open ${button.id.replace('open-', '')} Modal`); }); }); });
 
-        // --- START: Updated Quote Carousel Logic ---
+        // Quote Carousel Logic
         const quotes = [
-            { text: "The best way to own common stocks is through an index fund.", author: "Warren Buffett", description: "CEO of Berkshire Hathaway" },
-            { text: "The simplest and most efficient investment strategy is to buy and hold all of the nation's publicly held businesses at very low cost.", author: "John C. Bogle", description: "Founder of Vanguard Group" },
-            { text: "The less you pay for an investment, the more of the investment return you keep for yourself.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" },
-            { text: "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs.", author: "John C. Bogle", description: "Founder of Vanguard Group" },
-            { text: "Diversification is the only free lunch in investing.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" },
-            { text: "In investing, you get what you don't pay for.", author: "John C. Bogle", description: "Founder of Vanguard Group" },
-            { text: "The greatest way to optimize your investing is through proper asset allocation. Second is keeping fees low. These two things are the most important part of investing.", author: "Dan Bortolotti", description: "Author of 'Reboot Your Portfolio'" },
-            { text: "In my view, owning the market and holding it forever is the ultimate strategy for winners.", author: "Jack Bogle", description: "Founder of Vanguard Group" },
-            { text: "The growth of ETFs has been one of the best things to happen to DIY investors in the last decade. ETFs offer instant diversification, rock-bottom costs and transparency that mutual funds simply can't match.", author: "Dan Bortolotti", description: "Author of 'Reboot Your Portfolio'" },
-            { text: "Owning the market over the long term is a winner's game, but attempting to beat the market is a loser's game.", author: "John C. Bogle", description: "Founder of Vanguard Group" },
-            { text: "If you believe in the power of passive investing and want to implement that belief in your portfolio, then ETFs are the way to go. They provide broad-market exposure at a low cost, they're highly tax-efficient, and they're transparent.", author: "Justin Bender", description: "Portfolio Manager at PWL Capital" },
-            { text: "ETFs have democratized investing by giving every investor access to global markets, in a low-cost, transparent and liquid structure.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" },
-            { text: "Over the past decade, we've seen a significant shift away from traditional mutual funds and towards ETFs. Canadian investors are increasingly recognizing the benefits of low costs, transparency, and flexibility that ETFs provide.", author: "Pat Chiefalo", description: "Managing Director, Head of iShares Canada" },
-            { text: "One of the beautiful things about ETFs is that they provide access to strategies that were previously unavailable to most investors, and they do so at a very low cost.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" },
-            { text: "Canadians pay some of the highest mutual fund fees in the world. A 2018 study by Morningstar found that the median asset-weighted expense ratio for Canadian equity funds was 2.23%, compared with 0.59% in the U.S.", author: "Rob Carrick", description: "Personal Finance Columnist at The Globe and Mail" },
-            { text: "The investment industry has been able to convince people that they are better off paying 2% or 3% to an actively managed mutual fund than 0.2% or 0.3% for an index ETF. But the math just doesn't add up.", author: "John De Goey", description: "Portfolio Manager at Wellington-Altus Private Wealth" },
-            { text: "In 2020, Canadian ETFs saw record inflows of over $40 billion, while mutual funds experienced net outflows of nearly $15 billion. This accelerating trend demonstrates that Canadian investors are voting with their dollars and embracing the advantages of ETFs.", author: "Daniel Straus", description: "Director of ETFs and Financial Products Research at National Bank Financial" },
-            { text: "The high fees charged by most Canadian mutual funds are a huge drag on investor returns over the long term. By contrast, low-cost index ETFs allow investors to keep more of their hard-earned money working for them.", author: "Justin Bender", description: "Portfolio Manager at PWL Capital" },
-            { text: "You don't need a lot of money to invest, but you do need to invest wisely. ETFs provide a cost-effective way to grow your wealth over time.", author: "Preet Banerjee", description: "Personal Finance Expert and Author" },
-            { text: "Low fees and broad diversification are the two best allies of the long-term investor.", author: "Andrew Hallam", description: "Author of 'Millionaire Teacher'" },
-            { text: "ETFs have transformed the investment landscape by making diversified portfolios accessible to every investor, regardless of their wealth.", author: "Larry Bates", description: "Author of 'Beat the Bank'" },
-            { text: "When it comes to investing, costs matter. Reducing your fees, even by a small amount, can significantly increase your returns over time.", author: "Fred Vettese", description: "Former Chief Actuary of Morneau Shepell" },
-            { text: "Index investing is not only a strategy that's accessible to everyone, it's also a strategy that has been proven to work over the long term.", author: "Jonathan Chevreau", description: "Founder of Financial Independence Hub" },
-            { text: "The best way to achieve investment success is to minimize costs, maintain a diversified portfolio, and stay the course.", author: "David Chilton", description: "Author of 'The Wealthy Barber'" },
-            { text: "Investing should be more like watching paint dry or watching grass grow. If you want excitement, take $800 and go to Las Vegas.", author: "Paul Samuelson", description: "Nobel Laureate in Economics" },
-            { text: "High mutual fund fees are a silent killer of your investment returns. ETFs are a powerful antidote.", author: "Robb Engen", description: "Co-founder of Boomer & Echo Personal Finance" },
-            { text: "Canadian investors have been overpaying for investment advice for far too long. Low-cost ETFs are a game changer.", author: "Tom Bradley", description: "Co-founder and Chief Investment Officer of Steadyhand Investment Funds" },
-            { text: "The real enemy of a great investment plan is high fees. ETFs are a simple, effective solution to this problem.", author: "Dan Hallett", description: "Vice-President and Principal at Highview Financial Group" },
-            { text: "Successful investing is about managing risk, not avoiding it. ETFs offer a diversified and low-cost way to do just that.", author: "John Robertson", description: "Author of 'The Value of Simple'" },
-            { text: "The best way to build wealth is to stick with a simple, low-cost investment strategy. ETFs are an excellent vehicle for this approach.", author: "Scott Ronalds", description: "Manager of Research & Communications at Steadyhand Investment Funds" },
-            { text: "Most people probably shouldn't do anything other than have index funds.", author: "Charlie Munger", description: "Vice Chairman of Berkshire Hathaway" },
-            { text: "The key to successful investing is not to get caught up in market timing, but to stay the course with a diversified, low-cost portfolio.", author: "Christine Benz", description: "Director of Personal Finance at Morningstar" },
-            { text: "Simplicity is the ultimate sophistication. The simplest investment strategy—buying and holding low-cost ETFs—often leads to the best outcomes.", author: "James Montier", description: "Member of GMO's Asset Allocation Team" },
-            { text: "Over time, high fees and active management rarely beat a diversified, low-cost portfolio of index ETFs.", author: "Meb Faber", description: "Co-founder and Chief Investment Officer of Cambria Investment Management" },
-            { text: "A sound investment plan is built on the foundation of low fees, broad diversification, and a long-term perspective. ETFs excel in all three.", author: "Rick Ferri", description: "Founder of Ferri Investment Solutions" },
-            { text: "For most investors, the simplest and most effective approach is to build a diversified portfolio of low-cost ETFs and stick with it.", author: "Allan Roth", description: "Founder of Wealth Logic, LLC" },
-            { text: "You are better off focusing on controlling what you can—your costs—by using low-cost index ETFs.", author: "Larry Swedroe", description: "Chief Research Officer at Buckingham Strategic Wealth" },
-            { text: "The best way to invest in the markets is to own a low-cost, globally diversified portfolio, which is exactly what ETFs provide.", author: "Jonathan Chevreau", description: "Founder of Financial Independence Hub" },
-            { text: "Most mutual funds simply don't justify their fees. Low-cost ETFs are the clear alternative for most investors.", author: "Rob Carrick", description: "Personal Finance Columnist at The Globe and Mail" },
-            { text: "In a low-cost ETF, every basis point of expense you save adds to your bottom line. It's one of the few things in investing where less is more.", author: "Michael Batnick", description: "Director of Research at Ritholtz Wealth Management" },
-            { text: "The difference between a great investor and an average investor is often nothing more than the discipline to stick with a low-cost, diversified ETF strategy.", author: "Morgan Housel", description: "Partner at The Collaborative Fund" },
-            { text: "The simplicity and low costs of ETFs make them the best choice for most investors who want to grow their wealth over time.", author: "Barry Ritholtz", description: "Chairman and Chief Investment Officer of Ritholtz Wealth Management" }
+            { text: "The best way to own common stocks is through an index fund.", author: "Warren Buffett", description: "CEO of Berkshire Hathaway" }, { text: "The simplest and most efficient investment strategy is to buy and hold all of the nation's publicly held businesses at very low cost.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "The less you pay for an investment, the more of the investment return you keep for yourself.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" }, { text: "The miracle of compounding returns is overwhelmed by the tyranny of compounding costs.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "Diversification is the only free lunch in investing.", author: "Ben Felix", description: "Chief Investment Officer at PWL Capital" }, { text: "In investing, you get what you don't pay for.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "The greatest way to optimize your investing is through proper asset allocation. Second is keeping fees low. These two things are the most important part of investing.", author: "Dan Bortolotti", description: "Author of 'Reboot Your Portfolio'" }, { text: "The growth of ETFs has been one of the best things to happen to DIY investors in the last decade. ETFs offer instant diversification, rock-bottom costs and transparency that mutual funds simply can't match.", author: "Dan Bortolotti", description: "Author of 'Reboot Your Portfolio'" }, { text: "Owning the market over the long term is a winner's game, but attempting to beat the market is a loser's game.", author: "John C. Bogle", description: "Founder of Vanguard Group" }, { text: "Canadians pay some of the highest mutual fund fees in the world. A 2018 study by Morningstar found that the median asset-weighted expense ratio for Canadian equity funds was 2.23%, compared with 0.59% in the U.S.", author: "Rob Carrick", description: "Personal Finance Columnist at The Globe and Mail" }, { text: "Low fees and broad diversification are the two best allies of the long-term investor.", author: "Andrew Hallam", description: "Author of 'Millionaire Teacher'" }, { text: "Investing should be more like watching paint dry or watching grass grow. If you want excitement, take $800 and go to Las Vegas.", author: "Paul Samuelson", description: "Nobel Laureate in Economics" }
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
-            const carousels = document.querySelectorAll('.quote-carousel');
-            if (!carousels.length || !quotes.length) return;
-
-            // Create an array of indices [0, 1, 2, ..., quotes.length - 1]
-            let availableIndices = Array.from(Array(quotes.length).keys());
-
-            // Shuffle the available indices (Fisher-Yates algorithm)
-            for (let i = availableIndices.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [availableIndices[i], availableIndices[j]] = [availableIndices[j], availableIndices[i]];
-            }
-
-            let currentQuoteIndices = new Array(carousels.length);
-
-            function updateCarousel(carouselIndex, isInitial = false) {
-                if(carouselIndex >= carousels.length || carouselIndex < 0 || currentQuoteIndices[carouselIndex] === undefined) return;
-                const carousel = carousels[carouselIndex]; if (!carousel) return;
-                const contentEl = carousel.querySelector('.quote-content'); if (!contentEl) return;
-
-                // Ensure the index stays within bounds
-                let actualIndex = currentQuoteIndices[carouselIndex] % quotes.length;
-                 if (actualIndex < 0) {
-                      actualIndex += quotes.length; // Handle negative modulo
-                 }
-
-                const quote = quotes[actualIndex];
-                const textEl = contentEl.querySelector('.quote-text');
-                const authorEl = contentEl.querySelector('.quote-author');
-                const descEl = contentEl.querySelector('.quote-description');
-
-                const updateContent = () => {
-                    if (textEl) textEl.textContent = `"${quote.text}"`;
-                    if (authorEl) authorEl.textContent = `- ${quote.author}`;
-                    if (descEl) descEl.textContent = quote.description;
-                    contentEl.classList.remove('fade-out'); // Fade in
-                };
-
-                if (isInitial) {
-                    updateContent(); // Set initial content without fade
-                } else {
-                    contentEl.classList.add('fade-out'); // Start fade out
-                    setTimeout(updateContent, 300); // Update content after fade out duration
-                }
-            }
-
-            carousels.forEach((carousel, index) => {
-                currentQuoteIndices[index] = availableIndices[index % availableIndices.length];
-                updateCarousel(index, true); // Initial load
-
-                carousel.addEventListener('click', (event) => {
-                    if (event.target.closest('a')) {
-                        return;
-                    }
-                    const rect = carousel.getBoundingClientRect();
-                    const clickX = event.clientX - rect.left;
-                    // Navigate based on click position (left half = previous, right half = next)
-                    if (clickX < rect.width / 2) {
-                        currentQuoteIndices[index]--; // Go to previous quote index
-                    } else {
-                        currentQuoteIndices[index]++; // Go to next quote index
-                    }
-                    updateCarousel(index); // Update display with fade
-                });
-            });
+            const carousels = document.querySelectorAll('.quote-carousel'); if (!carousels.length || !quotes.length) return; let availableIndices = Array.from(Array(quotes.length).keys()); for (let i = availableIndices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [availableIndices[i], availableIndices[j]] = [availableIndices[j], availableIndices[i]]; } let currentQuoteIndices = new Array(carousels.length);
+            function updateCarousel(carouselIndex, isInitial = false) { if(carouselIndex >= carousels.length || carouselIndex < 0 || currentQuoteIndices[carouselIndex] === undefined) return; const carousel = carousels[carouselIndex]; if (!carousel) return; const contentEl = carousel.querySelector('.quote-content'); if (!contentEl) return; let actualIndex = currentQuoteIndices[carouselIndex] % quotes.length; if (actualIndex < 0) { actualIndex += quotes.length; } const quote = quotes[actualIndex]; const textEl = contentEl.querySelector('.quote-text'); const authorEl = contentEl.querySelector('.quote-author'); const descEl = contentEl.querySelector('.quote-description'); const updateContent = () => { if (textEl) textEl.textContent = `"${quote.text}"`; if (authorEl) authorEl.textContent = `- ${quote.author}`; if (descEl) descEl.textContent = quote.description; contentEl.classList.remove('fade-out'); }; if (isInitial) { updateContent(); } else { contentEl.classList.add('fade-out'); setTimeout(updateContent, 300); } }
+            carousels.forEach((carousel, index) => { currentQuoteIndices[index] = availableIndices[index % availableIndices.length]; updateCarousel(index, true); carousel.addEventListener('click', (event) => { if (event.target.closest('a')) { return; } const rect = carousel.getBoundingClientRect(); const clickX = event.clientX - rect.left; if (clickX < rect.width / 2) { currentQuoteIndices[index]--; } else { currentQuoteIndices[index]++; } updateCarousel(index); }); });
         });
-         // --- END: Updated Quote Carousel Logic ---
 
-        // --- START: Scroll Animation Logic ---
+        // Scroll Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.scroll-animate');
-
-            if ("IntersectionObserver" in window) {
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            // Optional: Stop observing once visible to improve performance
-                            // observer.unobserve(entry.target);
-                        }
-                        // Optional: Remove 'visible' class if element scrolls out of view
-                        // else {
-                        //     entry.target.classList.remove('visible');
-                        // }
-                    });
-                }, {
-                    rootMargin: '0px', // Adjust margin if needed (e.g., '-50px' to trigger earlier)
-                    threshold: 0.1 // Trigger when 10% of the element is visible
-                });
-
-                animatedElements.forEach(el => observer.observe(el));
-            } else {
-                // Fallback for older browsers: make elements visible immediately
-                animatedElements.forEach(el => el.classList.add('visible'));
-            }
+            const animatedElements = document.querySelectorAll('.scroll-animate'); if ("IntersectionObserver" in window) { const observer = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { rootMargin: '0px', threshold: 0.1 }); animatedElements.forEach(el => observer.observe(el)); } else { animatedElements.forEach(el => el.classList.add('visible')); }
         });
-        // --- END: Scroll Animation Logic ---
 
-        // Footer Donate Button Logic (Keep this section as is)
+        // Footer Donate Button Logic
         document.addEventListener('DOMContentLoaded', function() {
-            const donateToggle = document.getElementById('footer-donate-toggle');
-            const donateOptions = document.getElementById('footer-donate-options');
-            const copyButtons = document.querySelectorAll('#footer-donate-options .copy-button');
-
-            if (donateToggle && donateOptions) {
-                 donateToggle.addEventListener('click', function(e) {
-                      e.preventDefault(); e.stopPropagation(); donateOptions.classList.toggle('active');
-                 });
-                 document.addEventListener('click', function(e) { if (!donateOptions.contains(e.target) && e.target !== donateToggle && !donateToggle.contains(e.target)) { donateOptions.classList.remove('active'); } });
-            }
-            copyButtons.forEach(button => { button.addEventListener('click', function() { const textToCopy = this.getAttribute('data-copy-text'); const feedbackSpan = this.querySelector('.copy-feedback'); navigator.clipboard.writeText(textToCopy).then(() => { if (feedbackSpan) { feedbackSpan.textContent = 'Copied!'; feedbackSpan.style.display = 'inline'; } setTimeout(() => { if (feedbackSpan) { feedbackSpan.style.display = 'none'; feedbackSpan.textContent = ''; } }, 2000); }).catch(err => { console.error('Failed to copy text: ', err); if (feedbackSpan) { feedbackSpan.textContent = 'Error'; feedbackSpan.style.display = 'inline'; setTimeout(() => { if (feedbackSpan) feedbackSpan.style.display = 'none'; }, 2000); } }); }); });
+            const donateToggle = document.getElementById('footer-donate-toggle'); const donateOptions = document.getElementById('footer-donate-options'); const copyButtons = document.querySelectorAll('#footer-donate-options .copy-button'); if (donateToggle && donateOptions) { donateToggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); donateOptions.classList.toggle('active'); }); document.addEventListener('click', function(e) { if (!donateOptions.contains(e.target) && e.target !== donateToggle && !donateToggle.contains(e.target)) { donateOptions.classList.remove('active'); } }); } copyButtons.forEach(button => { button.addEventListener('click', function() { const textToCopy = this.getAttribute('data-copy-text'); const feedbackSpan = this.querySelector('.copy-feedback'); navigator.clipboard.writeText(textToCopy).then(() => { if (feedbackSpan) { feedbackSpan.textContent = 'Copied!'; feedbackSpan.style.display = 'inline'; } setTimeout(() => { if (feedbackSpan) { feedbackSpan.style.display = 'none'; feedbackSpan.textContent = ''; } }, 2000); }).catch(err => { console.error('Failed to copy text: ', err); if (feedbackSpan) { feedbackSpan.textContent = 'Error'; feedbackSpan.style.display = 'inline'; setTimeout(() => { if (feedbackSpan) feedbackSpan.style.display = 'none'; }, 2000); } }); }); });
         });
 
     </script>
