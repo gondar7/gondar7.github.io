@@ -50,197 +50,197 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-         html {
-             scroll-behavior: smooth;
-             overflow-x: hidden;
-         }
-         body {
-             font-family: 'Lato', sans-serif;
-             color: #333;
-             background-color: #f8f9fa;
-             line-height: 1.6;
-             overflow-x: hidden;
-         }
-         h1, h2, h3, h4, h5, h6 {
-             font-family: 'Poppins', sans-serif;
-             font-weight: 600;
-             color: #1a202c;
-         }
-         .section {
-             padding: 4rem 1rem;
-             min-height: 80vh;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             width: 100%;
-             box-sizing: border-box;
-         }
-         #hero {
-              min-height: 100vh;
-              padding-top: 6rem;
-              padding-bottom: 6rem;
+          html {
+              scroll-behavior: smooth;
+              overflow-x: hidden;
+          }
+          body {
+              font-family: 'Lato', sans-serif;
+              color: #333;
+              background-color: #f8f9fa;
+              line-height: 1.6;
+              overflow-x: hidden;
+          }
+          h1, h2, h3, h4, h5, h6 {
+              font-family: 'Poppins', sans-serif;
+              font-weight: 600;
+              color: #1a202c;
+          }
+          .section {
+              padding: 4rem 1rem;
+              min-height: 80vh;
               display: flex;
               align-items: center;
               justify-content: center;
-              position: relative;
-              /* Refined Hero Background - Subtle Gradient */
-              background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-              --tw-gradient-from: #e0f2fe; /* sky-100 */
-              --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(224, 242, 254, 0));
-              --tw-gradient-to: #f9fafb; /* gray-50 */
-         }
-         @media (min-width: 768px) {
-             .section { padding: 6rem 2rem; }
-              #hero { padding-top: 8rem; padding-bottom: 8rem; }
-         }
-         .content-box {
-             background-color: #ffffff;
-             border-radius: 0.75rem;
-             padding: 2rem;
-             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-             max-width: 1200px;
-             width: 100%;
-             margin: 1rem 0;
-             box-sizing: border-box;
-         }
-         @media (min-width: 768px) { .content-box { padding: 2.5rem; } }
-         @media (min-width: 1024px) { .content-box { padding: 3rem; } }
-         .cta-button {
-             font-family: 'Poppins', sans-serif; font-weight: 600; background-color: #2dce89; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; display: inline-block; text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle base shadow */
-         }
-         .cta-button:hover {
-             background-color: #36f1a1; /* Slightly brighter green */
-             transform: translateY(-2px);
-             box-shadow: 0 4px 8px rgba(45, 206, 137, 0.3); /* More pronounced shadow on hover */
-         }
-         .cta-button-secondary { background-color: transparent; color: #2dce89; border: 2px solid #2dce89; box-shadow: none; /* Remove base shadow for secondary */ }
-         .cta-button-secondary:hover { background-color: rgba(45, 206, 137, 0.1); color: #26b878; transform: translateY(-2px); box-shadow: none; }
-          .header {
-             background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 50; padding: 1rem 0; width: 100%;
-         }
-         .header .container {
-             width: 100%; max-width: 1280px;
-         }
-         @media (max-width: 640px) {
-              .header .cta-button { font-size: 0.8rem; padding: 0.5rem 0.8rem; }
-              .logo { font-size: 1.2rem; }
-         }
-         .logo {
-             font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1a202c; display: flex; align-items: center;
-         }
-         .logo i { color: #2dce89; margin-right: 0.5rem; }
-         .logo-highlight { color: #5e72e4; }
-         .tooltip {
-             position: relative; display: inline-block; border-bottom: 1px dotted #5e72e4; cursor: help;
-         }
-         .tooltip .tooltiptext {
-             visibility: hidden; width: 220px; background-color: #333; color: #fff; text-align: left; border-radius: 6px; padding: 10px 12px; position: absolute; z-index: 10; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s, visibility 0s linear 0.3s; font-size: 0.875rem; line-height: 1.4; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); pointer-events: none;
-         }
-         .tooltip .tooltiptext.fixed-tooltip {
-              position: fixed; bottom: auto; left: auto; transform: none; transition: opacity 0.3s; z-index: 1000;
-         }
-         .tooltip .tooltiptext::after {
-             content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent;
-         }
-         .tooltip .tooltiptext.fixed-tooltip::after { display: none; }
-         .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; transition-delay: 0s; pointer-events: auto; }
-         .tooltiptext img { max-width: 100%; height: auto; margin-top: 8px; border-radius: 4px; }
-         table {
-             border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 0.5rem; overflow: hidden;
-         }
-         th, td {
-             padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: #4a5568; vertical-align: middle; position: relative;
-         }
-         th {
-             background-color: #f8f9fa; font-weight: 600; color: #1a202c; font-family: 'Poppins', sans-serif;
-         }
-         tr:last-child td { border-bottom: none; }
-         tr:hover { background-color: #f8f9fa; }
-         .fees-table .fee-high { font-weight: bold; color: #f56565; }
-         .fees-table .fee-low { font-weight: bold; color: #48bb78; }
-         .modal {
-              position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; padding: 1rem;
-         }
-         .modal.active { opacity: 1; visibility: visible; }
-         .modal-content {
-              background-color: #fff; border-radius: 0.75rem; padding: 1.5rem; max-width: 95%; width: auto; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); transform: scale(0.95); transition: transform 0.3s ease; position: relative;
-         }
-         @media (min-width: 768px) { .modal-content { padding: 2rem; max-width: 80%; } }
-         @media (min-width: 1024px) { .modal-content { max-width: 70%; } }
-         @media (min-width: 1280px) { .modal-content { max-width: 60%; } }
-          .modal.active .modal-content { transform: scale(1); }
-         .modal-close-button {
-              position: absolute; top: 0.75rem; right: 0.75rem; background: #eee; border: none; border-radius: 50%; width: 28px; height: 28px; font-size: 1rem; color: #555; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; line-height: 1;
-         }
-         .modal-close-button:hover { background: #ddd; color: #111; transform: rotate(90deg); }
-         .icon-green { color: #2dce89; } .icon-blue { color: #5e72e4; } .icon-red { color: #f5365c; } .icon-yellow { color: #fb6340; } .icon-purple { color: #8965e0; } .icon-teal { color: #11cdef; } .icon-pink { color: #f3a4b5; } .icon-orange { color: #fb8c00; } .icon-gray { color: #8898aa; }
-         a { color: #5e72e4; text-decoration: none; transition: color 0.3s ease; }
-         a:hover { color: #324cdd; text-decoration: underline; }
-         .feature-box {
-             background-color: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 1px solid #e2e8f0; /* Add subtle border */
-         }
-         .feature-box:hover {
-             transform: translateY(-5px);
-             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Slightly more pronounced shadow */
-         }
-         .feature-box i { font-size: 2.5rem; margin-bottom: 1rem; }
-          .feature-box h3 { margin-bottom: 0.5rem; }
-          .feature-box p { flex-grow: 1; }
-         footer {
-              background-color: #e9ecef; padding: 2rem 1rem; margin-top: 4rem; border-top: 1px solid #dee2e6; position: relative;
-         }
-         footer a { color: #495057; }
-         footer a:hover { color: #1a202c; }
-         .footer-links a { margin: 0 0.5rem; font-size: 0.875rem; }
-         .social-links { position: relative; }
-         .social-links a {
-              font-size: 1.2rem; color: #495057; transition: color 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; vertical-align: middle;
-         }
-          .social-links img.social-icon { height: 0.8em; width: auto; opacity: 0.7; transition: opacity 0.3s; vertical-align: middle; }
-          .social-links a:hover img.social-icon { opacity: 1; }
-         .social-links a:hover { color: #1a202c; }
-          .quote-carousel-container { padding: 4rem 1rem; background-color: #e9ecef; }
-          .quote-carousel {
-               background-color: #fff; border-radius: 0.75rem; padding: 2rem 0.5rem; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
-         }
-          .quote-content { text-align: center; padding: 0 1rem; }
-          .quote-text { font-style: italic; font-size: 1.1rem; margin-bottom: 0.75rem; color: #4a5568; }
-          .quote-author { font-weight: 600; color: #1a202c; }
-          .quote-description { font-size: 0.8rem; color: #718096; margin-top: 0.25rem; }
-          .quote-nav, .quote-controls { display: none !important; } /* Hide default nav if any */
-          .holding-match-4 { background-color: #c6f6d5; color: #2f855a; } .holding-match-3 { background-color: #bee3f8; color: #2b6cb0; } .holding-match-2 { background-color: #faf089; color: #b7791f; } .holding-match-1 { background-color: #fed7d7; color: #c53030; }
-          .performance-rank-1 { color: #2f855a; font-weight: 700; } .performance-rank-2 { color: #2b6cb0; } .performance-rank-3 { color: #b7791f; } .performance-rank-4 { color: #c53030; }
-          #footer-donate-options {
-               position: absolute; bottom: 100%; right: 0; margin-bottom: 0.5rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 0.5rem; width: 250px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 60;
-         }
-         #footer-donate-options.active { opacity: 1; visibility: visible; transform: translateY(0); }
-         #footer-donate-options p { text-align: center; font-size: 0.875rem; color: #4a5568; font-weight: 600; margin-bottom: 0.5rem; padding: 0.25rem 0.5rem; }
-         #footer-donate-options a, #footer-donate-options button { display: flex; align-items: center; width: 100%; text-align: left; padding: 0.6rem 0.75rem; font-size: 0.875rem; color: #333; border-radius: 0.25rem; transition: background-color 0.2s; border: none; background: none; cursor: pointer; }
-         #footer-donate-options a i, #footer-donate-options button i { margin-right: 0.75rem; width: 16px; text-align: center; color: #666; }
-         #footer-donate-options a:hover, #footer-donate-options button:hover { background-color: #f1f5f9; }
-         #footer-donate-options .copy-feedback { font-size: 0.75rem; color: green; margin-left: auto; display: none; }
+              width: 100%;
+              box-sizing: border-box;
+          }
+          #hero {
+               min-height: 100vh;
+               padding-top: 6rem;
+               padding-bottom: 6rem;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               position: relative;
+               /* Refined Hero Background - Subtle Gradient */
+               background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+               --tw-gradient-from: #e0f2fe; /* sky-100 */
+               --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(224, 242, 254, 0));
+               --tw-gradient-to: #f9fafb; /* gray-50 */
+          }
+          @media (min-width: 768px) {
+              .section { padding: 6rem 2rem; }
+               #hero { padding-top: 8rem; padding-bottom: 8rem; }
+          }
+          .content-box {
+              background-color: #ffffff;
+              border-radius: 0.75rem;
+              padding: 2rem;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+              max-width: 1200px;
+              width: 100%;
+              margin: 1rem 0;
+              box-sizing: border-box;
+          }
+          @media (min-width: 768px) { .content-box { padding: 2.5rem; } }
+          @media (min-width: 1024px) { .content-box { padding: 3rem; } }
+          .cta-button {
+              font-family: 'Poppins', sans-serif; font-weight: 600; background-color: #2dce89; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; display: inline-block; text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle base shadow */
+          }
+          .cta-button:hover {
+              background-color: #36f1a1; /* Slightly brighter green */
+              transform: translateY(-2px);
+              box-shadow: 0 4px 8px rgba(45, 206, 137, 0.3); /* More pronounced shadow on hover */
+          }
+          .cta-button-secondary { background-color: transparent; color: #2dce89; border: 2px solid #2dce89; box-shadow: none; /* Remove base shadow for secondary */ }
+          .cta-button-secondary:hover { background-color: rgba(45, 206, 137, 0.1); color: #26b878; transform: translateY(-2px); box-shadow: none; }
+           .header {
+              background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 50; padding: 1rem 0; width: 100%;
+          }
+          .header .container {
+              width: 100%; max-width: 1280px;
+          }
+          @media (max-width: 640px) {
+               .header .cta-button { font-size: 0.8rem; padding: 0.5rem 0.8rem; }
+               .logo { font-size: 1.2rem; }
+          }
+          .logo {
+              font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1a202c; display: flex; align-items: center;
+          }
+          .logo i { color: #2dce89; margin-right: 0.5rem; }
+          .logo-highlight { color: #5e72e4; }
+          .tooltip {
+              position: relative; display: inline-block; border-bottom: 1px dotted #5e72e4; cursor: help;
+          }
+          .tooltip .tooltiptext {
+              visibility: hidden; width: 220px; background-color: #333; color: #fff; text-align: left; border-radius: 6px; padding: 10px 12px; position: absolute; z-index: 10; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s, visibility 0s linear 0.3s; font-size: 0.875rem; line-height: 1.4; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); pointer-events: none;
+          }
+          .tooltip .tooltiptext.fixed-tooltip {
+               position: fixed; bottom: auto; left: auto; transform: none; transition: opacity 0.3s; z-index: 1000;
+          }
+          .tooltip .tooltiptext::after {
+              content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent;
+          }
+          .tooltip .tooltiptext.fixed-tooltip::after { display: none; }
+          .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; transition-delay: 0s; pointer-events: auto; }
+          .tooltiptext img { max-width: 100%; height: auto; margin-top: 8px; border-radius: 4px; }
+          table {
+              border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 0.5rem; overflow: hidden;
+          }
+          th, td {
+              padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: #4a5568; vertical-align: middle; position: relative;
+          }
+          th {
+              background-color: #f8f9fa; font-weight: 600; color: #1a202c; font-family: 'Poppins', sans-serif;
+          }
+          tr:last-child td { border-bottom: none; }
+          tr:hover { background-color: #f8f9fa; }
+          .fees-table .fee-high { font-weight: bold; color: #f56565; }
+          .fees-table .fee-low { font-weight: bold; color: #48bb78; }
+          .modal {
+               position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; padding: 1rem;
+          }
+          .modal.active { opacity: 1; visibility: visible; }
+          .modal-content {
+               background-color: #fff; border-radius: 0.75rem; padding: 1.5rem; max-width: 95%; width: auto; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); transform: scale(0.95); transition: transform 0.3s ease; position: relative;
+          }
+          @media (min-width: 768px) { .modal-content { padding: 2rem; max-width: 80%; } }
+          @media (min-width: 1024px) { .modal-content { max-width: 70%; } }
+          @media (min-width: 1280px) { .modal-content { max-width: 60%; } }
+           .modal.active .modal-content { transform: scale(1); }
+          .modal-close-button {
+               position: absolute; top: 0.75rem; right: 0.75rem; background: #eee; border: none; border-radius: 50%; width: 28px; height: 28px; font-size: 1rem; color: #555; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; line-height: 1;
+          }
+          .modal-close-button:hover { background: #ddd; color: #111; transform: rotate(90deg); }
+          .icon-green { color: #2dce89; } .icon-blue { color: #5e72e4; } .icon-red { color: #f5365c; } .icon-yellow { color: #fb6340; } .icon-purple { color: #8965e0; } .icon-teal { color: #11cdef; } .icon-pink { color: #f3a4b5; } .icon-orange { color: #fb8c00; } .icon-gray { color: #8898aa; }
+          a { color: #5e72e4; text-decoration: none; transition: color 0.3s ease; }
+          a:hover { color: #324cdd; text-decoration: underline; }
+          .feature-box {
+              background-color: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 1px solid #e2e8f0; /* Add subtle border */
+          }
+          .feature-box:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Slightly more pronounced shadow */
+          }
+          .feature-box i { font-size: 2.5rem; margin-bottom: 1rem; }
+           .feature-box h3 { margin-bottom: 0.5rem; }
+           .feature-box p { flex-grow: 1; }
+          footer {
+               background-color: #e9ecef; padding: 2rem 1rem; margin-top: 4rem; border-top: 1px solid #dee2e6; position: relative;
+          }
+          footer a { color: #495057; }
+          footer a:hover { color: #1a202c; }
+          .footer-links a { margin: 0 0.5rem; font-size: 0.875rem; }
+          .social-links { position: relative; }
+          .social-links a {
+               font-size: 1.2rem; color: #495057; transition: color 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; vertical-align: middle;
+          }
+           .social-links img.social-icon { height: 0.8em; width: auto; opacity: 0.7; transition: opacity 0.3s; vertical-align: middle; }
+           .social-links a:hover img.social-icon { opacity: 1; }
+          .social-links a:hover { color: #1a202c; }
+           .quote-carousel-container { padding: 4rem 1rem; background-color: #e9ecef; }
+           .quote-carousel {
+                background-color: #fff; border-radius: 0.75rem; padding: 2rem 0.5rem; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
+          }
+           .quote-content { text-align: center; padding: 0 1rem; }
+           .quote-text { font-style: italic; font-size: 1.1rem; margin-bottom: 0.75rem; color: #4a5568; }
+           .quote-author { font-weight: 600; color: #1a202c; }
+           .quote-description { font-size: 0.8rem; color: #718096; margin-top: 0.25rem; }
+           .quote-nav, .quote-controls { display: none !important; } /* Hide default nav if any */
+           .holding-match-4 { background-color: #c6f6d5; color: #2f855a; } .holding-match-3 { background-color: #bee3f8; color: #2b6cb0; } .holding-match-2 { background-color: #faf089; color: #b7791f; } .holding-match-1 { background-color: #fed7d7; color: #c53030; }
+           .performance-rank-1 { color: #2f855a; font-weight: 700; } .performance-rank-2 { color: #2b6cb0; } .performance-rank-3 { color: #b7791f; } .performance-rank-4 { color: #c53030; }
+           #footer-donate-options {
+                position: absolute; bottom: 100%; right: 0; margin-bottom: 0.5rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 0.5rem; width: 250px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 60;
+          }
+          #footer-donate-options.active { opacity: 1; visibility: visible; transform: translateY(0); }
+          #footer-donate-options p { text-align: center; font-size: 0.875rem; color: #4a5568; font-weight: 600; margin-bottom: 0.5rem; padding: 0.25rem 0.5rem; }
+          #footer-donate-options a, #footer-donate-options button { display: flex; align-items: center; width: 100%; text-align: left; padding: 0.6rem 0.75rem; font-size: 0.875rem; color: #333; border-radius: 0.25rem; transition: background-color 0.2s; border: none; background: none; cursor: pointer; }
+          #footer-donate-options a i, #footer-donate-options button i { margin-right: 0.75rem; width: 16px; text-align: center; color: #666; }
+          #footer-donate-options a:hover, #footer-donate-options button:hover { background-color: #f1f5f9; }
+          #footer-donate-options .copy-feedback { font-size: 0.75rem; color: green; margin-left: auto; display: none; }
 
-         /* --- Scroll Animation Styles --- */
-         .scroll-animate {
-              opacity: 0;
-              transform: translateY(40px); /* Increased distance */
-              transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-         }
-         .scroll-animate.visible {
-              opacity: 1;
-              transform: translateY(0);
-         }
-         /* --- End Scroll Animation Styles --- */
+          /* --- Scroll Animation Styles --- */
+          .scroll-animate {
+               opacity: 0;
+               transform: translateY(40px); /* Increased distance */
+               transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          }
+          .scroll-animate.visible {
+               opacity: 1;
+               transform: translateY(0);
+          }
+          /* --- End Scroll Animation Styles --- */
 
-         /* --- Quote Carousel Fade Transition --- */
-         .quote-content {
-              transition: opacity 0.3s ease-in-out;
-              opacity: 1;
-         }
-         .quote-content.fade-out {
-              opacity: 0;
-         }
-         /* --- End Quote Carousel Fade Transition --- */
+          /* --- Quote Carousel Fade Transition --- */
+          .quote-content {
+               transition: opacity 0.3s ease-in-out;
+               opacity: 1;
+          }
+          .quote-content.fade-out {
+               opacity: 0;
+          }
+          /* --- End Quote Carousel Fade Transition --- */
 
     </style>
 
@@ -355,14 +355,14 @@
                             </span> add up.</li>
                         </ul>
                          <div class="bg-gray-100 p-4 rounded-lg text-sm mt-4">
-                              <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-balance-scale mr-2 icon-yellow"></i>The Hard Truth: SPIVA Data</h4>
-                               <p class="text-gray-600 mb-2">The <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank">SPIVA Canada Year-End 2023 report</a> reveals a stark reality: over 10 years, a vast majority of active funds failed to beat their benchmarks:</p>
-                               <ul class="list-none pl-4 text-gray-600 text-xs space-y-1">
-                                   <li><span class="font-bold text-red-600">97%</span> of Canadian Equity funds</li>
-                                   <li><span class="font-bold text-red-600">98%</span> of Canadian Focused Equity funds</li>
-                                   <li><span class="font-bold text-red-600">98%</span> of U.S. Equity funds</li>
-                               </ul>
-                               <p class="text-gray-700 mt-3 italic">In simple terms: If you and 99 friends invested in different Canadian equity mutual funds 10 years ago, 97 of you would have earned more money in a simple, low-cost index ETF.</p>
+                               <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-balance-scale mr-2 icon-yellow"></i>The Hard Truth: SPIVA Data</h4>
+                                <p class="text-gray-600 mb-2">The <a href="https://www.spglobal.com/spdji/en/documents/spiva/spiva-canada-year-end-2023.pdf" target="_blank">SPIVA Canada Year-End 2023 report</a> reveals a stark reality: over 10 years, a vast majority of active funds failed to beat their benchmarks:</p>
+                                <ul class="list-none pl-4 text-gray-600 text-xs space-y-1">
+                                    <li><span class="font-bold text-red-600">97%</span> of Canadian Equity funds</li>
+                                    <li><span class="font-bold text-red-600">98%</span> of Canadian Focused Equity funds</li>
+                                    <li><span class="font-bold text-red-600">98%</span> of U.S. Equity funds</li>
+                                </ul>
+                                <p class="text-gray-700 mt-3 italic">In simple terms: If you and 99 friends invested in different Canadian equity mutual funds 10 years ago, 97 of you would have earned more money in a simple, low-cost index ETF.</p>
                          </div>
                     </div>
                     <div>
@@ -406,45 +406,45 @@
                 <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Imagine owning a fully diversified, global portfolio of thousands of stocks and bonds, all managed and rebalanced for you automatically, for a fraction of the cost. That's exactly what an All-in-One ETF does. They are the easiest way to invest with a single purchase, automatically managing the mix of <span class="tooltip">stocks<span class="tooltiptext">Shares of ownership in companies, aiming for growth.</span></span> and <span class="tooltip">bonds<span class="tooltiptext">Loans to governments or companies, aiming for stability and income.</span></span> for you.</p>
 
                  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-700 mb-4">Why Choose All-in-One ETFs?</h3>
-                        <ul class="list-none pl-0 space-y-3 text-gray-700 mb-6">
-                            <li class="flex items-start"><i class="fas fa-globe fa-fw text-green-500 mr-3 mt-1"></i><span>Instant global diversification.</span></li>
-                            <li class="flex items-start"><i class="fas fa-cogs fa-fw text-blue-500 mr-3 mt-1"></i><span>Automatic <span class="tooltip">rebalancing<span class="tooltiptext">Maintaining your desired stock/bond mix automatically over time.</span></span> – no manual adjustments needed.</span></li>
-                            <li class="flex items-start"><i class="fas fa-dollar-sign fa-fw text-green-500 mr-3 mt-1"></i><span>Extremely low <span class="tooltip">Management Expense Ratios (MERs)<span class="tooltiptext !w-[280px]">The all-in annual fee for a fund, shown as a percentage. Lower is better! ETFs are often around 0.25%, while bank mutual funds can be 2% or more.</span></span>.</span></li>
-                            <li class="flex items-start"><i class="fas fa-mouse-pointer fa-fw text-teal-500 mr-3 mt-1"></i><span><span class="tooltip">Buy and sell easily like a stock<span class="tooltiptext !w-[280px]">This action, called a 'trade', often has a fee called a commission (~$10 at big banks). A key advantage of platforms like Wealthsimple is that they offer commission-free trading for Canadian ETFs.</span></span>.</span></li>
-                            <li class="flex items-start"><i class="fas fa-check-double fa-fw text-purple-500 mr-3 mt-1"></i><span>Perfect for beginners and hands-off investors.</span></li>
-                        </ul>
+                     <div>
+                         <h3 class="text-xl font-bold text-gray-700 mb-4">Why Choose All-in-One ETFs?</h3>
+                         <ul class="list-none pl-0 space-y-3 text-gray-700 mb-6">
+                             <li class="flex items-start"><i class="fas fa-globe fa-fw text-green-500 mr-3 mt-1"></i><span>Instant global diversification.</span></li>
+                             <li class="flex items-start"><i class="fas fa-cogs fa-fw text-blue-500 mr-3 mt-1"></i><span>Automatic <span class="tooltip">rebalancing<span class="tooltiptext">Maintaining your desired stock/bond mix automatically over time.</span></span> – no manual adjustments needed.</span></li>
+                             <li class="flex items-start"><i class="fas fa-dollar-sign fa-fw text-green-500 mr-3 mt-1"></i><span>Extremely low <span class="tooltip">Management Expense Ratios (MERs)<span class="tooltiptext !w-[280px]">The all-in annual fee for a fund, shown as a percentage. Lower is better! ETFs are often around 0.25%, while bank mutual funds can be 2% or more.</span></span>.</span></li>
+                             <li class="flex items-start"><i class="fas fa-mouse-pointer fa-fw text-teal-500 mr-3 mt-1"></i><span><span class="tooltip">Buy and sell easily like a stock<span class="tooltiptext !w-[280px]">This action, called a 'trade', often has a fee called a commission (~$10 at big banks). A key advantage of platforms like Wealthsimple is that they offer commission-free trading for Canadian ETFs.</span></span>.</span></li>
+                             <li class="flex items-start"><i class="fas fa-check-double fa-fw text-purple-500 mr-3 mt-1"></i><span>Perfect for beginners and hands-off investors.</span></li>
+                         </ul>
 
-                        <h3 class="text-xl font-bold text-gray-700 mb-4">Choosing Your Risk Level</h3>
-                         <p class="text-gray-600 mb-4">Your mix depends on your investment timeline and comfort with <span class="tooltip">volatility<span class="tooltiptext">How much an investment's price might swing up or down.</span></span>.</p>
-                        <ul class="list-none pl-0 space-y-2 text-gray-700 mb-6">
-                            <li><i class="fas fa-arrow-trend-up fa-fw icon-green mr-2"></i><strong class="font-semibold">More Stocks:</strong> Higher potential growth, higher volatility (Good for long-term: 10+ years).</li>
-                            <li><i class="fas fa-shield-alt fa-fw icon-blue mr-2"></i><strong class="font-semibold">More Bonds:</strong> Lower potential growth, lower volatility (Good for shorter-term or lower risk tolerance).</li>
-                        </ul>
-                        <p class="text-sm text-gray-600">
-                            <i class="fas fa-question-circle mr-1 icon-blue"></i>Need help? Try the <a href="https://investor.vanguard.com/tools-calculators/investor-questionnaire" target="_blank">Vanguard Investor Questionnaire</a>.
-                        </p>
-                    </div>
+                         <h3 class="text-xl font-bold text-gray-700 mb-4">Choosing Your Risk Level</h3>
+                          <p class="text-gray-600 mb-4">Your mix depends on your investment timeline and comfort with <span class="tooltip">volatility<span class="tooltiptext">How much an investment's price might swing up or down.</span></span>.</p>
+                         <ul class="list-none pl-0 space-y-2 text-gray-700 mb-6">
+                             <li><i class="fas fa-arrow-trend-up fa-fw icon-green mr-2"></i><strong class="font-semibold">More Stocks:</strong> Higher potential growth, higher volatility (Good for long-term: 10+ years).</li>
+                             <li><i class="fas fa-shield-alt fa-fw icon-blue mr-2"></i><strong class="font-semibold">More Bonds:</strong> Lower potential growth, lower volatility (Good for shorter-term or lower risk tolerance).</li>
+                         </ul>
+                         <p class="text-sm text-gray-600">
+                             <i class="fas fa-question-circle mr-1 icon-blue"></i>Need help? Try the <a href="https://investor.vanguard.com/tools-calculators/investor-questionnaire" target="_blank">Vanguard Investor Questionnaire</a>.
+                         </p>
+                     </div>
 
                      <div>
-                        <h3 class="text-xl font-bold text-gray-700 mb-4">Popular Canadian All-in-One ETFs</h3>
-                        <p class="text-gray-600 mb-4">Leading providers include <a href="https://www.vanguard.ca/en/investor/Asset-Allocation-ETFs" target="_blank">Vanguard</a>, <a href="https://www.blackrock.com/ca/investors/en/learning-centre/etf-education/asset-allocation-etfs" target="_blank">iShares (BlackRock)</a>, and <a href="https://www.bmogam.com/ca-en/products/exchange-traded-funds/asset-allocation-etfs/" target="_blank">BMO</a>. Here are common options based on stock/bond mix:</p>
-                        <ul class="list-none pl-0 space-y-2 text-gray-700 mb-6 text-sm">
-                           <li class="mb-2"><i class="fas fa-fire text-red-500 mr-2"></i>100/0 (All Equity): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VEQT" target="_blank" class="text-blue-600 hover:underline">VEQT</a>, <a href="https://www.blackrock.com/ca/investors/en/products/309480/ishares-core-equity-etf-portfolio" target="_blank" class="text-blue-600 hover:underline">XEQT</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-all-equity-etf-zeqt/" target="_blank" class="text-blue-600 hover:underline">ZEQT</a></li>
-                            <li class="mb-2"><i class="fas fa-rocket text-orange-500 mr-2"></i>80/20 (Growth): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VGRO" target="_blank" class="text-blue-600 hover:underline">VGRO</a>, <a href="https://www.blackrock.com/ca/investors/en/products/239447/ishares-balanced-growth-coreportfoliotm-fund" target="_blank" class="text-blue-600 hover:underline">XGRO</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-growth-etf-zgro/" target="_blank" class="text-blue-600 hover:underline">ZGRO</a></li>
-                            <li class="mb-2"><i class="fas fa-balance-scale text-yellow-500 mr-2"></i>60/40 (Balanced): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VBAL" target="_blank" class="text-blue-600 hover:underline">VBAL</a>, <a href="https://www.blackrock.com/ca/investors/en/products/239449/ishares-balanced-income-coreportfoliotm-fund" target="_blank" class="text-blue-600 hover:underline">XBAL</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-balanced-etf-zbal/" target="_blank" class="text-blue-600 hover:underline">ZBAL</a></li>
-                            <li class="mb-2"><i class="fas fa-umbrella text-blue-500 mr-2"></i>40/60 (Conservative): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VCNS" target="_blank" class="text-blue-600 hover:underline">VCNS</a>, <a href="https://www.blackrock.com/ca/investors/en/products/309484/ishares-core-conservative-balanced-etf-portfolio" target="_blank" class="text-blue-600 hover:underline">XCNS</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-conservative-etf-zcon/" target="_blank" class="text-blue-600 hover:underline">ZCON</a></li>
-                            <li class="mb-2"><i class="fas fa-shield-alt text-gray-500 mr-2"></i>20/80 (Income): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VCIP" target="_blank" class="text-blue-600 hover:underline">VCIP</a>, <a href="https://www.blackrock.com/ca/investors/en/products/309482/ishares-core-income-balanced-etf-portfolio" target="_blank" class="text-blue-600 hover:underline">XINC</a></li>
-                        </ul>
-                         <div class="text-center mt-6 flex flex-wrap justify-center gap-2">
+                         <h3 class="text-xl font-bold text-gray-700 mb-4">Popular Canadian All-in-One ETFs</h3>
+                         <p class="text-gray-600 mb-4">Leading providers include <a href="https://www.vanguard.ca/en/investor/Asset-Allocation-ETFs" target="_blank">Vanguard</a>, <a href="https://www.blackrock.com/ca/investors/en/learning-centre/etf-education/asset-allocation-etfs" target="_blank">iShares (BlackRock)</a>, and <a href="https://www.bmogam.com/ca-en/products/exchange-traded-funds/asset-allocation-etfs/" target="_blank">BMO</a>. Here are common options based on stock/bond mix:</p>
+                         <ul class="list-none pl-0 space-y-2 text-gray-700 mb-6 text-sm">
+                            <li class="mb-2"><i class="fas fa-fire text-red-500 mr-2"></i>100/0 (All Equity): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VEQT" target="_blank" class="text-blue-600 hover:underline">VEQT</a>, <a href="https://www.blackrock.com/ca/investors/en/products/309480/ishares-core-equity-etf-portfolio" target="_blank" class="text-blue-600 hover:underline">XEQT</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-all-equity-etf-zeqt/" target="_blank" class="text-blue-600 hover:underline">ZEQT</a></li>
+                             <li class="mb-2"><i class="fas fa-rocket text-orange-500 mr-2"></i>80/20 (Growth): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VGRO" target="_blank" class="text-blue-600 hover:underline">VGRO</a>, <a href="https://www.blackrock.com/ca/investors/en/products/239447/ishares-balanced-growth-coreportfoliotm-fund" target="_blank" class="text-blue-600 hover:underline">XGRO</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-growth-etf-zgro/" target="_blank" class="text-blue-600 hover:underline">ZGRO</a></li>
+                             <li class="mb-2"><i class="fas fa-balance-scale text-yellow-500 mr-2"></i>60/40 (Balanced): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VBAL" target="_blank" class="text-blue-600 hover:underline">VBAL</a>, <a href="https://www.blackrock.com/ca/investors/en/products/239449/ishares-balanced-income-coreportfoliotm-fund" target="_blank" class="text-blue-600 hover:underline">XBAL</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-balanced-etf-zbal/" target="_blank" class="text-blue-600 hover:underline">ZBAL</a></li>
+                             <li class="mb-2"><i class="fas fa-umbrella text-blue-500 mr-2"></i>40/60 (Conservative): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VCNS" target="_blank" class="text-blue-600 hover:underline">VCNS</a>, <a href="https://www.blackrock.com/ca/investors/en/products/309484/ishares-core-conservative-balanced-etf-portfolio" target="_blank" class="text-blue-600 hover:underline">XCNS</a>, <a href="https://www.bmogam.com/ca-en/products/exchange-traded-fund/bmo-conservative-etf-zcon/" target="_blank" class="text-blue-600 hover:underline">ZCON</a></li>
+                             <li class="mb-2"><i class="fas fa-shield-alt text-gray-500 mr-2"></i>20/80 (Income): <a href="https://www.vanguard.ca/en/investor/products/products-group/etfs/VCIP" target="_blank" class="text-blue-600 hover:underline">VCIP</a>, <a href="https://www.blackrock.com/ca/investors/en/products/309482/ishares-core-income-balanced-etf-portfolio" target="_blank" class="text-blue-600 hover:underline">XINC</a></li>
+                         </ul>
+                          <div class="text-center mt-6 flex flex-wrap justify-center gap-2">
                               <button id="open-holdings" class="cta-button cta-button-secondary text-sm"><i class="fas fa-list-alt mr-2"></i>Holdings</button>
                               <button id="open-performance" class="cta-button cta-button-secondary text-sm"><i class="fas fa-chart-line mr-2"></i>Performance</button>
                               <button id="open-geo" class="cta-button cta-button-secondary text-sm"><i class="fas fa-globe-americas mr-2"></i>Geography</button>
-                         </div>
-                         <p class="text-xs text-gray-500 mt-4 text-center">Comparisons use VGRO/XGRO/ZGRO vs. RBF459 (sample bank fund) as of Sep 24, 2025. <br class="hidden sm:inline">*Max 5-year performance shown due to ZGRO's Feb 2019 inception.</p>
-                    </div>
-                </div>
+                          </div>
+                          <p class="text-xs text-gray-500 mt-4 text-center">Comparisons use VGRO/XGRO/ZGRO vs. RBF459 (sample bank fund) as of Sep 24, 2025. <br class="hidden sm:inline">*Max 5-year performance shown due to ZGRO's Feb 2019 inception.</p>
+                     </div>
+                 </div>
             </div>
 
             <div id="holdings-modal" class="modal">
@@ -481,7 +481,7 @@
                    <button id="close-geo" class="modal-close-button" aria-label="Close modal">×</button>
                    <h3 class="text-xl font-bold mb-4 text-gray-800">Geographic Allocation Comparison (Sample: Growth 80/20)</h3>
                    <div class="overflow-x-auto">
-                     <div class="w-full h-80 md:h-96 min-w-[300px]"><canvas id="geoChart"></canvas></div>
+                      <div class="w-full h-80 md:h-96 min-w-[300px]"><canvas id="geoChart"></canvas></div>
                    </div>
               </div>
             </div>
@@ -503,87 +503,87 @@
                     <i class="fas fa-coins mr-2 icon-yellow"></i>The Million-Dollar Difference: See How Fees Impact *Your* Growth
                 </h2>
                  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-1">
-                        <h3 class="text-xl font-bold text-gray-700 mb-4">Key Fees Explained</h3>
-                         <div class="mb-4">
-                              <h4 class="font-semibold text-gray-800"><i class="fas fa-percentage fa-fw mr-2 icon-teal"></i>Management Expense Ratio (MER)</h4>
-                              <p class="text-gray-600 text-sm">Annual fee charged by the ETF/fund provider (e.g., 0.20%). Deducted automatically from returns.</p>
-                         </div>
-                         <div class="mb-4">
-                              <h4 class="font-semibold text-gray-800"><i class="fas fa-shopping-cart fa-fw mr-2 icon-purple"></i>Commissions (Trading Fees)</h4>
-                              <p class="text-gray-600 text-sm">
+                     <div class="lg:col-span-1">
+                         <h3 class="text-xl font-bold text-gray-700 mb-4">Key Fees Explained</h3>
+                          <div class="mb-4">
+                               <h4 class="font-semibold text-gray-800"><i class="fas fa-percentage fa-fw mr-2 icon-teal"></i>Management Expense Ratio (MER)</h4>
+                               <p class="text-gray-600 text-sm">Annual fee charged by the ETF/fund provider (e.g., 0.20%). Deducted automatically from returns.</p>
+                          </div>
+                          <div class="mb-4">
+                               <h4 class="font-semibold text-gray-800"><i class="fas fa-shopping-cart fa-fw mr-2 icon-purple"></i>Commissions (Trading Fees)</h4>
+                               <p class="text-gray-600 text-sm">
                                    Fee paid to the brokerage per trade (buy/sell). Often $5-$10 at big banks.
-                              </p>
-                         </div>
-                         <div>
-                              <h4 class="font-semibold text-gray-800"><i class="fas fa-university fa-fw mr-2 icon-red"></i>Monthly Bank Account Fees</h4>
-                              <p class="text-gray-600 text-sm">
+                               </p>
+                          </div>
+                          <div>
+                               <h4 class="font-semibold text-gray-800"><i class="fas fa-university fa-fw mr-2 icon-red"></i>Monthly Bank Account Fees</h4>
+                               <p class="text-gray-600 text-sm">
                                    A separate monthly fee just for having a chequing account. Typically $15+ at big banks.
-                              </p>
-                         </div>
+                               </p>
+                          </div>
 
-                        <div id="fee-impact-calculator" class="bg-gray-100 p-4 rounded-lg mt-6">
-                            <h4 class="font-semibold text-center text-gray-800 mb-4">Fee Impact Calculator</h4>
+                         <div id="fee-impact-calculator" class="bg-gray-100 p-4 rounded-lg mt-6">
+                             <h4 class="font-semibold text-center text-gray-800 mb-4">Fee Impact Calculator</h4>
                             
-                            <div class="mb-4">
-                                <div class="flex justify-between items-center mb-1">
-                                    <label for="initial-input" class="text-sm font-medium text-gray-700">Initial Investment</label>
-                                    <div class="flex items-center">
-                                        <span class="text-gray-500 mr-1">$</span>
-                                        <input type="number" id="initial-input" min="0" step="10000" value="0" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
-                                    </div>
-                                </div>
-                                <input type="range" id="initial-slider" min="0" max="1000000" step="10000" value="0" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                            </div>
-                         
-                            <div class="mb-4">
-                                <div class="flex justify-between items-center mb-1">
-                                    <label for="monthly-input" class="text-sm font-medium text-gray-700">Monthly Contribution</label>
-                                    <div class="flex items-center">
-                                        <span class="text-gray-500 mr-1">$</span>
-                                        <input type="number" id="monthly-input" min="0" step="100" value="1000" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
-                                    </div>
-                                </div>
-                                <input type="range" id="monthly-slider" min="0" max="5000" step="50" value="1000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                            </div>
+                             <div class="mb-4">
+                                 <div class="flex justify-between items-center mb-1">
+                                     <label for="initial-input" class="text-sm font-medium text-gray-700">Initial Investment</label>
+                                     <div class="flex items-center">
+                                         <span class="text-gray-500 mr-1">$</span>
+                                         <input type="number" id="initial-input" min="0" step="10000" value="0" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
+                                     </div>
+                                 </div>
+                                 <input type="range" id="initial-slider" min="0" max="1000000" step="10000" value="0" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                             </div>
+                        
+                             <div class="mb-4">
+                                 <div class="flex justify-between items-center mb-1">
+                                     <label for="monthly-input" class="text-sm font-medium text-gray-700">Monthly Contribution</label>
+                                     <div class="flex items-center">
+                                         <span class="text-gray-500 mr-1">$</span>
+                                         <input type="number" id="monthly-input" min="0" step="100" value="1000" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
+                                     </div>
+                                 </div>
+                                 <input type="range" id="monthly-slider" min="0" max="5000" step="50" value="1000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                             </div>
 
-                            <div class="mb-4">
-                                <div class="flex justify-between items-center mb-1">
-                                    <label for="bankfee-input" class="text-sm font-medium text-gray-700">Monthly Bank Fee</label>
-                                    <div class="flex items-center">
-                                        <span class="text-gray-500 mr-1">$</span>
-                                        <input type="number" id="bankfee-input" min="0" step="1" value="15" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
-                                    </div>
-                                </div>
-                                <input type="range" id="bankfee-slider" min="0" max="30" step="1" value="15" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                            </div>
-                         
-                            <div>
-                                <div class="flex justify-between items-center mb-1">
-                                    <label for="period-input" class="text-sm font-medium text-gray-700">Investment Period</label>
-                                    <div class="flex items-center">
-                                         <input type="number" id="period-input" min="1" step="1" value="25" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
-                                         <span class="text-gray-500 ml-2">Years</span>
-                                    </div>
-                                </div>
-                                <input type="range" id="period-slider" min="1" max="40" step="1" value="25" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-2">
-                        <h3 class="text-xl font-bold text-gray-700 mb-4 text-center lg:text-left">How Fees Erode Your Growth (7% Annual Return Assumed)</h3>
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <div class="mb-4 flex flex-wrap justify-center gap-2">
-                              <button class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded border border-green-300" onclick="toggleDataset(0)">Wealthsimple (0.2% MER)</button>
-                              <button class="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded border border-yellow-300" onclick="toggleDataset(1)">Bank ETF (0.2% + Comm. + Fees)</button>
-                              <button class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded border border-red-300" onclick="toggleDataset(2)">Bank Fund (2% + Fees)</button>
-                            </div>
-                            <div style="height: 300px; position: relative;">
-                              <canvas id="fee-impact-chart"></canvas>
-                            </div>
-                             <div id="fee-impact-summary" class="text-gray-800 text-sm mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                                  <h4 class="font-bold mb-2 text-center">After <span id="summary-years">25</span> years:</h4>
-                                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                             <div class="mb-4">
+                                 <div class="flex justify-between items-center mb-1">
+                                     <label for="bankfee-input" class="text-sm font-medium text-gray-700">Monthly Bank Fee</label>
+                                     <div class="flex items-center">
+                                         <span class="text-gray-500 mr-1">$</span>
+                                         <input type="number" id="bankfee-input" min="0" step="1" value="15" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
+                                     </div>
+                                 </div>
+                                 <input type="range" id="bankfee-slider" min="0" max="30" step="1" value="15" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                             </div>
+                        
+                             <div>
+                                 <div class="flex justify-between items-center mb-1">
+                                     <label for="period-input" class="text-sm font-medium text-gray-700">Investment Period</label>
+                                     <div class="flex items-center">
+                                          <input type="number" id="period-input" min="1" step="1" value="25" class="w-32 text-right font-semibold bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 p-1 transition">
+                                          <span class="text-gray-500 ml-2">Years</span>
+                                     </div>
+                                 </div>
+                                 <input type="range" id="period-slider" min="1" max="40" step="1" value="25" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                             </div>
+                         </div>
+                     </div>
+                     <div class="lg:col-span-2">
+                         <h3 class="text-xl font-bold text-gray-700 mb-4 text-center lg:text-left">How Fees Erode Your Growth (7% Annual Return Assumed)</h3>
+                         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                             <div class="mb-4 flex flex-wrap justify-center gap-2">
+                               <button class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded border border-green-300" onclick="toggleDataset(0)">Wealthsimple (0.2% MER)</button>
+                               <button class="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded border border-yellow-300" onclick="toggleDataset(1)">Bank ETF (0.2% + Comm. + Fees)</button>
+                               <button class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded border border-red-300" onclick="toggleDataset(2)">Bank Fund (2% + Fees)</button>
+                             </div>
+                             <div style="height: 300px; position: relative;">
+                               <canvas id="fee-impact-chart"></canvas>
+                             </div>
+                              <div id="fee-impact-summary" class="text-gray-800 text-sm mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                                   <h4 class="font-bold mb-2 text-center">After <span id="summary-years">25</span> years:</h4>
+                                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                                        <div>
                                            <p class="font-semibold">Wealthsimple:</p>
                                            <p class="text-green-600 font-bold text-lg">$<span id="low-fee-result">0</span></p>
@@ -596,17 +596,17 @@
                                            <p class="font-semibold">Bank Mutual Fund:</p>
                                            <p class="text-red-600 font-bold text-lg">$<span id="mutual-fund-result">0</span></p>
                                        </div>
-                                  </div>
-                                  <div class="mt-3 text-center border-t pt-3 border-blue-200">
+                                   </div>
+                                   <div class="mt-3 text-center border-t pt-3 border-blue-200">
                                        <p class="font-bold">Difference (Wealthsimple vs Bank Mutual Fund):</p>
                                        <p class="text-green-700 font-bold text-xl">$<span id="difference-result">0</span> more!</p>
                                        <p class="text-green-700 font-semibold">(<span id="difference-percentage">0</span>% more growth)</p>
-                                  </div>
-                             </div>
-                            <p class="text-xs text-gray-500 mt-2 text-center">*Assumes twice-monthly purchases/commissions ($20/mo) where applicable. Bank fees are applied monthly.</p>
-                        </div>
-                    </div>
-                </div>
+                                   </div>
+                              </div>
+                             <p class="text-xs text-gray-500 mt-2 text-center">*Assumes twice-monthly purchases/commissions ($20/mo) where applicable. Bank fees are applied monthly.</p>
+                         </div>
+                     </div>
+                 </div>
             </div>
         </section>
         
@@ -715,24 +715,24 @@
                         <p class="text-gray-600 mb-4">Invest within tax-advantaged accounts first!</p>
                         <ul class="list-none pl-0 space-y-4 text-gray-700 mb-6">
                               <li>
-                                   <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-leaf fa-fw text-green-500 mr-2"></i>TFSA (Tax-Free Savings Account)</h4>
-                                   <p class="text-sm">Invest <span class="tooltip">after-tax dollars<span class="tooltiptext">Money you've already paid income tax on.</span></span>, all growth and withdrawals are <strong class="text-green-600">tax-free</strong>. Flexible <span class="tooltip">contribution room<span class="tooltiptext">Starts at age 18, limit changes annually ($7,000 for 2024). Unused room carries forward. Check CRA My Account for your limit.</span></span>. Often the best starting point.</p>
-                                   <a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
+                                  <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-leaf fa-fw text-green-500 mr-2"></i>TFSA (Tax-Free Savings Account)</h4>
+                                  <p class="text-sm">Invest <span class="tooltip">after-tax dollars<span class="tooltiptext">Money you've already paid income tax on.</span></span>, all growth and withdrawals are <strong class="text-green-600">tax-free</strong>. Flexible <span class="tooltip">contribution room<span class="tooltiptext">Starts at age 18, limit changes annually ($7,000 for 2024). Unused room carries forward. Check CRA My Account for your limit.</span></span>. Often the best starting point.</p>
+                                  <a href="https://www.wealthsimple.com/en-ca/accounts/tfsa" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
                               </li>
                               <li>
-                                   <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-umbrella fa-fw text-orange-500 mr-2"></i>RRSP (Registered Retirement Savings Plan)</h4>
-                                   <p class="text-sm">Contributions are <span class="tooltip">tax-deductible<span class="tooltiptext">Reduces your taxable income now.</span></span>, growth is tax-deferred. Withdrawals are taxed. Good for higher earners aiming for retirement savings. <span class="tooltip">Contribution room<span class="tooltiptext">Based on 18% of previous year's income, up to a max ($31,560 for 2024 tax year). Check your Notice of Assessment.</span></span> depends on income.</p>
-                                   <a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
+                                  <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-umbrella fa-fw text-orange-500 mr-2"></i>RRSP (Registered Retirement Savings Plan)</h4>
+                                  <p class="text-sm">Contributions are <span class="tooltip">tax-deductible<span class="tooltiptext">Reduces your taxable income now.</span></span>, growth is tax-deferred. Withdrawals are taxed. Good for higher earners aiming for retirement savings. <span class="tooltip">Contribution room<span class="tooltiptext">Based on 18% of previous year's income, up to a max ($31,560 for 2024 tax year). Check your Notice of Assessment.</span></span> depends on income.</p>
+                                  <a href="https://www.wealthsimple.com/en-ca/accounts/rrsp" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
                               </li>
                               <li>
-                                   <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-home fa-fw text-blue-500 mr-2"></i>FHSA (First Home Savings Account)</h4>
-                                   <p class="text-sm">Combines TFSA & RRSP benefits for a first home purchase. Tax-deductible contributions, tax-free growth & withdrawals for home purchase. <span class="tooltip">Contribution room<span class="tooltiptext">$8k/year limit, $40k lifetime max. Can carry forward $8k unused room. Max 15 years.</span></span> limited.</p>
-                                    <a href="https://www.wealthsimple.com/en-ca/accounts/fhsa" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
+                                  <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-home fa-fw text-blue-500 mr-2"></i>FHSA (First Home Savings Account)</h4>
+                                  <p class="text-sm">Combines TFSA & RRSP benefits for a first home purchase. Tax-deductible contributions, tax-free growth & withdrawals for home purchase. <span class="tooltip">Contribution room<span class="tooltiptext">$8k/year limit, $40k lifetime max. Can carry forward $8k unused room. Max 15 years.</span></span> limited.</p>
+                                   <a href="https://www.wealthsimple.com/en-ca/accounts/fhsa" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
                               </li>
                               <li>
-                                   <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-folder-open fa-fw text-gray-500 mr-2"></i>Non-Registered Account</h4>
-                                   <p class="text-sm">Use after maxing out registered accounts. <span class="tooltip">No contribution limits<span class="tooltiptext">Invest as much as you want.</span></span>, but <span class="tooltip">capital gains<span class="tooltiptext">Profits from selling investments.</span></span> and <span class="tooltip">dividends<span class="tooltiptext">Payments from companies to shareholders.</span></span> are taxable.</p>
-                                    <a href="https://www.wealthsimple.com/en-ca/accounts/non-registered" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
+                                  <h4 class="font-semibold text-gray-800 mb-1"><i class="fas fa-folder-open fa-fw text-gray-500 mr-2"></i>Non-Registered Account</h4>
+                                  <p class="text-sm">Use after maxing out registered accounts. <span class="tooltip">No contribution limits<span class="tooltiptext">Invest as much as you want.</span></span>, but <span class="tooltip">capital gains<span class="tooltiptext">Profits from selling investments.</span></span> and <span class="tooltip">dividends<span class="tooltiptext">Payments from companies to shareholders.</span></span> are taxable.</p>
+                                   <a href="https://www.wealthsimple.com/en-ca/accounts/non-registered" target="_blank" class="text-xs text-blue-600 hover:underline">Learn more at Wealthsimple →</a>
                               </li>
                         </ul>
                          <div class="bg-gray-100 p-3 rounded-lg mt-auto text-center">
@@ -744,14 +744,14 @@
                     <div>
                         <h3 class="text-xl font-bold text-gray-700 mb-4">Buying Your First ETF on Wealthsimple</h3>
                          <ol class="list-decimal pl-5 space-y-2 text-gray-700 text-sm mb-6">
-                              <li><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="font-semibold">Sign Up for Wealthsimple</a> (Use the link for a $25 bonus!). Choose "Trade stocks and ETFs" (Self-Directed Investing).
+                               <li><a href="https://icaninvest.ca/wealthsimple" target="_blank" class="font-semibold">Sign Up for Wealthsimple</a> (Use the link for a $25 bonus!). Choose "Trade stocks and ETFs" (Self-Directed Investing).
                                    <span class="tooltip">
                                         <i class="fas fa-info-circle ml-1 text-blue-500"></i>
                                        <span class="tooltiptext">Wealthsimple offers 'Managed Investing' (robo-advisor) and 'Self-Directed Investing' (Trade). This guide focuses on Self-Directed for buying ETFs yourself to minimize fees.</span>
                                    </span>
-                              </li>
-                              <li><a href="https://help.wealthsimple.com/hc/en-ca/articles/13619118312987-Different-ways-to-fund-your-Wealthsimple-account" target="_blank" class="font-semibold">Fund Your Account</a> (Link bank account, e-Transfer, etc.).</li>
-                              <li>Search for the ETF ticker (e.g., "XGRO", "VGRO").
+                               </li>
+                               <li><a href="https://help.wealthsimple.com/hc/en-ca/articles/13619118312987-Different-ways-to-fund-your-Wealthsimple-account" target="_blank" class="font-semibold">Fund Your Account</a> (Link bank account, e-Transfer, etc.).</li>
+                               <li>Search for the ETF ticker (e.g., "XGRO", "VGRO").
                                    <span class="tooltip"> Check it's CAD & TSX.
                                         <i class="fas fa-info-circle ml-1 text-blue-500"></i>
                                        <span class="tooltiptext !w-[300px] !-translate-x-1/2">
@@ -759,10 +759,10 @@
                                            <img src="images/cadtsx.png" alt="Example showing CAD currency and TSX exchange on Wealthsimple" class="mt-2">
                                        </span>
                                    </span>
-                              </li>
-                              <li>Select "Buy". Choose order type: <span class="tooltip">Market<span class="tooltiptext">Buys immediately at the best current price. Simple but price might fluctuate slightly. Wealthsimple requires a 5% cash buffer for market orders.</span></span> or <span class="tooltip">Limit<span class="tooltiptext">Set a maximum price you're willing to pay per share. Order only fills at your price or better. Allows investing your full cash balance without a buffer.</span></span>.</li>
-                              <li>Enter amount (dollars or shares).</li>
-                              <li>Review and confirm your trade.</li>
+                               </li>
+                               <li>Select "Buy". Choose order type: <span class="tooltip">Market<span class="tooltiptext">Buys immediately at the best current price. Simple but price might fluctuate slightly. Wealthsimple requires a 5% cash buffer for market orders.</span></span> or <span class="tooltip">Limit<span class="tooltiptext">Set a maximum price you're willing to pay per share. Order only fills at your price or better. Allows investing your full cash balance without a buffer.</span></span>.</li>
+                               <li>Enter amount (dollars or shares).</li>
+                               <li>Review and confirm your trade.</li>
                          </ol>
                          <div class="text-center">
                               <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="cta-button">
@@ -771,14 +771,14 @@
                          </div>
 
                         <div class="mt-8 pt-6 border-t border-gray-200">
-                             <h3 class="text-xl font-bold text-gray-700 mb-4"><i class="fas fa-exchange-alt mr-2 icon-teal"></i>Already Investing Elsewhere?</h3>
-                             <p class="text-gray-600 mb-4 text-sm">Have an account at another bank? Wealthsimple makes transferring simple. They handle the paperwork and will reimburse the transfer-out fee for qualifying accounts over $25,000. <a href="https://help.wealthsimple.com/hc/en-ca/articles/1500003503661-Transfer-an-account-to-Wealthsimple" target="_blank">Learn more here →</a></p>
-                             <ol class="list-decimal pl-5 space-y-2 text-gray-700 text-sm">
-                                   <li><strong>Initiate the transfer inside the Wealthsimple app</strong> (Go to Move → Transfer an account).</li>
-                                   <li><strong>Provide your account details</strong> from a recent statement.</li>
-                                   <li><strong>Choose to transfer <span class="tooltip">"in-kind"<span class="tooltiptext">Moves your investments as-is. This is usually the best option for registered accounts as you stay invested.</span></span> or <span class="tooltip">"in cash"<span class="tooltiptext">Sells your investments and moves the cash. You'll be out of the market during the transfer.</span></span>.</strong></li>
-                                   <li><strong>Let Wealthsimple handle the rest</strong> (typically takes 1-4 weeks).</li>
-                             </ol>
+                            <h3 class="text-xl font-bold text-gray-700 mb-4"><i class="fas fa-exchange-alt mr-2 icon-teal"></i>Already Investing Elsewhere?</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Have an account at another bank? Wealthsimple makes transferring simple. They handle the paperwork and will reimburse the transfer-out fee for qualifying accounts over $25,000. <a href="https://help.wealthsimple.com/hc/en-ca/articles/1500003503661-Transfer-an-account-to-Wealthsimple" target="_blank">Learn more here →</a></p>
+                            <ol class="list-decimal pl-5 space-y-2 text-gray-700 text-sm">
+                                 <li><strong>Initiate the transfer inside the Wealthsimple app</strong> (Go to Move → Transfer an account).</li>
+                                 <li><strong>Provide your account details</strong> from a recent statement.</li>
+                                 <li><strong>Choose to transfer <span class="tooltip">"in-kind"<span class="tooltiptext !w-[300px]">Moves your stocks and ETFs directly without selling them, keeping you in the market. <strong>Use this if you hold these at another brokerage</strong> (e.g., Questrade) or a bank's self-directed platform (e.g., TD Direct Investing). Mutual funds <strong>cannot</strong> be transferred this way.</span></span> or <span class="tooltip">"in cash"<span class="tooltiptext !w-[280px]">Your current institution sells your investments and moves the cash. <strong>This is the required option for moving any mutual fund account.</strong> You will be out of the market during the transfer, but can buy new ETFs once the cash arrives.</span></span>.</strong></li>
+                                 <li><strong>Let Wealthsimple handle the rest</strong> (typically takes 1-4 weeks).</li>
+                            </ol>
                         </div>
                          </div>
                 </div>
@@ -818,7 +818,7 @@
                         </ul>
                          <div class="bg-blue-50 p-4 rounded-lg text-sm mt-4 border-l-4 border-blue-300">
                               <blockquote class="text-gray-700 italic mb-2">
-                                   "The stock market is a device for transferring money from the impatient to the patient."
+                                  "The stock market is a device for transferring money from the impatient to the patient."
                               </blockquote>
                               <p class="text-right text-blue-600 text-xs font-semibold">- Warren Buffett</p>
                          </div>
@@ -840,7 +840,7 @@
                         <div class="bg-green-50 p-4 rounded-lg mt-6 border-l-4 border-green-300">
                            <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-lightbulb mr-2 text-yellow-500"></i>Pro Tip: Automate!</h4>
                           <p class="text-gray-700 text-sm">
-                           Set up recurring investments in Wealthsimple ('Auto-Invest'). This enforces discipline and leverages <span class="tooltip">dollar-cost averaging<span class="tooltiptext">Investing a fixed amount regularly, buying more shares when prices are low and fewer when high, potentially lowering your average cost over time.</span></span>. Even small amounts add up significantly over time due to compounding!
+                          Set up recurring investments in Wealthsimple ('Auto-Invest'). This enforces discipline and leverages <span class="tooltip">dollar-cost averaging<span class="tooltiptext">Investing a fixed amount regularly, buying more shares when prices are low and fewer when high, potentially lowering your average cost over time.</span></span>. Even small amounts add up significantly over time due to compounding!
                           </p>
                         </div>
                     </div>
@@ -858,21 +858,21 @@
                     You now understand the problem with high fees, you've seen the power of the simple ETF solution, and you know the best platform to do it on. The only thing left is to take the first, easy step.
                 </p>
                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <div class="feature-box border border-gray-200">
-                      <i class="fas fa-gift icon-red"></i>
-                      <h3 class="font-bold text-lg text-gray-700 mb-1">Get $25 Bonus</h3>
-                      <p class="text-sm text-gray-600">Sign up and fund your new Wealthsimple account using the link below.</p>
-                    </div>
-                    <div class="feature-box border border-gray-200">
-                      <i class="fas fa-dollar-sign icon-green"></i>
-                      <h3 class="font-bold text-lg text-gray-700 mb-1">Zero Commissions</h3>
-                      <p class="text-sm text-gray-600">Keep more of your returns by avoiding trading fees on Canadian stocks & ETFs.</p>
-                    </div>
-                    <div class="feature-box border border-gray-200">
-                      <i class="fas fa-mobile-alt icon-blue"></i>
-                      <h3 class="font-bold text-lg text-gray-700 mb-1">Simple & Powerful</h3>
-                      <p class="text-sm text-gray-600">An easy-to-use app with automated features to keep you on track.</p>
-                    </div>
+                     <div class="feature-box border border-gray-200">
+                       <i class="fas fa-gift icon-red"></i>
+                       <h3 class="font-bold text-lg text-gray-700 mb-1">Get $25 Bonus</h3>
+                       <p class="text-sm text-gray-600">Sign up and fund your new Wealthsimple account using the link below.</p>
+                     </div>
+                     <div class="feature-box border border-gray-200">
+                       <i class="fas fa-dollar-sign icon-green"></i>
+                       <h3 class="font-bold text-lg text-gray-700 mb-1">Zero Commissions</h3>
+                       <p class="text-sm text-gray-600">Keep more of your returns by avoiding trading fees on Canadian stocks & ETFs.</p>
+                     </div>
+                     <div class="feature-box border border-gray-200">
+                       <i class="fas fa-mobile-alt icon-blue"></i>
+                       <h3 class="font-bold text-lg text-gray-700 mb-1">Simple & Powerful</h3>
+                       <p class="text-sm text-gray-600">An easy-to-use app with automated features to keep you on track.</p>
+                     </div>
                  </div>
 
                 <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="cta-button text-xl px-8 py-3">
@@ -901,26 +901,26 @@
                  <a href="#success-learning">Learn More</a>
             </div>
              <div class="mb-2 social-links space-x-4 relative">
-              <a href="https://x.com/iCanInvestCA" target="_blank" aria-label="Follow on X" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
-               <a href="https://bsky.app/profile/icaninvest.ca" target="_blank" aria-label="Follow on Bluesky" title="Follow on Bluesky"><img src="images/bluesky.png" alt="iCanInvest on Bluesky" class="social-icon inline-block"></a>
-              <a href="https://www.youtube.com/@iCanInvestCA" target="_blank" aria-label="Subscribe on YouTube" title="Subscribe on YouTube"><i class="fab fa-youtube"></i></a>
-              <a href="mailto:contact@icaninvest.ca" aria-label="Email Contact" title="Email Contact"><i class="fas fa-envelope"></i></a>
-               <a href="#" id="footer-donate-toggle" class="cursor-pointer" aria-label="Support the site" title="Support the site">
-                   <i class="fas fa-mug-hot text-yellow-600"></i>
-               </a>
-               <div id="footer-donate-options" class="">
-                <p>Thanks for your support!</p>
-                <a href="https://paypal.me/iCanInvest?country.x=CA&locale.x=en_US" target="_blank" rel="noopener noreferrer">
-                 <i class="fab fa-paypal"></i>PayPal
+               <a href="https://x.com/iCanInvestCA" target="_blank" aria-label="Follow on X" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://bsky.app/profile/icaninvest.ca" target="_blank" aria-label="Follow on Bluesky" title="Follow on Bluesky"><img src="images/bluesky.png" alt="iCanInvest on Bluesky" class="social-icon inline-block"></a>
+               <a href="https://www.youtube.com/@iCanInvestCA" target="_blank" aria-label="Subscribe on YouTube" title="Subscribe on YouTube"><i class="fab fa-youtube"></i></a>
+               <a href="mailto:contact@icaninvest.ca" aria-label="Email Contact" title="Email Contact"><i class="fas fa-envelope"></i></a>
+                <a href="#" id="footer-donate-toggle" class="cursor-pointer" aria-label="Support the site" title="Support the site">
+                    <i class="fas fa-mug-hot text-yellow-600"></i>
                 </a>
-                <button class="copy-button" data-copy-text="$haneleedham">
-                 <i class="fas fa-dollar-sign"></i>WS Cash: $haneleedham<span class="copy-feedback"></span>
-                </button>
-                <button class="copy-button" data-copy-text="shane.connex@gmail.com">
-                 <i class="fas fa-envelope"></i>Interac: shane.connex@gmail.com<span class="copy-feedback"></span>
-                </button>
-               </div>
-            </div>
+                <div id="footer-donate-options" class="">
+                 <p>Thanks for your support!</p>
+                 <a href="https://paypal.me/iCanInvest?country.x=CA&locale.x=en_US" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-paypal"></i>PayPal
+                 </a>
+                 <button class="copy-button" data-copy-text="$haneleedham">
+                  <i class="fas fa-dollar-sign"></i>WS Cash: $haneleedham<span class="copy-feedback"></span>
+                 </button>
+                 <button class="copy-button" data-copy-text="shane.connex@gmail.com">
+                  <i class="fas fa-envelope"></i>Interac: shane.connex@gmail.com<span class="copy-feedback"></span>
+                 </button>
+                </div>
+             </div>
             <p>© 2025 iCanInvest.ca. All rights reserved.</p>
         </div>
     </footer>
