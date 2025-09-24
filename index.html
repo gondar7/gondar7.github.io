@@ -609,6 +609,7 @@
                 </div>
             </div>
         </section>
+        
         <div class="quote-carousel-container">
             <div class="quote-carousel">
                  <div class="quote-content">
@@ -637,8 +638,8 @@
                                 <li class="flex items-start"><i class="fas fa-lock-open fa-fw text-blue-500 mr-3 mt-1"></i><div>No minimum balance required to waive fees. Your money is always yours to use or invest.</div></li>
                         </ul>
                          <div class="bg-gray-100 p-3 rounded-lg mt-auto">
-                              <a href="#fees-impact" class="text-sm text-blue-600 hover:underline font-semibold">
-                                   <i class="fas fa-calculator mr-1"></i>See How Bank Fees Cost You →
+                              <a href="#fees-impact" class="text-sm text-blue-600 hover:underline font-semibold flex items-center justify-center">
+                                   <i class="fas fa-calculator mr-2"></i>See How Bank Fees Cost You →
                               </a>
                          </div>
                     </div>
@@ -653,8 +654,8 @@
                               <li class="flex items-start"><i class="fas fa-shield-alt fa-fw text-green-500 mr-3 mt-1"></i><div><span class="tooltip">CIPF Protection<span class="tooltiptext !w-[280px]">Canadian Investor Protection Fund. It's like insurance for your investments, protecting you up to $1 million if your brokerage firm goes insolvent.</span></span> up to $1 million.</div></li>
                         </ul>
                          <div class="bg-gray-100 p-3 rounded-lg mt-auto">
-                              <a href="#getting-started" class="text-sm text-blue-600 hover:underline font-semibold">
-                                   <i class="fas fa-arrow-down mr-1"></i>Learn how to get started →
+                              <a href="#getting-started" class="text-sm text-blue-600 hover:underline font-semibold flex items-center justify-center">
+                                   <i class="fas fa-arrow-down mr-2"></i>Learn how to get started →
                               </a>
                          </div>
                     </div>
@@ -669,8 +670,8 @@
                             <li class="flex items-start"><i class="fas fa-shield-alt fa-fw text-blue-500 mr-3 mt-1"></i><div>Eligible for CDIC protection up to $1M.</div></li>
                         </ul>
                          <div class="bg-gray-100 p-3 rounded-lg mt-auto">
-                              <a href="https://icaninvest.ca/wealthsimple" target="_blank" class="text-sm text-blue-600 hover:underline font-semibold">
-                                   <i class="fas fa-info-circle mr-1"></i>Explore Wealthsimple Chequing →
+                              <a href="https://www.wealthsimple.com/en-ca/chequing" target="_blank" class="text-sm text-blue-600 hover:underline font-semibold flex items-center justify-center">
+                                   <i class="fas fa-info-circle mr-2"></i>Explore Wealthsimple Chequing →
                               </a>
                          </div>
                     </div>
@@ -685,14 +686,15 @@
                               <li class="flex items-start"><i class="fas fa-file-invoice-dollar fa-fw text-blue-500 mr-3 mt-1"></i><div>A smart alternative to high-interest debt.</div></li>
                         </ul>
                          <div class="bg-gray-100 p-3 rounded-lg mt-auto">
-                              <a href="https://www.wealthsimple.com/en-ca/self-directed-investing/margin" target="_blank" class="text-sm text-blue-600 hover:underline font-semibold">
-                                   <i class="fas fa-info-circle mr-1"></i>Learn about Margin Accounts →
+                              <a href="https://www.wealthsimple.com/en-ca/self-directed-investing/margin" target="_blank" class="text-sm text-blue-600 hover:underline font-semibold flex items-center justify-center">
+                                   <i class="fas fa-info-circle mr-2"></i>Learn about Margin Accounts →
                               </a>
                          </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <div class="quote-carousel-container">
             <div class="quote-carousel">
                  <div class="quote-content">
@@ -945,143 +947,14 @@
         let geoChartInstance = null;
         function createGeoChart() { const ctx = document.getElementById('geoChart')?.getContext('2d'); if (!ctx) return; if (geoChartInstance) { geoChartInstance.destroy(); } geoChartInstance = new Chart(ctx, { type: 'radar', data: { labels: ['Canada', 'US', 'Developed', 'Emerging'], datasets: Object.entries(geoAllocation).map(([fund, data], index) => { const colors = ['rgba(45, 206, 137, 0.7)', 'rgba(94, 114, 228, 0.7)', 'rgba(251, 99, 64, 0.7)', 'rgba(245, 54, 92, 0.7)']; const borderColors = ['rgb(45, 206, 137)', 'rgb(94, 114, 228)', 'rgb(251, 99, 64)', 'rgb(245, 54, 92)']; return { label: fund, data: Object.values(data), fill: true, backgroundColor: colors[index % colors.length].replace('0.7', '0.2'), borderColor: borderColors[index % borderColors.length], pointBackgroundColor: borderColors[index % borderColors.length], pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: borderColors[index % borderColors.length] }; }) }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { angleLines: { color: 'rgba(0, 0, 0, 0.1)' }, grid: { color: 'rgba(0, 0, 0, 0.1)' }, pointLabels: { font: { size: 10 }, color: '#666' }, ticks: { backdropColor: 'transparent', color: '#666', stepSize: 10, font: { size: 9 } }, suggestedMin: 0, suggestedMax: 40 } }, plugins: { legend: { position: 'top', labels: { color: '#333', font: { size: 11 } } }, tooltip: { callbacks: { label: function(context) { return `${context.dataset.label}: ${context.formattedValue}%`; } } } } } }); }
 
-        // /// START: UPDATED FEE IMPACT CALCULATOR LOGIC ///
+        // Fee Impact Calculator Logic
         document.addEventListener('DOMContentLoaded', function() {
-            const MAX_INITIAL = 10000000;
-            const MAX_MONTHLY = 25000;
-            const MAX_BANKFEE = 100;
-            const MAX_YEARS = 60;
-            let feeChart;
-        
-            function setupTwoWayBinding(inputId, sliderId, cap, updateCallback) {
-                const input = document.getElementById(inputId);
-                const slider = document.getElementById(sliderId);
-                if (!input || !slider) return;
-        
-                const updateFromInput = () => {
-                    let value = parseInt(input.value, 10);
-                    if (isNaN(value) || value < parseInt(input.min, 10)) {
-                        value = parseInt(input.min, 10) || 0;
-                    }
-                    if (value > cap) {
-                        value = cap;
-                        input.value = cap;
-                    }
-                    if (value > parseInt(slider.max, 10)) {
-                        slider.max = value;
-                    }
-                    slider.value = value;
-                    updateCallback();
-                };
-        
-                const updateFromSlider = () => {
-                    input.value = slider.value;
-                    updateCallback();
-                };
-        
-                input.addEventListener('input', updateFromInput);
-                input.addEventListener('change', () => { if (input.value === "") input.value = slider.value; });
-                slider.addEventListener('input', updateFromSlider);
-            }
-        
-            function calculateInvestmentGrowth(initial, monthly, years, annualRate, feePercent, monthlyCommission = 0, monthlyBankFee = 0) {
-                let balance = initial;
-                const monthlyRate = (annualRate / 100 - feePercent / 100) / 12;
-                const totalMonths = years * 12;
-                const balanceData = [initial];
-                for (let month = 1; month <= totalMonths; month++) {
-                    balance *= (1 + monthlyRate);
-                    balance += monthly;
-                    balance -= (monthlyCommission * 2); // Assumes 2 trades/month
-                    balance -= monthlyBankFee;
-                    if (month % 12 === 0) {
-                        balanceData.push(Math.max(0, Math.round(balance)));
-                    }
-                }
-                return balanceData;
-            }
-        
-            function updateFeeChart() {
-                const initial = parseFloat(document.getElementById('initial-slider')?.value || 0);
-                const monthly = parseFloat(document.getElementById('monthly-slider')?.value || 0);
-                const years = parseInt(document.getElementById('period-slider')?.value || 1);
-                const bankFee = parseFloat(document.getElementById('bankfee-slider')?.value || 0);
-        
-                const rate = 7;
-                const lowFeeRate = 0.2;
-                const highFeeRate = 2.0;
-                const monthlyCommission = monthly > 0 ? 10 : 0;
-        
-                const lowFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, 0, 0);
-                const bankBrokerageGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, monthlyCommission, bankFee);
-                const highFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, highFeeRate, 0, bankFee);
-                
-                const labels = Array.from({length: years + 1}, (_, i) => `Year ${i}`);
-                const ctx = document.getElementById('fee-impact-chart')?.getContext('2d');
-                if (!ctx) return;
-        
-                const datasets = [
-                    { label: 'Wealthsimple (0.2% MER)', data: lowFeeGrowth, borderColor: '#2dce89', tension: 0.1, pointRadius: 0, borderWidth: 2 },
-                    { label: `Bank ETF (0.2% + Comm. + $${bankFee}/mo)`, data: bankBrokerageGrowth, borderColor: '#fb6340', tension: 0.1, pointRadius: 0, borderWidth: 2 },
-                    { label: `Bank Fund (2% + $${bankFee}/mo)`, data: highFeeGrowth, borderColor: '#f5365c', tension: 0.1, pointRadius: 0, borderWidth: 2 }
-                ];
-
-                if (feeChart) {
-                    feeChart.data.labels = labels;
-                    feeChart.data.datasets.forEach((dataset, index) => {
-                        dataset.data = datasets[index].data;
-                        dataset.label = datasets[index].label;
-                    });
-                    feeChart.update();
-                } else {
-                    feeChart = new Chart(ctx, {
-                        type: 'line',
-                        data: { labels: labels, datasets: datasets },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                y: { beginAtZero: true, ticks: { callback: value => '$' + value.toLocaleString(), color: '#666', font: { size: 10 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
-                                x: { ticks: { color: '#666', font: { size: 10 } }, grid: { display: false } }
-                            },
-                            plugins: {
-                                legend: { display: false },
-                                tooltip: { mode: 'index', intersect: false, callbacks: { label: context => `${context.dataset.label}: $${context.parsed.y.toLocaleString()}` } }
-                            }
-                        }
-                    });
-                }
-                
-                const lowFeeFinal = lowFeeGrowth[lowFeeGrowth.length - 1];
-                const bankBrokerageFinal = bankBrokerageGrowth[bankBrokerageGrowth.length - 1];
-                const highFeeFinal = highFeeGrowth[highFeeGrowth.length - 1];
-                const difference = lowFeeFinal - highFeeFinal;
-                const percentageDiff = highFeeFinal > 0 ? ((difference / highFeeFinal) * 100) : (lowFeeFinal > 0 ? Infinity : 0);
-                
-                document.getElementById('summary-years').textContent = years;
-                document.getElementById('low-fee-result').textContent = lowFeeFinal.toLocaleString();
-                document.getElementById('bank-brokerage-result').textContent = bankBrokerageFinal.toLocaleString();
-                document.getElementById('mutual-fund-result').textContent = highFeeFinal.toLocaleString();
-                document.getElementById('difference-result').textContent = difference.toLocaleString();
-                document.getElementById('difference-percentage').textContent = percentageDiff === Infinity ? '∞' : percentageDiff.toFixed(1);
-            }
-        
-            setupTwoWayBinding('initial-input', 'initial-slider', MAX_INITIAL, updateFeeChart);
-            setupTwoWayBinding('monthly-input', 'monthly-slider', MAX_MONTHLY, updateFeeChart);
-            setupTwoWayBinding('bankfee-input', 'bankfee-slider', MAX_BANKFEE, updateFeeChart);
-            setupTwoWayBinding('period-input', 'period-slider', MAX_YEARS, updateFeeChart);
-        
-            updateFeeChart();
-        
-            window.toggleDataset = function(index) {
-                if (feeChart) {
-                    const meta = feeChart.getDatasetMeta(index);
-                    meta.hidden = meta.hidden === null ? !feeChart.data.datasets[index].hidden : null;
-                    feeChart.update();
-                }
-            }
+            const MAX_INITIAL = 10000000; const MAX_MONTHLY = 25000; const MAX_BANKFEE = 100; const MAX_YEARS = 60; let feeChart;
+            function setupTwoWayBinding(inputId, sliderId, cap, updateCallback) { const input = document.getElementById(inputId); const slider = document.getElementById(sliderId); if (!input || !slider) return; const updateFromInput = () => { let value = parseInt(input.value, 10); if (isNaN(value) || value < parseInt(input.min, 10)) { value = parseInt(input.min, 10) || 0; } if (value > cap) { value = cap; input.value = cap; } if (value > parseInt(slider.max, 10)) { slider.max = value; } slider.value = value; updateCallback(); }; const updateFromSlider = () => { input.value = slider.value; updateCallback(); }; input.addEventListener('input', updateFromInput); input.addEventListener('change', () => { if (input.value === "") input.value = slider.value; }); slider.addEventListener('input', updateFromSlider); }
+            function calculateInvestmentGrowth(initial, monthly, years, annualRate, feePercent, monthlyCommission = 0, monthlyBankFee = 0) { let balance = initial; const monthlyRate = (annualRate / 100 - feePercent / 100) / 12; const totalMonths = years * 12; const balanceData = [initial]; for (let month = 1; month <= totalMonths; month++) { balance *= (1 + monthlyRate); balance += monthly; balance -= (monthlyCommission * 2); balance -= monthlyBankFee; if (month % 12 === 0) { balanceData.push(Math.max(0, Math.round(balance))); } } return balanceData; }
+            function updateFeeChart() { const initial = parseFloat(document.getElementById('initial-slider')?.value || 0); const monthly = parseFloat(document.getElementById('monthly-slider')?.value || 0); const years = parseInt(document.getElementById('period-slider')?.value || 1); const bankFee = parseFloat(document.getElementById('bankfee-slider')?.value || 0); const rate = 7; const lowFeeRate = 0.2; const highFeeRate = 2.0; const monthlyCommission = monthly > 0 ? 10 : 0; const lowFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, 0, 0); const bankBrokerageGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, lowFeeRate, monthlyCommission, bankFee); const highFeeGrowth = calculateInvestmentGrowth(initial, monthly, years, rate, highFeeRate, 0, bankFee); const labels = Array.from({length: years + 1}, (_, i) => `Year ${i}`); const ctx = document.getElementById('fee-impact-chart')?.getContext('2d'); if (!ctx) return; const datasets = [ { label: 'Wealthsimple (0.2% MER)', data: lowFeeGrowth, borderColor: '#2dce89', tension: 0.1, pointRadius: 0, borderWidth: 2 }, { label: `Bank ETF (0.2% + Comm. + $${bankFee}/mo)`, data: bankBrokerageGrowth, borderColor: '#fb6340', tension: 0.1, pointRadius: 0, borderWidth: 2 }, { label: `Bank Fund (2% + $${bankFee}/mo)`, data: highFeeGrowth, borderColor: '#f5365c', tension: 0.1, pointRadius: 0, borderWidth: 2 } ]; if (feeChart) { feeChart.data.labels = labels; feeChart.data.datasets.forEach((dataset, index) => { dataset.data = datasets[index].data; dataset.label = datasets[index].label; }); feeChart.update(); } else { feeChart = new Chart(ctx, { type: 'line', data: { labels: labels, datasets: datasets }, options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { callback: value => '$' + value.toLocaleString(), color: '#666', font: { size: 10 } }, grid: { color: 'rgba(0,0,0,0.05)' } }, x: { ticks: { color: '#666', font: { size: 10 } }, grid: { display: false } } }, plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, callbacks: { label: context => `${context.dataset.label}: $${context.parsed.y.toLocaleString()}` } } } } }); } const lowFeeFinal = lowFeeGrowth[lowFeeGrowth.length - 1]; const bankBrokerageFinal = bankBrokerageGrowth[bankBrokerageGrowth.length - 1]; const highFeeFinal = highFeeGrowth[highFeeGrowth.length - 1]; const difference = lowFeeFinal - highFeeFinal; const percentageDiff = highFeeFinal > 0 ? ((difference / highFeeFinal) * 100) : (lowFeeFinal > 0 ? Infinity : 0); document.getElementById('summary-years').textContent = years; document.getElementById('low-fee-result').textContent = lowFeeFinal.toLocaleString(); document.getElementById('bank-brokerage-result').textContent = bankBrokerageFinal.toLocaleString(); document.getElementById('mutual-fund-result').textContent = highFeeFinal.toLocaleString(); document.getElementById('difference-result').textContent = difference.toLocaleString(); document.getElementById('difference-percentage').textContent = percentageDiff === Infinity ? '∞' : percentageDiff.toFixed(1); }
+            setupTwoWayBinding('initial-input', 'initial-slider', MAX_INITIAL, updateFeeChart); setupTwoWayBinding('monthly-input', 'monthly-slider', MAX_MONTHLY, updateFeeChart); setupTwoWayBinding('bankfee-input', 'bankfee-slider', MAX_BANKFEE, updateFeeChart); setupTwoWayBinding('period-input', 'period-slider', MAX_YEARS, updateFeeChart); updateFeeChart(); window.toggleDataset = function(index) { if (feeChart) { const meta = feeChart.getDatasetMeta(index); meta.hidden = meta.hidden === null ? !feeChart.data.datasets[index].hidden : null; feeChart.update(); } }
         });
-        // /// END: UPDATED FEE IMPACT CALCULATOR LOGIC ///
 
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId); if(targetElement) { const headerOffset = document.querySelector('.header')?.offsetHeight || 0; const elementPosition = targetElement.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - headerOffset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }); });
