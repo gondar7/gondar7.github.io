@@ -925,7 +925,7 @@
 
     <script>
         // --- PAGE FUNCTIONALITY SCRIPT (Modals, Charts, etc.) ---
-        // Modal Handling
+        // This script is unchanged and handles the page's core interactive elements.
         const modals = document.querySelectorAll('.modal');
         const openButtons = document.querySelectorAll('[id^="open-"]');
         const closeButtons = document.querySelectorAll('[id^="close-"]');
@@ -966,35 +966,62 @@
     </script>
    
     <script>
-    // --- UPDATED TOOLTIP SCRIPT (Handles Touch Devices Only) ---
+    // --- UPDATED TOOLTIP SCRIPT (With Mobile Positioning Fix) ---
     document.addEventListener('DOMContentLoaded', function () {
-        // Use a media query to check if the device is likely touch-only.
-        // This is more reliable than navigator properties for modern devices.
         const isTouchOnlyDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
         if (isTouchOnlyDevice) {
+            // This function calculates and applies an adjustment if the tooltip is off-screen.
+            const positionTooltip = (tooltip) => {
+                const tooltipText = tooltip.querySelector('.tooltiptext');
+                if (!tooltipText) return;
+
+                // Temporarily reset transform to get original position for calculation.
+                tooltipText.style.transform = 'translateX(-50%)';
+                
+                const rect = tooltipText.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                let adjustment = 0;
+                const margin = 8; // 8px margin from the screen edge.
+
+                if (rect.left < margin) {
+                    adjustment = margin - rect.left;
+                } else if (rect.right > viewportWidth - margin) {
+                    adjustment = (viewportWidth - margin) - rect.right;
+                }
+
+                if (adjustment !== 0) {
+                    tooltipText.style.transform = `translateX(calc(-50% + ${adjustment}px))`;
+                }
+            };
+
             document.querySelectorAll('.tooltip').forEach(trigger => {
                 trigger.addEventListener('click', function(e) {
-                    // Prevent the browser from following a link if the tooltip is on one.
                     e.preventDefault();
+                    
+                    const wasActive = this.classList.contains('js-active');
 
-                    // Close any other tooltips that might be open.
+                    // Close all other active tooltips.
                     document.querySelectorAll('.tooltip.js-active').forEach(activeTrigger => {
-                        if (activeTrigger !== this) {
-                            activeTrigger.classList.remove('js-active');
-                        }
+                        const tooltipText = activeTrigger.querySelector('.tooltiptext');
+                        if (tooltipText) tooltipText.style.transform = ''; // Reset transform
+                        activeTrigger.classList.remove('js-active');
                     });
 
-                    // Toggle the active state for the clicked tooltip.
-                    this.classList.toggle('js-active');
+                    // If the clicked tooltip wasn't the one already active, open it and position it.
+                    if (!wasActive) {
+                        this.classList.add('js-active');
+                        positionTooltip(this);
+                    }
                 });
             });
 
-            // Add a global listener to the document to hide tooltips when tapping anywhere else.
             document.addEventListener('click', function(e) {
-                // If the click was not inside a tooltip, close all active tooltips.
+                // If the click was not inside a tooltip, close all tooltips.
                 if (!e.target.closest('.tooltip')) {
                     document.querySelectorAll('.tooltip.js-active').forEach(trigger => {
+                        const tooltipText = trigger.querySelector('.tooltiptext');
+                        if (tooltipText) tooltipText.style.transform = ''; // Reset transform
                         trigger.classList.remove('js-active');
                     });
                 }
