@@ -45,7 +45,6 @@
             color: #324cdd; /* Match index.html link hover color */
         }
     </style>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWRZSR2QGC"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -55,7 +54,8 @@
 
         // Function to handle redirect
         function redirectToWealthsimple() {
-            window.location.href = "www.wealthsimple.com/invite/AEXLPA";
+            // FIX: Added https:// to make this an absolute URL
+            window.location.href = "https://www.wealthsimple.com/invite/AEXLPA";
         }
 
         // Send event and set up redirect
@@ -77,8 +77,7 @@
     <div class="content">
         <h1>Connecting you securely to Wealthsimple...</h1>
         <p>Applying your referral bonus. Please wait a moment.</p>
-        <!-- Loader removed -->
-        <p>If you are not redirected shortly, <a href="www.wealthsimple.com/invite/AEXLPA">click here</a>.</p>
+        <p>If you are not redirected shortly, <a href="https://www.wealthsimple.com/invite/AEXLPA">click here</a>.</p>
     </div>
 </body>
 </html>
